@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 import time
 import pandas as pd
+import os
 
 """
 ビルボードURL
@@ -36,22 +37,27 @@ def test_retrive_songartist_onlyone():
 
 
 #----------------------------------------------------------------------------------------
-def create_csvfile_including_song_artist(df_song_artist_rank, csv_name):
-    df_song_artist_rank.to_csv(csv_name, index=False, encoding='utf-8-sig')
-
-
-#--------------------------------------------------------------------------------------
-def create_dataframe_to_save_song_aritist(data_song_artist_rank, csv_name):
-    df = pd.Dataframe(data_song_artist_rank)
+def create_csvfile_including_song_artist(data_song_artist_rank, csv_name, year):
+    df = pd.DataFrame(data_song_artist_rank)
     print(df)
-    create_csvfile_including_song_artist(df, csv_name)
+
+    # 年ごとにフォルダを作成
+    output_dir = os.path.join("billboard_charts", str(year))
+    os.makedirs(output_dir, exist_ok=True)  # フォルダが存在しない場合のみ作成
+
+    # billboard_charts/2014/2014_1_16.csvを作る
+    file_path = os.path.join(output_dir, csv_name)
+
+    df.to_csv(file_path, index=False, encoding="utf-8-sig")
+    print("----------------------\n")
+
 
 
 # ----------------------------------------------------------------------------------------
 # webページの曲名とアーチスト名があるタグのclass名を取得
 song_class_name = "list-ttl-box-name-main"
 artist_class_name = "list-ttl-box-name-airtist"
-rank_class_name = "ul.ranking-list-cmn li.list-chart span.rank"
+rank_class_name = "rank"#"ul.ranking-list-cmn li.list-chart span.rank"
 
 
 def scraping_song_and_artist(year, month, day):
@@ -64,7 +70,7 @@ def scraping_song_and_artist(year, month, day):
     for i in range(len(song_elements)):
         song_title = song_elements[i].text
         artist_name = artist_elements[i].text
-        rank = rank_elements[i].text
+        rank = i + 1 #class名「rank」が複数あるため、順位はi+1で考える
         print(f"順位: {rank}, 曲名: {song_title}, アーティスト: {artist_name}")
         
         data_song_artist_rank.append({
@@ -73,10 +79,8 @@ def scraping_song_and_artist(year, month, day):
             "artist_name": artist_name
         })
 
-    df = pd.DataFrame(data_song_artist_rank)
-    print(df)
     csv_name= f"{year}_{month}_{day}.csv"
-    print("----------------------\n")
+    create_csvfile_including_song_artist(data_song_artist_rank, csv_name, year)
 
 
 
@@ -95,7 +99,8 @@ years_select_obj = Select(years_select_element)
 months_select_obj = Select(months_select_element)
 days_select_obj = Select(days_select_element)
 
-years = ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']
+#years = ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']
+years = ['2022', '2023', '2024', '2025']
 months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '1', '11', '12']
 
 def retrive_info_with_datacomponents():
