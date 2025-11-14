@@ -62,13 +62,12 @@ def create_csv_file(data_list, csv_name, year, month):
     print(df)
 
     # 年ごと1～12月のフォルダを作成
-    output_dir = os.path.join(OUTPUT_FOLDER, str(year), str(month))
+    output_dir = os.path.join(OUTPUT_FOLDER, str(year))
     os.makedirs(output_dir, exist_ok=True)
     
     # ファイルパスを結合 (例: billboard_charts/2022/2022_1_16.csv)
     file_path = os.path.join(output_dir, csv_name)
 
-    # utf-8-sig は Excel で開く際に文字化けを防ぐのに役立ちます
     df.to_csv(file_path, index=False, encoding="utf-8-sig")
     print(f"✅ CSVファイル '{file_path}' を作成しました。\n")
 
