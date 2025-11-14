@@ -1,192 +1,205 @@
+import os
+import time
+import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
-import time
-import pandas as pd
-import os
+from selenium.webdriver.support import expected_conditions as EC
 
 """
-ビルボードURL
-https://billboard-japan.com/chart_insight/
+https://billboard-japan.com/charts/detail?a=hot100
 """
 
-# Chromeブラウザを起動
-driver = webdriver.Chrome()
-# Webページにアクセス
-driver.get("https://billboard-japan.com/chart_insight/")
-# ページの読み込みを待つための変数
-wait = WebDriverWait(driver, timeout=5)
+# --- 定数（グローバル定数は大文字スネークケースが一般的）---
+BASE_URL = "https://billboard-japan.com/charts/detail?a=hot100"
+WAIT_TIMEOUT = 1
 
+# --- song artist rankの対応しているCSS ---
+SONG_CLASS = "musuc_title"
+ARTIST_CLASS = "artist_name"
+RANK_CLASS = "rank"
+
+# --- セレクトボタン、それぞれのID
+YEARS_ID = "year"
+MONTHS_ID = "month"
+DAYS_ID = "day"
+
+# ---検索ボタンのID---
+UPDATE_BUTTON_ID = "submit"
+
+#OUTPUT_FOLDER = "billboard_charts"
+OUTPUT_FOLDER = "test_csv"
+
+# --- 処理対象の年月設定 ---
+# TARGET_YEARS = ['2008', '2009', '2010', '2011', '2012',
+#                 '2013', '2014', '2015', '2016', '2017',
+#                 '2018', '2019', '2020', '2021', '2022',
+#                 '2023', '2024', '2025']
+TARGET_YEARS = ['2022', '2023', '2024', '2025']
+# 正しいリスト：months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+TARGET_MONTHS = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
 
 
 # --------------------------------------------------------------------------
-def test_retrive_songartist_onlyone():
-    wait.until(EC.presence_of_element_located((By.CLASS_NAME, "list-ttl-box-name-main"))) # 読み込まれるまで待つ
+## 🚀 クライアント初期化
+# --------------------------------------------------------------------------
+def initialize_driver(url, timeout):
+    """Chrome WebDriverを初期化し、指定されたURLにアクセスする。"""
+    print(f"Webドライバを起動し、{url}にアクセスします...")
+    driver = webdriver.Chrome()
+    driver.get(url)
+    wait = WebDriverWait(driver, timeout=timeout)
+    return driver, wait
 
-    # 曲名を取得
-    text = driver.find_element(By.CLASS_NAME, "list-ttl-box-name-main").text
-    print(text)
-    # artist名を取得
-    artist = driver.find_element(By.CLASS_NAME, "list-ttl-box-name-airtist").text
-    print(artist)
-    # rankを取得
-    rank = driver.find_element(By.CLASS_NAME, "rank").text
-    print(rank)
-
-
-#----------------------------------------------------------------------------------------
-def create_csvfile_including_song_artist(data_song_artist_rank, csv_name, year):
-    df = pd.DataFrame(data_song_artist_rank)
+# --------------------------------------------------------------------------
+## 💾 データ保存処理
+# --------------------------------------------------------------------------
+def create_csv_file(data_list, csv_name, year, month):
+    """データをDataFrameに変換し、年別フォルダにCSVとして保存する。"""
+    df = pd.DataFrame(data_list)
+    print("--- 保存データ ---")
     print(df)
 
-    # 年ごとにフォルダを作成
-    output_dir = os.path.join("billboard_charts", str(year))
-    os.makedirs(output_dir, exist_ok=True)  # フォルダが存在しない場合のみ作成
-
-    # billboard_charts/2014/2014_1_16.csvを作る
+    # 年ごと1～12月のフォルダを作成
+    output_dir = os.path.join(OUTPUT_FOLDER, str(year), str(month))
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # ファイルパスを結合 (例: billboard_charts/2022/2022_1_16.csv)
     file_path = os.path.join(output_dir, csv_name)
 
+    # utf-8-sig は Excel で開く際に文字化けを防ぐのに役立ちます
     df.to_csv(file_path, index=False, encoding="utf-8-sig")
-    print("----------------------\n")
+    print(f"✅ CSVファイル '{file_path}' を作成しました。\n")
 
 
-
-# ----------------------------------------------------------------------------------------
-# webページの曲名とアーチスト名があるタグのclass名を取得
-song_class_name = "list-ttl-box-name-main"
-artist_class_name = "list-ttl-box-name-airtist"
-rank_class_name = "rank"#"ul.ranking-list-cmn li.list-chart span.rank"
-
-
-def scraping_song_and_artist(year, month, day):
+# --------------------------------------------------------------------------
+## 🎼 スクレイピング処理
+# --------------------------------------------------------------------------
+def scrape_current_chart(driver, year, month, day):
+    """現在のWebページから楽曲情報（曲名、アーティスト名、順位）を取得する。"""
     data_song_artist_rank = []
 
-    song_elements = driver.find_elements(By.CLASS_NAME, song_class_name)
-    artist_elements = driver.find_elements(By.CLASS_NAME, artist_class_name)
-    rank_elements = driver.find_elements(By.CLASS_NAME, rank_class_name)
+    # データが読み込まれるまで待機
+    wait = WebDriverWait(driver, WAIT_TIMEOUT)
+    wait.until(EC.presence_of_element_located((By.CLASS_NAME, SONG_CLASS)))
+    
+    # 全ての楽曲エレメントを取得
+    song_elements = driver.find_elements(By.CLASS_NAME, SONG_CLASS)
+    artist_elements = driver.find_elements(By.CLASS_NAME, ARTIST_CLASS)
+    
+    # 曲数（要素の数）は一致すると仮定し、短い方に合わせる
+    num_songs = min(len(song_elements), len(artist_elements))
 
-    for i in range(len(song_elements)):
-        song_title = song_elements[i].text
-        artist_name = artist_elements[i].text
-        rank = i + 1 #class名「rank」が複数あるため、順位はi+1で考える
-        print(f"順位: {rank}, 曲名: {song_title}, アーティスト: {artist_name}")
+    print(f"取得中: {year}年{month}月{day}日（{num_songs}件）")
+
+    for i in range(num_songs):
+        song_title = song_elements[i].text.strip()
+        artist_name = artist_elements[i].text.strip()
+        rank = i + 1 # 順位はリストのインデックス+1とする
+        score = 100 - i
+        
+        # print(f"順位: {rank}, 曲名: {song_title}, アーティスト: {artist_name}")
         
         data_song_artist_rank.append({
             "rank": rank,
             "song_title": song_title,
-            "artist_name": artist_name
+            "artist_name": artist_name,
+            "score" : score
         })
 
-    csv_name= f"{year}_{month}_{day}.csv"
-    create_csvfile_including_song_artist(data_song_artist_rank, csv_name, year)
+    csv_name = f"{year}_{month}_{day}.csv"
+    create_csv_file(data_song_artist_rank, csv_name, year, month)
+    time.sleep(2) # サーバーへの負荷軽減のための待機
 
 
+# --------------------------------------------------------------------------
+## ✨ ヘルパー関数：ドロップダウン選択
+# --------------------------------------------------------------------------
+def reacquire_and_select(driver, element_id, value, wait):
+    """
+    指定されたIDのSelect要素を再取得し、指定された値を選択する。
+    Stale Element Reference Errorを防ぐため、毎回要素を再取得する。
+    """
+    # 1. 要素を再取得
+    element = driver.find_element(By.ID, element_id)
+    select_obj = Select(element)
+    
+    # 2. 値を選択
+    select_obj.select_by_value(value)
+    
+    # 3. DOMの更新を待つ
+    wait.until(EC.presence_of_element_located((By.CLASS_NAME, SONG_CLASS)))
 
-# --------------------------------------------------------------------------------------------------
-# `<select>`要素をIDで取得
-# `Select`クラスのインスタンスを作成
-years_class_name = "period-week-year"
-months_class_name = "period-week-month"
-days_class_name = "period-week-day"
 
-years_select_element = driver.find_element(By.ID, years_class_name)
-months_select_element = driver.find_element(By.ID, months_class_name)
-days_select_element = driver.find_element(By.ID, days_class_name)
+# --------------------------------------------------------------------------
+## 📅 メインのデータ収集ロジック
+# --------------------------------------------------------------------------
+def retrieve_info_from_japanchart(driver, wait):
+    """
+    year, month, dayのセレクトボックスから対象年月日を選択し、
+    各日のチャートデータをスクレイピングしてCSVに保存する。
+    """
 
-years_select_obj = Select(years_select_element)
-months_select_obj = Select(months_select_element)
-days_select_obj = Select(days_select_element)
+    for year in TARGET_YEARS:
+        print(f"\n======== {year}年のデータを処理開始 ========")
+        # 年、月、日、検索ボタンなどのID取得は動的Web要素のため、検索ボタンを押すたびに再取得が必要
+        reacquire_and_select(driver, YEARS_ID, year, wait)
 
-#years = ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']
-years = ['2022', '2023', '2024', '2025']
-months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '1', '11', '12']
+        for month in TARGET_MONTHS:
+            print(f"\n======== {month}月のデータを処理開始 ========")
+            reacquire_and_select(driver, MONTHS_ID, month, wait)
+            
+            # 年月でvalueが変わるためここでvalue取得
+            days_value_list = []
+            days_select_obj = Select(driver.find_element(By.ID, DAYS_ID))
+            for option in days_select_obj.options:
+                days_value_list.append(option.get_attribute('value')) # 値（文字列）をコピーしてリストに格納
 
-def retrive_info_with_datacomponents():
-    for year in years:
-        wait.until(EC.presence_of_element_located((By.CLASS_NAME, "list-ttl-box-name-main"))) # 読み込まれるまで待つ
-        years_select_obj.select_by_value(year)
+            # 取得した日付オプションを全て試す
+            for day in days_value_list:
+                print(f"\n======== {day}日のデータを処理開始 ========")
+                reacquire_and_select(driver, DAYS_ID, day, wait)
 
-        for month in months:
-            wait.until(EC.presence_of_element_located((By.CLASS_NAME, "list-ttl-box-name-main"))) # 読み込まれるまで待つ
-            months_select_obj.select_by_value(month)
-
-            for day_option in days_select_obj.options:
-                wait.until(EC.presence_of_element_located((By.CLASS_NAME, "list-ttl-box-name-main"))) # 読み込まれるまで待つ
-                day = day_option.get_attribute('value')
-                days_select_obj.select_by_value(day)
-                print(f"{year}年{month}月{day}日")
-
-                # 検索ボタンをクリック
-                check_input = driver.find_element(By.ID, "update_btn_period")
+                slice_day = day[-2:]
+                print(f"{year}年{month}月{slice_day}日")
+                
+                # 検索ボタンをクリックしてチャートを更新
+                check_input = driver.find_element(By.ID, UPDATE_BUTTON_ID)
                 check_input.click()
-                wait.until(EC.presence_of_element_located((By.CLASS_NAME, "list-ttl-box-name-main"))) # 読み込まれるまで待つ
+                
+                # チャートの更新を待機
+                wait.until(EC.presence_of_element_located((By.CLASS_NAME, SONG_CLASS)))
+                
+                # スクレイピング実行
+                scrape_current_chart(driver, year, month, slice_day)
 
-                #test_retrive_songartist_onlyone()
-                scraping_song_and_artist(year, month,  day)
-                time.sleep(2)
+# --------------------------------------------------------------------------
+## 🖥️ メイン関数
+# --------------------------------------------------------------------------
+def main():
+    """プログラムのエントリーポイントとして機能するメイン関数。"""
+    driver, wait = None, None
+    try:
+        # 1. 初期化とアクセス
+        driver, wait = initialize_driver(BASE_URL, WAIT_TIMEOUT)
 
+        # 2. メインのデータ収集ロジック
+        retrieve_info_from_japanchart(driver, wait)
+        
+        print("\n==================================")
+        print("🎉 全期間のデータ収集が完了しました。")
+        print("==================================")
 
-#-------------------------------------------------------------------------------------------------------
-# 2次元
-# [0][-] yearsが入る、、[1][-] monthsが入る、、[2][-] daysが入る
-values_id = []
-tantetive_values_id = []
-select_elements = [years_select_element, months_select_element, days_select_element]
+    except Exception as e:
+        print(f"\n致命的なエラーが発生しました: {e}")
+        # デバッグのためにエラーメッセージを詳細に表示する
+        from traceback import print_exc
+        print_exc()
+    finally:
+        # 3. ブラウザを終了 (エラー時でも実行されるように finally に配置)
+        if driver:
+            driver.quit()
 
-# Webサイトのclass要素から抽出する
-def retrive_info_song_and_artist_from_class():
-    for element in select_elements:
-        select_obj = Select(element)
-        print(f"〇{element.get_attribute("id")}のオプション")
-
-        for option in select_obj.options:
-            print(f"テキスト: {option.text}, 値: {option.get_attribute('value')}")
-            tantetive_values_id.append(option.get_attribute("value"))
-
-        values_id.append(tantetive_values_id)
-        tantetive_values_id = []
-
-        print("--------------------------------------\n")
-
-        print(values_id)
-
-
-# -------------------------------------------------------------------------------
-def kind_of_test():
-    year = "2014"
-    years_select_obj.select_by_value(year)
-    print(f"★ {year}年を選択した")
-
-    month = "2"
-    months_select_obj.select_by_value(month)
-    print(f"★ {month}月を選択した")
-
-    #day = days_select_obj.get_attribute('value')
-    #days_select_obj.select_by_value(day)
-    for option in days_select_obj.options:
-        print(f"テキスト: {option.text}, 値: {option.get_attribute('value')}")
-        tantetive_values_id.append(option.get_attribute("value"))
-
-
-    check_input = driver.find_element(By.ID, "update_btn_period")
-    check_input.click()
-
-    wait.until(EC.presence_of_element_located((By.CLASS_NAME, "list-ttl-box-name-main"))) # 読み込まれるまで待つ
-
-    # 曲名を取得
-    text = driver.find_element(By.CLASS_NAME, "list-ttl-box-name-main").text
-    print(text)
-
-    # artist名を取得
-    artist = driver.find_element(By.CLASS_NAME, "list-ttl-box-name-airtist").text
-    print(artist)
-
-
-
-
-retrive_info_with_datacomponents()
-
-# ブラウザを終了
-driver.quit()
+if __name__ == "__main__":
+    main()
