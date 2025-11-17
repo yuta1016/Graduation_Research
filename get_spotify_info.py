@@ -8,7 +8,6 @@ load_dotenv()
 
 
 # --- 設定 ---
-# Spotify APIのクライアントIDとシークレットを環境変数から取得
 CLIENT_ID = os.getenv("CLIENT_ID")
 CLIENT_SECRET = os.getenv("CLIENT_SECRET")
 
@@ -18,7 +17,6 @@ OUTPUT_ROOT = './test_output/'
 # -----------
 
 def setup_spotify_client(client_id, client_secret):
-    """Spotifyクライアントを設定し、認証マネージャーを返す"""
     if client_id == "YOUR_CLIENT_ID" or client_secret == "YOUR_CLIENT_SECRET":
         print("エラー: CLIENT_ID または CLIENT_SECRET が設定されていません。")
         return None
@@ -35,7 +33,7 @@ def find_input_csv_files(root_dir):
     csv_files = []
     print(f"ディレクトリ '{root_dir}' 以下からCSVファイルを検索中...")
     
-    # os.walkを使って再帰的にファイルを検索
+    # 再帰的にファイルを検索
     for dirpath, dirnames, filenames in os.walk(root_dir):
         for filename in filenames:
             if filename.endswith('.csv'):
@@ -109,7 +107,8 @@ def search_artist_id(sp, artist_name):
 
             print(f"アーティストID取得: 入力名='{artist_name}' -> Spotify名='{spotify_name}', ID='{artist_id}'")
             return artist_id, artist_popularity
-        return None, None
+        else:
+            return None, None
     except Exception as e:
         print(f"エラー: アーティストID検索中に問題が発生しました ({artist_name}): {e}")
         return None, None
@@ -141,7 +140,7 @@ def process_single_csv(sp, input_file_path, input_root, output_root):
     # 2. アーティストIDの事前取得 (artist_idsキャッシュはファイルごとにリセットされるが、ここでは簡単のためこのまま)--------------------
     artist_ids = {}
     artist_popularity = {}
-    unique_artists = sorted(list(set(row[2].strip() for row in songs_to_search if len(row) >= 2)))# 'row[1]'がアーティスト名、'row[2]'が曲名
+    unique_artists = sorted(list(set(row[2].strip() for row in songs_to_search if len(row) >= 2)))#'row[1]'が曲名, 'row[2]'がアーティスト名
 
     print(f"\n--- 1. アーティストIDの事前取得 ({len(unique_artists)}名) ---")
     for artist in unique_artists:
@@ -165,9 +164,9 @@ def process_single_csv(sp, input_file_path, input_root, output_root):
 
         track = row[1].strip()
         artist = row[2].strip()
-        target_id = artist_ids.get(artist)[0] #artist[0]でアーティスト名を取得
+        target_id = artist_ids.get(artist)[0]
+        artist_popularity = artist_ids.get(artist)[1]
         spotify_url = None
-        artist_popularity = artist_ids.get(artist)[1] #artist[1]でアーティスト人気度を取得
 
         if target_id:
             spotify_url, song_popularity = search_and_get_url(sp, artist, track, target_id)# IDを使ってトラックを検索
@@ -180,15 +179,14 @@ def process_single_csv(sp, input_file_path, input_root, output_root):
             track,
             spotify_url,
             artist_popularity,
-            song_popularity]
-        )
+            song_popularity
+        ])
 
         print(f"{index + 1}/{total_songs} - {artist} - {track} - {artist_popularity} - {song_popularity}: {'取得完了' if spotify_url else '見つからず'}")
 
 
     # 4. 結果をCSVファイルに書き込み------------------------------------------------------------------------------------------------
     # フォルダ構造を計算: input_rootからの相対パスを取得
-    # 例: ./test_csv_input/2022/2022_01_10.csv -> 2022/
     relative_path = os.path.relpath(os.path.dirname(input_file_path), input_root)
     
     # 出力ディレクトリパスを構築
@@ -212,7 +210,6 @@ def process_single_csv(sp, input_file_path, input_root, output_root):
 
 
 
-
 def main():
     sp = setup_spotify_client(CLIENT_ID, CLIENT_SECRET)
     if sp is None: return
@@ -223,7 +220,7 @@ def main():
         return
 
     print(f"処理対象ファイル数: {len(all_csv_files)}件")
-    print("---------------------------------------")
+    print("-----------------------------------------------------------")
 
     # 各CSVファイルに対して処理を実行
     for csv_file in all_csv_files:
