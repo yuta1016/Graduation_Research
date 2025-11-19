@@ -2,6 +2,8 @@
 https://global.php.cn/ja/faq/1796615471.html
 
 https://qiita.com/daisei0311/items/3b32a16faf3c2de826b9
+
+stdlを使うときにmp3で落とす方法
 """
 
 import subprocess
