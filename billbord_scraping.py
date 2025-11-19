@@ -6,6 +6,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.remote.remote_connection import RemoteConnection
 
 """
 https://billboard-japan.com/charts/detail?a=hot100
@@ -13,7 +16,7 @@ https://billboard-japan.com/charts/detail?a=hot100
 
 # --- 定数（グローバル定数は大文字スネークケースが一般的）---
 BASE_URL = "https://billboard-japan.com/charts/detail?a=hot100"
-WAIT_TIMEOUT = 1
+WAIT_TIMEOUT = 10
 
 # --- song artist rankの対応しているCSS ---
 SONG_CLASS = "musuc_title"
@@ -32,7 +35,7 @@ OUTPUT_FOLDER = "billboard_charts"
 #OUTPUT_FOLDER = "test_csv"
 
 # --- 処理対象の年月設定 ---
-TARGET_YEARS = ['2008', '2009', '2010', '2011', '2012','2013', '2014', '2015', '2016', '2017','2018', '2019', '2020', '2021', '2022','2023', '2024', '2025']
+TARGET_YEARS = ['2018', '2019', '2020', '2021', '2022','2023', '2024', '2025']
 #TARGET_YEARS = ['2022', '2023', '2024', '2025']
 # 正しいリスト：months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
 TARGET_MONTHS = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
@@ -44,7 +47,29 @@ TARGET_MONTHS = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11
 def initialize_driver(url, timeout):
     """Chrome WebDriverを初期化し、指定されたURLにアクセスする。"""
     print(f"Webドライバを起動し、{url}にアクセスします...")
-    driver = webdriver.Chrome()
+
+    # ★★★ 修正箇所: タイムアウトオプションを設定 ★★★
+    options = Options()
+    # コマンド実行のタイムアウトを延ばす (例: 300秒)
+    options.page_load_strategy = 'normal' # ページ全体がロードされるのを待つ
+    
+    driver = webdriver.Chrome(options=options)
+
+    # ★★★ 修正箇所: コマンドタイムアウトを延長 ★★★
+    try:
+        # RemoteConnectionの内部タイムアウトを300秒に延長
+        # 既存のcommand_executor._urlを使用して新しいRemoteConnectionを作成し、上書きする
+        new_executor = RemoteConnection(driver.command_executor._url, keep_alive=True)
+        new_executor.set_timeout(300) # 300秒 (5分) に設定
+        driver.command_executor = new_executor
+        print("✅ WebDriverコマンドタイムアウトを300秒に延長しました。")
+    except Exception as e:
+        print(f"警告: コマンドタイムアウト延長に失敗しました: {e}")
+
+
+    # ページロードタイムアウトを延ばす (例: 180秒)
+    driver.set_page_load_timeout(600)
+
     driver.get(url)
     wait = WebDriverWait(driver, timeout=timeout)
     return driver, wait
@@ -59,7 +84,7 @@ def create_csv_file(data_list, csv_name, year, month):
     print(df)
 
     # 年ごと1～12月のフォルダを作成
-    output_dir = os.path.join(OUTPUT_FOLDER, str(year), str(month))
+    output_dir = os.path.join(OUTPUT_FOLDER, str(year))
     os.makedirs(output_dir, exist_ok=True)
     
     # ファイルパスを結合 (例: billboard_charts/2022/2022_1_16.csv)
@@ -167,6 +192,9 @@ def retrieve_info_from_japanchart(driver, wait):
                 
                 # チャートの更新を待機
                 wait.until(EC.presence_of_element_located((By.CLASS_NAME, SONG_CLASS)))
+                print("5秒待機中..........................")
+                time.sleep(5)
+
                 
                 # スクレイピング実行
                 scrape_current_chart(driver, year, month, slice_day)
