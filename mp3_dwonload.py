@@ -5,8 +5,9 @@ https://qiita.com/daisei0311/items/3b32a16faf3c2de826b9
 
 stdlを使うときにmp3で落とす方法
 """
-
 import subprocess
+
+INPUT_ROOT = "./csv_of_spotify_info/"
 
  
 
@@ -20,15 +21,15 @@ def download_spotify_mp3():
 
  
 
-    if content_type not in ['track', 'playlist', 'album']:
+    # if content_type not in ['track', 'playlist', 'album']:
 
-        print("Invalid choice. Please enter 'track', 'playlist', or 'album'.")
+    #     print("Invalid choice. Please enter 'track', 'playlist', or 'album'.")
 
-        return
+    #     return
 
  
 
-    spotify_url = input(f"Enter the Spotify {content_type} URL: ").strip()
+    spotify_url = "https://open.spotify.com/track/364JzOajs76bJymjHm3sVY"
 
  
 
@@ -36,7 +37,7 @@ def download_spotify_mp3():
 
         print(f"\nDownloading {content_type} as MP3...")
 
-        subprocess.run(["spotdl", "--format", "mp3", spotify_url])
+        subprocess.run(["spotdl", spotify_url])
 
         print(f"\nDownload of {content_type} completed in MP3 format!\n")
 
