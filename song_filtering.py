@@ -6,12 +6,12 @@ import csv
 import pandas as pd
 from collections import Counter
 import shutil # フォルダ操作のために追加
-from typing import List, Tuple, Dict, Any, Set
+from typing import List, Tuple, Set
 
 # --- 設定 ---
-INPUT_ROOT = './csv_of_spotify_info/' 
-OUTPUT_ROOT = './filtered_billboard_charts/' 
-MIN_APPEARANCE_COUNT = 3 
+INPUT_ROOT = './test_output/'
+OUTPUT_ROOT = './filtered_billboard_charts/'
+MIN_APPEARANCE_COUNT = 2
 # -----------
 
 class SongFilter:
@@ -67,7 +67,7 @@ class SongFilter:
                     if song_key not in self.all_song_data:
                         self.all_song_data[song_key] = []
                     
-                    self.all_song_data[song_key].append(row) 
+                    self.all_song_data[song_key].append(row)
                         
         except Exception as e:
             print(f"⚠️ 警告: ファイル {file_path} の読み込み中にエラーが発生しました: {e}")
@@ -111,6 +111,7 @@ def replicate_and_save(input_root: str, output_root: str, all_csv_files: List[st
                 
                 for row in reader:
                     if len(row) < 2: continue
+
                     artist = row[0].strip()
                     track = row[1].strip()
                     song_key = (artist, track)
@@ -156,6 +157,7 @@ def main():
         
     song_processor = SongFilter(INPUT_ROOT, MIN_APPEARANCE_COUNT)
 
+    # ROOT_INPUTから全てのcsvファイルの名前を取得
     all_csv_files = song_processor.find_input_csv_files()
 
     if not all_csv_files:
@@ -167,7 +169,7 @@ def main():
     # retained_keys: artist, trackのタプルセット。週に3回以上出現した曲
     header, retained_keys = song_processor.aggregate_and_filter(all_csv_files)
     
-    # 3. フィルタリングされたキーを使って、ファイル構造を再現しながらデータを出力
+    # フィルタリングされたキーを使って、ファイル構造を再現しながらデータを出力
     replicate_and_save(INPUT_ROOT, OUTPUT_ROOT, all_csv_files, header, retained_keys)
 
     print("\n=======================================")
