@@ -10,6 +10,16 @@ import os
 import time
 import csv
 from typing import List, Set, Tuple, Dict
+from dotenv import load_dotenv
+load_dotenv()
+
+
+# Gmailに送る用
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email import policy
+
 
 #INPUT_ROOT = "./csv_of_spotify_info/"
 INPUT_ROOT = "./filtered_billboard_charts/"
@@ -52,6 +62,57 @@ def download_spotify_mp3():
     except Exception as e:
 
         print(f"An error occurred: {e}")
+
+
+#--------------------------------------------------------------
+def create_message(to_email: str, subject: str, body: str) -> MIMEMultipart:
+    """
+    multipart形式のMIMEメッセージを作成
+    Args:
+        to_email (str): 送信先メールアドレス
+        subject (str): メールの件名
+        body (str): メールの本文
+    Returns:
+        MIMEMultipart: 作成したメールメッセージ
+    """
+    msg = MIMEMultipart('alternative', policy=policy.SMTP)
+
+    # メッセージを作成
+    msg['Subject'] = subject
+    msg['From'] = os.getenv('MY_MAIL_ADDRESS')
+    msg['To'] = to_email
+    msg.attach(MIMEText(body, 'plain', "utf-8"))
+    return msg
+
+
+def send_email(msg: MIMEMultipart):
+    """
+    SMTPサーバーを使用してメールを送信
+    Args:
+        msg (MIMEMultipart): 送信するメールメッセージ
+    """
+    # smtplib.SMTP_SSLではなくsmtplib.SMTPを利用
+    with smtplib.SMTP(os.getenv('SMTP_SERVER'), os.getenv('SMTP_PORT')) as server:
+        server.starttls()  # 追加
+        server.login(os.getenv('MY_MAIL_ADDRESS'), os.getenv('APP_PASS'))
+        server.send_message(msg)
+
+def prosess_mail(text="いや、なにもない"):
+    to_email = os.getenv("MY_MAIL_ADDRESS")
+    subject = '実行中のPythonからのメール'
+    body = f"上手くいけたぞぞぞぞ、\n{text}"
+
+    # メッセージの作成
+    message = create_message(
+        to_email=to_email,
+        subject=subject,
+        body=body
+    )
+    # メールの送信
+    send_email(message)
+#--------------------------------------------------------------------------
+
+
 
 
 class Mp3Downloader:
@@ -204,8 +265,6 @@ class Mp3Downloader:
             except Exception as e:
                 print(f"エラー: ファイル '{output_file_path}' への書き出し中に問題が発生しました。{e}")
 
-
-
 def main():
     downloader = Mp3Downloader()
 
@@ -223,6 +282,12 @@ def main():
     downloader.execute_download(unique_urls)
 
     downloader.process_and_update_csvs(all_csv_files)
+
+    prosess_mail("mp3のダウンロードとcsvの更新が完了しました!!!")
+
+    print("\nすべての処理が完了しました！")
+
+
 
 if __name__ == "__main__":
     #download_spotify_mp3()
