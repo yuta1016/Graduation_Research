@@ -53,7 +53,7 @@ def download_spotify_mp3():
 
         print(f"\nDownloading {content_type} as MP3...")
 
-        subprocess.run(["spotdl", spotify_url])
+        subprocess.run(["spotdl", spotify_url, "--output", "./mp3/aaa-bbb.mp3"])
 
         print(f"\nDownload of {content_type} completed in MP3 format!\n")
 
