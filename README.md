@@ -19,7 +19,7 @@ filtered_billboard_charts
 get_spotify_info.py
 ↓
 ↓
-★★★csv_of_spotify_info★★★
+★★★extra_match_csv_of_spotify_info★★★
 ↓
 ↓
 mp3_download.py
@@ -37,7 +37,7 @@ billboard_charts()
 get_spotify_info.py
 ↓
 ↓
-★★★csv_of_spotify_info★★★
+★★★partial_match_csv_of_spotify_info★★★
 ↓
 ↓
 
