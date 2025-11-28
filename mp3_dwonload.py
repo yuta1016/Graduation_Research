@@ -9,6 +9,8 @@ import subprocess
 import os
 import time
 import csv
+import shutil
+import glob
 from typing import List, Set, Tuple, Dict
 from dotenv import load_dotenv
 load_dotenv()
@@ -21,7 +23,7 @@ from email.mime.multipart import MIMEMultipart
 from email import policy
 
 
-#INPUT_ROOT = "./csv_of_spotify_info/"
+#INPUT_ROOT = "./test_input/"
 INPUT_ROOT = "./filtered_billboard_charts/"
 OUTPUT_ROOT = "./csv_with_mp3_path/"
 DOWNLOAD_DIR = "./downloaded_mp3/"
@@ -52,8 +54,11 @@ def download_spotify_mp3():
     try:
 
         print(f"\nDownloading {content_type} as MP3...")
+        artist = "米酢"
+        track = "春ひさぎ"
+        output_puth = "./mp3/{artist}-{track}.mp3".format(artist=artist, track=track)
 
-        subprocess.run(["spotdl", spotify_url, "--output", "./mp3/aaa-bbb.mp3"])
+        subprocess.run(["spotdl", spotify_url, "--output", output_puth], check=True)
 
         print(f"\nDownload of {content_type} completed in MP3 format!\n")
 
@@ -154,7 +159,7 @@ class Mp3Downloader:
 
                     for row in reader:
                         artist = row[0].strip()
-                        track = row[1].strip
+                        track = row[1].strip()
                         unique_url = row[2].strip()
 
                         artist_track_urls[unique_url] = artist, track
@@ -170,48 +175,73 @@ class Mp3Downloader:
         print("⬇️ MP3のダウンロードを開始しています...")
 
         for url, (artist, track) in url_with_info.items():
-            filename = f"{artist}_{track}.mp3"
-            mp3_path = os.path.join(self.download_dir, filename)
+            filename = f"{artist.strip()}_{track.strip()}.mp3"
+            temp_dir = "./temp_download"
+            final_path = os.path.join(self.download_dir, filename)
+
+            if os.path.exists(temp_dir):
+                shutil.rmtree(temp_dir)
+
+            os.makedirs(self.download_dir, exist_ok = True)
+            os.makedirs(temp_dir, exist_ok = True)
 
             try:
+                print(f"\nDownloading: {artist} - {track}")
                 command = [
                     "spotdl",
                     url,
                     "--output",
-                    mp3_path,
+                    temp_dir,
                 ]
 
                 subprocess.run(command, check=True)
+                # ダウンロードされたファイルを取得
+                downloaded_file_path = glob.glob(os.path.join(temp_dir, "*.mp3"))
 
-                print(f"✅ ダウンロード成功: {artist} - {track}")
+                if not downloaded_file_path:
+                    print(f"❌ ダウンロード失敗: {artist} - {track}. ファイルが見つかりません。")
+                    self.downloaded_files[url] = None
+                    continue
 
-                self.downloaded_files[url] = mp3_path
+                print(f"✅ ダウンロード成功")
+
+                mp3_file = downloaded_file_path[0]
+
+                #ファイル移動と名前変更
+                shutil.move(mp3_file, final_path)
+
+                #csvにpathを書き込む民に保存
+                self.downloaded_files[url] = "../" + final_path
+
+                print(f"✅ ファイル移動成功: {final_path}")
 
             except subprocess.CalledProcessError as e:
                 print(f"❌ ダウンロード失敗: {artist} - {track}. エラー: {e}")
                 self.downloaded_files[url] = None
             except Exception as e:
                 print(f"⚠️ 警告: ファイル {artist} - {track} の読み込み中にエラーが発生しました: {e}")
+                self.downloaded_files[url] = None
             finally:
+                if os.path.exists(temp_dir):
+                    shutil.rmtree(temp_dir)
                 time.sleep(1)
 
 
     def process_and_update_csvs(self, all_csv_files: List[str]):
         """
-        元のCSVファイルを読み込み、ダウンロードしたMP3のパスを追記し、
+        元のCSVファイルを読み込み、ダウンロードしたMP3のパスを追記
         元のファイル構造を再現して新しいCSVファイルに書き出す。
         
-        * ダウンロードに失敗した/MP3パスがない行はスキップし、CSVに書き込まない。
+        ただ、ダウンロードに失敗した/MP3パスがない行はスキップし、CSVに書き込まない。
         """
         print("\n--- 4. CSVファイルの更新と保存 ---")
 
         # 新しいヘッダーを定義 (既存のヘッダーにMP3_Local_Pathを追加)
-        # self.output_headerがNoneでないことを前提
         if self.output_header is None:
             print("エラー: ヘッダー情報がありません。処理をスキップします。")
             return
-
         updated_header = self.output_header + ["MP3_Local_Path"]
+
 
         for input_file_path in all_csv_files:
             current_file_data = [] # このファイルから抽出されたデータ行を格納
@@ -222,17 +252,13 @@ class Mp3Downloader:
                     next(reader) # ヘッダーをスキップ
 
                     for row in reader:
-                        spotify_url = row[3].strip()
+                        spotify_url = row[2].strip()
 
-                        # ダウンロード結果のキャッシュを参照
-                        # 値は (artist, track, mp3_path) のタプル
-                        download_info = self.downloaded_files.get(spotify_url)
+                        # mp3が取得できていなかった場合はNoenが入ってる
+                        mp3_path = self.downloaded_files.get(spotify_url)
 
                         # ★★★ フィルタリングとデータ追記 ★★★
-                        # download_info が存在し、かつ mp3_path が有効な値(None/失敗フラグでない)かチェック
-                        if download_info:
-                            mp3_path = download_info
-                            # 新しい行データ: 元の行 + MP3パス
+                        if mp3_path:
                             current_file_data.append(row + [mp3_path])
                         # else: ダウンロードに失敗した行は current_file_data に追加されずスキップされる
 
@@ -264,6 +290,7 @@ class Mp3Downloader:
                 print(f"✅ 保存成功: {output_file_path}")
             except Exception as e:
                 print(f"エラー: ファイル '{output_file_path}' への書き出し中に問題が発生しました。{e}")
+
 
 def main():
     downloader = Mp3Downloader()

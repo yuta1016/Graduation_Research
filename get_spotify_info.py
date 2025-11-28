@@ -11,8 +11,10 @@ load_dotenv()
 CLIENT_ID = os.getenv("CLIENT_ID")
 CLIENT_SECRET = os.getenv("CLIENT_SECRET")
 
-INPUT_ROOT = './test_input/'
-OUTPUT_ROOT = './test_output/'
+# INPUT_ROOT = './test_input/'
+# OUTPUT_ROOT = './test_output/'
+INPUT_ROOT = './billboard_charts/'
+OUTPUT_ROOT = './csv_of_spotify_info/'
 
 # -----------
 
@@ -56,22 +58,23 @@ def search_and_get_url(sp, artist_name, track_name, target_artist_id):
         print(f"デバッグ: トラック検索クエリ: '{query}' を実行中...")
         results = sp.search(q=query, type='track', limit=5)
         found_url = None
-        time.sleep(5)
+        result_song_popularity = None
 
         # 検索結果をループして、アーティストIDが一致するものを探す
         for track in results['tracks']['items']:
             result_track_name = track['name'].strip()
-
             # 検索結果のアーティストIDを取得
             # トラックが複数のアーティストを持つ場合もあるが、ここでは最初のIDを取得
             result_artist_id = track['artists'][0]['id'] if track['artists'] else None
             
+            input_name_lower = track_name.lower()
+            result_name_lower = result_track_name.lower()
+
+            name_match = input_name_lower in result_name_lower
+            id_match = (result_artist_id == target_artist_id)
+
             # --- 照合ロジック ---
-            # 1. 曲名が完全一致すること (小文字比較で表記ゆれを吸収)
-            # 2. アーティストIDが事前に検索したIDと一致すること
-            if (result_track_name.lower() == track_name.lower()) and \
-               (result_artist_id == target_artist_id):
-                
+            if name_match and id_match:
                 # 完全に一致した場合、URLを保存してループを抜ける
                 found_url = track['external_urls']['spotify']
                 result_song_popularity = track['popularity']
@@ -86,7 +89,7 @@ def search_and_get_url(sp, artist_name, track_name, target_artist_id):
         print(f"エラーが発生しました (曲名: {track_name}): {e}")
         return None, None
     finally:
-        time.sleep(2) # APIリクエスト間隔を空ける
+        time.sleep(1) # APIリクエスト間隔を空ける
 
 
 
@@ -98,7 +101,6 @@ def search_artist_id(sp, artist_name):
     query = f"{artist_name}"
     try:
         results = sp.search(q=query, type='artist', limit=4)
-        time.sleep(5)
 
         if results['artists']['items']:
             artist_id = results['artists']['items'][0]['id']
@@ -113,11 +115,11 @@ def search_artist_id(sp, artist_name):
         print(f"エラー: アーティストID検索中に問題が発生しました ({artist_name}): {e}")
         return None, None
     finally:
-        time.sleep(2) # APIリクエスト間隔を空ける
+        time.sleep(1) # APIリクエスト間隔を空ける
 
 
 
-def process_single_csv(sp, input_file_path, input_root, output_root):
+def process_single_csv(sp, input_file_path, input_root, output_root, artist_cache):
     """
     単一のCSVファイルを読み込み、SpotifyAPIを使って検索を実行し、結果を対応する
     出力フォルダ構造に書き込む。
@@ -137,22 +139,7 @@ def process_single_csv(sp, input_file_path, input_root, output_root):
         return
 
 
-    # 2. アーティストIDの事前取得 (artist_idsキャッシュはファイルごとにリセットされるが、ここでは簡単のためこのまま)--------------------
-    artist_ids = {}
-    artist_popularity = {}
-    unique_artists = sorted(list(set(row[2].strip() for row in songs_to_search if len(row) >= 2)))#'row[1]'が曲名, 'row[2]'がアーティスト名
-
-    print(f"\n--- 1. アーティストIDの事前取得 ({len(unique_artists)}名) ---")
-    for artist in unique_artists:
-        artist_id, artist_popularity = search_artist_id(sp, artist)
-
-        if artist_id:
-            artist_ids[artist] = artist_id, artist_popularity
-        else:
-            artist_ids[artist] = None, None # 見つからない場合も格納
-
-
-    # 3. 楽曲のURL検索---------------------------------------------------------------------------------------
+    # 2. 楽曲のURL検索---------------------------------------------------------------------------------------
     results_data = []
     total_songs = len(songs_to_search)
     print(f"\n--- 2. 楽曲のURL検索 ({total_songs}件) ---")
@@ -164,8 +151,12 @@ def process_single_csv(sp, input_file_path, input_root, output_root):
 
         track = row[1].strip()
         artist = row[2].strip()
-        target_id = artist_ids.get(artist)[0]
-        artist_popularity = artist_ids.get(artist)[1]
+        score = row[3]
+
+        target_info = artist_cache.get(artist, (None, None))
+        target_id = target_info[0]
+        artist_popularity = target_info[1]
+
         spotify_url = None
 
         if target_id:
@@ -177,6 +168,7 @@ def process_single_csv(sp, input_file_path, input_root, output_root):
         results_data.append([
             artist,
             track,
+            score,
             spotify_url,
             artist_popularity,
             song_popularity
@@ -197,7 +189,7 @@ def process_single_csv(sp, input_file_path, input_root, output_root):
     base_filename = os.path.basename(input_file_path).replace('.csv', '_spotify_info.csv')
     output_file_path = os.path.join(output_dir, base_filename)
     
-    output_header = ['アーティスト名', '曲名', 'Spotify URL', 'アーティスト人気度', '曲人気度']
+    output_header = ['アーティスト名', '曲名', '順位', 'Spotify URL', 'アーティスト人気度', 'track人気度']
     try:
         with open(output_file_path, mode='w', newline='', encoding='utf-8') as outfile:
             writer = csv.writer(outfile)
@@ -222,10 +214,40 @@ def main():
     print(f"処理対象ファイル数: {len(all_csv_files)}件")
     print("-----------------------------------------------------------")
 
+    # ========================================================
+    # ★★★ 修正箇所 1: 全ファイルからユニークアーティストを収集 ★★★
+    # ========================================================
+    all_unique_artists = set()
+    
+    # 全CSVファイルを読み込み、すべてのアーティスト名を収集
+    print("--- 全ファイルからアーティスト名を収集中 ---")
+    for csv_file in all_csv_files:
+        try:
+            with open(csv_file, mode='r', encoding='utf-8') as infile:
+                reader = csv.reader(infile)
+                header = next(reader)
+                # artists in row[2]
+                all_unique_artists.update(row[2].strip() for row in reader if len(row) > 2)
+        except Exception as e:
+            print(f"警告: ファイル {csv_file} のアーティスト収集に失敗しました: {e}")
+            continue
+
+    # ========================================================
+    # ★★★ 修正箇所 2: 統合されたリストを使ってIDを一度だけ取得 ★★★
+    # ========================================================
+    artist_cache = {}
+    sorted_artists = sorted(list(all_unique_artists))
+    
+    print(f"\n--- 1. 全アーティストIDの事前取得 ({len(sorted_artists)}名) ---")
+    for artist in sorted_artists:
+        artist_id, artist_popularity = search_artist_id(sp, artist)
+        artist_cache[artist] = (artist_id, artist_popularity) # IDと人気度をタプルで格納
+
+
     # 各CSVファイルに対して処理を実行
     for csv_file in all_csv_files:
         # 単一CSVファイルを処理する新しい関数を呼び出し
-        process_single_csv(sp, csv_file, INPUT_ROOT, OUTPUT_ROOT)
+        process_single_csv(sp, csv_file, INPUT_ROOT, OUTPUT_ROOT, artist_cache)
 
     print("\n=======================================")
     print("🎉 すべてのファイルの処理が完了しました。")
