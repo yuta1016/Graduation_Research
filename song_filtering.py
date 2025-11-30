@@ -9,9 +9,9 @@ import shutil # フォルダ操作のために追加
 from typing import List, Tuple, Set
 
 # --- 設定 ---
-INPUT_ROOT = './test_output/'
+INPUT_ROOT = './billboard_charts/'
 OUTPUT_ROOT = './filtered_billboard_charts/'
-MIN_APPEARANCE_COUNT = 2
+MIN_APPEARANCE_COUNT = 3
 # -----------
 
 class SongFilter:
@@ -56,11 +56,11 @@ class SongFilter:
 
                 # CSVの構造: [アーティスト名, 曲名, 順位, SpotifyURL, アーティスト人気度, track人気度]
                 for row in reader:
-                    #アーティスト名はrow[0]、曲名はrow[1]、スコアはrow[2],,,
-                    artist = row[0].strip()
-                    track = row[1].strip()
+                    #アーティスト名はrow[2]、曲名はrow[1]、スコアはrow[3],,,
+                    track_name = row[1].strip()
+                    artist = row[2].strip()
                     
-                    song_key = (artist, track)
+                    song_key = (artist, track_name)
                     
                     self.song_counts[song_key] += 1
                     
@@ -112,9 +112,9 @@ def replicate_and_save(input_root: str, output_root: str, all_csv_files: List[st
                 for row in reader:
                     if len(row) < 2: continue
 
-                    artist = row[0].strip()
-                    track = row[1].strip()
-                    song_key = (artist, track)
+                    track_name = row[1].strip()
+                    artist = row[2].strip()
+                    song_key = (artist, track_name)
                     
                     # 基準を満たした楽曲のみを追加
                     if song_key in retained_keys:

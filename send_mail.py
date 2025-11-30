@@ -41,6 +41,20 @@ def send_email(msg: MIMEMultipart):
         server.login(os.getenv('MY_MAIL_ADDRESS'), os.getenv('APP_PASS'))
         server.send_message(msg)
 
+def prosess_mail(text="いや、なにもない"):
+    to_email = os.getenv("MY_MAIL_ADDRESS")
+    subject = '実行中のPythonからのメール'
+    body = f"上手くいけたぞぞぞぞ、\n{text}"
+
+    # メッセージの作成
+    message = create_message(
+        to_email=to_email,
+        subject=subject,
+        body=body
+    )
+    # メールの送信
+    send_email(message)
+
 
 
 if __name__ == '__main__':
