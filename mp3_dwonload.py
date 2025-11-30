@@ -24,7 +24,7 @@ from email import policy
 
 
 #INPUT_ROOT = "./test_input/"
-INPUT_ROOT = "./filtered_billboard_charts/"
+INPUT_ROOT = "./exact_match_csv_of_spotify_info/"
 OUTPUT_ROOT = "./csv_with_mp3_path/"
 DOWNLOAD_DIR = "./downloaded_mp3/"
 
@@ -211,7 +211,7 @@ class Mp3Downloader:
                 shutil.move(mp3_file, final_path)
 
                 #csvにpathを書き込む民に保存
-                self.downloaded_files[url] = "../" + final_path
+                self.downloaded_files[url] = final_path
 
                 print(f"✅ ファイル移動成功: {final_path}")
 
@@ -310,7 +310,7 @@ def main():
 
     downloader.process_and_update_csvs(all_csv_files)
 
-    prosess_mail("mp3のダウンロードとcsvの更新が完了しました!!!")
+    prosess_mail("mp3のダウンロードとcsvの更新が完了しました!!!\nmp3_dwonload.pyからのメール")
 
     print("\nすべての処理が完了しました！")
 
