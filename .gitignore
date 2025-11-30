@@ -9,6 +9,8 @@ tokens.json
 # Exclude all generated CSV files as requested.
 
 #*.csv
+test_spotify_info.csv
+test_spotify_info_with_mp3.csv
 
 # --- 3. Python Environment & Build Files ---
 # Compiled python files
@@ -29,3 +31,8 @@ env/
 *.log
 /log/
 /temp/
+
+
+#other
+.cache
+.python-version
