@@ -6,6 +6,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+import send_mail
 
 # --- 設定 ---
 CLIENT_ID = os.getenv("CLIENT_ID")
@@ -13,8 +14,8 @@ CLIENT_SECRET = os.getenv("CLIENT_SECRET")
 
 # INPUT_ROOT = './test_input/'
 # OUTPUT_ROOT = './test_output/'
-INPUT_ROOT = './billboard_charts/'
-OUTPUT_ROOT = './csv_of_spotify_info/'
+INPUT_ROOT = './filtered_billboard_charts/'
+OUTPUT_ROOT = './exact_match_csv_of_spotify_info/'
 
 # -----------
 
@@ -70,7 +71,8 @@ def search_and_get_url(sp, artist_name, track_name, target_artist_id):
             input_name_lower = track_name.lower()
             result_name_lower = result_track_name.lower()
 
-            name_match = input_name_lower in result_name_lower
+            #name_match = input_name_lower in result_name_lower
+            name_match = (input_name_lower == result_name_lower)
             id_match = (result_artist_id == target_artist_id)
 
             # --- 照合ロジック ---
@@ -89,7 +91,7 @@ def search_and_get_url(sp, artist_name, track_name, target_artist_id):
         print(f"エラーが発生しました (曲名: {track_name}): {e}")
         return None, None
     finally:
-        time.sleep(1) # APIリクエスト間隔を空ける
+        time.sleep(2) # APIリクエスト間隔を空ける
 
 
 
@@ -115,11 +117,11 @@ def search_artist_id(sp, artist_name):
         print(f"エラー: アーティストID検索中に問題が発生しました ({artist_name}): {e}")
         return None, None
     finally:
-        time.sleep(1) # APIリクエスト間隔を空ける
+        time.sleep(2) # APIリクエスト間隔を空ける
 
 
 
-def process_single_csv(sp, input_file_path, input_root, output_root, artist_cache):
+def process_single_csv(sp, input_file_path, input_root, output_root, artist_cache, track_url_cache):
     """
     単一のCSVファイルを読み込み、SpotifyAPIを使って検索を実行し、結果を対応する
     出力フォルダ構造に書き込む。
@@ -153,17 +155,48 @@ def process_single_csv(sp, input_file_path, input_root, output_root, artist_cach
         artist = row[2].strip()
         score = row[3]
 
-        target_info = artist_cache.get(artist, (None, None))
-        target_id = target_info[0]
-        artist_popularity = target_info[1]
+        # target_info = artist_cache.get(artist, (None, None))
+        # target_id = target_info[0]
+        # artist_popularity = target_info[1]
 
-        spotify_url = None
-
-        if target_id:
-            spotify_url, song_popularity = search_and_get_url(sp, artist, track, target_id)# IDを使ってトラックを検索
         
-        if spotify_url is None:
-            continue  # URLが見つからなかった場合、次の曲へ
+        # --------------------------------------------------------
+        # ★★★ 改善点: キャッシュを使った効率的な検索 ★★★
+        # --------------------------------------------------------
+        song_key = (artist, track)
+        
+        # 1. まずキャッシュを確認
+        if song_key in track_url_cache:
+            spotify_url, song_popularity = track_url_cache[song_key]
+            # print(f"キャッシュヒット: {artist} - {track}") # デバッグ用
+        else:
+            # 2. キャッシュになければAPI検索
+            target_info = artist_cache.get(artist, (None, None))
+            target_id = target_info[0]
+            artist_popularity = target_info[1] # ここで取得しておく
+
+            spotify_url = None
+            song_popularity = None
+
+            if target_id:
+                spotify_url, song_popularity = search_and_get_url(sp, artist, track, target_id)
+
+
+            if spotify_url is None:
+                continue  # URLが見つからなかった場合、次の曲へ
+            
+            # 3. 結果をキャッシュに保存 (Noneでも保存して再検索を防ぐ)
+            track_url_cache[song_key] = (spotify_url, song_popularity)
+            
+            # APIを叩いた時だけ進捗を表示
+            artist_pop_display = artist_popularity if artist_popularity else "N/A"
+            song_pop_display = song_popularity if song_popularity else "N/A"
+            print(f"{index + 1}/{total_songs} - {artist} - {track}: {'取得完了' if spotify_url else '見つからず'}")
+
+        # --------------------------------------------------------
+
+        # アーティスト人気度は artist_cache から再取得（ループ内で上書きされている可能性があるため）
+        artist_popularity = artist_cache.get(artist, (None, None))[1]
 
         results_data.append([
             artist,
@@ -245,9 +278,13 @@ def main():
 
 
     # 各CSVファイルに対して処理を実行
+    # キー: (artist, track), 値: (spotify_url, song_popularity)
+    track_url_cache = {}
     for csv_file in all_csv_files:
         # 単一CSVファイルを処理する新しい関数を呼び出し
-        process_single_csv(sp, csv_file, INPUT_ROOT, OUTPUT_ROOT, artist_cache)
+        process_single_csv(sp, csv_file, INPUT_ROOT, OUTPUT_ROOT, artist_cache, track_url_cache)
+
+    send_mail.prosess_mail("mp3のダウンロードとcsvの更新が完了しました!!!get_spotify_info.pyからのメール")
 
     print("\n=======================================")
     print("🎉 すべてのファイルの処理が完了しました。")
