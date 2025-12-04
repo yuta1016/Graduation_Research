@@ -27,6 +27,7 @@ from email import policy
 INPUT_ROOT = "./exact_match_csv_of_spotify_info/"
 OUTPUT_ROOT = "./csv_with_mp3_path/"
 DOWNLOAD_DIR = "./downloaded_mp3/"
+#DOWNLOAD_DIR = "./test_output/"
 
 
 def download_spotify_mp3():
@@ -133,11 +134,11 @@ class Mp3Downloader:
         self.downloaded_files = dict()# { URL: MP3の最終パス }
 
 
-    def find_input_csvs(self) -> Dict[str, Tuple[str, str]]:
+    def find_input_csvs(self, extension) -> Dict[str, Tuple[str, str]]:
         csv_files = []
         for dir_path, _, filenames in os.walk(self.input_root):
             for filename in filenames:
-                if filename.endswith(".csv"):
+                if filename.endswith(extension):
                     full_path = os.path.join(dir_path, filename)
                     csv_files.append(full_path)
 
@@ -160,7 +161,7 @@ class Mp3Downloader:
                     for row in reader:
                         artist = row[0].strip()
                         track = row[1].strip()
-                        unique_url = row[2].strip()
+                        unique_url = row[3].strip()
 
                         artist_track_urls[unique_url] = artist, track
 
@@ -171,7 +172,7 @@ class Mp3Downloader:
         return artist_track_urls
 
 
-    def execute_download(self, url_with_info: Dict[str, Tuple[str, str]]):
+    def execute_download(self, url_with_info: Dict[str, Tuple[str, str]],):
         print("⬇️ MP3のダウンロードを開始しています...")
 
         for url, (artist, track) in url_with_info.items():
@@ -227,6 +228,124 @@ class Mp3Downloader:
                 time.sleep(1)
 
 
+    def gemini_execute_download(self, url_with_info: Dict[str, Tuple[str, str]]):
+        print("⬇️ MP3のダウンロードとパスの登録を開始しています...")
+        
+        # 統計用カウンタ
+        count_skipped = 0
+        count_downloaded = 0
+        count_failed = 0
+
+        for url, (artist, track) in url_with_info.items():
+            # ファイル名を安全に作成 (パスに使えない文字などを除去するのが本来は望ましい)
+            filename = f"{artist.strip()}_{track.strip()}.mp3"
+            
+            # 最終的な保存先パス
+            final_path = os.path.join(self.download_dir, filename)
+            
+            # 作業用の一時フォルダ
+            temp_dir = "./temp_download"
+
+            # ---------------------------------------------------------
+            # ★★★ 修正ポイント: 既にダウンロード済みかチェック ★★★
+            # ---------------------------------------------------------
+            if os.path.exists(final_path):
+                # print(f"⏩ スキップ (済み): {artist} - {track}")
+                self.downloaded_files[url] = final_path
+                count_skipped += 1
+                continue # 次の曲へ
+
+            # ---------------------------------------------------------
+            # ダウンロード処理 (まだファイルがない場合のみ実行)
+            # ---------------------------------------------------------
+            
+            # フォルダ準備
+            if os.path.exists(temp_dir): shutil.rmtree(temp_dir)
+            os.makedirs(self.download_dir, exist_ok=True)
+            os.makedirs(temp_dir, exist_ok=True)
+
+            try:
+                print(f"\nDownloading: {artist} - {track}")
+                command = ["spotdl", url, "--output", temp_dir]
+
+                # ダウンロード実行
+                subprocess.run(command, check=True)
+                
+                # ダウンロードされたファイルを探す
+                downloaded_files = glob.glob(os.path.join(temp_dir, "*.mp3"))
+
+                if not downloaded_files:
+                    print(f"❌ ダウンロード失敗 (ファイルなし): {artist} - {track}")
+                    self.downloaded_files[url] = None
+                    count_failed += 1
+                    continue
+
+                # ファイル移動
+                mp3_file = downloaded_files[0]
+                shutil.move(mp3_file, final_path)
+
+                # パスを登録
+                self.downloaded_files[url] = final_path
+                count_downloaded += 1
+                print(f"✅ ダウンロード成功: {final_path}")
+
+            except subprocess.CalledProcessError:
+                print(f"❌ ダウンロード失敗 (コマンドエラー): {artist} - {track}")
+                self.downloaded_files[url] = None
+                count_failed += 1
+            except Exception as e:
+                print(f"⚠️ エラー: {artist} - {track}: {e}")
+                self.downloaded_files[url] = None
+                count_failed += 1
+            finally:
+                if os.path.exists(temp_dir):
+                    shutil.rmtree(temp_dir)
+                time.sleep(1) # API制限回避のための待機
+
+        print(f"\n--- 処理完了 ---")
+        print(f"スキップ (既存): {count_skipped} 件")
+        print(f"新規ダウンロード: {count_downloaded} 件")
+        print(f"失敗: {count_failed} 件")
+
+
+
+
+    def for_downloaded_files(self, all_csv_files):
+        mp3_info_list = {}
+        count_matched = 0
+        for _,_,filenames in os.walk("downloaded_mp3"):
+            for filename in filenames:
+
+                name_body = os.path.splitext(filename)[0]
+                #print(name_body)
+
+                artist, track = name_body.split("_", 1)
+
+                mp3_info_list[(artist, track)] = filename
+        #return mp3filenames
+        print(f"{len(mp3_info_list)}mp3の数")
+
+        for csv_file in all_csv_files:
+            try:
+                with open(csv_file, mode="r", encoding="utf-8") as file:
+                    reader = csv.reader(file)
+                    header = next(reader)
+
+                    for row in reader:
+                        artist = row[0].strip()
+                        track = row[1].strip()
+                        unique_url = row[3].strip()
+
+                        if (artist, track) in mp3_info_list:
+                            self.downloaded_files[unique_url] = os.path.join(self.download_dir, filename)
+                            count_matched += 1
+                        else:
+                            self.downloaded_files[unique_url] = None
+            except Exception as e:
+                print(f"{e}こんなことある")
+        print(f"{count_matched}こあるよおおおおおおおおおお」")
+
+
     def process_and_update_csvs(self, all_csv_files: List[str]):
         """
         元のCSVファイルを読み込み、ダウンロードしたMP3のパスを追記
@@ -252,7 +371,7 @@ class Mp3Downloader:
                     next(reader) # ヘッダーをスキップ
 
                     for row in reader:
-                        spotify_url = row[2].strip()
+                        spotify_url = row[3].strip()
 
                         # mp3が取得できていなかった場合はNoenが入ってる
                         mp3_path = self.downloaded_files.get(spotify_url)
@@ -296,17 +415,49 @@ def main():
     downloader = Mp3Downloader()
 
     # 1. ROOT_INPUTから全てのcsvファイルの名前を返す
-    all_csv_files = downloader.find_input_csvs()
+    all_csv_files = downloader.find_input_csvs(".csv")
+    print(f"{len(all_csv_files)}個のccvファイル")
     if not all_csv_files: return
     
     # 2. 全てのcsvファイルからSpotifyURLをcollect、重複はなし
     # [spotifyURL, [artist, track]]
     unique_urls = downloader.collect_unique_urls(all_csv_files)
     if not unique_urls: return
+    print(f"{len(unique_urls)}重複なしの数")
+    #print(unique_urls)
 
     # 3. mp3をダウンロード
     # class内変数のself.downloaded_files[spotifyURL]にmp3の階層が保存される
+    #downloader.gemini_execute_download(unique_urls)
+
     downloader.execute_download(unique_urls)
+    # ↑
+    #mp3は保存できたがcsvに書き込めなかったのでdownloaded_filesにpathをいれるコードを作成
+    #downloader.for_downloaded_files(all_csv_files)
+
+    """
+    個数計算
+    all_csv_files = []
+    for dir_path, _, filenames in os.walk(OUTPUT_ROOT):
+        for filename in filenames:
+            if filename.endswith(".csv"):
+                full_path = os.path.join(dir_path, filename)
+                all_csv_files.append(full_path)
+
+    unique_urls = downloader.collect_unique_urls(all_csv_files)
+    print(f"{len(unique_urls)}個、集め終わった後の曲数")
+
+    
+    mp3_number = []
+    for dir_path, _, filenames in os.walk(DOWNLOAD_DIR):
+        for filename in filenames:
+            if filename.endswith(".mp3"):
+                full_path = os.path.join(dir_path, filename)
+                mp3_number.append(full_path)
+
+    
+    print(f"{len(mp3_number)}個、集め終わった後の,mp3")
+    """
 
     downloader.process_and_update_csvs(all_csv_files)
 
