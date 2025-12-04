@@ -36,3 +36,4 @@ env/
 #other
 .cache
 .python-version
+*.mp3
