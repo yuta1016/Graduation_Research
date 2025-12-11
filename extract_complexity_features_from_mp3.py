@@ -53,22 +53,28 @@ class MusicComplexityFeatures:
         """
         Timbre (MFCC) 特徴量の抽出 (36次元)
         """
-        # 論文の "2.97 sec window" に基づくMFCC計算
-        # librosaのMFCCは通常短いフレームで計算するため、ここではスペクトログラムを平均化して近似する
+        timbre_list = []
+        n_samples = len(self.y)
         
-        # まず通常の短いフレームでMFCCを計算 (n_mfcc=36: B案採用)
-        mfcc = librosa.feature.mfcc(y=self.y, sr=self.sr, n_mfcc=36)
+        # 1秒ごとにループ (hop_length)
+        for start in range(0, n_samples - self.n_fft, self.hop_length):
+            end = start + self.n_fft
+            segment = self.y[start:end]
+            
+            # MFCC計算
+            mfcc = librosa.feature.mfcc(y=segment, sr=self.sr, n_mfcc=36)
+            
+            # (36, Time) -> 時間方向に平均して (36,) のベクトルにする
+            mfcc_mean = np.mean(mfcc, axis=1)
+            timbre_list.append(mfcc_mean)
+            
+        self.timbre_seq = np.array(timbre_list) # (Time, 36)
         
-        # これを1秒ごとの単位（論文の観測単位）に集約する
-        # hop_length(1秒)に合わせてフレームを平均化
-        frames = librosa.util.frame(mfcc, frame_length=1, hop_length=1) # 簡易的な処理
-        
-        # 実際には論文通り 2.97秒窓・1秒ホップ で計算し直すのが正確
-        # ここではlibrosaのstftを使って、指定のウィンドウサイズで計算し、そこからMFCCを求める
-        S = np.abs(librosa.stft(self.y, n_fft=self.n_fft, hop_length=self.hop_length))
-        mfcc_long = librosa.feature.mfcc(S=librosa.power_to_db(S), n_mfcc=36)
-        
-        self.timbre_seq = mfcc_long.T # (Time, 36)
+        # ★★★ 修正: 全体に対して標準化を行う (平均0, 分散1) ★★★
+        # これにより、値が大きすぎてSoftmaxでinfになるのを防ぐ
+        if np.std(self.timbre_seq) > 0:
+            self.timbre_seq = (self.timbre_seq - np.mean(self.timbre_seq)) / np.std(self.timbre_seq)
+            
         return self.timbre_seq
 
     def extract_rhythm(self):
@@ -127,54 +133,39 @@ class MusicComplexityFeatures:
     def calculate_sc(self, component_seq, component_type):
         """
         Structural Change (SC) の計算
-        SC_ij = JSD(s_prev, s_curr)
-        
-        component_seq: (Time, Feature_Dim) の特徴量行列
-        component_type: 'chroma' or 'other' (ウィンドウサイズ決定用)
+        修正: 値の爆発を防ぐため、np.sum ではなく np.mean を使用する
         """
         n_segments = component_seq.shape[0]
         sc_values = {}
 
-        # ウィンドウサイズの定義 j
-        # Chroma: j=3..8 -> w = 4, 8, 16, 32, 64, 128 (単位: 0.25秒なので 1~32秒)
-        # Other:  j=1..6 -> w = 1, 2, 4, 8, 16, 32 (単位: 1秒なので 1~32秒)
-        
         if component_type == 'chroma':
-            js = range(3, 9) # 3,4,5,6,7,8
+            js = range(3, 9) 
         else:
-            js = range(1, 7) # 1,2,3,4,5,6
+            js = range(1, 7) 
 
         for j in js:
-            w_j = 2**(j - 1) # ウィンドウの長さ
+            w_j = 2**(j - 1) 
             
             jsd_list = []
             
-            # 時間方向にスライド
-            # i は現在のセグメント
-            # 過去: [i - w_j : i] (Pythonのスライスは末尾を含まないため i)
-            # 未来: [i : i + w_j]
-            
             for i in range(w_j, n_segments - w_j):
-                # 論文: "sa:b is the sum of the values of s"
-                # ベクトルを足し合わせる
-                vec_past = np.sum(component_seq[i - w_j : i], axis=0)
-                vec_future = np.sum(component_seq[i : i + w_j], axis=0)
+                # ★★★ 修正箇所: np.sum を np.mean に変更 ★★★
+                # 合計だとウィンドウが長い(Timbre5,6)ときに値が大きくなりすぎてinfになるため
+                vec_past = np.mean(component_seq[i - w_j : i], axis=0)
+                vec_future = np.mean(component_seq[i : i + w_j], axis=0)
                 
-                # JSD計算のために正規化（Softmax等で確率分布にする）
+                # 正規化（Softmax）
                 dist_past = self._normalize_distribution(vec_past)
                 dist_future = self._normalize_distribution(vec_future)
                 
-                # Jensen-Shannon Divergenceの計算
-                # scipyのjensenshannonは距離(0~1の平方根)を返すので、2乗してDivergenceにする場合もあるが
-                # 論文の文脈では値の大小が重要なのでそのまま使用する
+                # JSD計算
                 jsd = jensenshannon(dist_past, dist_future)
                 
-                # 値がNaNになる場合の対策
-                if np.isnan(jsd): jsd = 0.0
+                # NaN / Inf 対策 (念のため)
+                if not np.isfinite(jsd): jsd = 0.0
                 
                 jsd_list.append(jsd)
             
-            # 平均をとってそのウィンドウサイズでの特徴量とする
             if len(jsd_list) > 0:
                 sc_mean = np.mean(jsd_list)
             else:
@@ -221,7 +212,7 @@ class MusicComplexityFeatures:
 # --- 実行例 ---
 if __name__ == "__main__":
     # 音楽ファイルのパスを指定してください
-    audio_file = "your_music_file.mp3" 
+    audio_file = "./downloaded_mp3/星野源_ドラえもん.mp3" 
     
     # ファイルが存在するか確認用ダミーチェック (実際には外してください)
     import os
