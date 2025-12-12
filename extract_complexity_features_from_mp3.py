@@ -2,6 +2,7 @@ import numpy as np
 import librosa
 from scipy.spatial.distance import jensenshannon
 from scipy.special import softmax
+from scipy.fftpack import fft
 
 class MusicComplexityFeatures:
     def __init__(self, file_path, sr=44100):
@@ -37,13 +38,22 @@ class MusicComplexityFeatures:
         """
         Chroma特徴量の抽出 (12次元)
         論文[30]のNNLSに近い挙動として、CQTベースのクロマを使用し確率分布化する。
+        先行研究（https://www.researchgate.net/profile/Matthias-Mauch-2/publication/220723830_Approximate_Note_Transcription_for_the_Improved_Identification_of_Difficult_Chords/links/0deec5193a24452331000000/Approximate-Note-Transcription-for-the-Improved-Identification-of-Difficult-Chords.pdf）、
+        は対周波数スペクトルフレームを分解するために、2つの要素が必要↓ 
+        we need two basic in-redients: a note dictionary E, describing the assumed pro-
+        file of (idealised) notes, and an inference procedure to de-
+        termine the note activation patterns that result in the closest
+        match to the spectral frame
+
+        ただ時間的に難しいのでlibrosaのcqt(対周波数を使った)を使用して近似する。
         """
         # 時間分解能を論文の "0.25 sec" に合わせるためのhop_length
         hop_length_chroma = int(0.25 * self.sr)
         
         # CQTクロマの計算
         chroma = librosa.feature.chroma_cqt(y=self.y, sr=self.sr, hop_length=hop_length_chroma)
-        
+        print(f"Chroma shape: {chroma.shape}")  # デバッグ用出力
+
         # 各フレームを確率分布として正規化 (列ごとに合計1にする)
         # axis=0は特徴量次元(12音階)
         self.chroma_seq = librosa.util.normalize(chroma, norm=1, axis=0).T # (Time, 12)
@@ -79,28 +89,85 @@ class MusicComplexityFeatures:
 
     def extract_rhythm(self):
         """
-        Rhythm (Fluctuation Pattern近似) の抽出
-        厳密なFPの実装は複雑なため、変調スペクトル（Modulation Spectrum）の概念で近似する。
+        Rhythm (Fluctuation Pattern) の抽出 - 論文再現版
+        tempogram等の近似を使わず、論文の記述通り「スペクトルの時間変動に対するFFT」を行う。
         """
-        # 1. メルスペクトログラムを計算
-        S = librosa.feature.melspectrogram(y=self.y, sr=self.sr, n_fft=2048, hop_length=512)
+        # 1. 設定値
+        # 論文: 2.97秒ウィンドウ / 1秒ホップ
+        # 44.1kHzの場合: 2.97s ≒ 131072サンプル (256 frames * 512 samples)
+        # ※ self.sr が 22050Hz の場合はこれに合わせてスケールダウンしますが
+        # 論文再現のため、内部的にパラメータを計算します。
         
-        # 2. 2.97秒ごとのセグメントに分割してFFTをかける（リズムの周期性を探る）
-        # ここでは簡易的に、librosaのtempogram（テンポグラム）の平均を使用するアプローチをとる
-        # tempogramはリズムの周期性を表す特徴量 (384次元などになる)
+        samples_per_frame = 512  # 論文: "containing 512 samples"
+        n_frames = 256           # 論文: "divided into 256 frames"
+        window_size_samples = samples_per_frame * n_frames # 2.97秒分
         
-        # 論文のウィンドウサイズに合わせてOnsetsを取得
-        onset_env = librosa.onset.onset_strength(y=self.y, sr=self.sr)
+        hop_length_seconds = 1.0
+        hop_length_samples = int(hop_length_seconds * self.sr)
+
+        rhythm_features = []
+        n_total_samples = len(self.y)
+
+        # Barkスケールフィルターバンクの作成 (librosaのMelで代用し、近似的にBarkとする)
+        # 論文ではBark帯域を使いますが、Mel尺度と非常に近いため、計算安定性を取ってMelフィルタを使います
+        n_mels = 24 # Bark帯域の数に近い値 (通常24バンド程度)
+        mel_basis = librosa.filters.mel(sr=self.sr, n_fft=samples_per_frame, n_mels=n_mels)
+
+        # 4Hzを中心とした重み付けフィルター (Fluctuation Model)
+        # 変調周波数軸 (0Hz ~ 43Hz程度) に対する重み
+        # 256フレームのFFT -> 128個の周波数ビンができる
+        # サンプリングレート(フレームレート) = sr / 512 ≒ 86Hz (44.1kHz時)
+        frame_rate = self.sr / samples_per_frame
+        mod_freqs = np.fft.rfftfreq(n_frames, d=1/frame_rate)
         
-        # テンポグラムを計算 (Time, 384)
-        # win_lengthを論文の2.97秒に合わせて調整
-        win_length_frames = int(2.97 * self.sr / 512)
-        tempogram = librosa.feature.tempogram(onset_envelope=onset_env, sr=self.sr, 
-                                              hop_length=int(1.0*self.sr/512), 
-                                              win_length=win_length_frames)
+        # 4Hz (240bpm) にピークを持つガウス分布のような重みを作成
+        # 論文: "fluctuation model which has a peak at 4Hz"
+        fluctuation_weight = np.exp(-0.5 * ((mod_freqs - 4) / 2) ** 2) # 中心4Hz, 広がり適当
+
+        # ----------------------------------------------------
+        # メインループ: 2.97秒ごとのウィンドウを1秒ずつずらす
+        # ----------------------------------------------------
+        for start in range(0, n_total_samples - window_size_samples, hop_length_samples):
+            # 2.97秒の切り出し
+            chunk = self.y[start : start + window_size_samples]
+            
+            # 2. スペクトログラムの計算 (Short-Time Fourier Transform)
+            # (n_frames, samples_per_frame) に分割してFFT
+            # librosa.stftを使うと窓関数などが自動適用されて便利
+            # ここでは論文の "divided into" を再現するため、重複なし(hop=length)で計算
+            D = librosa.stft(chunk, n_fft=samples_per_frame, hop_length=samples_per_frame, center=False)
+            S = np.abs(D) # 振幅スペクトル (Freq, Time=256)
+
+            # 3. Bark(Mel)帯域への変換
+            # スペクトル情報を統合 (Bark, Time=256)
+            bark_spec = np.dot(mel_basis, S)
+            
+            # 対数圧縮 (デシベル化) - 人間の聴覚特性に合わせる
+            bark_spec = librosa.amplitude_to_db(bark_spec, ref=np.max)
+
+            # 4. 変調スペクトルの計算 (FFT over Time)
+            # 各Barkバンドについて、時間方向(横方向)にFFTをかける
+            # これが「リズムの周期性」を抽出する工程
+            # axis=1 (時間軸) に沿ってFFT
+            mod_spec = np.abs(np.fft.rfft(bark_spec, axis=1)) # (Bark, ModFreq)
+
+            # 5. Fluctuation Modelによる重み付け & 平均化
+            # 4Hz付近を強調
+            weighted_mod_spec = mod_spec * fluctuation_weight
+            
+            # 全バンド、全変調周波数で合計または平均をとる
+            # 論文: "The mean of the 256 FPs is defined as the rhythm component"
+            # ここではスカラー値として要約
+            rhythm_val = np.mean(weighted_mod_spec)
+            
+            rhythm_features.append(rhythm_val)
+
+        self.rhythm_seq = np.array(rhythm_features)
         
-        self.rhythm_seq = tempogram.T # (Time, Features)
+        # 正規化などの後処理が必要ならここで行う
+        
         return self.rhythm_seq
+    
 
     def extract_arousal(self):
         """
