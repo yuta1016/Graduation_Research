@@ -88,83 +88,122 @@ class MusicComplexityFeatures:
         return self.timbre_seq
 
     def extract_rhythm(self):
-        """
-        Rhythm (Fluctuation Pattern) の抽出 - 論文再現版
-        tempogram等の近似を使わず、論文の記述通り「スペクトルの時間変動に対するFFT」を行う。
-        """
         # 1. 設定値
         # 論文: 2.97秒ウィンドウ / 1秒ホップ
         # 44.1kHzの場合: 2.97s ≒ 131072サンプル (256 frames * 512 samples)
         # ※ self.sr が 22050Hz の場合はこれに合わせてスケールダウンしますが
         # 論文再現のため、内部的にパラメータを計算します。
-        
+        """
+        Leeの論文からの引用：
+        A 2.97 second-long Hamming window moving one second at a time is applied to the audio signal. The windowed audio segment is further divided into 256 frames (containing 512 samples for 44.1 kHzsampling).
+        これらのための定義
+        """
         samples_per_frame = 512  # 論文: "containing 512 samples"
         n_frames = 256           # 論文: "divided into 256 frames"
         window_size_samples = samples_per_frame * n_frames # 2.97秒分
-        
-        hop_length_seconds = 1.0
-        hop_length_samples = int(hop_length_seconds * self.sr)
 
-        rhythm_features = []
-        n_total_samples = len(self.y)
 
         # Barkスケールフィルターバンクの作成 (librosaのMelで代用し、近似的にBarkとする)
-        # 論文ではBark帯域を使いますが、Mel尺度と非常に近いため、計算安定性を取ってMelフィルタを使います
+        """
+        https://www.researchgate.net/figure/The-BARK-scale-is-a-psycoacoustic-model-of-the-human-perception-of-loudness-in-relation_fig3_355664561
+        ・上記の写真はBarkスケールの図。
+
+        https://librosa.org/doc/main/generated/librosa.filters.mel.html
+        ・melフィルターバンクの説明。Barkスケールに近似的に使える。
+
+        rhythmの論文からの引用：
+        First, a half wave rectified difference filter is applied on each Bark-band to emphasize percussive sounds.
+
+        https://ccrma.stanford.edu/~jos/bbt/Bark_Frequency_Scale.html
+        https://qiita.com/Oka_D/items/4622b5040deeb77c9bd4
+        """
         n_mels = 24 # Bark帯域の数に近い値 (通常24バンド程度)
         mel_basis = librosa.filters.mel(sr=self.sr, n_fft=samples_per_frame, n_mels=n_mels)
 
+
+        """
+        Leeの論文からの引用：
+        A 2.97 second-long Hamming window moving one second at a time is applied to the audio signal.
+        ここに1秒ホップで2.97秒ウィンドウを適用する処理を実装と書かれているから
+        """
+        hop_length_seconds = 1.0
+        hop_length_samples = int(hop_length_seconds * self.sr)
+
+
+
         # 4Hzを中心とした重み付けフィルター (Fluctuation Model)
-        # 変調周波数軸 (0Hz ~ 43Hz程度) に対する重み
-        # 256フレームのFFT -> 128個の周波数ビンができる
-        # サンプリングレート(フレームレート) = sr / 512 ≒ 86Hz (44.1kHz時)
+        # n_frames(256)でフーリエ変換することで、配列ごとでhzが分かる
         frame_rate = self.sr / samples_per_frame
         mod_freqs = np.fft.rfftfreq(n_frames, d=1/frame_rate)
+        #print("Modulation frequencies:", mod_freqs)  # デバッグ用出力
         
         # 4Hz (240bpm) にピークを持つガウス分布のような重みを作成
+        # https://natorastats.com/normal-distribution/
         # 論文: "fluctuation model which has a peak at 4Hz"
         fluctuation_weight = np.exp(-0.5 * ((mod_freqs - 4) / 2) ** 2) # 中心4Hz, 広がり適当
+        #print("Fluctuation weights:", fluctuation_weight)  # デバッグ用出力
 
         # ----------------------------------------------------
         # メインループ: 2.97秒ごとのウィンドウを1秒ずつずらす
         # ----------------------------------------------------
+        rhythm_features = []
+        n_total_samples = len(self.y)
         for start in range(0, n_total_samples - window_size_samples, hop_length_samples):
             # 2.97秒の切り出し
             chunk = self.y[start : start + window_size_samples]
             
-            # 2. スペクトログラムの計算 (Short-Time Fourier Transform)
-            # (n_frames, samples_per_frame) に分割してFFT
-            # librosa.stftを使うと窓関数などが自動適用されて便利
-            # ここでは論文の "divided into" を再現するため、重複なし(hop=length)で計算
+            """
+            2. スペクトログラムの計算 (Short-Time Fourier Transform)
+            Leeの論文からの引用：
+            A 2.97 second-long Hamming window moving one second at a time is applied to the audio signal. The windowed audio segment is further divided into 256 frames (containing 512 samples for 44.1 kHzsampling).
+            256フレームに分割するために、n_fft=512, hop_length=512でSTFTを計算
+            これにより、(Freq, Time=256) のスペクトログラムが得られる
+            """
             D = librosa.stft(chunk, n_fft=samples_per_frame, hop_length=samples_per_frame, center=False)
             S = np.abs(D) # 振幅スペクトル (Freq, Time=256)
 
             # 3. Bark(Mel)帯域への変換
             # スペクトル情報を統合 (Bark, Time=256)
             bark_spec = np.dot(mel_basis, S)
-            
-            # 対数圧縮 (デシベル化) - 人間の聴覚特性に合わせる
-            bark_spec = librosa.amplitude_to_db(bark_spec, ref=np.max)
+            #print(f"Bark spectrogram shape: {bark_spec.shape}")  # デバッグ用出力
 
-            # 4. 変調スペクトルの計算 (FFT over Time)
-            # 各Barkバンドについて、時間方向(横方向)にFFTをかける
-            # これが「リズムの周期性」を抽出する工程
-            # axis=1 (時間軸) に沿ってFFT
-            mod_spec = np.abs(np.fft.rfft(bark_spec, axis=1)) # (Bark, ModFreq)
+            # 論文にある "half wave rectified difference filter" の実装
+            # 音の「変化（立ち上がり）」だけを取り出す処理
+            #Bark spectrogram shape: (24, 256)
+            # 時間方向(axis=1)の差分をとる
+            diff_spec = np.diff(bark_spec, axis=1, prepend=bark_spec[:, :1])
+            # 半波整流: マイナスの値（音が小さくなった時）を0にする
+            rectified_spec = np.maximum(diff_spec, 0)
+            #print(f"Rectified spectrogram shape: {rectified_spec.shape}")  # デバッグ用出力
 
+            """
+            One of the main differences between the FPs [4] and the PHs is that the FPs use a simple FFT instead of the computationally more expensive comb-filter to find periodicities in the Bark-bands.
+            """
+            # 4. 変調スペクトルの計算
+            # ★ 修正: bark_spec ではなく rectified_spec を使う
+            mod_spec = np.abs(np.fft.rfft(rectified_spec, axis=1))
+
+
+            """Furthermore, while the PHs use a resonance model which has a maximum at about 120bpmtheFPsuseafluctuation model which has a peak at 4Hz (240bpm). The biggest difference, however, is that the FPs include information on the spectrum while the PHs disregard this information
+             4Hz付近を強調"""
             # 5. Fluctuation Modelによる重み付け & 平均化
-            # 4Hz付近を強調
             weighted_mod_spec = mod_spec * fluctuation_weight
             
             # 全バンド、全変調周波数で合計または平均をとる
-            # 論文: "The mean of the 256 FPs is defined as the rhythm component"
-            # ここではスカラー値として要約
-            rhythm_val = np.mean(weighted_mod_spec)
+            # complexityから: "The mean of the 256 FPs is defined as the rhythm component"
+            # Bark帯域(axis=0)方向だけ平均して、「変調周波数の分布」を残す。
+            # これにより、rhythm_vec は (129,) のようなベクトルになる。
+            rhythm_vec = np.mean(weighted_mod_spec, axis=0)
             
-            rhythm_features.append(rhythm_val)
+            rhythm_features.append(rhythm_vec)
 
         self.rhythm_seq = np.array(rhythm_features)
         
-        # 正規化などの後処理が必要ならここで行う
+        #全体に対して標準化を行う (平均0, 分散1)
+        # 値が小さすぎて0になってしまうのを防ぐ
+        # 値の範囲を広げて、Softmaxがかかりやすくする
+        if np.std(self.rhythm_seq) > 0:
+            self.rhythm_seq = (self.rhythm_seq - np.mean(self.rhythm_seq)) / np.std(self.rhythm_seq)
         
         return self.rhythm_seq
     
