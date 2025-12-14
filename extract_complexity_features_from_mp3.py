@@ -67,14 +67,17 @@ class MusicComplexityFeatures:
         n_samples = len(self.y)
         
         # 1秒ごとにループ (hop_length)
+        #A 2.97 second-long Hamming window moving one second at a time is applied to the audio signal. 
         for start in range(0, n_samples - self.n_fft, self.hop_length):
             end = start + self.n_fft
             segment = self.y[start:end]
             
             # MFCC計算
+            # Thus,we employ the Mel-frequency cepstral coefficients(MFCCs) [32] that are popular for perceptual representation of spectral aspects of audio signals. 
             mfcc = librosa.feature.mfcc(y=segment, sr=self.sr, n_mfcc=36)
             
             # (36, Time) -> 時間方向に平均して (36,) のベクトルにする
+            # Finally, the MFCCs from the 256 frames are averaged.
             mfcc_mean = np.mean(mfcc, axis=1)
             timbre_list.append(mfcc_mean)
             
@@ -86,6 +89,7 @@ class MusicComplexityFeatures:
             self.timbre_seq = (self.timbre_seq - np.mean(self.timbre_seq)) / np.std(self.timbre_seq)
             
         return self.timbre_seq
+    
 
     def extract_rhythm(self):
         # 1. 設定値
