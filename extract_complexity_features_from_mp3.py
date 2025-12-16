@@ -256,6 +256,7 @@ class MusicComplexityFeatures:
         n_segments = component_seq.shape[0]
         sc_values = {}
 
+        # We set j = 3, 4, ..., 8 for chromaand j = 1, 2, ..., 6 for rhythm and timbre, which correspond to window lengths of 1 to 32 sec
         if component_type == 'chroma':
             js = range(3, 9) 
         else:
@@ -267,10 +268,9 @@ class MusicComplexityFeatures:
             jsd_list = []
             
             for i in range(w_j, n_segments - w_j):
-                # ★★★ 修正箇所: np.sum を np.mean に変更 ★★★
-                # 合計だとウィンドウが長い(Timbre5,6)ときに値が大きくなりすぎてinfになるため
-                vec_past = np.mean(component_seq[i - w_j : i], axis=0)
-                vec_future = np.mean(component_seq[i : i + w_j], axis=0)
+                #Where JSD(x, y) is the Jenson-Shannon divergence between x and y and sa:b is the sum of the values of s for the ath to bth segments.
+                vec_past = np.sum(component_seq[i - w_j : i], axis=0)
+                vec_future = np.sum(component_seq[i : i + w_j], axis=0)
                 
                 # 正規化（Softmax）
                 dist_past = self._normalize_distribution(vec_past)
