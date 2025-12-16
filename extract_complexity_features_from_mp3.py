@@ -9,7 +9,7 @@ class MusicComplexityFeatures:
         self.file_path = file_path
         self.sr = sr
         # 2.97秒のウィンドウ、1秒ごとの移動 (論文記述に基づく)
-        self.n_fft = int(2.97 * sr) 
+        self.n_fft = int(2.97 * sr)
         self.hop_length = int(1.0 * sr)
         
         # 音声のロード
@@ -218,20 +218,24 @@ class MusicComplexityFeatures:
         Short-time magnitude (絶対値の和) の平均と標準偏差
         """
         # フレームごとの絶対値の和を計算
-        # 論文: "2.97-second long Hamming window moving one second at a time"
-        
         # 信号をフレーム化
+        # compの論文から: "2.97-second long Hamming window moving one second at a time"
         frames = librosa.util.frame(self.y, frame_length=self.n_fft, hop_length=self.hop_length)
         
         # Hamming窓を適用
-        window = np.hamming(self.n_fft)
+        #https://librosa.org/doc/latest/generated/librosa.util.frame.html
+        window = np.hamming(self.n_fft, sym=False)
         window = window.reshape(-1, 1) # 放送用
         
         windowed_frames = frames * window
         
         # "sum of the absolute signal values"
+        """compの論文からの引用：
+        We calculate the short-time magnitude (i.e., sum of the absolute signal values) """
         magnitudes = np.sum(np.abs(windowed_frames), axis=0)
         
+
+        """We then calculate the mean (ArousalMean) and standard deviation(ArousalStd) of the short-time magnitudes over time to measure the average and variation of loudness, respectively."""
         self.arousal_mean = np.mean(magnitudes)
         self.arousal_std = np.std(magnitudes)
         
@@ -239,6 +243,7 @@ class MusicComplexityFeatures:
             "ArousalMean": self.arousal_mean,
             "ArousalStd": self.arousal_std
         }
+
 
     def calculate_sc(self, component_seq, component_type):
         """
