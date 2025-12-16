@@ -221,15 +221,18 @@ class MusicComplexityFeatures:
         # 信号をフレーム化
         # compの論文から: "2.97-second long Hamming window moving one second at a time"
         frames = librosa.util.frame(self.y, frame_length=self.n_fft, hop_length=self.hop_length)
+        print(f"Frames shape for Arousal: {frames.shape}")  # デバッグ用出力
         
         # Hamming窓を適用
         #https://librosa.org/doc/latest/generated/librosa.util.frame.html
-        window = np.hamming(self.n_fft, sym=False)
+        window = np.hamming(self.n_fft)
+        print(f"Window shape: {window.shape}")  # デバッグ用出力
+        #https://note.nkmk.me/python-numpy-reshape-usage/#google_vignette
         window = window.reshape(-1, 1) # 放送用
+        print(f"Reshaped Window shape: {window.shape}")  # デバッグ用出力
         
         windowed_frames = frames * window
         
-        # "sum of the absolute signal values"
         """compの論文からの引用：
         We calculate the short-time magnitude (i.e., sum of the absolute signal values) """
         magnitudes = np.sum(np.abs(windowed_frames), axis=0)
