@@ -1,5 +1,6 @@
 import numpy as np
 import librosa
+import os
 from scipy.spatial.distance import jensenshannon
 from scipy.special import softmax
 from scipy.fftpack import fft
@@ -267,10 +268,11 @@ class MusicComplexityFeatures:
             
             for i in range(w_j, n_segments - w_j):
                 #Where JSD(x, y) is the Jenson-Shannon divergence between x and y and sa:b is the sum of the values of s for the ath to bth segments.
-                vec_past = np.sum(component_seq[i - w_j : i-1], axis=0)
-                vec_future = np.sum(component_seq[i : i + w_j-1], axis=0)
+                vec_past = np.sum(component_seq[i - w_j : i], axis=0)
+                vec_future = np.sum(component_seq[i : i + w_j], axis=0)
                 
                 # 正規化（Softmax）
+                #JSDは「確率分布」しか受け付けない
                 dist_past = self._normalize_distribution(vec_past)
                 dist_future = self._normalize_distribution(vec_future)
                 
@@ -282,6 +284,7 @@ class MusicComplexityFeatures:
                 
                 jsd_list.append(jsd)
             
+            """Finally, we take the mean value of SC over time to obtain a single value for each feature and each window size."""
             if len(jsd_list) > 0:
                 sc_mean = np.mean(jsd_list)
             else:
@@ -326,13 +329,13 @@ class MusicComplexityFeatures:
         
         return features
 
+
 # --- 実行例 ---
 if __name__ == "__main__":
     # 音楽ファイルのパスを指定してください
     audio_file = "./downloaded_mp3/星野源_ドラえもん.mp3" 
     
     # ファイルが存在するか確認用ダミーチェック (実際には外してください)
-    import os
     if os.path.exists(audio_file):
         extractor = MusicComplexityFeatures(audio_file)
         features = extractor.get_all_features()
