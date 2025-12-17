@@ -38,3 +38,4 @@ env/
 .python-version
 *.mp3
 MPEG7/*
+test_*/*
