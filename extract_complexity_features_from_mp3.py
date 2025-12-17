@@ -4,7 +4,8 @@ import os
 from scipy.spatial.distance import jensenshannon
 from scipy.special import softmax
 from scipy.fftpack import fft
-import for_features_excel
+import for_features_csv
+import send_mail
 
 INPUT_DATA_FOLDER = "billboard_futures_info"
 #OUTPUT_DATA_FOLDER = "billboard_futures_info_with_complexity"
@@ -367,6 +368,7 @@ if __name__ == "__main__":
 
 
     FeaturesExcelSaver.save_features_to_excel(complexity_features_list, csv_data, OUTPUT_DATA_FOLDER, FILE_NAME)
+    send_mail.prosess_mail("complexity特徴量の抽出を完了しました!!!")
 
     
     # ファイルが存在するか確認用ダミーチェック (実際には外してください)
