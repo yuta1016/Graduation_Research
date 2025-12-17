@@ -4,6 +4,12 @@ import os
 from scipy.spatial.distance import jensenshannon
 from scipy.special import softmax
 from scipy.fftpack import fft
+import for_features_excel
+
+INPUT_DATA_FOLDER = "billboard_futures_info"
+#OUTPUT_DATA_FOLDER = "billboard_futures_info_with_complexity"
+OUTPUT_DATA_FOLDER = "test"
+FILE_NAME = "2008_2025_complexity.xlsx"
 
 class MusicComplexityFeatures:
     def __init__(self, file_path, sr=44100):
@@ -341,15 +347,35 @@ class MusicComplexityFeatures:
 # --- 実行例 ---
 if __name__ == "__main__":
     # 音楽ファイルのパスを指定してください
-    audio_file = "./downloaded_mp3/星野源_ドラえもん.mp3" 
-    
-    # ファイルが存在するか確認用ダミーチェック (実際には外してください)
-    if os.path.exists(audio_file):
+    #audio_file = "./downloaded_mp3/星野源_ドラえもん.mp3"
+    FeaturesExcelSaver = for_features_excel.FeaturesExcelSaver()
+
+    csv_files = FeaturesExcelSaver.find_input_csv_files(INPUT_DATA_FOLDER)
+    mp3_paths_dict, csv_data = FeaturesExcelSaver.retrive_mp3_path(csv_files, 4, 3)  # MP3パスが6列目、URLが3列目
+
+    complexity_features_list = {}
+    for url, audio_file in mp3_paths_dict.items():
+        print(f"\nProcessing URL: {url}")
+
         extractor = MusicComplexityFeatures(audio_file)
         features = extractor.get_all_complexity_features()
+        complexity_features_list[url] = features
         
         print("\n--- Calculated Features ---")
         for k, v in features.items():
             print(f"{k}: {v}")
-    else:
-        print("音楽ファイルを指定してください。")
+
+
+    FeaturesExcelSaver.save_features_to_excel(complexity_features_list, csv_data, OUTPUT_DATA_FOLDER, FILE_NAME)
+
+    
+    # ファイルが存在するか確認用ダミーチェック (実際には外してください)
+    # if os.path.exists(audio_file):
+    #     extractor = MusicComplexityFeatures(audio_file)
+    #     features = extractor.get_all_complexity_features()
+        
+    #     print("\n--- Calculated Features ---")
+    #     for k, v in features.items():
+    #         print(f"{k}: {v}")
+    # else:
+    #     print("音楽ファイルを指定してください。")
