@@ -7,6 +7,7 @@ import pandas as pd
 
 INPUT_DATA_FOLDER = "csv_with_mp3_path"
 OUTPUT_FOLDER = "billboard_futures_info"
+#OUTPUT_FOLDER = "testtttttt"
 OUTPUT_FILENAME = "2008_2025_billboard_futures_info"
 
 YEARS = ["2008", "2009", "2010", "2011", "2012", 
@@ -20,6 +21,7 @@ class SongData:
     artist: str
     track: str
     url: str
+    mp3_path: str
     # スコアのリストを空リストで自動初期化
     scores: List[int] = field(default_factory=list)
 
@@ -58,9 +60,10 @@ class CalculateFeatures:
                         track = row[1].strip()
                         score = int(row[2].strip())
                         url = row[3].strip() #曲を識別するために使う
+                        mp3_path = row[6].strip()
 
                         if url not in self.songs_db:
-                            self.songs_db[url] = SongData(artist, track, url)
+                            self.songs_db[url] = SongData(artist, track, url, mp3_path)
                         
                         # 既存でも新規でも、スコアを追加するだけ
                         self.songs_db[url].scores.append(score)
@@ -122,6 +125,7 @@ class CalculateFeatures:
             "Artist": song.artist,
             "Track": song.track,
             "URL": song.url,
+            "MP3_Path": song.mp3_path,
             "Debut": debut,
             "Max": max_score,
             "Mean": round(mean_score, 2),
