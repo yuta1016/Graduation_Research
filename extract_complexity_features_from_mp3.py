@@ -84,11 +84,19 @@ class MusicComplexityFeatures:
             
         self.timbre_seq = np.array(timbre_list) # (Time, 36)
         
-        # ★★★ 修正: 全体に対して標準化を行う (平均0, 分散1) ★★★
-        # これにより、値が大きすぎてSoftmaxでinfになるのを防ぐ
-        if np.std(self.timbre_seq) > 0:
-            self.timbre_seq = (self.timbre_seq - np.mean(self.timbre_seq)) / np.std(self.timbre_seq)
-            
+        # axis=0 (時間方向) に沿って、各次元(MFCC0, MFCC1...)ごとの最大・最小を使って正規化します。
+        # 各次元の最小値と最大値を取得
+        min_vals = np.min(self.timbre_seq, axis=0)
+        max_vals = np.max(self.timbre_seq, axis=0)
+        
+        # ゼロ除算を防ぐための安全策
+        range_vals = max_vals - min_vals
+        range_vals[range_vals == 0] = 1.0 # 差が0なら割らない
+        
+        # 0〜1にスケーリング
+        # https://aiacademy.jp/media/?p=1147
+        self.timbre_seq = (self.timbre_seq - min_vals) / range_vals
+
         return self.timbre_seq
     
 
@@ -295,7 +303,7 @@ class MusicComplexityFeatures:
         return sc_values
     
 
-    def get_all_features(self):
+    def get_all_complexity_features(self):
         # 1. 各コンポーネントの時系列データを抽出
         print("Extracting Chroma...")
         self.extract_chroma()
@@ -338,7 +346,7 @@ if __name__ == "__main__":
     # ファイルが存在するか確認用ダミーチェック (実際には外してください)
     if os.path.exists(audio_file):
         extractor = MusicComplexityFeatures(audio_file)
-        features = extractor.get_all_features()
+        features = extractor.get_all_complexity_features()
         
         print("\n--- Calculated Features ---")
         for k, v in features.items():
