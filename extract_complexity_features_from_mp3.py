@@ -249,28 +249,26 @@ class MusicComplexityFeatures:
 
 
     def calculate_sc(self, component_seq, component_type):
-        """
-        Structural Change (SC) の計算
-        修正: 値の爆発を防ぐため、np.sum ではなく np.mean を使用する
-        """
+        #Structural Change (SC) の計算
+
         n_segments = component_seq.shape[0]
         sc_values = {}
 
         # We set j = 3, 4, ..., 8 for chromaand j = 1, 2, ..., 6 for rhythm and timbre, which correspond to window lengths of 1 to 32 sec
         if component_type == 'chroma':
-            js = range(3, 9) 
+            js = range(3, 9)
         else:
-            js = range(1, 7) 
+            js = range(1, 7)
 
         for j in js:
-            w_j = 2**(j - 1) 
+            w_j = 2**(j - 1)
             
             jsd_list = []
             
             for i in range(w_j, n_segments - w_j):
                 #Where JSD(x, y) is the Jenson-Shannon divergence between x and y and sa:b is the sum of the values of s for the ath to bth segments.
-                vec_past = np.sum(component_seq[i - w_j : i], axis=0)
-                vec_future = np.sum(component_seq[i : i + w_j], axis=0)
+                vec_past = np.sum(component_seq[i - w_j : i-1], axis=0)
+                vec_future = np.sum(component_seq[i : i + w_j-1], axis=0)
                 
                 # 正規化（Softmax）
                 dist_past = self._normalize_distribution(vec_past)
@@ -292,6 +290,7 @@ class MusicComplexityFeatures:
             sc_values[f"{component_type.capitalize()}{j}"] = sc_mean
             
         return sc_values
+    
 
     def get_all_features(self):
         # 1. 各コンポーネントの時系列データを抽出
