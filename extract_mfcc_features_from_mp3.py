@@ -112,21 +112,20 @@ class AudioFeatureExtractor:
 
         return normalized_vector
 
-# --- 使い方 (ダミーデータでの例) ---
+
 if __name__ == "__main__":
     # 本来はここに音声ファイルパスのリストが入ります
     # import glob
     # training_files = glob.glob("./dataset/*.mp3")
     
     # ダミーのパスリスト（動作イメージ用）
-    training_files = ["song1.mp3", "song2.mp3"] 
+    training_files = ["song1.mp3", "song2.mp3"]
     
     print("--- プログラム設定 ---")
     print(f"Cluster N: 32")
     print(f"Window: 25ms / Overlap: 15ms")
     
-    # 実際のファイルがないと動かないため、使い方のフローだけ示します
-    """
+    
     extractor = AudioFeatureExtractor(n_clusters=32)
     
     # 1. 学習 (コードブック作成)
@@ -138,7 +137,7 @@ if __name__ == "__main__":
     
     print(f"抽出された特徴量: {feature_vector}")
     print(f"次元数: {len(feature_vector)}") # 32になるはず
-    """
+    
 
 
 
