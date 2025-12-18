@@ -39,3 +39,4 @@ env/
 *.mp3
 MPEG7/*
 test_*/*
+test*
