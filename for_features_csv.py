@@ -81,7 +81,7 @@ class FeaturesExcelSaver:
 
         # 6. Excelファイルに保存
         try:
-            merged_df.to_excel(full_path, index=False)
+            merged_df.to_csv(full_path, index=False)
             print(f"✅ 特徴量とメタデータを結合して保存しました: '{full_path}'")
             print(f"   データサイズ: {merged_df.shape[0]}曲, 列数: {merged_df.shape[1]}")
         except Exception as e:
