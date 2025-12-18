@@ -1,8 +1,15 @@
-import os
+import glob
 import random
 import numpy as np
 import librosa
 from sklearn.cluster import KMeans
+import for_features_csv
+import send_mail
+
+INPUT_DATA_FOLDER = "billboard_futures_info"
+#INPUT_DATA_FOLDER = "test"
+OUTPUT_DATA_FOLDER = "features_mfcc"
+FILE_NAME = "2008_2025_mfcc.csv"
 
 class AudioFeatureExtractor:
     def __init__(self, n_clusters=32, sr=22050):
@@ -25,6 +32,7 @@ class AudioFeatureExtractor:
         try:
             y, sr = librosa.load(file_path, sr=self.sr)
 
+            """pecifically, we first convert each song in our training set to a series of 20 dimensional MFCC vectors computed from overlapping 25ms windows sampled each 10ms. W"""
             # --- ウィンドウ設定の計算 ---
             # Window length: 0.025 sec
             n_fft = int(0.025 * sr)
@@ -41,7 +49,12 @@ class AudioFeatureExtractor:
                 hop_length=hop_length # 移動幅
             )
 
+            #print(mfcc)
+            #print(mfcc.shape)
+            
+            """ discard the 0th (DC) component of each vector then perform K-means clustering to learn the N most prominent sounds. """
             # --- 0次元目(DC成分/パワー)の削除 ---
+            # 0行目だけ大きな負の値だった
             # shape: (20, Time) -> (19, Time)
             mfcc_filtered = mfcc[1:, :]
 
@@ -52,7 +65,8 @@ class AudioFeatureExtractor:
             print(f"Error processing {file_path}: {e}")
             return None
 
-    def learn_clusters(self, training_files, sample_size=200):
+
+    def learn_clusters(self, training_files, sample_size=200):#200
         """
         Step 1: K-meansで「代表的な音のパターン(Centroids)」を32個学習する
         """
@@ -76,13 +90,15 @@ class AudioFeatureExtractor:
         # 全曲のフレームを縦に結合して巨大な行列にする
         stacked_features = np.vstack(all_features)
         
+        """We discard the 0th (DC) component of each vector then perform K-means clustering to learn the N most prominent sounds."""
         print(f"K-meansクラスタリング実行中 (クラスタ数: {self.n_clusters})...")
         # K-means実行
         self.kmeans = KMeans(n_clusters=self.n_clusters, random_state=42, n_init=10)
         self.kmeans.fit(stacked_features)
-        print("学習完了。32個の代表的な音響パターンを獲得しました。")
+        print("学習完了。32個の代表的な音響パターンを獲得しました。\n")
 
-    def extract_feature_vector(self, file_path):
+
+    def extract_feature_vector(self, url, file_path):
         """
         Step 2: 対象の曲を32次元の特徴量ベクトルに変換する
         (normalized frequencies of the 32 clusters)
@@ -99,32 +115,36 @@ class AudioFeatureExtractor:
         # 各フレームが32個のパターンのうちどれに一番近いかを判定
         cluster_labels = self.kmeans.predict(features)
 
+        """For each vector, we score it against each of the N clusters and increment a counter for the cluster which scores highest. """
         # --- ヒストグラム作成 ---
         # 0番〜31番のクラスタがそれぞれ何回登場したかをカウント
         counts = np.bincount(cluster_labels, minlength=self.n_clusters)
 
+        """ The normalized set of counts forms the N-dimensional representation for that song."""
         # --- 正規化 (Normalized frequencies) ---
         # 合計が1になるように割る (L1正規化)
+        normalized_vector = {}
         if np.sum(counts) > 0:
-            normalized_vector = counts.astype(float) / np.sum(counts)
+            normalized_vector[url] = counts.astype(float) / np.sum(counts)
         else:
-            normalized_vector = np.zeros(self.n_clusters)
+            normalized_vector[url] = np.zeros(self.n_clusters)
 
         return normalized_vector
 
 
 if __name__ == "__main__":
-    # 本来はここに音声ファイルパスのリストが入ります
-    # import glob
-    # training_files = glob.glob("./dataset/*.mp3")
-    
-    # ダミーのパスリスト（動作イメージ用）
-    training_files = ["song1.mp3", "song2.mp3"]
-    
+    FeaturesExcelSaver = for_features_csv.FeaturesExcelSaver()
+
+    csv_files = FeaturesExcelSaver.find_input_csv_files(INPUT_DATA_FOLDER)
+    mp3_paths_dict, csv_data = FeaturesExcelSaver.retrive_mp3_path(csv_files, 3, 2)  # 引数1個目がmp3_parth, 2個目がURL
+    training_files = list(mp3_paths_dict.values())
+
+    #print(training_files)
+    #print(len(training_files))
+
     print("--- プログラム設定 ---")
     print(f"Cluster N: 32")
     print(f"Window: 25ms / Overlap: 15ms")
-    
     
     extractor = AudioFeatureExtractor(n_clusters=32)
     
@@ -132,36 +152,19 @@ if __name__ == "__main__":
     extractor.learn_clusters(training_files)
     
     # 2. 特徴抽出 (各曲を32次元ベクトル化)
-    target_song = "new_song.mp3"
-    feature_vector = extractor.extract_feature_vector(target_song)
+    # target_song = "./downloaded_mp3/星野源_ドラえもん.mp3"
+    # feature_vector = extractor.extract_feature_vector(target_song)
+    features_dict = {}
+    for url, target_song in mp3_paths_dict.items():
+        print(f"\nProcessing mp3_path: {target_song}")
+        feature_dict = extractor.extract_feature_vector(url, target_song)
+        features_dict.update(feature_dict)#{URL: np.array([...])}
+
+        # 辞書から配列(numpy array)を取り出す
+        vector_array = feature_dict[url]
+
+        print(f"抽出された特徴量: \n{feature_dict}") # 全体を表示
+        print(f"次元数: {len(vector_array)}") # これで 32 になります
     
-    print(f"抽出された特徴量: {feature_vector}")
-    print(f"次元数: {len(feature_vector)}") # 32になるはず
-    
-
-
-
-
-    """
-    [21]では、ヒット曲予測のために楽曲のスペクトル特性を測定するMFCCベースの特徴量が用いられた。我々も[21]の特徴抽出手順を実装してこれを採用する。各音声信号は0.025秒の長さのセグメントに分割され、隣接セグメント間には0.015秒のオーバーラップが設けられ、各セグメントから20個のMFCCが抽出される。
-    トレーニングデータセット内の楽曲から抽出したMFCCに対し、
-    ノイズ低減と特徴のコンパクト化を目的としてk-meansクラスタリングを実施し、
-    32個のクラスター中心点を取得する。これらの中心点はトレーニングデータに
-    最も頻繁に見られる音響特性を表す。テスト用楽曲が与えられると、
-    そのMFCCベクトルに対する最小距離クラスタ中心が特定され、
-    32クラスタの正規化周波数が楽曲の特徴量として取得される。
-    """
-
-    """
-    まず、1700曲の実験データベースの各楽曲を音響的表現と歌詞ベースの表現に変換します。
-    前述の通り、各楽曲を音響的表現に変換する最初のステップは、
-    一般的な音声データセット(traning copra)内で最も顕著なN個のクラスターを学習することです。具体的には、
-    まずトレーニングセットの各楽曲を、10ms間隔でサンプリングした25msのオーバーラップするウィンドウから計算された
-    20次元のMFCCベクトルの系列に変換します。各ベクトルの0番目（DC）成分を除去した後、
-    K-meansクラスタリングを実行してN個の最も顕著な音声を学習する。計算上の理由から、
-    音響データを持つ全18,500曲を用いてこれらのクラスターを学習しない。
-    代わりに、K-meansモデルを学習するために約200曲でこのデータベースからサンプリングする。
-    次に実験用データベースの各楽曲を以下の手順でN次元ベクトルに変換する。
-    従来と同様に各楽曲を一連のMFCCベクトルに変換する。各ベクトルについてN個のクラスターそれぞれに対するスコアを算出し、
-    最高スコアのクラスターのカウンタをインクリメントする。正規化されたカウント値の集合がその楽曲のN次元表現となる。
-    """
+    FeaturesExcelSaver.save_features_to_excel(features_dict, csv_data, OUTPUT_DATA_FOLDER, FILE_NAME)
+    send_mail.prosess_mail("MFCC特徴量の抽出が完了しました。")
