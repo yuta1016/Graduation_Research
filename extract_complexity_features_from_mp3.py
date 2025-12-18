@@ -1,6 +1,5 @@
 import numpy as np
 import librosa
-import os
 from scipy.spatial.distance import jensenshannon
 from scipy.special import softmax
 from scipy.fftpack import fft
@@ -8,9 +7,9 @@ import for_features_csv
 import send_mail
 
 INPUT_DATA_FOLDER = "billboard_futures_info"
-#OUTPUT_DATA_FOLDER = "billboard_futures_info_with_complexity"
-OUTPUT_DATA_FOLDER = "test"
-FILE_NAME = "2008_2025_complexity.xlsx"
+#INPUT_DATA_FOLDER = "test"
+OUTPUT_DATA_FOLDER = "features_complexity"
+FILE_NAME = "2008_2025_complexity.csv"
 
 class MusicComplexityFeatures:
     def __init__(self, file_path, sr=44100):
@@ -349,10 +348,13 @@ class MusicComplexityFeatures:
 if __name__ == "__main__":
     # 音楽ファイルのパスを指定してください
     #audio_file = "./downloaded_mp3/星野源_ドラえもん.mp3"
-    FeaturesExcelSaver = for_features_excel.FeaturesExcelSaver()
+    FeaturesExcelSaver = for_features_csv.FeaturesExcelSaver()
 
     csv_files = FeaturesExcelSaver.find_input_csv_files(INPUT_DATA_FOLDER)
-    mp3_paths_dict, csv_data = FeaturesExcelSaver.retrive_mp3_path(csv_files, 4, 3)  # MP3パスが6列目、URLが3列目
+    mp3_paths_dict, csv_data = FeaturesExcelSaver.retrive_mp3_path(csv_files, 3, 2)  # 引数1個目がmp3_parth, 2個目がURL
+
+    print(mp3_paths_dict)
+    print(len(mp3_paths_dict))
 
     complexity_features_list = {}
     for url, audio_file in mp3_paths_dict.items():
