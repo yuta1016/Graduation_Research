@@ -1,0 +1,22 @@
+RatingSource		Tektronix, Inc 
+/* information about the picture quality rating */
+RatingInfoLocator	http://www.tektronix.com/Measurement/App_Notes/PicQuality/quality.html
+/* Perceived defects or degradations                                   */
+/* The number of defect terms given for PerceptibleDefectsVisualL must */
+/*  match other PerceptibleDefectsVisual parameters                    */
+PerceptibleDefectsVisualL	Blocking Blurring
+/* Classification or definitions about these defects                   */
+PerceptibleDefectsVisualCSL	http://www.its.bldrdoc.gov/n3/video/transfer.htm http://www.its.bldrdoc.gov/n3/video/transfer.htm
+PerceptibleDefectsVisualCSN MPEG_Video_Artifacts_CS MPEG_Video_Artifacts_CS
+PerceptibleDefectsVisualCST 1 2
+/* How does the ratings map to the quality scale                        */
+RatingStyle HigherBetter
+/* Rated by human viewers or by a quality estimator/measurement model   */
+RatingType  Objective
+/* The name of quality evaluation method                                */
+/* Only the names of schemes given here will be represented  in the XML */
+/*      even they will be computed anyway.                              */
+RatingSchemeL	PSNR_Y PSNR_U
+RatingSchemeCSN MPEG-7_Rating_CS 
+RatingSchemeCSL http://www.mpeg7.org 
+RatingSchemeCST 10 

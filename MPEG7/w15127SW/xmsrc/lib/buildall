@@ -1,0 +1,34 @@
+#!/bin/csh -f
+
+cd builda
+test -f ../XMLibA_all.dsp && (mkdsp 1; filediffedit XMLibA_all.dsp ..)
+mkdsp
+filediffedit XMLibA.dsp ..
+
+cd ../buildap
+test -f ../XMLibAP_all.dsp && (mkdsp 1; filediffedit XMLibAP_all.dsp ..)
+mkdsp
+filediffedit XMLibAP.dsp ..
+
+cd ../buildb
+test -f ../XMLibB_all.dsp && (mkdsp 1; filediffedit XMLibB_all.dsp ..)
+mkdsp
+filediffedit XMLibB.dsp ..
+
+cd ../buildc
+test -f ../XMLibC_all.dsp && (mkdsp 1; filediffedit XMLibC_all.dsp ..)
+mkdsp
+filediffedit XMLibC.dsp ..
+
+cd ../buildm
+test -f ../XMLibM_all.dsp && (mkdsp 1; filediffedit XMLibM_all.dsp ..)
+mkdsp
+filediffedit XMLibM.dsp ..
+
+cd ../buildv
+test -f ../XMLibV_all.dsp && (mkdsp 1; filediffedit XMLibV_all.dsp ..)
+mkdsp
+filediffedit XMLibV.dsp ..
+
+cd ..
+

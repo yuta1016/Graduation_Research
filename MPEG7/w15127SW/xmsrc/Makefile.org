@@ -1,0 +1,857 @@
+SHELL=/bin/sh
+###############################################################################
+##
+## This software module was originally developed by
+##
+## Technical University of Munich, Stephan Herrmann
+## (contributing organizations names)
+##
+## in the course of develpment of the MPEG-7 Experimentation Model.
+##
+## This software module is an implementation of a part of one or more MPEG-7
+## Experimentation Model tools as specified by the MPEG-7 Requirements.
+##
+## ISO#IEC gives users of MPEG-7 free license to this software module or
+## modifications thereof for use in hardware or software products claiming
+## conformance to MPEG-7.
+##
+## Those intending to use this software module in hardware or software products
+## are advised that its use may infringe existing patents. The original
+## developer of this software module and his#her company, the subsequent
+## editors and their companies, and ISO#IEC have no liability for use of this
+## software module or modifications thereof in an implementation.
+##
+## Copyright is not released for non MPEG-7 conforming products. The
+## organizations named above retain full right to use the code for their own
+## purpose, assign or donate the code to a third party and inhibit third parties the
+## from using the code for non MPEG-7 conforming products.
+##
+## Copyright (c) 1998-1999.
+##
+## This notice must be included in all copies or derivative works.
+##
+## Makefile
+
+###############################################################################
+DISPLAY = n
+DEBUG = y
+CHECKER = n
+IPROF = n
+PROF = n
+Eval = n
+USEMAGICK = y
+MAGICKVERSION = 4
+USEXML = n
+###############################################################################
+
+# version no.
+VERSION = 2.5
+
+# default system
+#SYSTEM = SOLARIS
+SYSTEM = LINUX
+
+## MACHINE DEFINES ###########################################################
+###  LINUX  ###
+ifeq ($(SYSTEM),LINUX)
+#	include machines/LINUX_options
+	SYSEXT=linux
+	LIBEXT=.a
+	CFLAGS += -DUNIX
+endif
+
+###  SUNOS  ###
+
+ifeq ($(SYSTEM),SUNOS)
+#	include machines/SOLARIS1_options
+	SYSEXT=sunos
+	LIBEXT=.a
+	CFLAGS += -DUNIX
+endif
+
+###  SOLARIS ###
+ifeq ($(SYSTEM),SOLARIS)
+#	include machines/SOLARIS2_options
+	SYSEXT=solaris
+	LIBEXT=.a
+	CFLAGS += -DUNIX
+endif
+
+####  HP   ###
+#ifeq ($(SYSTEM),HP)
+#   include machines/HP_options
+#endif
+#
+####  SGI  ###
+#ifeq ($(SYSTEM),SGI)
+#   include machines/SGI_options
+#endif
+#
+####  CONVEX  ###
+#ifeq ($(SYSTEM),CONVEX)
+#   include machines/CONVEX_options
+#endif
+#
+####  DEC ALPHA  ###
+#ifeq ($(SYSTEM),ALPHA)
+#   include machines/ALPHA_options
+#endif
+
+# other packages
+### ADDRESSLIBRARY ############################################################
+#ADDRLIB = $(HOME)/addrlib
+#ADDRLIBINCDIR = $(ADDRLIB)/include
+#ADDRLIBLIBDIR = $(ADDRLIB)/lib.$(SYSEXT)
+##ADDRLIBLIBDIR = $(HOME)/lib/$(SYSEXT)
+#
+### momusys data structure
+#MOMUSYSSIMPLE = 1
+#ifeq ($(MOMUSYSSIMPLE),1)
+## distributed with AddressLib
+#	 MOMUSYS =$(ADDRLIB)
+#	 MOMEXT =1
+#else
+## Original MoMuSys Headers
+#	 MOMUSYS =$(HOME)/momusys_vm/mom_baselib
+#	 MOMEXT =0
+#endif
+#
+#MOMUSYSINCS = -I$(MOMUSYS)/include -I$(MOMUSYS)/include/proto
+#
+#ifeq ($(EVAL),y)
+#	 ADDRLIBLIB = addrlibeval$(MOMEXT)
+#else	
+#	 ifeq ($(DEBUG),y)
+#		 ADDRLIBLIB = addrlibd$(MOMEXT)
+#	 else
+#		 ADDRLIBLIB = addrlib$(MOMEXT)
+#	 endif
+#endif
+#
+#ifeq ($(EVAL),y)
+#	  CFLAGS += -DEVAL
+#endif
+#
+#IADDRLIB = -I$(ADDRLIBINCDIR)
+#LADDRLIB = -L$(ADDRLIBLIBDIR) -l$(ADDRLIBLIB)
+
+### X11 WINDOWS LIBS ##########################################################
+ifeq ($(SYSTEM),SOLARIS)
+	X11 = /usr/openwin
+endif
+ifeq ($(SYSTEM),LINUX)
+	X11 = /usr/X11
+endif
+IX11 = -I$(X11)/include
+LX11 = -L$(X11)/lib -lX11 -lXext
+
+ifeq ($(DISPLAY),y)
+	XV = /usr/openwin
+	IXV = -I$(XV)/include
+	LXV = -L$(XV)/lib -lxview -lolgx
+
+	ifeq ($(DEBUG),y)
+		 XYUVLIB = xyuv
+	else
+		 XYUVLIB = xyuv
+	endif
+	XYUV = $(HOME)
+	XYUVINCDIR = $(XYUV)/include
+	XYUVLIBDIR = $(XYUV)/lib/$(SYSEXT)
+	IXYUV = -I$(XYUVINCDIR)
+	LXYUV = -L$(XYUVLIBDIR) -l$(XYUVLIB)
+
+	IWIN = $(IX11) $(IXV) $(IXYUV)
+	LWIN = $(LX11) $(LXV) $(LXYUV)
+else
+	IWIN =
+	LWIN =
+endif
+
+### Magick ###################################################################
+ifeq ($(USEMAGICK),y)
+	ifeq ($(SYSTEM),SOLARIS)
+		MAGICK= /usr/local
+		IMAGICK= -I$(MAGICK)/include $(IX11)
+		LMAGICK= -L$(MAGICK)/lib -lMagick $(LX11) \
+		-L/usr/local/lib \
+		-ljbig -ldf -ltiff -lttf -ljpeg -lpng -ldpstk -ldps -lbz2 -lz
+#-ljbig -ldf -ltiff -lttf -ljpeg -lpng -ldpstk -ldps -lXext \
+#-lX11 -lsocket -lnsl -lbz2 -lz -lm
+	else
+		MAGICK= /usr/X11
+		IMAGICK= -I$(MAGICK)/include/X11  \
+		-I$(MAGICK)/include/X11
+		LMAGICK= -L$(MAGICK)/lib -lMagick \
+		-L/usr/local/lib -lbz2
+	endif
+	DMAGICK=-DMAGICK$(MAGICKVERSION)
+else
+	IMAGICK=
+	LMAGICK=
+	DMAGICK=-DRANDOMMEDIA
+endif
+
+### XML ######################################################################
+ifeq ($(USEXML),y)
+	XML= $(HOME)
+	IXML= -I$(XML)/include
+	ifeq ($(SYSTEM),SOLARIS)
+		LXML = -L$(XML)/lib/solaris -licu_uc -lxerces_c1_0
+	else
+		LXML = -L$(XML)/lib/linux -licu_uc -lxerces_c1_0
+	endif
+	DXML = -DUSEXML
+else
+	IXML=
+	LXML=
+	DXML=
+endif
+
+
+EXTRA_INCLUDE_DIR += -IXM_Manager $(IMAGICK) $(IWIN) $(IXML)
+EXTRA_LIBS += -lm $(LMAGICK) $(LWIN) $(LXML)
+EXTRA_CFLAGS += -DSH_MEM -DNONAMESPACE -DSTH $(DMAGICK) $(DXML)
+
+
+## SWITCH SPECIFIC DEFINES ###################################################
+ifeq ($(DISPLAY),y)
+	DISPFLAG =
+	EXTRA_INCLUDE_DIR += $(IWIN)
+	EXTRA_LIBS += $(LWIN)
+else
+	DISPFLAG = -DNODISP
+endif
+
+ifeq ($(PROF),y)
+	PROFOPT = -DPROF -pg
+else
+	PROFOPT =
+endif
+
+ifeq ($(IPROF),y)
+	IPROFOPT = -a -DPROF
+	DEBUGOPT = -g
+	OPTIM = -O3
+	ifeq ($(SYSTEM),SOLARIS)
+		OPTIM += -mv8
+	endif
+else
+	IPROFOPT =
+	ifeq ($(DEBUG),y)
+		DEBUGOPT = -g -DDEBUG -Wall
+		OPTIM =
+		DBGEXT = _dbg
+	else
+		DEBUGOPT =
+		OPTIM = -O3
+		ifeq ($(SYSTEM),SOLARIS)
+			OPTIM += -mv8
+		endif
+		DBGEXT =
+	endif
+endif
+
+ifeq ($(CHECKER),y)
+#	LFLAGS += -lefence
+#	CFLAGS += -fcheck-memory-usage
+	CHECKCMD = purify  -best-effort -g++
+#	CHECKCMD = purify -suppress-filenames="libX11.so.4"
+#	CHECKCMD = purify
+	DEBUGOPT = -ggdb
+else
+	CHECKCMD =
+endif
+
+## COMMANDS ##################################################################
+
+CC = g++
+#CC = g++ -DCPP
+CCC = g++
+LINK = $(CHECKCMD) g++
+AR = ar -rs
+CFLAGS += $(IPROFOPT) $(SYSFLAGS) $(DEBUGOPT) $(PROFOPT) $(OPTIM)\
+	$(EXTRA_INCLUDE_DIR) $(EXTRA_CFLAGS) $(DISPFLAG) \
+	-DVERSION=\"$(VERSION)\"
+CCFLAGS = $(CFLAGS)
+LFLAGS += $(DEBUGOPT) $(PROFOPT)
+
+INSTALL = /bin/cp
+RM = /bin/rm -f
+CHMOD = chmod
+UMASK= 644
+TAR = gtar
+CVS = cvs -d :pserver:cvs@cvshost.krdl.org.sg:/home/mpeg7-xm
+
+## MODULES ####################################################################
+
+#Applications#
+ADDRDIR = AddressLib
+ADDROBJ = $(ADDRDIR)/vopio.o \
+	$(ADDRDIR)/address.o \
+	$(ADDRDIR)/nhood.o \
+	$(ADDRDIR)/fifo.o \
+	$(ADDRDIR)/lifo.o \
+	$(ADDRDIR)/intra.o \
+	$(ADDRDIR)/inter.o
+
+#Applications#
+APPLDIR = Applications
+APPLOBJ = $(APPLDIR)/RegisteredClientApplications.o \
+	$(APPLDIR)/RegisteredServerApplications.o \
+	$(APPLDIR)/ColorHistCAppl.o \
+	$(APPLDIR)/ColorHistSAppl.o \
+	$(APPLDIR)/CompactColorCAppl.o \
+	$(APPLDIR)/CompactColorSAppl.o \
+	$(APPLDIR)/GoFColorHistCAppl.o \
+	$(APPLDIR)/GoFColorHistSAppl.o \
+	$(APPLDIR)/ColorStructHistCAppl.o \
+	$(APPLDIR)/ColorStructHistSAppl.o \
+	$(APPLDIR)/DominantColorCAppl.o \
+	$(APPLDIR)/DominantColorSAppl.o \
+	$(APPLDIR)/ColorLayoutCAppl.o \
+	$(APPLDIR)/ColorLayoutSAppl.o \
+	$(APPLDIR)/TextureBrowsingCAppl.o \
+	$(APPLDIR)/TextureBrowsingSAppl.o \
+	$(APPLDIR)/HomoTextureCAppl.o \
+	$(APPLDIR)/HomoTextureSAppl.o \
+	$(APPLDIR)/EdgeHistCAppl.o \
+	$(APPLDIR)/EdgeHistSAppl.o \
+	$(APPLDIR)/BBoxCAppl.o \
+	$(APPLDIR)/BBoxSAppl.o \
+	$(APPLDIR)/ContourShapeCAppl.o \
+	$(APPLDIR)/ContourShapeSAppl.o \
+	$(APPLDIR)/RegionShapeCAppl.o \
+	$(APPLDIR)/RegionShapeSAppl.o \
+	$(APPLDIR)/ObjectMotionTrajCAppl.o \
+	$(APPLDIR)/ObjectMotionTrajSAppl.o \
+	$(APPLDIR)/ParametricObjectMotionCAppl.o \
+	$(APPLDIR)/ParametricObjectMotionSAppl.o \
+	$(APPLDIR)/SummarizationSAppl.o \
+	$(APPLDIR)/SummarizationCAppl.o
+
+ifeq ($(USEXML),y)
+APPLOBJ += $(APPLDIR)/SegmentSAppl.o \
+	$(APPLDIR)/SegmentCAppl.o \
+	$(APPLDIR)/SequentialSummarySAppl.o \
+	$(APPLDIR)/HierarchicalKeyFrameSAppl.o
+endif
+
+#	$(APPLDIR)/CameraMotionCAppl.o \
+	$(APPLDIR)/CameraMotionSAppl.o \
+	$(APPLDIR)/MotionActivityCAppl.o \
+	$(APPLDIR)/MotionActivitySAppl.o \
+	$(APPLDIR)/SpatioTemporalDSCAppl.o \
+	$(APPLDIR)/SpatioTemporalDSSAppl.o
+
+#Basic Architecture#
+BASDIR = BasicArchitecture
+BASOBJ = $(BASDIR)/XMABCInterfaces.o \
+	$(BASDIR)/XMABCObjects.o \
+	$(BASDIR)/XMInterfaces.o \
+	$(BASDIR)/XMObjects.o
+
+#Coding Schemes#
+CSDIR = CodingSchemes
+CSOBJ = $(CSDIR)/RegisteredCodingSchemes.o \
+	$(CSDIR)/HistogramCS.o \
+	$(CSDIR)/ColorSpaceCS.o \
+	$(CSDIR)/ColorQuantCS.o \
+	$(CSDIR)/GridLayoutCS.o \
+	$(CSDIR)/ColorHistCS.o \
+	$(CSDIR)/CompactColorCS.o \
+	$(CSDIR)/GoFColorHistCS.o \
+	$(CSDIR)/ColorStructHistCS.o \
+	$(CSDIR)/DominantColorCS.o \
+	$(CSDIR)/ColorLayoutCS.o \
+	$(CSDIR)/TextureBrowsingCS.o \
+	$(CSDIR)/HomoTextureCS.o \
+	$(CSDIR)/EdgeHistCS.o \
+	$(CSDIR)/BBoxCS.o \
+	$(CSDIR)/ContourShapeCS.o \
+	$(CSDIR)/RegionShapeCS.o \
+	$(CSDIR)/CameraMotionCS.o \
+	$(CSDIR)/ObjectMotionTrajCS.o \
+	$(CSDIR)/ParametricObjectMotionCS.o \
+	$(CSDIR)/MotionActivityCS.o\
+	$(CSDIR)/TimePointCS.o \
+	$(CSDIR)/TimeUnitCS.o \
+	$(CSDIR)/RelTimeCS.o \
+	$(CSDIR)/RelIncrTimeCS.o \
+	$(CSDIR)/DurationCS.o \
+	$(CSDIR)/TimePointCS.o \
+	$(CSDIR)/SummarizationCS.o
+
+ifeq ($(USEXML),y)
+CSOBJ += $(CSDIR)/GenericDSCS.o
+endif
+
+#DDL#
+DDLDIR = DDL
+DDLOBJ = $(DDLDIR)/RegisteredDDLs.o
+
+#Decoders#
+DECDIR = Decoders
+DECOBJ = $(DECDIR)/RegisteredDecoders.o \
+	$(DECDIR)/DecoderFileIO.o
+
+#Description Schemes#
+DSDIR = DescriptionSchemes
+DSOBJ = $(DSDIR)/RegisteredDescriptionSchemes.o \
+	$(DSDIR)/Summarization.o
+
+ifeq ($(USEXML),y)
+DSOBJ += $(DSDIR)/GenericDS.o
+endif
+
+#Descriptors#
+DDIR = Descriptors
+DOBJ = $(DDIR)/RegisteredDescriptors.o \
+	$(DDIR)/Histogram.o \
+	$(DDIR)/ColorQuant.o \
+	$(DDIR)/ColorSpace.o \
+	$(DDIR)/GridLayout.o \
+	$(DDIR)/ColorHist.o \
+	$(DDIR)/CompactColor.o \
+	$(DDIR)/GoFColorHist.o \
+	$(DDIR)/ColorStructHist.o \
+	$(DDIR)/DominantColor.o \
+	$(DDIR)/ColorLayout.o \
+	$(DDIR)/TextureBrowsing.o \
+	$(DDIR)/HomoTexture.o \
+	$(DDIR)/EdgeHist.o \
+	$(DDIR)/BBox.o \
+	$(DDIR)/ContourShape.o \
+	$(DDIR)/RegionShape.o \
+	$(DDIR)/CameraMotion.o \
+	$(DDIR)/ObjectMotionTraj.o \
+	$(DDIR)/ParametricObjectMotion.o \
+	$(DDIR)/MotionActivity.o \
+	$(DDIR)/TimePoint.o \
+	$(DDIR)/TimeUnit.o \
+	$(DDIR)/RelTime.o \
+	$(DDIR)/RelIncrTime.o \
+	$(DDIR)/Duration.o \
+	$(DDIR)/TimePoint.o
+
+
+
+#Encoders#
+ENCDIR = Encoders
+ENCOBJ = $(ENCDIR)/RegisteredEncoders.o \
+	$(ENCDIR)/EncoderFileIO.o
+
+#Evaluation Tools#
+EVADIR = EvaluationTools
+EVAOBJ = $(EVADIR)/RegisteredEvalTools.o \
+	$(EVADIR)/EvaluationTools.o
+
+#Extraction Utilities#
+EXTDIR = ExtractionUtilities
+EXTOBJ = $(EXTDIR)/RegisteredExtractionUtilities.o \
+	$(EXTDIR)/HistogramExtraction.o \
+	$(EXTDIR)/ColorSpaceExtraction.o \
+	$(EXTDIR)/ColorQuantExtraction.o \
+	$(EXTDIR)/ColorHistExtraction.o \
+	$(EXTDIR)/CompactColorExtraction.o \
+	$(EXTDIR)/GoFColorHistExtraction.o \
+	$(EXTDIR)/ColorStructHistExtraction.o \
+	$(EXTDIR)/DominantColorExtraction.o \
+	$(EXTDIR)/ColorLayoutExtraction.o \
+	$(EXTDIR)/TextureBrowsingExtraction.o \
+	$(EXTDIR)/texture_browsing_extraction.o \
+	$(EXTDIR)/HomoTextureExtraction.o \
+	$(EXTDIR)/homo_texture_extractor.o \
+	$(EXTDIR)/EdgeHistExtraction.o \
+	$(EXTDIR)/BBoxExtraction.o \
+	$(EXTDIR)/ContourShapeExtraction.o \
+	$(EXTDIR)/RegionShapeExtraction.o \
+	$(EXTDIR)/imgutil.o \
+	$(EXTDIR)/ObjectMotionTrajExtraction.o \
+	$(EXTDIR)/ParametricObjectMotionExtraction.o \
+	$(EXTDIR)/gme_for_iso.o \
+	$(EXTDIR)/MotionActivityExtraction.o \
+	$(EXTDIR)/motion_activity_extraction.o \
+	$(EXTDIR)/SummarizationExtraction.o
+
+ifeq ($(USEXML),y)
+EXTOBJ += $(EXTDIR)/SegmentExtraction.o \
+	$(EXTDIR)/SequentialSummaryExtraction.o \
+	$(EXTDIR)/HierarchicalKeyFrameExtraction.o
+endif
+
+
+#	$(EXTDIR)/CameraMotionExtraction.o \
+	$(EXTDIR)/camera_motion_extraction.o \
+	$(EXTDIR)/SpatioTemporalDSExtraction.o \
+	$(EXTDIR)/SpatioTemporalDSMediaPolygon.o \
+	$(EXTDIR)/SpatioTemporalDSParameterTrajectory.o \
+
+#Media Types and IOs
+MEDDIR = Media
+MEDOBJ = $(MEDDIR)/MediaIO.o
+
+#Parsing Utilities#
+PARDIR = ParsingUtilities
+PAROBJ = $(PARDIR)/RegisteredParsers.o
+
+#Search Utilities#
+SERDIR = SearchUtilities
+SEROBJ = $(SERDIR)/RegisteredSearchTools.o \
+	$(SERDIR)/MatchList.o \
+	$(SERDIR)/ColorHistSearch.o \
+	$(SERDIR)/GoFColorHistSearch.o \
+	$(SERDIR)/ColorStructHistSearch.o \
+	$(SERDIR)/CompactColorSearch.o \
+	$(SERDIR)/DominantColorSearch.o \
+	$(SERDIR)/ColorLayoutSearch.o \
+	$(SERDIR)/TextureBrowsingSearch.o \
+	$(SERDIR)/HomoTextureSearch.o \
+	$(SERDIR)/EdgeHistSearch.o \
+	$(SERDIR)/BBoxSearch.o \
+	$(SERDIR)/ContourShapeSearch.o \
+	$(SERDIR)/RegionShapeSearch.o \
+	$(SERDIR)/ObjectMotionTrajSearch.o \
+	$(SERDIR)/CameraMotionSearch.o \
+	$(SERDIR)/ParametricObjectMotionSearch.o \
+	$(SERDIR)/ParametricObjectMotionUtilities.o \
+	$(SERDIR)/MotionActivitySearch.o \
+	$(SERDIR)/SummarizationSearch.o
+
+ifeq ($(USEXML),y)
+SEROBJ += $(SERDIR)/SegmentSearch.o
+endif
+
+
+
+#System Tools#
+SYTDIR = SystemTools
+SYTOBJ = $(SYTDIR)/RegisteredSystems.o
+
+#Utilities#
+UTLDIR = Utilities
+UTLOBJ = $(UTLDIR)/Streams.o \
+	$(UTLDIR)/UUIDs.o \
+	$(UTLDIR)/DoubleArray.o \
+	$(UTLDIR)/DoubleArrayMatrix.o \
+	$(UTLDIR)/DoubleVector.o \
+	$(UTLDIR)/LinkedList.o \
+	$(UTLDIR)/readparam.o
+
+
+#XM Manager#
+XMADIR = XMManager
+XMAOBJ = $(XMADIR)/ComponentDB.o \
+	$(XMADIR)/ConnectionControl.o
+#	 $(XMADIR)/DlgProxy.o \
+	 $(XMADIR)/StdAfx.o \
+	 $(XMADIR)/XMManager.o \
+	 $(XMADIR)/XMManagerDlg.o
+
+
+MAINDIR = $(XMADIR)
+MAINOBJS = $(MAINDIR)/XMMain.o
+
+# Modulelist#
+MODULES = ADDR \
+	APPL \
+	BAS \
+	CS \
+	DDL \
+	DEC \
+	DS \
+	D \
+	ENC \
+	EVA \
+	EXT \
+	MED \
+	PAR \
+	SER \
+	SYT \
+	UTL \
+	XMA
+
+MODDIRS = $(APPLDIR) \
+	 $(BASDIR) \
+	 $(CSDIR) \
+	 $(DDLDIR) \
+	 $(DECDIR) \
+	 $(DSDIR) \
+	 $(DDIR) \
+	 $(ENCDIR) \
+	 $(EVADIR) \
+	 $(EXTDIR) \
+	 $(MEDDIR) \
+	 $(PARDIR) \
+	 $(SERDIR) \
+	 $(SYTDIR) \
+	 $(UTLDIR) \
+	 $(ADDRDIR) \
+	 $(XMADIR)
+
+#MODDIRS = $(addprefix , $(addsuffix DIR,$(MODULES)))
+#MODDIRS = $(addprefix $$, $(addsuffix DIR,$(MODULES)))
+
+# copy from MODDIRs and replace DIR by OBJ!!#
+MODOBJS = $(ADDROBJ) \
+	 $(APPLOBJ) \
+	 $(BASOBJ) \
+	 $(CSOBJ) \
+	 $(DDLOBJ) \
+	 $(DECOBJ) \
+	 $(DSOBJ) \
+	 $(DOBJ) \
+	 $(ENCOBJ) \
+	 $(EVAOBJ) \
+	 $(EXTOBJ) \
+	 $(MEDOBJ) \
+	 $(PAROBJ) \
+	 $(SEROBJ) \
+	 $(SYTOBJ) \
+	 $(UTLOBJ) \
+	 $(XMAOBJ)
+
+#MODOBJS = $(addprefix \$\(, $(addsuffix OBJ\),$(MODULES)))
+
+MODLIBS = $(addprefix lib/lib, $(addsuffix _$(SYSEXT)$(DBGEXT)$(LIBEXT), $(MODDIRS)))
+#MODLIBSLINK = $(addsuffix _$(SYSEXT)$(DBGEXT), $(MODDIRS)))
+MODINCS = $(addprefix -I, $(MODDIRS))
+
+BIN = $(addprefix $(BINDIR), $(addsuffix _$(SYSEXT)$(DBGEXT).exe, XMMain))
+#BIN = $(MAINDIR)/$(MAINDIR)_$(SYSEXT)$(DBGEXT).exe
+CFLAGS += $(MODINCS)
+#CCFLAGS +=  $(MODINCS)
+LIBS = -Llib $(addprefix -l,$(addsuffix _$(SYSEXT)$(DBGEXT), $(MODDIRS)))
+
+## DEPENDENCIES ############################################################
+
+all : varlist $(BIN) Decoders/MPEG2Dec/mpeg2decode
+
+varlist:
+	@echo '****************************'
+	@echo 'MPEG-7 Experimentation Model'
+	@echo 'Copyright (c) 1998-1999'
+	@echo '****************************'
+	@echo 
+	@echo '*******************'
+	@echo 'DISPLAY    : $(DISPLAY)'
+	@echo 'USEMAGICK  : $(USEMAGICK)'
+	@echo 'USEXML     : $(USEXML)'
+	@echo 'PROF       : $(PROF)'
+	@echo 'DEBUG      : $(DEBUG)'
+	@echo 'PURIFY     : $(PURIFY)'
+	@echo 'PURE       : $(PURE)'
+	@echo 'IPROF      : $(IPROF)'
+	@echo 'CC         : $(CC)'
+	@echo 'CFLAGS     : $(CFLAGS)'
+	@echo 'CCFLAGS    : $(CCFLAGS)'
+	@echo 'LFLAGS     : $(LFLAGS)'
+	@echo 'LIBS       : $(LIBS)'
+	@echo 'EXTRA_LIBS : $(EXTRA_LIBS)'
+	@echo '*******************'
+	@echo
+
+
+dep:
+	find . -name \*.cpp -exec gcc -MMD -E $(MODINCS) {} -o /dev/null \;
+	find . -name \*.c -exec gcc -MMD -E $(MODINCS) {} -o /dev/null \;
+
+print_mod: 
+	@echo
+	@echo modules: $(MODULES)
+
+print_moddirs: 
+	@echo
+	@echo modul directories: $(MODDIRS)
+
+print_modlibs: 
+	@echo
+	@echo module libraries:$(MODLIBS)
+
+print_modobjs: 
+	@echo
+	@echo module objects: $(MODOBJS)
+
+clean : clean_bin clean_lib clean_obj
+
+clean_bin:
+	$(RM) $(BIN)
+
+clean_lib:
+	$(RM) $(MODLIBS)
+
+clean_obj:
+	$(RM) $(MODOBJS)
+	$(RM) $(MAINOBJS)
+
+Decoders/MPEG2Dec/mpeg2decode:
+	cd Decoders/MPEG2Dec; make mpeg2decode
+
+# main executable#
+$(BIN) : $(MAINOBJS) $(MODLIBS)
+	$(LINK) -o $(BIN) $(MAINOBJS) $(LFLAGS) $(LIBS) $(EXTRA_LIBS)
+
+# module libraries#
+lib/lib$(ADDRDIR)_$(SYSEXT)$(DBGEXT)$(LIBEXT): $(ADDROBJ)
+	$(AR) $@ $?
+
+lib/lib$(APPLDIR)_$(SYSEXT)$(DBGEXT)$(LIBEXT): $(APPLOBJ)
+	$(AR) $@ $?
+
+lib/lib$(BASDIR)_$(SYSEXT)$(DBGEXT)$(LIBEXT): $(BASOBJ)
+	$(AR) $@ $?
+
+lib/lib$(CSDIR)_$(SYSEXT)$(DBGEXT)$(LIBEXT): $(CSOBJ)
+	$(AR) $@ $?
+
+lib/lib$(DDLDIR)_$(SYSEXT)$(DBGEXT)$(LIBEXT): $(DDLOBJ)
+	$(AR) $@ $?
+
+lib/lib$(DECDIR)_$(SYSEXT)$(DBGEXT)$(LIBEXT): $(DECOBJ)
+	$(AR) $@ $?
+
+lib/lib$(DSDIR)_$(SYSEXT)$(DBGEXT)$(LIBEXT): $(DSOBJ)
+	$(AR) $@ $?
+
+lib/lib$(DDIR)_$(SYSEXT)$(DBGEXT)$(LIBEXT): $(DOBJ)
+	$(AR) $@ $?
+
+lib/lib$(ENCDIR)_$(SYSEXT)$(DBGEXT)$(LIBEXT): $(ENCOBJ)
+	$(AR) $@ $?
+
+lib/lib$(EVADIR)_$(SYSEXT)$(DBGEXT)$(LIBEXT): $(EVAOBJ)
+	$(AR) $@ $?
+
+lib/lib$(EXTDIR)_$(SYSEXT)$(DBGEXT)$(LIBEXT): $(EXTOBJ)
+	$(AR) $@ $?
+
+lib/lib$(MEDDIR)_$(SYSEXT)$(DBGEXT)$(LIBEXT): $(MEDOBJ)
+	$(AR) $@ $?
+
+lib/lib$(PARDIR)_$(SYSEXT)$(DBGEXT)$(LIBEXT): $(PAROBJ)
+	$(AR) $@ $?
+
+lib/lib$(SERDIR)_$(SYSEXT)$(DBGEXT)$(LIBEXT): $(SEROBJ)
+	$(AR) $@ $?
+
+lib/lib$(SYTDIR)_$(SYSEXT)$(DBGEXT)$(LIBEXT): $(SYTOBJ)
+	$(AR) $@ $?
+
+lib/lib$(UTLDIR)_$(SYSEXT)$(DBGEXT)$(LIBEXT): $(UTLOBJ)
+	$(AR) $@ $?
+
+lib/lib$(XMADIR)_$(SYSEXT)$(DBGEXT)$(LIBEXT): $(XMAOBJ)
+	$(AR) $@ $?
+
+# object files#
+.SUFFIXES: .cpp
+.cpp.o:
+	$(CCC) $(CCFLAGS) -c -o $@ $<
+
+
+$(MAINDIR)/XMMmain.o : $(MAINDIR)/XMMain.cpp
+
+$(ADDRDIR)/vopio.o :$(ADDRDIR)/vopio.c 
+$(ADDRDIR)/address.o :$(ADDRDIR)/address.c 
+$(ADDRDIR)/nhood.o :$(ADDRDIR)/nhood.c 
+$(ADDRDIR)/fifo.o :$(ADDRDIR)/fifo.c
+$(ADDRDIR)/lifo.o :$(ADDRDIR)/lifo.c
+$(ADDRDIR)/intra.o :$(ADDRDIR)/intra.c
+$(ADDRDIR)/inter.o :$(ADDRDIR)/inter.c
+
+$(APPLDIR)/RegisteredClientApplications.o :$(APPLDIR)/RegisteredClientApplications.cpp 
+$(APPLDIR)/RegisteredServerApplications.o :$(APPLDIR)/RegisteredServerApplications.cpp 
+$(APPLDIR)/ServerApplications.o :$(APPLDIR)/ServerApplications.cpp
+$(APPLDIR)/ColorHistCAppl.o :$(APPLDIR)/ColorHistCAppl.cpp
+$(APPLDIR)/ColorHistSAppl.o :$(APPLDIR)/ColorHistSAppl.cpp
+$(APPLDIR)/DominantColorCAppl.o :$(APPLDIR)/DominantColorCAppl.cpp
+$(APPLDIR)/DominantColorSAppl.o :$(APPLDIR)/DominantColorSAppl.cpp
+$(APPLDIR)/ColorLayoutCAppl.o :$(APPLDIR)/ColorLayoutCAppl.cpp
+$(APPLDIR)/ColorLayoutSAppl.o :$(APPLDIR)/ColorLayoutSAppl.cpp
+$(APPLDIR)/BBoxCAppl.o :$(APPLDIR)/BBoxCAppl.cpp
+$(APPLDIR)/BBoxSAppl.o :$(APPLDIR)/BBoxSAppl.cpp
+$(APPLDIR)/MotionActivityCAppl.o :$(APPLDIR)/MotionActivityCAppl.cpp
+$(APPLDIR)/MotionActivitySAppl.o :$(APPLDIR)/MotionActivitySAppl.cpp
+
+$(BASDIR)/XMABCInterfaces.o :$(BASDIR)/XMABCInterfaces.cpp
+$(BASDIR)/XMABCObjects.o :$(BASDIR)/XMABCObjects.cpp
+$(BASDIR)/XMInterfaces.o :$(BASDIR)/XMInterfaces.cpp
+$(BASDIR)/XMObjects.o :$(BASDIR)/XMObjects.cpp
+
+$(CSDIR)/RegisteredCodingSchemes.o :$(CSDIR)/RegisteredCodingSchemes.cpp
+$(CSDIR)/CodingSchemes.o :$(CSDIR)/CodingSchemes.cpp
+$(CSDIR)/ColorSpaceCS.o :$(CSDIR)/ColorSpaceCS.cpp
+$(CSDIR)/ColorHistCS.o :$(CSDIR)/ColorHistCS.cpp
+$(CSDIR)/DominatColorCS.o :$(CSDIR)/DominatColorCS.cpp
+$(CSDIR)/ColorLayoutCS.o :$(CSDIR)/ColorLayoutCS.cpp
+$(CSDIR)/BBoxCS.o :$(CSDIR)/BBoxCS.cpp
+$(CSDIR)/CameraMotiontCS.o :$(CSDIR)/CameraMotiontCS.cpp
+$(CSDIR)/ObjectMotionTrajCS.o :$(CSDIR)/ObjectMotionTrajCS.cpp
+$(CSDIR)/MotionActivityCS.o :$(CSDIR)/MotionActivityCS.cpp
+
+$(DDLDIR)/RegisteredDDLs.o :$(DDLDIR)/RegisteredDDLs.cpp
+
+$(DECDIR)/RegisteredDecoders.o :$(DECDIR)/RegisteredDecoders.cpp
+
+$(DSDIR)/RegisteredDescriptionSchemes.o :$(DSDIR)/RegisteredDescriptionSchemes.cpp
+$(DSDIR)/DescriptionSchemes.o :$(DSDIR)/DescriptionSchemes.cpp
+
+$(DDIR)/RegisteredDescriptors.o :$(DDIR)/RegisteredDescriptors.cpp
+$(DDIR)/Histogram.o :$(DDIR)/ColorQuant.cpp
+$(DDIR)/ColorSpace.o :$(DDIR)/ColorQuant.cpp
+$(DDIR)/ColorQuant.o :$(DDIR)/ColorQuant.cpp
+$(DDIR)/GridLayout.o :$(DDIR)/GridLayout.cpp
+$(DDIR)/ColorHist.o :$(DDIR)/ColorHist.cpp
+$(DDIR)/GoFColorHist.o :$(DDIR)/GoFColorHist.cpp
+$(DDIR)/DominantColor.o :$(DDIR)/DominantColor.cpp
+$(DDIR)/ColorLayout.o :$(DDIR)/ColorLayout.cpp
+$(DDIR)/TextureBrowsing.o :$(DDIR)/TextureBrowsing.cpp
+$(DDIR)/BBox.o :$(DDIR)/BBox.cpp
+$(DDIR)/RegionShape.o :$(DDIR)/RegionShape.cpp
+$(DDIR)/ObjectMotionTraj.o :$(DDIR)/ObjectMotionTraj.cpp
+$(DDIR)/ParametricObjectMotion.o :$(DDIR)/ParametricObjectMotion.cpp
+$(DDIR)/MotionActivity.o :$(DDIR)/MotionActivity.cpp
+
+$(ENCDIR)/RegisteredEncoders.o :$(ENCDIR)/RegisteredEncoders.cpp
+$(ENCDIR)/EncoderFileIO.o :$(ENCDIR)/EncoderFileIO.cpp
+
+$(EVADIR)/RegisteredEvalTools.o :$(EVADIR)/RegisteredEvalTools.cpp
+$(EVADIR)/EvaluationTools.o :$(EVADIR)/EvaluationTools.cpp
+
+$(EXTDIR)/RegisteredExtractionUtilities.o :$(EXTDIR)/RegisteredExtractionUtilities.cpp
+$(EXTDIR)/HistogramExtraction.o :$(EXTDIR)/HistogramExtraction.cpp
+$(EXTDIR)/ColorSpaceExtraction.o :$(EXTDIR)/ColorSpaceExtraction.cpp
+$(EXTDIR)/ColorQuantExtraction.o :$(EXTDIR)/ColorQuantExtraction.cpp
+$(EXTDIR)/ColorHistExtraction.o :$(EXTDIR)/ColorHistExtraction.cpp
+$(EXTDIR)/DominantColorExtraction.o :$(EXTDIR)/DominantColorExtraction.cpp
+$(EXTDIR)/ColorLayoutExtraction.o :$(EXTDIR)/ColorLayoutExtraction.cpp
+$(EXTDIR)/BBoxExtraction.o :$(EXTDIR)/BBoxExtraction.cpp
+$(EXTDIR)/RegionShapeExtraction.o :$(EXTDIR)/RegionShapeExtraction.cpp
+$(EXTDIR)/imgutil.o : $(EXTDIR)/imgutil.c
+$(EXTDIR)/ParametricObjectMotionExtraction.o :\
+	$(EXTDIR)/ParametricObjectMotionExtraction.cpp
+$(EXTDIR)/gme_for_iso.o :$(EXTDIR)/gme_for_iso.c
+$(EXTDIR)/MotionActivity.o :$(EXTDIR)/MotionActivity.c
+
+$(PARDIR)/RegisteredParsers.o :$(PARDIR)/RegisteredParsers.cpp
+
+$(SERDIR)/RegisteredSearchTools.o :$(SERDIR)/RegisteredSearchTools.cpp
+$(SERDIR)/MatchList.o :$(SERDIR)/MatchList.cpp
+$(SERDIR)/ColorHistSearch.o :$(SERDIR)/ColorHistSearch.cpp
+$(SERDIR)/DominantColorSearch.o :$(SERDIR)/DominantColorSearch.cpp
+$(SERDIR)/ColorLayoutSearch.o :$(SERDIR)/ColorLayoutSearch.cpp
+$(SERDIR)/BBoxSearch.o :$(SERDIR)/BBoxSearch.cpp
+$(SERDIR)/MotionActivitySearch.o :$(SERDIR)/MotionActivitySearch.cpp
+
+$(SYTDIR)/RegisteredSystems.o :$(SYTDIR)/RegisteredSystems.cpp
+
+$(UTLDIR)/streams.o :$(UTLDIR)/streams.cpp
+
+$(UTLDIR)/uuids.o :$(UTLDIR)/uuids.cpp
+
+$(XMADIR)/ComponentDB.o :$(XMADIR)/ComponentDB.cpp
+$(XMADIR)/ConnectionControl.o :$(XMADIR)/ConnectionControl.cpp
+$(XMADIR)/DlgProxy.o :$(XMADIR)/DlgProxy.cpp
+$(XMADIR)/StdAfx.o :$(XMADIR)/StdAfx.cpp
+$(XMADIR)/XM_Manager.o :$(XMADIR)/XMManager.cpp
+$(XMADIR)/XMManagerDlg.o :$(XMADIR)/XMManagerDlg.cpp

@@ -1,0 +1,8 @@
+/* distances from each search tool */
+ColorStructure 14
+EdgeHistogram  20
+
+/* maximum ditances from each search tool */
+maxColorStructure 100
+maxEdgeHistogram  100
+

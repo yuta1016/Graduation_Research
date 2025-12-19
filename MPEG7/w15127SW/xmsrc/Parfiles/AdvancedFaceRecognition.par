@@ -1,0 +1,44 @@
+/* Parameter File for AdvancedFaceRecognition Descriptor */
+/*                                                       */
+/* caution: don't put space after second arguments       */
+/*                                                       */
+/* Toshio Kamei(t-kamei@cb.jp.nec.com)                   */
+
+/* default application name */
+/* Application AdvancedFaceRecognitionServer */
+/* Application AdvancedFaceRecognitionClient */
+
+/* default database file name: The size of normalized face images should be 46x56 */
+ListFile Databases/AdvancedFaceRecognition_manu_enroll1.lst
+
+/* default bitstream file*/
+Bitstream   Bitstreams/AdvancedFaceRecognition.mp7
+
+/* default number of matches*/
+NoOfMatches 200
+
+/* Coding Mode DDL: 0 Binary: 2*/
+CodingMode 2
+/* CodingMode 0 */
+/* CodingMode 2 */
+
+/* Descriptor size setting */
+numOfFourierFeature 24
+numOfCentralFourierFeature 24
+extensionFlag 0
+numOfCompositeFeature 0
+numOfCentralCompositeFeature 0
+
+/* Descriptor size for SearchUtilities */
+numOfFourierFeatureSearch 24
+numOfCentralFourierFeatureSearch 24
+numOfCompositeFeatureSearch 0
+numOfCentralCompositeFeatureSearch 0
+
+/* Read Weighting Parameters from Parameter File: if not specified, default parameters are used */
+/* FaceParamFile	parfiles/AdvancedFaceRecognition1.prm */
+/* FaceParamFile	parfiles/AdvancedFaceRecognition2.prm */
+
+/* Output score format: (xm: XM format(default), tsc: score matrix) */
+/* ScoreFormat	tsc */
+ScoreFormat	xm

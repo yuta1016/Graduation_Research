@@ -1,0 +1,27 @@
+Technique	VideoText
+Document	MPEG-7 Working Draft MDS
+Name	Chitra Dorai, Ruud Bolle  (IBM T.J. Watson Research Center, New York, USA)
+	Nevenka Dimitrova, Lalitha Agnihotri (Philips Research, New York, USA)
+Email	dorai@watson.ibm.com
+Contact	Chitra Dorai  at IBM or Nevenka Dimitrova/Lalitha Agnihotri at Philips
+Type	Application
+External Libraries	NONE
+Related Ds/DSs	VideoText DS
+Input	MPEG-Video (foo.mpg)
+Output	foo.xml (in the directory specified with the -b option in the XMWinExe command),
+	additionally,  to any file specified with the -b option, (e.g., to videotext.xml, if specified	-btestdir/videotext.xml)
+Extraction	Yes (IBMVideoTextServer)
+Client Appl	IBMVideoTextEventBrowserDemoForMPEG-7  Application
+Summary		The IBM	 videotext extraction algorithm works by extracting and
+		analyzing regions in a video frame. The processing stages are
+		(i) isolating regions that may contain text characters,
+		(ii) separating each character region from its surroundings and
+		(iii) verifying the presence of text by consistency analysis across multiple text blocks. 
+Strong Points	The extraction algorithm  does very well with low miss
+		rates,	by not missing many of the true text lines in the frame
+Limitations	NONE
+Known Problems	Can't handle images  larger than HDTV resolution
+Parameters	The IBMVideoTextServer is coded to handle HDTV frame sizes, 1920x1080.
+		Changing MAX_SIZE in IBMVideoTextdataTypes.h can customize this
+		and change related constants found in the same file.
+END

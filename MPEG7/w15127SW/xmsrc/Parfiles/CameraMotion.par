@@ -1,0 +1,14 @@
+/* default application name*/
+Application	CameraMotionClient
+
+/* select coding mode*/
+CodingMode  0 /* 0= DDL, 2= Binary*/
+
+/* default database file name*/
+ListFile	Databases/CameraMotion.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/CameraMotion.mp7
+
+/* default number of matches*/
+NoOfMatches 2

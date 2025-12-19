@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Video/3DShapeSpectrum</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for Video/3DShapeSpectrum</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>3D Shape Spectrum Descriptor
+<tr><th>Document
+<td>MPEG-7 Visual (ISO/IEC 15938-3)
+<tr><th>Name
+<td>Titus Zaharia, Institut National des Telecommunications
+<tr><th>EMail
+<td>titus.zaharia@int-evry.fr
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>NONE
+<tr><th>Related Ds/DSs
+<td>2D Shape Descriptors, Multiview Descriptor
+<tr><th>Used Ds/DSs
+<td>NONE
+<tr><th>Input
+<td>3D Meshes in VRML2.0 format 
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Search & Retrieval
+<tr><th>Summary
+<td>The 3D Shape Spectrum Descriptor provides a compact shape description of 3D data represented as 3D meshes. <br>
+The 3D Shape Spectrum Descriptor is the histogram (distribution) of the shape index over the entire mesh.<br>
+The shape index is defined as the angular coordinate of a polar representation of the pricipal curvature vector. <br>
+The descriptor includes two additional components quantifying the amount of singular components (e.g. borders)<br>
+and planar components (for which the shape index is not defined).  
+<tr><th>Strong Points
+<td>Compactness
+<tr><th>Limitations
+<td>None
+<tr><th>Known Problems
+<td>None
+<tr><th>Parameters
+<td>NoOfBins : represents the number of bins used for the histogram representation. <br>
+NoOfBins may take any positive integer value. Usual values range in the [10, 100] interval. <br>
+NoOfBits : represents the number of bits that uniformly quantize the 3D Shape Spectrum values. <br>
+Usual values: 8, 9, 10, 11, 12, 13, 14. <br>
+Metric : specifies the metric used for similarity retrieval. <br>
+The possible values and their associated metrics are listed here below:<br>
+0 - L1-based distance, without the singular and planar surface components<br>
+1 - L2-based distance, without the singular and planar surface components<br>
+2 - pseudo-weighted similarity measure, without the singular and planar surface components<br>
+3 - L1-based distance, without the singular surface components<br>
+4 - L2-based distance, without the singular surface components<br>
+5 - pseudo-weighted similarity measure, without the singularr surface components<br>
+6 - L1-based distance, with all components<br>
+7 - L2-based distance, with all the components<br>
+8 - pseudo-weighted similarity measure, with all components<br>
+Example: NoOfBins 100<br>
+ NoOfBits 12<br>
+ Metric 0
+</table>
+</body>
+</html>

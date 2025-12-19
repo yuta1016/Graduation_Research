@@ -1,0 +1,20 @@
+# Begin Group "RegionLocator"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\RegionLocatorCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\RegionLocatorCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\RegionLocatorSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\RegionLocatorSAppl.h
+# End Source File
+# End Group

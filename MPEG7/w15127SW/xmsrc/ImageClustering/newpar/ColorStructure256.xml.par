@@ -1,0 +1,8 @@
+/* default bitstream file*/
+Bitstream	Bitstreams/CS.mp7
+
+/* color quantization resolution*/
+ColorQuantSize	256
+
+/* Textual (DDL) coding */
+CodingMode	0

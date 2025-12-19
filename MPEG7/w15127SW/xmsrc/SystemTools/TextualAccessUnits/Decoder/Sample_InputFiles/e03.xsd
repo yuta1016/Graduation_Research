@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 	xmlns="http://www.w3.org/2000/10/XMLSchema"
+        	xmlns:v1="version1"
+        	xmlns:v2="version2"   
+			xmlns:v3="version2"        
+        	targetNamespace="version3">
+        	
+	<!-- import of the version1 schema -->
+	<import namespace="version1" schemaLocation="e01.xsd"/>
+	<!-- import of the version1 schema -->
+	<import namespace="version2" schemaLocation="e02.xsd"/>
+
+	
+	<complexType name="ExempleTypeV3">
+		<complexContent>
+	 		<extension base="v2:ExempleTypeV2">
+	 			<attribute name="a3" type="string" use="required"/>
+	 		</extension> 
+		</complexContent>
+	</complexType>
+	 
+	 
+</schema>

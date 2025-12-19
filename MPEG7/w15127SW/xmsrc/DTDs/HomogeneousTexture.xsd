@@ -1,0 +1,21 @@
+<complexType name=¡±HomogeneousTextureType¡± final=¡±#all¡±>
+	<complexContent>
+		<extension base=¡±mpeg7:VisualDType¡±>
+			<sequence>
+				<element name=¡±Average¡± type=¡±mpeg7:unsigned8¡±/>
+				<element name=¡±StandardDeviation¡± type=¡±mpeg7:unsigned8¡±/>
+				<element name=¡±Energy¡± type=¡±mpeg7:textureListType¡±/>
+				<element name=¡±EnergyDeviation¡± type=¡± mpeg7:textureListType¡± minOccurs=¡±0¡±/>
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+<simpleType name="textureListType">
+	<restriction>
+		<simpleType>
+			<list itemType="mpeg7:unsigned8"/>
+		</simpleType>
+		<length value="30"/>
+	</restriction>
+</simpleType>

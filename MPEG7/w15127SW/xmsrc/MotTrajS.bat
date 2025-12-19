@@ -1,0 +1,2 @@
+./XMMain.exe -a MotionTrajectoryClient -b Bitstreams/MotionTrajectoryYARD.mp7 -q testset/nD-keypoints/yard000.data -l Databases/MotionTrajectoryInfilesYARD.txt -n 20
+//sth database and bitstream per query??

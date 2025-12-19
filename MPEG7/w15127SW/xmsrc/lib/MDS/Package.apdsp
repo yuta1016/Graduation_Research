@@ -1,0 +1,12 @@
+# Begin Group "Package"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\PackageCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\PackageCAppl.h
+# End Source File
+# End Group

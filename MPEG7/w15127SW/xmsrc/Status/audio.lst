@@ -1,0 +1,36 @@
+SpokenContent - -		X X X X X X CRE
+- SpokenContentLattice * -	- - - X - X CRE
+- SpokenContentHeader * -	- - - X - X CRE
+- SpokenContentLexicon * -	- - - X - X CRE
+-				
+AudioSpectrumEnvelope * -	- - - M - X MERL
+AudioPower * -			- - - M - X MERL
+AudioSpectrumCentroid * -	- - - M - X MERL
+AudioSpectrumSpread * -		- - - M - X MERL
+AudioFundamentalFrequency * -	- - M M X X MERL
+AudioHarmonicity * -		- - - M - X MERL
+- AudioFundFrequency * -	- - - M - X MERL
+-				
+HarmonicInstTimbre * -		- - X X X X IUA
+PercusiveInstTimbre * -		- - X X X X IUA
+HarmonicSpectralCentroid * -	- - - M - X IUA
+SpectralCentroid * -		- - - M - X IUA
+TemporalCentroid * -		- - - M - X IUA
+HarmonicSpectralDeviation * -	- - - M - X IUA
+HarmonicSpectralSpread * -		- - - M - X IUA
+HarmonicSpectralVariation * -	- - - M - X IUA
+LogAttackTime * -		- - - M - X IUA
+-				
+Silence * -			- - X X X X T-Nove-Berkom
+- SilenceHeader * -		- - - X - X T-Nove-Berkom
+-				
+AudioSpectrumBasis * -		- - M M X X MERL
+SoundRecognition * -		- - M M X X MERL
+- SoundEffectState * -		- - X X X X MERL
+- SoundEffectClassifier * -	- - X X X X MERL
+- SoundEffectModelType * -	- - X X X X MERL
+MelodyContour * -		- - X X X X MIT
+Melody Melody -			- - X X X X Lancaster-University
+MelodySequence * -	        - - - - X X  FHG
+AudioSpectralFlatness * -	- - X X X X FHG
+AudioSignature * -		- - - - X X FHG

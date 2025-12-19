@@ -1,0 +1,16 @@
+/* default application name*/
+Application	MelodySequenceClient
+
+/* default database file name*/
+ListFile	Databases/MelodySequence.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/MelodySequence.xml
+
+/* default number of matches*/
+NoOfMatches     10
+
+/* select coding mode*/
+CodingMode  0 /* 0= DDL, 1=BiM, 2= Binary*/
+
+

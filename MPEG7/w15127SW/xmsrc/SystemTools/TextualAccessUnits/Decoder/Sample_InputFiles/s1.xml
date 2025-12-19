@@ -1,0 +1,4 @@
+<s1:root xmlns:s1="http://www.schemaValid.com/s1ns" xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance" xsi:schemaLocation="http://www.schemaValid.com/s1ns s1ns.xsd">
+	<s1:grade>b</s1:grade>
+	<s1:grade>a</s1:grade>
+</s1:root>

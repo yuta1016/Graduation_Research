@@ -1,0 +1,1 @@
+./XMMain.exe -p ./Parfiles/PointOfView.par -q ./testset/unspecified/PointOfView/PointOfViewQueryExample.xml

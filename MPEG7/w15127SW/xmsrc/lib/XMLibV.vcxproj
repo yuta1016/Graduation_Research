@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Template|Win32">
+      <Configuration>Template</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>XMLibVDB</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <AdditionalIncludeDirectories>..\AddressLib;..;..\..\afsp\include;..\..\ImageMagick;..\..\xml\src\xercesc;..\..\xml\src;..\lib\cv_P3DS_2010;..\..\opencv\build\include;..\..\opencv\build\include\opencv%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;_WINDOWS;WIN32;_VISUALC_;c_plusplus;NODISP;USEXML;USEXML3;AFLIB;USEAST;USESFM;USEMSQ;USEP3DS;USESCC;USE3DSS;USECL;USECT;USESC;USEDC;USEEH;USEFR;USEGF;USEHT;USEMA;USEMT;USEMI;USE2D3D;USEPOM;USERL;USESR;USES2D;USESTL;USETI;USETB;USEASF;USEDPS;USEETT;USEHS;USEIMH;USEINK;USEMH;USEMM;USEMQ;USEMR;USEMO;USEMK;USEODK;USEPACK;USEPTH;USEPOV;USESRG;USESMS;USESKW;USESSZ;USESP;USESF;USESRH;USESTX;USESZ;USESPR;USETM;USETH;USEUP;USEVA;USEVE;USEVT;USED_CT;USECTB;USEIS;USEVS;USESV;USEIIC;USECM;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Debug\XMLibV.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <Culture>0x0407</Culture>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug\XMLibV.bsc</OutputFile>
+    </Bscmake>
+    <Lib>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>..\AddressLib;..;..\..\afsp\include;..\..\ImageMagick;..\..\xml\src\xercesc;..\..\xml\src;..\lib\cv_P3DS_2010;..\..\opencv\build\include;..\..\opencv\build\include\opencv%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;WIN32;_VISUALC_;c_plusplus;NODISP;AFLIB;USEXML;USEXML3;USEAST;USESFM;USEMSQ;USEP3DS;USESCC;USE3DSS;USECL;USECT;USESC;USEDC;USEEH;USEFR;USEGF;USEHT;USEMA;USEMT;USEMI;USE2D3D;USEPOM;USERL;USESR;USES2D;USESTL;USETI;USETB;USEASF;USEDPS;USEETT;USEHS;USEIMH;USEINK;USEMH;USEMM;USEMQ;USEMR;USEMO;USEMK;USEODK;USEPACK;USEPTH;USEPOV;USESRG;USESMS;USESKW;USESSZ;USESP;USESF;USESRH;USESTX;USESZ;USESPR;USETM;USETH;USEUP;USEVA;USEVE;USEVT;USED_CT;USECTB;USEIS;USEVS;USESV;USEIIC;USECM;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release\XMLibV.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <Culture>0x0407</Culture>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\XMLibV.bsc</OutputFile>
+    </Bscmake>
+    <Lib>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\AddressLib;..;..\..\afsp\include;..\..\ImageMagick;..\..\xml\src\xercesc;..\..\xml\src;..\lib\cv_P3DS_2010;..\..\opencv\build\include;..\..\opencv\build\include\opencv%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\CodingSchemes\CameraMotionCS.cpp" />
+    <ClCompile Include="..\CodingSchemes\GridLayoutCS.cpp" />
+    <ClCompile Include="..\CodingSchemes\IIColorCS.cpp" />
+    <ClCompile Include="..\CodingSchemes\ShapeVariationCS.cpp" />
+    <ClCompile Include="..\CodingSchemes\TimeSeriesCS.cpp" />
+    <ClCompile Include="..\Descriptors\CameraMotion.cpp" />
+    <ClCompile Include="..\Descriptors\IIColor.cpp" />
+    <ClCompile Include="..\Descriptors\media_time_tool.cpp" />
+    <ClCompile Include="..\Descriptors\Perceptual3DShape.cpp" />
+    <ClCompile Include="..\Descriptors\Perceptual3DShape_Aux.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\AddressLib;..;..\..\afsp\include;..\..\ImageMagick;..\..\xml\src\xercesc;..\..\xml\src;C:\Program Files\OpenCV\cv\include;C:\Program Files\OpenCV\cxcore\include;..\lib\cv_P3DS_2010;..\..\opencv\build\include;..\..\opencv\build\include\opencv%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\CodingSchemes\Perceptual3DShapeCS.cpp" />
+    <ClCompile Include="..\Descriptors\ShapeVariation.cpp" />
+    <ClCompile Include="..\Descriptors\TimeSeries.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\CameraMotionExtraction.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\camera_motion_extraction.c" />
+    <ClCompile Include="..\ExtractionUtilities\GridLayoutExtraction.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\IIColorExtraction.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\IIColor_Extraction.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\Perceptual3DShapeExtraction.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\ShapeVariationExtraction.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\TimeSeriesExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\CameraMotionSearch.cpp" />
+    <ClCompile Include="..\SearchUtilities\CTBrowsingSearch.cpp" />
+    <ClCompile Include="..\SearchUtilities\Perceptual3DShapeSearch.cpp" />
+    <ClCompile Include="..\Descriptors\ScalableColor.cpp" />
+    <ClCompile Include="..\CodingSchemes\ScalableColorCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\ScalableColorExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\ScalableColorSearch.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\3d_shape_spectrum_extraction.cpp" />
+    <ClCompile Include="..\Descriptors\3DShapeSpectrum.cpp" />
+    <ClCompile Include="..\CodingSchemes\3DShapeSpectrumCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\3DShapeSpectrumExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\3DShapeSpectrumSearch.cpp" />
+    <ClCompile Include="..\Descriptors\ColorLayout.cpp" />
+    <ClCompile Include="..\CodingSchemes\ColorLayoutCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\ColorLayoutExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\ColorLayoutSearch.cpp" />
+    <ClCompile Include="..\Descriptors\ColorQuant.cpp" />
+    <ClCompile Include="..\CodingSchemes\ColorQuantCS.cpp" />
+    <ClCompile Include="..\Descriptors\ColorSpace.cpp" />
+    <ClCompile Include="..\CodingSchemes\ColorSpaceCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\ColorSpaceExtraction.cpp" />
+    <ClCompile Include="..\Descriptors\ColorStructure.cpp" />
+    <ClCompile Include="..\CodingSchemes\ColorStructureCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\ColorStructureExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\ColorStructureSearch.cpp" />
+    <ClCompile Include="..\Descriptors\ContourShape.cpp" />
+    <ClCompile Include="..\CodingSchemes\ContourShapeCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\ContourShapeExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\ContourShapeSearch.cpp" />
+    <ClCompile Include="..\Descriptors\DominantColor.cpp" />
+    <ClCompile Include="..\CodingSchemes\DominantColorCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\DominantColorExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\DominantColorSearch.cpp" />
+    <ClCompile Include="..\Descriptors\EdgeHist.cpp" />
+    <ClCompile Include="..\CodingSchemes\EdgeHistCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\EdgeHistExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\EdgeHistSearch.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\face_detect.cpp" />
+    <ClCompile Include="..\Descriptors\FaceRecognition.cpp" />
+    <ClCompile Include="..\CodingSchemes\FaceRecognitionCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\FaceRecognitionExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\FaceRecognitionSearch.cpp" />
+    <ClCompile Include="..\Descriptors\GoFGoPColor.cpp" />
+    <ClCompile Include="..\CodingSchemes\GoFGoPColorCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\GoFGoPColorExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\GoFGoPColorSearch.cpp" />
+    <ClCompile Include="..\Descriptors\GridLayout.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\homo_texture_extractor.cpp" />
+    <ClCompile Include="..\Descriptors\HomoTexture.cpp" />
+    <ClCompile Include="..\CodingSchemes\HomoTextureCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\HomoTextureExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\HomoTextureSearch.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\motion_activity_categorization.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\motion_activity_extraction.cpp" />
+    <ClCompile Include="..\Descriptors\MotionActivity.cpp" />
+    <ClCompile Include="..\CodingSchemes\MotionActivityCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\MotionActivityExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\MotionActivitySearch.cpp" />
+    <ClCompile Include="..\Descriptors\MotionTrajectory.cpp" />
+    <ClCompile Include="..\CodingSchemes\MotionTrajectoryCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\MotionTrajectoryExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\MotionTrajectorySearch.cpp" />
+    <ClCompile Include="..\Descriptors\MultiImage.cpp" />
+    <ClCompile Include="..\CodingSchemes\MultiImageCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\MultiImageExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\MultiImageSearch.cpp" />
+    <ClCompile Include="..\Descriptors\MultiView.cpp" />
+    <ClCompile Include="..\CodingSchemes\MultiViewCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\MultiViewExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\MultiViewSearch.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\coortrans.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_DEBUG;DEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML;USEAST;USESFM;USEMSQ;USEP3DS;USESCC;USE3DSS;USECL;USECT;USESC;USEDC;USEEH;USEFR;USEGF;USEHT;USEMA;USEMT;USEMI;USE2D3D;USEPOM;USERL;USESR;USES2D;USESTL;USETI;USETB;USEASF;USEDPS;USEETT;USEHS;USEIMH;USEINK;USEMH;USEMM;USEMQ;USEMR;USEMO;USEMK;USEODK;USEPACK;USEPTH;USEPOV;USESRG;USESMS;USESKW;USESSZ;USESP;USESF;USESRH;USESTX;USESZ;USESPR;USETM;USETH;USEUP;USEVA;USEVE;USEVT;USED_CT;USECTB;USEIS;USEVS</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML;USEAST;USESFM;USEMSQ;USEP3DS;USESCC;USE3DSS;USECL;USECT;USESC;USEDC;USEEH;USEFR;USEGF;USEHT;USEMA;USEMT;USEMI;USE2D3D;USEPOM;USERL;USESR;USES2D;USESTL;USETI;USETB;USEASF;USEDPS;USEETT;USEHS;USEIMH;USEINK;USEMH;USEMM;USEMQ;USEMR;USEMO;USEMK;USEODK;USEPACK;USEPTH;USEPOV;USESRG;USESMS;USESKW;USESSZ;USESP;USESF;USESRH;USESTX;USESZ;USESPR;USETM;USETH;USEUP;USEVA;USEVE;USEVT;USED_CT;USECTB;USEIS;USEVS</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\ExtractionUtilities\gme_for_iso.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_DEBUG;DEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML;USEAST;USESFM;USEMSQ;USEP3DS;USESCC;USE3DSS;USECL;USECT;USESC;USEDC;USEEH;USEFR;USEGF;USEHT;USEMA;USEMT;USEMI;USE2D3D;USEPOM;USERL;USESR;USES2D;USESTL;USETI;USETB;USEASF;USEDPS;USEETT;USEHS;USEIMH;USEINK;USEMH;USEMM;USEMQ;USEMR;USEMO;USEMK;USEODK;USEPACK;USEPTH;USEPOV;USESRG;USESMS;USESKW;USESSZ;USESP;USESF;USESRH;USESTX;USESZ;USESPR;USETM;USETH;USEUP;USEVA;USEVE;USEVT;USED_CT;USECTB;USEIS;USEVS</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML;USEAST;USESFM;USEMSQ;USEP3DS;USESCC;USE3DSS;USECL;USECT;USESC;USEDC;USEEH;USEFR;USEGF;USEHT;USEMA;USEMT;USEMI;USE2D3D;USEPOM;USERL;USESR;USES2D;USESTL;USETI;USETB;USEASF;USEDPS;USEETT;USEHS;USEIMH;USEINK;USEMH;USEMM;USEMQ;USEMR;USEMO;USEMK;USEODK;USEPACK;USEPTH;USEPOV;USESRG;USESMS;USESKW;USESSZ;USESP;USESF;USESRH;USESTX;USESZ;USESPR;USETM;USETH;USEUP;USEVA;USEVE;USEVT;USED_CT;USECTB;USEIS;USEVS</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\Descriptors\ParametricObjectMotion.cpp" />
+    <ClCompile Include="..\CodingSchemes\ParametricObjectMotionCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\ParametricObjectMotionExtraction.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\ParametricObjectMotionExtraction2.cpp" />
+    <ClCompile Include="..\SearchUtilities\ParametricObjectMotionSearch.cpp" />
+    <ClCompile Include="..\SearchUtilities\ParametricObjectMotionUtilities.cpp" />
+    <ClCompile Include="..\Descriptors\RegionLocator.cpp" />
+    <ClCompile Include="..\CodingSchemes\RegionLocatorCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\RegionLocatorExtraction.cpp" />
+    <ClCompile Include="..\Descriptors\RegionShape.cpp" />
+    <ClCompile Include="..\CodingSchemes\RegionShapeCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\RegionShapeExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\RegionShapeSearch.cpp" />
+    <ClCompile Include="..\Descriptors\Spatial2DCoordinates.cpp" />
+    <ClCompile Include="..\CodingSchemes\Spatial2DCoordinatesCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\spatio_temporal_locator_extraction.cpp" />
+    <ClCompile Include="..\Descriptors\SpatioTemporalLocator.cpp" />
+    <ClCompile Include="..\CodingSchemes\SpatioTemporalLocatorCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\SpatioTemporalLocatorExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\ShapeVariationSearch.cpp" />
+    <ClCompile Include="..\SearchUtilities\SpatioTemporalLocatorSearch.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\temporal_interpolation_extraction.cpp" />
+    <ClCompile Include="..\Descriptors\TemporalInterpolation.cpp" />
+    <ClCompile Include="..\CodingSchemes\TemporalInterpolationCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\TemporalInterpolationExtraction.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\texture_browsing_extraction.cpp" />
+    <ClCompile Include="..\Descriptors\TextureBrowsing.cpp" />
+    <ClCompile Include="..\CodingSchemes\TextureBrowsingCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\TextureBrowsingExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\TextureBrowsingSearch.cpp" />
+    <ClCompile Include="..\SearchUtilities\DominantColorTemperatureSearch.cpp" />
+    <ClCompile Include="..\Descriptors\CTBrowsing.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\CTBrowsing_Extraction.cpp" />
+    <ClCompile Include="..\CodingSchemes\CTBrowsingCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\CTBrowsingExtraction.cpp" />
+    <ClCompile Include="..\Descriptors\ImageSignature.cpp" />
+    <ClCompile Include="..\CodingSchemes\ImageSignatureCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\ImageSignatureExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\ImageSignatureSearch.cpp" />
+    <ClCompile Include="..\Descriptors\VideoSignature.cpp" />
+    <ClCompile Include="..\CodingSchemes\VideoSignatureCS.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\VideoSignatureExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\TimeSeriesSearch.cpp" />
+    <ClCompile Include="..\SearchUtilities\VideoSignatureSearch.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\CodingSchemes\CameraMotionCS.h" />
+    <ClInclude Include="..\CodingSchemes\GridLayoutCS.h" />
+    <ClInclude Include="..\CodingSchemes\IIColorCS.h" />
+    <ClInclude Include="..\CodingSchemes\ShapeVariationCS.h" />
+    <ClInclude Include="..\CodingSchemes\TimeSeriesCS.h" />
+    <ClInclude Include="..\Descriptors\CameraMotion.h" />
+    <ClInclude Include="..\Descriptors\IIColor.h" />
+    <ClInclude Include="..\Descriptors\Perceptual3DShape.h" />
+    <ClInclude Include="..\Descriptors\Perceptual3DShape_Aux.h" />
+    <ClInclude Include="..\CodingSchemes\Perceptual3DShapeCS.h" />
+    <ClInclude Include="..\Descriptors\ShapeVariation.h" />
+    <ClInclude Include="..\Descriptors\TimeSeries.h" />
+    <ClInclude Include="..\ExtractionUtilities\CameraMotionExtraction.h" />
+    <ClInclude Include="..\ExtractionUtilities\camera_motion_extraction.h" />
+    <ClInclude Include="..\ExtractionUtilities\GridLayoutExtraction.h" />
+    <ClInclude Include="..\ExtractionUtilities\IIColorExtraction.h" />
+    <ClInclude Include="..\ExtractionUtilities\IIColor_Extraction.h" />
+    <ClInclude Include="..\ExtractionUtilities\Perceptual3DShapeExtraction.h" />
+    <ClInclude Include="..\ExtractionUtilities\ShapeVariationExtraction.h" />
+    <ClInclude Include="..\ExtractionUtilities\TimeSeriesExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\CameraMotionSearch.h" />
+    <ClInclude Include="..\SearchUtilities\CTBrowsingSearch.h" />
+    <ClInclude Include="..\SearchUtilities\Perceptual3DShapeSearch.h" />
+    <ClInclude Include="..\Descriptors\ScalableColor.h" />
+    <ClInclude Include="..\CodingSchemes\ScalableColorCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\ScalableColorExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\ScalableColorSearch.h" />
+    <ClInclude Include="..\ExtractionUtilities\3d_shape_spectrum_extraction.h" />
+    <ClInclude Include="..\Descriptors\3DShapeSpectrum.h" />
+    <ClInclude Include="..\CodingSchemes\3DShapeSpectrumCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\3DShapeSpectrumExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\3DShapeSpectrumSearch.h" />
+    <ClInclude Include="..\Descriptors\ColorLayout.h" />
+    <ClInclude Include="..\CodingSchemes\ColorLayoutCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\ColorLayoutExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\ColorLayoutSearch.h" />
+    <ClInclude Include="..\Descriptors\ColorQuant.h" />
+    <ClInclude Include="..\CodingSchemes\ColorQuantCS.h" />
+    <ClInclude Include="..\Descriptors\ColorSpace.h" />
+    <ClInclude Include="..\CodingSchemes\ColorSpaceCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\ColorSpaceExtraction.h" />
+    <ClInclude Include="..\Descriptors\ColorStructure.h" />
+    <ClInclude Include="..\CodingSchemes\ColorStructureCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\ColorStructureExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\ColorStructureSearch.h" />
+    <ClInclude Include="..\Descriptors\ContourShape.h" />
+    <ClInclude Include="..\CodingSchemes\ContourShapeCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\ContourShapeExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\ContourShapeSearch.h" />
+    <ClInclude Include="..\Descriptors\DominantColor.h" />
+    <ClInclude Include="..\CodingSchemes\DominantColorCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\DominantColorExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\DominantColorSearch.h" />
+    <ClInclude Include="..\Descriptors\EdgeHist.h" />
+    <ClInclude Include="..\CodingSchemes\EdgeHistCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\EdgeHistExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\EdgeHistSearch.h" />
+    <ClInclude Include="..\ExtractionUtilities\face_detect.h" />
+    <ClInclude Include="..\Descriptors\FaceRecognition.h" />
+    <ClInclude Include="..\CodingSchemes\FaceRecognitionCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\FaceRecognitionExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\FaceRecognitionSearch.h" />
+    <ClInclude Include="..\Descriptors\GoFGoPColor.h" />
+    <ClInclude Include="..\CodingSchemes\GoFGoPColorCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\GoFGoPColorExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\GoFGoPColorSearch.h" />
+    <ClInclude Include="..\Descriptors\GridLayout.h" />
+    <ClInclude Include="..\ExtractionUtilities\homo_texture_extractor.h" />
+    <ClInclude Include="..\Descriptors\HomoTexture.h" />
+    <ClInclude Include="..\CodingSchemes\HomoTextureCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\HomoTextureExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\HomoTextureSearch.h" />
+    <ClInclude Include="..\ExtractionUtilities\motion_activity_categorization.h" />
+    <ClInclude Include="..\ExtractionUtilities\motion_activity_extraction.h" />
+    <ClInclude Include="..\Descriptors\MotionActivity.h" />
+    <ClInclude Include="..\CodingSchemes\MotionActivityCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\MotionActivityExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\MotionActivitySearch.h" />
+    <ClInclude Include="..\Descriptors\MotionTrajectory.h" />
+    <ClInclude Include="..\CodingSchemes\MotionTrajectoryCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\MotionTrajectoryExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\MotionTrajectorySearch.h" />
+    <ClInclude Include="..\Descriptors\MultiImage.h" />
+    <ClInclude Include="..\CodingSchemes\MultiImageCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\MultiImageExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\MultiImageSearch.h" />
+    <ClInclude Include="..\Descriptors\MultiView.h" />
+    <ClInclude Include="..\CodingSchemes\MultiViewCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\MultiViewExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\MultiViewSearch.h" />
+    <ClInclude Include="..\ExtractionUtilities\coortrans.h" />
+    <ClInclude Include="..\ExtractionUtilities\gme_for_iso.h" />
+    <ClInclude Include="..\Descriptors\ParametricObjectMotion.h" />
+    <ClInclude Include="..\CodingSchemes\ParametricObjectMotionCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\ParametricObjectMotionExtraction.h" />
+    <ClInclude Include="..\ExtractionUtilities\ParametricObjectMotionExtraction2.h" />
+    <ClInclude Include="..\SearchUtilities\ParametricObjectMotionSearch.h" />
+    <ClInclude Include="..\SearchUtilities\ParametricObjectMotionUtilities.h" />
+    <ClInclude Include="..\Descriptors\RegionLocator.h" />
+    <ClInclude Include="..\CodingSchemes\RegionLocatorCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\RegionLocatorExtraction.h" />
+    <ClInclude Include="..\Descriptors\RegionShape.h" />
+    <ClInclude Include="..\CodingSchemes\RegionShapeCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\RegionShapeExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\RegionShapeSearch.h" />
+    <ClInclude Include="..\Descriptors\Spatial2DCoordinates.h" />
+    <ClInclude Include="..\CodingSchemes\Spatial2DCoordinatesCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\spatio_temporal_locator_extraction.h" />
+    <ClInclude Include="..\Descriptors\SpatioTemporalLocator.h" />
+    <ClInclude Include="..\CodingSchemes\SpatioTemporalLocatorCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\SpatioTemporalLocatorExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\ShapeVariationSearch.h" />
+    <ClInclude Include="..\SearchUtilities\SpatioTemporalLocatorSearch.h" />
+    <ClInclude Include="..\ExtractionUtilities\temporal_interpolation_extraction.h" />
+    <ClInclude Include="..\Descriptors\TemporalInterpolation.h" />
+    <ClInclude Include="..\CodingSchemes\TemporalInterpolationCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\TemporalInterpolationExtraction.h" />
+    <ClInclude Include="..\ExtractionUtilities\texture_browsing_extraction.h" />
+    <ClInclude Include="..\Descriptors\TextureBrowsing.h" />
+    <ClInclude Include="..\CodingSchemes\TextureBrowsingCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\TextureBrowsingExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\TextureBrowsingSearch.h" />
+    <ClInclude Include="..\SearchUtilities\DominantColorTemperatureSearch.h" />
+    <ClInclude Include="..\Descriptors\CTBrowsing.h" />
+    <ClInclude Include="..\ExtractionUtilities\CTBrowsing_Extraction.h" />
+    <ClInclude Include="..\CodingSchemes\CTBrowsingCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\CTBrowsingExtraction.h" />
+    <ClInclude Include="..\Descriptors\ImageSignature.h" />
+    <ClInclude Include="..\CodingSchemes\ImageSignatureCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\ImageSignatureExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\ImageSignatureSearch.h" />
+    <ClInclude Include="..\Descriptors\VideoSignature.h" />
+    <ClInclude Include="..\CodingSchemes\VideoSignatureCS.h" />
+    <ClInclude Include="..\ExtractionUtilities\VideoSignatureExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\TimeSeriesSearch.h" />
+    <ClInclude Include="..\SearchUtilities\VideoSignatureSearch.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,44 @@
+Technique	MotionTrajectory
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name		Sylvie Jeannin, Philips Research USA
+EMail		Sylvie.Jeannin@philips.com
+Contact		Sylvie.Jeannin@philips.com
+Type		Application
+External Libraries	None
+Related Ds/DSs	Spatio-Temporal Locator, TemporalInterpolation, Spatial2Dcoordinates, Time.
+Used Ds/DSs	TemporalInterpolation is instantiated once each time MotionTrajectory is instantiated.
+		Spatial2Dcoordinates is optionally included by reference in MotionTrajectory; the inclusion is mentioned by a one bit flag in MotionTrajectory. 
+		TimeDS is used indirectly as some of its components are instantiated within TemporalInterpolation, which is instantiated within MotionTrajectory.
+Input		Text files containing formatted Key-point List
+Input Format	Each input file should contain the list of coordinates (time and space) of one representative point of the object whose trajectory should be described. There should be one file per object, i.e. per trajectory to describe.
+		(Recommended naming rule: files can be named by the name of the sequence the object comes from, the object number, and their extension be ".data".)
+		ex: Let us assume "yard000.data" contains the successive spatio-temporal positions of the representative point of the object #0 in the sequence Yard.
+		On each line of data files, there should be: time (milliseconds), x_position, y_position, z_position. The x and y spatial positions should be normalized by the corresponding image dimensions. Their origin is on the top left corner of the image. Value "-1.0" should be used when the position is not known.
+		ex: "2520   0.980114   0.541667  -1.000000" means that at t=2520ms, the representative point was at position (x=0.980114, y=0.541667) where x and y are normalized by the image size, and that its position in the third spatial dimension, z,  is not known.
+		Examples are provided in the MPEG-7 Content repository web site.
+Extraction	Yes. 
+Client Appl	Search & retrieval: 12 different types of queries are implemented.
+		The query type is specified by a parameter in the Client Application.
+		They are intended to be examples, that demonstrate the expressiveness of the description and show how various query types can be added (depending on the application needs).
+		All details about this can be found in m6597 (contribution to La Baule meeting).
+		To summarize: the query types that are implemented in XM can be divided in two main categories:
+		Similarity-based queries (low-level retrieval):
+		For these queries, the program first extract the trajectory description from a given query data. It compares it to each description decoded from a given bitstream provided by the Server Application. Then it ranks the elements of the database whose trajectory is described in the bitstream from the most to the less similar to the query, in terms of their trajectory, and according to a specified similarity criteria.
+		8 different similarity criteria can be used, that highlight different aspects of trajectory. Basically, we retained that trajectories can be similar in terms of positions, or/and speeds, or/and accelerations, and that time can also be handled differently in the criterion.
+		Higher level queries:
+		For these queries, no similarity is calculated: no input query data is needed; instead a high level criteria of the trajectory is given. The given bitstream provided by the Server Application is decoded, and the elements of the database whose trajectories are described in the bitstream are ranked, from the ones that fulfill the criteria the most to the ones that do not fulfill it at all. The examples of high-level query types that are implemented are: find objects moving to the right, to the left, find objects moving up, moving down.
+Summary		Motion Trajectory is a high-level feature associated with a moving region, defined as a spatio-temporal localization of one of its representative points (such as the centroid).
+		The software modules, integrated in the XM software, implement all parts of the MotionTrajectory descriptor, as what is described in Visual XM and CD. Corresponding C++ modules are parts of the "Descriptors", "ExtractionUtilities", "SearchUtilities", "CodingSchemes" and "Applications" (for both Server and Client) XM directories.
+		It has been satisfactorily compiled and tested by independent parties on SUN/SOLARIS, PC/Windows and PC/LINUX.
+Strong Points	Many different types of queries are implemented, both high-level and low-level.
+		The program has been satisfactorily compiled and tested by independent parties on SUN/SOLARIS, PC/Windows and PC/LINUX.
+Limitations	Warning for use:
+		The input format for MotionTrajectory is a file containing successive spatio-temporal positions of a point, representative from the object whose trajectory needs to be described (see above). This was used in the Trajectory Core Experiments, and accepted in the Dec. 99 meeting as the input format for the XM software. This decision allows us to be independent from the way the object was detected, i.e. to remain generic in terms of the pre-extraction (segmentation) process. Indeed, different ways of detecting/specifying the object lead to different formats, and the first common format prior to trajectory characterization is the list of spatio-temporal positions.
+		These positions though have to be generated off-line, in a process which is independent from XM. When a segmentation mask is available for defining the object, it is recommended to obtain the input file by simply calculating for each frame the center of mass of the segmentation mask, and storing these coordinates in a file using the format described above. This is an extremely straightforward process to implement.
+		Of course other methods can be used to obtain successive positions of a representative point of an object whose trajectory should be described: positions can be directly obtained by segmentation of motion field, or by getting the centroid of a bounding box provided as output of a tracking program, etc.
+Known Problems	Full integration with the Spatial2Dcoordinates, allowing their reference, and corresponding updates following La Baule is not yet provided.
+Parameters	how to select the application??
+END
+
+
+

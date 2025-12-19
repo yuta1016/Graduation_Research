@@ -1,0 +1,31 @@
+Technique	Color Space
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name		Jungmin Song, Heon Jun Kim
+EMail		jmsong73@mail.lgcit.com, hjk@lge.co.kr
+Contact		Jungmin Song
+Type		descriptor for dominant color descriptor
+External Libraries	none
+Related Ds/DSs	Dominant Color Descriptor and DS related to Dominant Color D.
+Used Ds/DSs	none
+Input		n/a
+Extraction	n/a but some color transform modules between different color space are provided in ColorSpaceExtraction.cpp
+Client Appl	n/a
+Summary		This descriptor specifies the color space that is to be used in other color based descriptions. In the current description, the following color spaces are supported:
+		- RGB
+		- YCbCr
+		- HSV
+		- HMMD
+		- Linear transformation matrix with reference to RGB
+		- Monochrome
+		Color transform modules provided in extraction (ColorSpaceExtraction.cpp) are as follows:
+		-YUV(YCbCr) to HSV
+		-YUV(YCbCr) to RGB
+		-RGB to YUV(YCbCr)
+		-RGB to HSV	
+		-HSV to RGB
+		-RGB to HMMD
+		-HMMD to RGB	 
+Limitations	Currently, the descriptor specifies only limited number of color spaces which are RGB, YCbCr, HSV, HMMD, Linear transformation matrix with reference to RGB and Monochrome.
+Known Problems	None.
+Parameters	color space index
+END

@@ -1,0 +1,12 @@
+# Begin Group "SpaceFrequencyView"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\SpaceFrequencyViewSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\SpaceFrequencyViewSAppl.h
+# End Source File
+# End Group

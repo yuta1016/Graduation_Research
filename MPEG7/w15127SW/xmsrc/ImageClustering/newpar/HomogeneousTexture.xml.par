@@ -1,0 +1,20 @@
+/* default bitstream file*/
+Bitstream	Bitstreams/HT.mp7
+
+
+/* select coding mode*/
+CodingMode  0 /* 0= DDL, 1=BiM, 2= Binary*/
+
+
+/* additional parameters*/
+
+/* default layer  */
+/* (0:base-layer 32-components  1:full-layer 62components) */
+layer   1        
+
+/* default matching option for Client */
+/* n: normal matching*/ 
+/* r:rotation invariant matching */
+/* s:scale invariant matching */
+/* rs:rotation and scale invariant matchin */
+option  n    

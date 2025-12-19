@@ -1,0 +1,14 @@
+/* Spatio Temporal Locator */
+/* Select FigureTrajectory or ParametorTrajectory */
+Trajectory FigureTrajectory
+
+/* Start End Frame */
+StartFrame 0
+EndFrame 1000
+
+/* number of vertex */
+VerN 12
+
+/* set depth */
+Depth 100
+

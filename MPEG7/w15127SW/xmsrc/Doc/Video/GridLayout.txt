@@ -1,0 +1,18 @@
+Technique	Grid Layout
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name	Akio YAMADA (NEC Corp.)
+EMail	a-yamada@da.jp.nec.com
+Contact	a-yamada@da.jp.nec.com
+Type	Basic Component
+External Libraries	none
+Related Ds/DSs	Still Region DS
+Used Ds/DSs	none
+Input	Images
+Extraction	no
+Client Appl	n/a
+Summary	Grid layout is one of the container datatype carrying several visual descriptors. It splits an image into several grid and we can assign the visual Ds on each geid.
+Strong Points	n/a
+Limitations	depends on the contained descriptor
+Known Problems	none
+Parameters	depends on the contained descriptor
+END

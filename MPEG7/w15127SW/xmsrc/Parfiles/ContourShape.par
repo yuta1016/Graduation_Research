@@ -1,0 +1,16 @@
+/* default application name*/
+Application	ContourShapeClient
+
+/* default database file name*/
+ListFile	Databases/a_images.lst
+
+/* query content set*/
+QueryFile	Databases/a_images.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/ContourShape.mp7
+
+/* default number of matches*/
+NoOfMatches 8
+
+/* parmeter file for extraction*/

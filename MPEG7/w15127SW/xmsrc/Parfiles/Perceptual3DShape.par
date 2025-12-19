@@ -1,0 +1,17 @@
+/* default application name*/
+/*Application	Perceptual3DShape* */
+
+/* default database file name*/
+ListFile	Databases/Perceptual3DShape.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/Perceptual3DShape.mp7
+
+/* default number of matches*/
+NoOfMatches 8
+
+/* select coding mode*/
+CodingMode  0 /* 0= DDL, 2= Binary*/
+
+/* additional parameters*/
+bits_per_attribute  8 /*the number of bits used for quantizing the descriptor values. Default value is 8 bits.*/

@@ -1,0 +1,20 @@
+# Begin Group "MultiView"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\MultiViewCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MultiViewCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MultiViewSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MultiViewSAppl.h
+# End Source File
+# End Group

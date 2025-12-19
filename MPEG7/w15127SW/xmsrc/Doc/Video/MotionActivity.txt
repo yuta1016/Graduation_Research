@@ -1,0 +1,18 @@
+Technique	Motion Activity
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name	Ajay Divakaran (Mitsubishi Electric Research Labs.)
+EMail	ajayd@merl.com
+Contact	ajayd@merl.com
+Type	Application
+External Libraries	none
+Related Ds/DSs	 Video Segment DS
+Used Ds/DSs	none
+Input		Video
+Extraction	Yes
+Client Appl	Search & Retrieval
+Summary		This library implements the motion activity descriptor which consists of one primary and four secondary attributes. The primary attribute is the intensity of motion activity, and the other four attributes express the dominant direction, the spatial distribution, the temporal distribution and the spatial localization of motion activity. Since the feature vector is short, a simple absolute distance or squared distance criterion can be used for matching.
+Strong Points	The descriptor is compact and extremely effective as a filter for reduction of large search spaces.
+Limitations	The program depends on previously computed motion vectors. It does not have its own motion estimation. This was done to maintain format independence.
+Known Problems	None.
+Parameters	None.
+END.

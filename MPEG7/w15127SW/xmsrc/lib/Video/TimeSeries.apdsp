@@ -1,0 +1,20 @@
+# Begin Group "TimeSeries"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\TimeSeriesCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\TimeSeriesCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\TimeSeriesSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\TimeSeriesSAppl.h
+# End Source File
+# End Group

@@ -1,0 +1,11 @@
+/* default application name*/
+Application	EdgeHistogramServer
+
+/* default database file name*/
+ListFile	Databases/EdgeHistogram.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/EdgeHistogram.mp7
+
+/* default number of matches*/
+NoOfMatches 8

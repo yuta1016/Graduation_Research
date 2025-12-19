@@ -1,0 +1,10 @@
+/* default bitstream file*/
+Bitstream	Bitstreams/Binary/SC.mp7
+
+/* NumberOfBitplanesDiscarded: 0, 1, 2, 3, 4, 6 oder 8 */
+NumberOfBitplanesDiscarded 0
+
+/* NumberOfCoefficients: 16, 32, 64, 128 oder 256        */
+NumberOfCoefficients 256
+
+CodingMode 2

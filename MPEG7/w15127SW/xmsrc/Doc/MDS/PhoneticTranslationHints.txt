@@ -1,0 +1,42 @@
+Technique	DSPhoneticTranslationHintsType
+Document	-
+Name		Andre Mengel, Robert Bosch GmbH Hildesheim
+EMail		Andre.Mengel@de.bosch.com
+Type		Application
+External Libraries	-
+Related Ds/DSs	-
+Used Ds/DSs	-
+Input		xml-Files
+Extraction	No
+Client Appl	Search & Retrieval
+Summary		Application reads query string (searchitem:PhoneticTranscription), reads PhoneticTranlationHintsDS, 
+		converts PhoneticTranscription into appropriate string expression,
+		reads Music-Database, searches within Database and outputs results.
+Strong Points	-
+Limitations	-
+Known Problems	-
+Parameters	-q (Query) searchitem:PhoneticTranscription
+		
+		searchitem can contain the following values:
+		Genre,Title,Name
+
+		PhoneticTranscription contains PhoneticTranscriptionSting
+
+		-p parameterfile contains
+
+		Application	PhoneticTranslationHintsCAppl
+		ListFile	Database-File
+		Bitstream	file.mp7	/not used
+		NoOfMatches	n		/not used
+		dictionary	xml-File
+
+
+		Examples for Query which refer to the submitted files:
+
+		Genre:IPA156IPA188IPA212IPA188
+		Genre:IPA178IPA186IPA191
+		Name:IPA165IPA194
+		Name:IPA151IPA188
+		Title:IPA171IPA159IPA211IPA178
+		Title:IPA181IPA176IPA145
+END

@@ -1,0 +1,12 @@
+# Begin Group "SummaryPreferences"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\SummaryPreferencesCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\SummaryPreferencesCAppl.h
+# End Source File
+# End Group

@@ -1,0 +1,43 @@
+/* default application name*/
+Application	MultiImageClient
+
+/* default database file name*/
+ListFile	Databases/a_images.lst
+
+/* query content set*/
+QueryFile	Databases/a_images.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/MultiImage.mp7
+
+/* default number of matches*/
+NoOfMatches 8
+
+/* additional parameters for MultiImage*/
+ScalableColorScale  10
+ContourShapeScale 1
+
+/* Parameters for ScalableColor*/
+/* NumberOfBitplanesDiscarded: 0, 1, 2, 3, 4, 6 oder 8 */
+NumberOfBitplanesDiscarded 3
+
+/* NumberOfCoefficients: 16, 32, 64, 128 oder 256        */
+NumberOfCoefficients 64
+
+/* Parameters for ContourShape*/
+/*none*/
+
+
+/* GUI Parameters*/
+GUIShowQuery	1
+GUIExtraParmameters	2
+
+GUIPar1Type	select /*only select supported*/
+GUIPar1Name	ScalableColorWeight
+GUIPar1File	Parfiles/0_to_10.val
+
+GUIPar2Type	select /*select */
+GUIPar2Name	ContourShapeWeight
+GUIPar2File	Parfiles/0_to_10.val
+
+

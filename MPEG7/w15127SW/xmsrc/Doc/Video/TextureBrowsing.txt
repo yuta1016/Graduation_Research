@@ -1,0 +1,17 @@
+Technique	TextureBrowsing
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name	yanglim Choi, M/M Lab, Samsung Advanced Institute of Technology
+EMail	yanglimc@samsung.com
+Type	Application
+External Libraries	NONE
+Related Ds/DSs	StillRegionDS, StillImageDS, MovingRegionDS
+Used Ds/DSs	NONE
+Input	Images/Regions(JPEG,BMP,etc)
+Extraction	Yes
+Client Appl	Search & Retrieval 
+Summary		This component ?? a very compact texture descriptor for a homogeneously textured Image/Region for browsing using texture features. The descriptor components specifies the regularity, directionality and scale infomation of the texture. The extraction process can be done automatically using Gabor filters as in the XM code or it can also be human annotable.
+Strong Points	For quick browsing of textures using the regularity, directionality and scale. Also good for prefiltering process to apply more precise descriptors.
+Limitations	NONE
+Known Problems	NONE
+Parameters	layer ??
+END

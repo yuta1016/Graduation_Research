@@ -1,0 +1,63 @@
+Technique	Summarization
+Document	NXXX  MPEG-7 Working Draft MDS
+Name		Charilaos Christopoulos (MediaLab, Ericsson Radio Systems AB,Sweden)
+		Yousri Abdeljaoued (EPFL Switzerland)
+Email		Charilaos.Christopoulos@era.ericsson.se
+Contact		Charilaos.Christopoulos@era.ericsson.se
+Type		Application
+External Libraries	NONE
+Related Ds/DSs	Sequential Summary, Hierarchical Summary
+Input		MPEG-Video (foo.mpg)
+Output		Extraction:foo.mpg.dir/scene%05.jpg(key frames),
+		Transcoding:foo.mpg.dir/Summary*.mpg(transcoded summary of foo) 
+Extraction	Yes
+Client Appl	Transcoding Application
+Summary		This component computes the FrameChangeValues basing on the feature point activity. During Extraction it also writes the key frames of the sequence to the disk. The client application performs the transcoding of the input sequence, thus
+		a) it includes only the key frames
+		b) it has a constant frame activity
+Strong Points	The extraction process of the frame change values applies a "Karhunen Loeve Transfromation" (KLT). From the KLT a feature point list is generated. A Kalman filter is used to compute the activity of the feature points. This extraction process gives very robust results.
+Limitations	NONE
+Known Problems	Images with no feature points are not treated
+Parameters	/* default application name*/
+		Application SummarizationClient
+
+		/* default database file name*/
+		ListFile	Databases/video.lst
+
+		/* default bit stream file*/
+		Bitstream Summary.ddl
+
+		/* default number of matches*/
+		NoOfMatches 8
+
+		/* parameter file for summary extraction*/
+		/* enable storing and reading of intermediary results*/
+		RW_intermediary_results	1
+
+		/* write activity for all frames*/
+		WriteAllFramesToDDL 1
+
+		/* enable denoising prior to feature point extraction*/
+		denoise	1
+
+		/*minimum geometrical distance between two feature points*/
+		min_featurepoint_distance	19
+
+		distance_threshold	0.25
+
+		/*time base*/
+		nnfraction	30
+		nn	1
+
+		/* acceleration noise*/
+		acceleration_noise 1500.0
+
+		/* update ratio for new values*/
+		alpha	0.1
+
+		/* measurement noise*/
+		measurement_noise	10.0
+
+		/* initial value for standard deviation*/
+		standard_deviation	0.4
+END

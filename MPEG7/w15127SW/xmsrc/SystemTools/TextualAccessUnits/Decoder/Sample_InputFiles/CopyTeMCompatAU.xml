@@ -1,0 +1,32 @@
+<AUFile>
+	<DecoderInit SystemsProfileLevel="01">
+		<SchemaReference name="n1"/>
+		<InitialDescription>
+			<FragmentUpdateUnit>
+				<FUCommand>addNode</FUCommand>
+				<FUContext>/</FUContext>
+				<FUPayload>
+					<s1:root xmlns:s1="http://www.schemaValid.com/s1ns" xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance" xsi:schemaLocation="http://www.schemaValid.com/s1ns s1ns.xsd"/>
+				</FUPayload>
+			</FragmentUpdateUnit>
+		</InitialDescription>
+	</DecoderInit>
+	<AccessUnit>
+		<FragmentUpdateUnit>
+			<FUCommand>addNode</FUCommand>
+			<FUContext>/s1:root/</FUContext>
+			<FUPayload>
+				<s1:grade>a</s1:grade>
+			</FUPayload>
+		</FragmentUpdateUnit>
+	</AccessUnit>
+	<AccessUnit>
+		<FragmentUpdateUnit>
+			<FUCommand>addNode</FUCommand>
+			<FUContext>/s1:root/</FUContext>
+			<FUPayload>
+				<s1:grade>c</s1:grade>
+			</FUPayload>
+		</FragmentUpdateUnit>
+	</AccessUnit>
+</AUFile>

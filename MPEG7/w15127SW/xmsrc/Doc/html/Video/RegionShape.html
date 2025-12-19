@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Video/RegionShape</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for Video/RegionShape</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>Region shape descriptor
+<tr><th>Document
+<td>MPEG-7 Visual (ISO/IEC 15938-3)
+<tr><th>Name
+<td>Whoi-Yul Kim (Hanyang University)
+<tr><th>EMail
+<td>wykim@email.hanyang.ac.kr
+<tr><th>Contact
+<td>wykim@email.hanyang.ac.kr
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>none
+<tr><th>Related Ds/DSs
+<td>Still region DS
+<tr><th>Used Ds/DSs
+<td>none
+<tr><th>Input
+<td>Binary/Gray shape masks
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Search & Retrieval
+<tr><th>Summary
+<td>Shape of an object may consist of either single region or a set of regions <br>
+as well as some holes in the object in a frame.<br>
+The region-based shape descriptor describes shape features of the object <br>
+as long as it can be defined by a shape mask. The mask may be binary to contain <br>
+holes or multiple disjoint regions within. The mask may also be in gray shade<br>
+to distinguish different regions within the object. The descriptor consists <br>
+of a set of 35 quantized coefficients of Angular-Radial Transform of an object.
+<tr><th>Strong Points
+<td>The descriptor is rotational, scale and position invariant. It can deal with <br>
+objects with multiple regions including holes in the object.<br>
+It is robust to noise along the contour of the object that is common during<br>
+the segmentation process of an image, or to shape deformations <br>
+due to affine transform. <br>
+The descriptor is also characterized by its small size, fast extraction time <br>
+and matching. The data size for this representation is fixed to 17.5byte. <br>
+The feature extraction and matching processes is straightforward to have <br>
+low order of computational complexities, and is suitable for tracking shapes <br>
+in the video data processing. 
+<tr><th>Limitations
+<td>None
+<tr><th>Known Problems
+<td>None
+<tr><th>Parameters
+<td>Uses the general XM-SW parameters.
+</table>
+</body>
+</html>

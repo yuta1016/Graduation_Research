@@ -1,0 +1,16 @@
+/* default application name*/
+Application	MultiViewServer
+
+/* default database file name*/
+ListFile	Databases/MultiView.lst
+
+/* default number of matches*/
+NoOfMatches	10
+
+/* default bitstream file*/
+Bitstream	Bitstreams/MultiView.mp7
+
+/* Textual (DDL) coding */
+CodingMode	0
+
+/** NumberOfViews 2 */

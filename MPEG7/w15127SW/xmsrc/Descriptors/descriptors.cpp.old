@@ -1,0 +1,319 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// This software module was originally developed by
+//
+// Intel Corporation
+// (contributing organizations names)
+//
+// in the course of development of the MPEG-7 Experimentation Model.
+//
+// This software module is an implementation of a part of one or more MPEG-7
+// Experimentation Model tools as specified by the MPEG-7 Requirements.
+//
+// ISO/IEC gives users of MPEG-7 free license to this software module or
+// modifications thereof for use in hardware or software products claiming
+// conformance to MPEG-7.
+//
+// Those intending to use this software module in hardware or software products
+// are advised that its use may infringe existing patents. The original
+// developer of this software module and his/her company, the subsequent
+// editors and their companies, and ISO/IEC have no liability for use of this
+// software module or modifications thereof in an implementation.
+//
+// Copyright is not released for non MPEG-7 conforming products. The
+// organizations named above retain full right to use the code for their own
+// purpose, assign or donate the code to a third party and inhibit third parties
+// from using the code for non MPEG-7 conforming products.
+//
+// Copyright (c) 1998-1999.
+//
+// This notice must be included in all copies or derivative works.
+//
+// Applicable File Name:  Descriptors.cpp
+//
+#include "Descriptors.h"                                    /* Naming Convention */
+
+using namespace XM;
+
+const UUID P564HistogramExtractionInterface::myID = UUID("09df7000-db15-11d2-affe-0080c7e1e76d");
+const char *P564HistogramExtractionInterface::myName = "Histo Extraction Interface";
+
+const UUID P564HistogramDescriptor::myID = UUID("def04360-dafb-11d2-affe-0080c7e1e76d");
+const char *P564HistogramDescriptor::myName = "Histogram Descriptor";
+
+const UUID P564HistogramDescriptor::valID = UUID("f241a300-dafb-11d2-affe-0080c7e1e76d");
+const char *P564HistogramDescriptor::valName = "Integer Frequency";
+
+const UUID P564LinearQuantizerExtractionInterface::myID = UUID("13ec11c0-db15-11d2-affe-0080c7e1e76d");
+const char *P564LinearQuantizerExtractionInterface::myName = "Quantizer Extraction Interface";
+
+const UUID P564LinearQuantizerDescriptor::myID = UUID("3f2c13c0-dafd-11d2-affe-0080c7e1e76d");
+const char *P564LinearQuantizerDescriptor::myName = "Linear Quantization Descriptor from P564";
+
+const UUID P564LinearQuantizerDescriptor::valID = UUID("c298a6c0-db01-11d2-affe-0080c7e1e76d");
+const char *P564LinearQuantizerDescriptor::valName = "Linear Quantization Descriptor value from P564";
+
+const UUID P564HistogramExtractionInterfaceABC::myID = UUID();
+const UUID P564LinearQuantizerExtractionInterfaceABC::myID = UUID();
+
+P564HistogramExtractionInterfaceABC::P564HistogramExtractionInterfaceABC()
+{ SetInterfaceID(myID);}
+
+P564LinearQuantizerExtractionInterfaceABC::P564LinearQuantizerExtractionInterfaceABC()
+{ SetInterfaceID(myID);}
+//=============================================================================
+P564HistogramExtractionInterface::P564HistogramExtractionInterface(P564HistogramDescriptor *aHisto):
+m_Histogram(aHisto)
+{
+	SetInterfaceID(myID);
+}
+
+//----------------------------------------------------------------------------
+P564HistogramExtractionInterface::~P564HistogramExtractionInterface()
+{
+}
+	
+//----------------------------------------------------------------------------
+unsigned long P564HistogramExtractionInterface::GetHistogramSize(void)
+{
+	return m_Histogram->GetHistogramSize();
+}
+//----------------------------------------------------------------------------
+unsigned long P564HistogramExtractionInterface::SetHistogramSize(unsigned long size)	
+{
+	return m_Histogram->SetHistogramSize(size);
+}
+//----------------------------------------------------------------------------
+unsigned long P564HistogramExtractionInterface::SetElement(int index, int value)
+{
+	return m_Histogram->SetElement(index, value);
+}
+//----------------------------------------------------------------------------
+unsigned long P564HistogramExtractionInterface::GetElement(int index)
+{
+	return m_Histogram->GetElement(index);
+}
+//----------------------------------------------------------------------------
+unsigned long P564HistogramExtractionInterface::SetNormalizationFactor(unsigned long factor)
+{
+	return m_Histogram->SetNormalizationFactor(factor);
+}
+
+//----------------------------------------------------------------------------
+const UUID& P564HistogramExtractionInterface::GetInterfaceID(void)
+{ return myID; }
+
+//----------------------------------------------------------------------------
+const char *P564HistogramExtractionInterface::GetName(void)
+{ return myName; }
+
+//=============================================================================
+P564LinearQuantizerExtractionInterface::P564LinearQuantizerExtractionInterface(P564LinearQuantizerDescriptor *aQuant):
+m_Quantizer(aQuant)
+{
+	SetInterfaceID(myID);
+}
+
+//----------------------------------------------------------------------------
+P564LinearQuantizerExtractionInterface::~P564LinearQuantizerExtractionInterface()
+{
+}
+	
+//----------------------------------------------------------------------------
+unsigned long P564LinearQuantizerExtractionInterface::SetNumberChannels(int nCh)
+{
+	return m_Quantizer->SetNumberChannels(nCh);
+}
+//----------------------------------------------------------------------------
+unsigned long P564LinearQuantizerExtractionInterface::EnterData(int *data, int ChannelIndex)
+{
+	return m_Quantizer->EnterData(data, ChannelIndex);
+}
+//----------------------------------------------------------------------------
+const UUID& P564LinearQuantizerExtractionInterface::GetInterfaceID(void)
+{ return myID; }
+
+//----------------------------------------------------------------------------
+const char *P564LinearQuantizerExtractionInterface::GetName(void)
+{ return myName; }
+
+//=============================================================================
+P564HistogramDescriptor::P564HistogramDescriptor():
+m_ExtractionInterface(this),
+m_isProprietary(false),
+m_HistoSize(0),
+m_Histogram(0),
+m_Normalization(1)
+{
+	SetExposedInterface(&m_ExtractionInterface);
+}
+
+//----------------------------------------------------------------------------
+P564HistogramDescriptor::~P564HistogramDescriptor()
+{
+	delete [] m_Histogram;
+}
+
+//----------------------------------------------------------------------------
+const UUID& P564HistogramDescriptor::GetObjectID(void)
+{ return myID; }
+
+//----------------------------------------------------------------------------
+const char *P564HistogramDescriptor::GetName(void)
+{ return myName; }
+
+//----------------------------------------------------------------------------
+const UUID& P564HistogramDescriptor::GetValueID(void)
+{ return valID; }
+
+//----------------------------------------------------------------------------
+const char* P564HistogramDescriptor::GetValueName(void)
+{ return valName; }
+
+//----------------------------------------------------------------------------
+bool P564HistogramDescriptor::IsProprietary(void)
+{ return m_isProprietary; }
+
+//----------------------------------------------------------------------------
+unsigned long P564HistogramDescriptor::GetHistogramSize(void)
+{
+	return m_HistoSize;
+}
+
+//----------------------------------------------------------------------------
+unsigned long P564HistogramDescriptor::SetHistogramSize(unsigned long newSize)
+{
+	if (m_Histogram != 0)
+		delete [] m_Histogram;
+
+	m_Histogram = new int [newSize];
+
+	m_HistoSize = newSize;
+
+	return 0;
+}
+
+//----------------------------------------------------------------------------
+unsigned long P564HistogramDescriptor::SetElement(int index, int value)
+{
+	if (index < 0 || index >= m_HistoSize)
+		return -1;
+
+	m_Histogram[index] = value;
+
+	return 0;
+}
+
+//----------------------------------------------------------------------------
+unsigned long P564HistogramDescriptor::GetElement(int index)
+{
+	if (index < 0 || index >= m_HistoSize)
+		return -1;
+
+	return m_Histogram[index];
+}
+
+//----------------------------------------------------------------------------
+unsigned long P564HistogramDescriptor::SetNormalizationFactor(unsigned long aRenorm)
+{
+	m_Normalization = aRenorm;
+
+	return 0;
+}
+
+//----------------------------------------------------------------------------
+unsigned long P564HistogramDescriptor::GetNormalizationFactor()
+{
+	return m_Normalization;
+}
+
+//----------------------------------------------------------------------------
+P564HistogramExtractionInterfaceABC *P564HistogramDescriptor::GetExtractionInterface(void)
+{ return &m_ExtractionInterface; }
+
+//=============================================================================
+P564LinearQuantizerDescriptor::P564LinearQuantizerDescriptor():
+m_ExtractionInterface(this),
+m_isProprietary(false)
+{
+	SetExposedInterface(&m_ExtractionInterface);
+}
+
+//----------------------------------------------------------------------------
+P564LinearQuantizerDescriptor::~P564LinearQuantizerDescriptor()
+{
+}
+
+//----------------------------------------------------------------------------
+const UUID& P564LinearQuantizerDescriptor::GetObjectID(void)
+{ return myID; }
+
+//----------------------------------------------------------------------------
+const char *P564LinearQuantizerDescriptor::GetName(void)
+{ return myName; }
+
+//----------------------------------------------------------------------------
+const UUID& P564LinearQuantizerDescriptor::GetValueID(void)
+{ return valID; }
+
+//----------------------------------------------------------------------------
+const char* P564LinearQuantizerDescriptor::GetValueName(void)
+{ return valName; }
+
+//----------------------------------------------------------------------------
+bool P564LinearQuantizerDescriptor::IsProprietary(void)
+{ return m_isProprietary; }
+
+//----------------------------------------------------------------------------
+unsigned long P564LinearQuantizerDescriptor::GetNumberChannels(int)
+{
+	return m_numberChannels;
+}
+
+//----------------------------------------------------------------------------
+unsigned long P564LinearQuantizerDescriptor::SetBinSizes(int channelIndex, int numberBins)
+{
+	if (channelIndex < 0 || channelIndex > m_numberChannels-1)
+		return -1;
+
+	m_QuantizerBins[channelIndex].resize(numberBins);
+
+	return 0;
+}
+
+//----------------------------------------------------------------------------
+unsigned long P564LinearQuantizerDescriptor::SetQuantTransition(int channel, int bin, int level)
+{
+	if (channel < 0 || channel > m_numberChannels-1)
+		return -1;
+
+	if (bin < 0 || bin > m_binSizes[channel]-1)
+		return -1;
+
+	m_QuantizerBins[channel][bin] = level;
+
+	return 0;
+}
+
+//----------------------------------------------------------------------------
+unsigned long P564LinearQuantizerDescriptor::SetNumberChannels(int newChannels)
+{
+	m_binSizes.resize(newChannels);
+	m_QuantizerBins.resize(newChannels);
+	m_numberChannels = newChannels;
+
+	return 0;
+}
+
+//----------------------------------------------------------------------------
+unsigned long P564LinearQuantizerDescriptor::EnterData(int *data, int ChannelIndex)
+{
+
+	// This function is probably incorrectly signed
+	return 0;
+}
+
+//----------------------------------------------------------------------------
+P564LinearQuantizerExtractionInterfaceABC *P564LinearQuantizerDescriptor::GetExtractionInterface(void)
+{ return &m_ExtractionInterface; }
+

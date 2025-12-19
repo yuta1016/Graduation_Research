@@ -1,0 +1,41 @@
+/* This file provides part of the content information and media          */
+/* quality rating information needed for instantiating Media Quality     */
+/* descriptor.                                                           */
+
+/* Who provides the rating information                                   */
+RatingSource		my_lab
+
+/* Where to find additional information about the picture quality rating */
+RatingInfoLocator	http://www.my-lab.com/mediaquality.html
+
+/* Perceived defects or degradations - next two parameters                */
+/*  - each allows one or multiple values                                  */
+/*  - the number of values must be consistent all the two parameters      */
+/*  - PerceptibleDefectsVisualL = the name of the video defects           */
+/*  - Href = the URN of the classification scheme for the video defects   */
+
+/* The types of visually perceptible errors observed in the video pictures*/
+PerceptibleDefectsVisualL	Blurring Edge_Noise
+
+/* Item ID's corresponding to these visually perceptible errors           */
+PerceptibleDefectsVisualHref urn:mpeg:MPEG-7VisualDefectsCS:2 urn:mpeg:MPEG-7VisualDefectsCS:3 
+
+/* How do the ratings map to the quality scale                            */
+/*  - PSNR, higher score means better quality                             */
+RatingStyle higherBetter
+
+/* Rated by human viewers or by a quality estimator/measurement model     */
+/*  - PSNR is an objective measurement                                    */
+RatingType  objective
+
+/* The quality rating methods                                             */
+/*  - One or combination of the following methods can be chosen:          */
+/*    PSNR_Y PSNR_U PSNR_V                                                */
+/*  - RatingSchemeL and RatingSchemeHref are allowed to have more         */
+/*    than one values. But their number of values must be euqal           */
+/*  - RatingSchemeL = Name of the Rating Scheme                           */
+/*  - Href = the URN of the Classification Scheme                         */
+
+RatingSchemeL	PSNR_Y PSNR_V
+
+RatingSchemeHref urn:mpeg:MPEG-7QualityRatingSchemeCS:2.3  urn:mpeg:MPEG-7QualityRatingSchemeCS:2.5 

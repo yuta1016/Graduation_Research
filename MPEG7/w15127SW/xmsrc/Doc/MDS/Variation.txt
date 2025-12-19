@@ -1,0 +1,18 @@
+Technique	Variation Description Scheme
+Document	MPEG-7 Committee Draft MDS, see Variation DS
+Name		John R. Smith (IBM T. J. Watson Research Center)
+EMail		jrsmith@watson.ibm.com
+Contact		jrsmith@watson.ibm.com
+Type		Application
+External Libraries	none
+Related Ds/DSs	none
+Used Ds/DSs	none
+Input		none
+Extraction	Generates a description of variations of a source audio-visual program
+Client Appl	Selects a variation of an audio-visual program
+Summary		The Variation DS describes variations of a source audio-visual program
+Strong Points	The Variation DS describes the relative fidelity of the different variations, along with their media attributes.  This allows selection of the best one for Universal Multimedia Access	 
+Limitations	none
+Known Problems	none
+Parameters	none
+END

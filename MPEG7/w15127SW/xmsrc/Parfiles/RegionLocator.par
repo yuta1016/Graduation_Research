@@ -1,0 +1,14 @@
+Application RegionLocatorClient
+
+ListFile Databases/RegionLocator.lst
+Query Databases/RegionLocator-query.lst
+
+/* For files with extension '.xml' DDL output is produced, otherwise binary output is produced */
+Bitstream Bitstreams/RegionLocator.xml
+
+Originals Databases/index.txt
+
+OutputFile results.txt
+EvolutionCost 0.001
+EndVertices 3
+UseBoxPoly 3

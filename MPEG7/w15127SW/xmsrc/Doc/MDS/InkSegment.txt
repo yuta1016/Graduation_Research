@@ -1,0 +1,25 @@
+Technique	InkSegment DS
+Document	MDS FCD (Guidelines Document), InkSegment Section
+Name	Zon-Yin Shae, IBM T. J. Watson Research Center
+EMail	zshae@us.ibm.com
+Type	Application Component
+External Libraries  N/A
+Related Ds/DSs	N/A
+Used Ds/DSs	InkMediaInfo DS, OrderedGroupDataMask DS
+Input	Electronic Ink document (.stk), Electronic Ink DataBase Representation (.bin), 
+	Database Code Book (.txt) 
+	The .stk file format:  The file is a text file tagged with 3 commands (=R, =T, and =S).
+	=R N * * * * * (N: number of strokes in the files)
+	=T (no use)
+	=S M ******    (M: number of points in this stroke)  	
+	The ink coordinate (X, Y) pairs are list between two =S tags.
+	The .ink file format: This is a binary file.  The first four bytes are the length of the
+	data byte in the file.  The rest of the data byte followed. 
+Extraction	Yes
+Client Appl	Search & Retrieval
+Summary		This program take electronic ink document file as input for extracting the description file and searching the database.
+Strong Points	N/A
+Limitations	N/A
+Known Problems	N/A
+Parameters	N/A
+END

@@ -1,0 +1,16 @@
+	<!--  Events  -->
+	<SemanticBase id="2ndperiod_ins-eve">
+		<AbstractionLevel dimension="1"/>
+		<Label> <FreeTerm> Second period </FreeTerm> </Label>
+		<MediaOccurrence>
+			<MediaLocator>
+				<MediaUri> http://www.mpeg7.org/game.mpg </MediaUri>
+				<MediaTime>
+					<MediaRelTimePoint timeBase="../MediaUri">
+						T0:71:56
+					</MediaRelTimePoint>
+					<MediaDuration> PT47M6S </MediaDuration>
+				</MediaTime>
+			</MediaLocator>
+		</MediaOccurrence>
+	</SemanticBase>

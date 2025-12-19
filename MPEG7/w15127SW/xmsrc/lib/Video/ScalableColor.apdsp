@@ -1,0 +1,20 @@
+# Begin Group "ScalableColor"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\ScalableColorCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\ScalableColorCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\ScalableColorSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\ScalableColorSAppl.h
+# End Source File
+# End Group

@@ -1,0 +1,12 @@
+# Begin Group "VideoText"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\VideoTextSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\VideoTextSAppl.h
+# End Source File
+# End Group

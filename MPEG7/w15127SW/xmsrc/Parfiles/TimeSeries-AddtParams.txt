@@ -1,0 +1,4 @@
+/*Frame_rate*/ /*TimeSeries_type(Regular/Irregular)*/ /*Time_increment_in_frames*/ /*Time_offset_in_frames*/ /*duration_in_frames*/
+25 Regular 12 0 50
+25 Regular 12 0 50
+25 Regular 12 0 50

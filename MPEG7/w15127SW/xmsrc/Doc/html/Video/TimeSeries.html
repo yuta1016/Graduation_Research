@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Video/TimeSeries</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for Video/TimeSeries</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>Time Series
+<tr><th>Document
+<td>MPEG-7 Visual (ISO/IEC 15938-3)
+<tr><th>Name
+<td>Takehiro FUJITA (Hitachi, Ltd.)
+<tr><th>EMail
+<td>fujita@crl.hitachi.co.jp
+<tr><th>Contact
+<td>fujita@crl.hitachi.co.jp
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>none
+<tr><th>Related Ds/DSs
+<td>Video Segment DS, Moving Object DS
+<tr><th>Used Ds/DSs
+<td>Color Layout D
+<tr><th>Input
+<td>MPEG-Video
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Search & Retrieval
+<tr><th>Summary
+<td>This is designed to assign a temporal series of visual descriptors into a video segment compactly. This can achieve image to video-frame matching and video-frames to video-frames matching functionalities. Two types of TimeSeries are available: RegularTimeSeries (with constant intervals) and IrregularTimeSeries (with various intervals). This library supports the extraction of both types and their matching (see ClientApplication as an example).
+<tr><th>Strong Points
+<td>High-speed video segment retrieval. Compact representation of a series of descriptors.
+<tr><th>Limitations
+<td>Compare descriptions of same TimeSeries type for matching.
+<tr><th>Known Problems
+<td>none
+<tr><th>Parameters
+<td>TimeIncr: a default interval between descriptors.
+</table>
+</body>
+</html>

@@ -1,0 +1,26 @@
+#!/bin/csh -f
+
+if ($1 == "") then
+  set DSP=XMLibB.dsp
+endif
+if ($1 == 0) then
+  set DSP=XMLibB_none.dsp
+endif
+if ($1 == 1) then
+  set DSP=XMLibB_all.dsp
+endif
+
+cat Start1.dsp >! $DSP
+cat Release.define >> $DSP
+
+find ../BA -name \*. -exec ../build/catdefine {} $1 \; >> $DSP
+
+cat Debug.define >>$DSP
+
+find ../BA -name \*. -exec ../build/catdefine {} $1 \; >> $DSP
+
+cat Start2.dsp >> $DSP
+cat BA1.dsp >>$DSP
+cat Tail.dsp >>$DSP
+
+

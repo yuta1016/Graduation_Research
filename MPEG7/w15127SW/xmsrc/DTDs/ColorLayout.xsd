@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ####################################################################### -->
+<!-- ISO/IEC 15938 Information Technology - Multimedia Content Description Interface  -->
+<!-- Part 3: Visual (ISO/IEC 15938-3)                                                                 -->
+<!-- ####################################################################### -->
+<schema targetNamespace="http://www.mpeg7.org/2001/MPEG-7_Schema"
+		xmlns="http://www.w3.org/2000/10/XMLSchema"
+		xmlns:mpeg7="http://www.mpeg7.org/2001/MPEG-7_Schema"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<!-- ########################################################## -->
+	<!-- Definition of Unsigned Integer Datatype                    -->
+	<!-- ########################################################## -->
+	<simpleType name="unsigned5">
+		<restriction base="nonNegativeInteger">
+			<minInclusive value="0"/>
+			<maxInclusive value="31"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="unsigned6">
+		<restriction base="nonNegativeInteger">
+			<minInclusive value="0"/>
+			<maxInclusive value="63"/>
+		</restriction>
+	</simpleType>
+
+	<!-- ###################################### -->
+	<!--  Additional datatypes due to XML Spy Bug  -->
+	<!-- ###################################### -->
+	<simpleType name="unsigned5Vector">
+		<list itemType="mpeg7:unsigned5"/>
+	</simpleType>
+
+	<!-- ################################### -->
+	<!--  Definition of MPEG-7 Base Types    	    -->
+	<!-- ################################### -->
+	<complexType name="Mpeg7RootType" abstract="true">
+		<complexContent>
+			<restriction base="anyType"/>
+		</complexContent>
+	</complexType>
+	<complexType name="DType" abstract="true">
+		<complexContent>
+			<extension base="mpeg7:Mpeg7RootType"/>
+		</complexContent>
+	</complexType>
+	<complexType name="VisualDType" abstract="true">
+		<complexContent>
+			<extension base="mpeg7:DType"/>
+		</complexContent>
+	</complexType>
+
+	<!-- Global element -->
+        <element name="ColorLayout" type="ColorLayoutType"/>
+
+
+	<!-- ################################################ -->
+	<!--   Definition of the ColorLayout D  -->
+	<!-- ################################################ -->
+	<complexType name="ColorLayoutType" final="#all">
+		<complexContent>
+			<extension base="mpeg7:VisualDType">
+				<sequence>
+					<element name="YCoeff">
+						<complexType>
+							<sequence>
+								<element name="YDCCoeff" type="mpeg7:unsigned6"/>
+								<element name="YACCoeff" type="mpeg7:acCoeffType" minOccurs="0"/>
+							</sequence>
+						</complexType>
+					</element>
+					<element name="CbCoeff">
+						<complexType>
+							<sequence>
+								<element name="CbDCCoeff" type="mpeg7:unsigned6"/>
+								<element name="CbACCoeff" type="mpeg7:acCoeffType" minOccurs="0"/>
+							</sequence>
+						</complexType>
+					</element>
+					<element name="CrCoeff">
+						<complexType>
+							<sequence>
+								<element name="CrDCCoeff" type="mpeg7:unsigned6"/>
+								<element name="CrACCoeff" type="mpeg7:acCoeffType" minOccurs="0"/>
+							</sequence>
+						</complexType>
+					</element>
+				</sequence>
+				<attribute name="numOfYCoeff" type="mpeg7:numberOfCoeffType" use="default" value="6"/>
+				<attribute name="numOfCCoeff" type="mpeg7:numberOfCoeffType" use="default" value="3"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	<!-- ################################################ -->
+	<!--   Definition of the numberOfCoeff Datatype  -->
+	<!-- ################################################ -->
+	<simpleType name="numberOfCoeffType">
+		<restriction base="positiveInteger">
+			<enumeration value="1"/>
+			<enumeration value="3"/>
+			<enumeration value="6"/>
+			<enumeration value="10"/>
+			<enumeration value="15"/>
+			<enumeration value="21"/>
+			<enumeration value="28"/>
+			<enumeration value="64"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="acCoeffType">
+		<!-- (XML Spy 3.5 Bug)
+		<restriction>
+			<simpleType>
+				<list itemType="mpeg7:unsigned5"/>
+			</simpleType>
+			<maxLength value="63"/>
+		</restriction>
+		-->
+		<restriction base="mpeg7:unsigned5Vector">
+			<maxLength value="63"/>
+		</restriction>
+	</simpleType>
+</schema>

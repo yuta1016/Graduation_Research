@@ -1,0 +1,20 @@
+# Begin Group "HomogeneousTexture"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\HomoTextureCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\HomoTextureCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\HomoTextureSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\HomoTextureSAppl.h
+# End Source File
+# End Group

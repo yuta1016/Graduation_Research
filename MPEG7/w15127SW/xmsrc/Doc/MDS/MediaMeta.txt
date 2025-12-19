@@ -1,0 +1,17 @@
+Technique	MediaMeta
+Document	W3624, Sect 8; W3705, Sect 8
+Name		Jim Errico, Sharp Labs of America; Peter van Beek, Sharp Labs of America
+EMail		jerrico@sharplabs.com, pvanbeek@sharplabs.com
+Type		Application
+External Libraries	xerces-c_1
+Related Ds/DSs	NA
+Used Ds/DSs	NA
+Input	XML files
+Extraction	NA
+Client Appl	Search & Retrieval 
+Summary		This component is the implementation of the search functionality for the Media Description Schemes.
+Strong Points	See the MetaMediaSyntax.doc description of supported search syntax.
+Limitations	NA
+Known Problems	NA
+Parameters	QueryString : /Mpeg7Main/ContentDescription/AudioVisualContent/AudioVisual/CreationInformation/Creation/Title:text_a
+END

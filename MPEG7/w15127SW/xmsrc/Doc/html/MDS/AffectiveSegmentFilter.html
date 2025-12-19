@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>MDS/AffectiveSegmentFilter</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for MDS/AffectiveSegmentFilter</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>AffectiveSegmentFiltering
+<tr><th>Document
+<td>M5481 Appendix-A 
+<tr><th>Name
+<td>Yoshiaki Shibata (Sony Corporation)
+<tr><th>EMail
+<td>yoshiaki.shibata@jp.sony.com
+<tr><th>Contact
+<td>yoshiaki.shibata@jp.sony.com
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>None
+<tr><th>Related Ds/DSs
+<td>Affective DS, AudioVisualSegment DS, Summary DS
+<tr><th>Used Ds/DSs
+<td>Affective DS, AudioVisualSegment DS, Summary DS
+<tr><th>Input
+<td>MPEG-7 based scene description of a movie (The Mask of Zorro) with "the Story Shape" affective score (sceneDescriptionWithAffectiveDS.xml)
+<tr><th>Extraction
+<td>NA
+<tr><th>Client Appl
+<td>Scene filtering application
+<tr><th>Summary
+<td>Using a scene description of a movie with "the story shape" as input, this application creates a (description of) preview-type movie summary based on the MPEG-7 Summary DS (trailerTypeVideoSummary.xml).
+<tr><th>Strong Points
+<td>NA
+<tr><th>Limitations
+<td>Because the affective data need to be manually extracted, only one input description is provided for this application.
+<tr><th>Known Problems
+<td>None
+<tr><th>Parameters
+<td>introductionEndSceneNum : indicates the number of end scene for "Ki" (Introduction)<br>
+developmentEndSceneNum: indicates the number of end scene for "Shou" (Development)<br>
+turnEndSceneNum: indicates the number of end scene for "Ten" (Turn)<br>
+theSemanticScoreThreshold: indicates the threshold for the Semantic Score<br>
+thePeakThreshold: indicates the threshold to determine peaks in the Semantic Graph.
+</table>
+</body>
+</html>

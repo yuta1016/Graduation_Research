@@ -1,0 +1,43 @@
+DecoderConfig
+SysProfLevel
+01
+SchemaRef
+InitialDesc
+addFragment
+/
+fragment_main.xml
+AccessUnit
+addFragment
+/Semantic/
+fragment_01.xml
+addFragment
+/Semantic/
+fragment_02.xml
+addFragment
+/Semantic/
+:beginPayload
+	<!--  Semantic places  -->
+	<SemanticBase id="soccerstadium_ins-pla">
+		<Label> <FreeTerm> Soccer stadium </FreeTerm> </Label>
+		<Place>
+			<Name xml:lang="en"> Santiago Bernabeu </Name>
+			<Country> es </Country>
+			<PostalAddress>
+				<AddressLine> Concha Espina s/n., Madrid </AddressLine>
+				<PostingIdentifier> E-28036 </PostingIdentifier>
+			</PostalAddress>
+		</Place>
+	</SemanticBase>
+:endPayload
+AccessUnit
+addFragment
+/Semantic/
+fragment_04.xml
+deleteFragment
+/Semantic/SemanticBase[4]/
+addFragment
+/Semantic/SemanticBase[2]/MediaOccurrence/
+fragment_07.xml
+replaceFragment
+/Semantic/SemanticBase[1]/MediaOccurrence/MediaLocator/MediaTime/MediaDuration/
+fragment_06.xml

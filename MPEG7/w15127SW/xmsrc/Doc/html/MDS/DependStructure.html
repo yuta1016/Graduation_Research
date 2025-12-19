@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>MDS/DependStructure</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for MDS/DependStructure</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>A search application for the XM to utilize the Dependency Structure datatype
+<tr><th>Document
+<td>MDS XM document (N3964) 7.2.6 DependencyStructure<br>
+N3966 Text of ISO/IEC 15938-5 FCD, see 7.2.5 DependencyStructure datatype
+<tr><th>Name
+<td>Masahiro Shibata (NHK Science and Technical Research Laboratories)
+<tr><th>Email
+<td>shibata@strl.nhk.or.jp
+<tr><th>Contact
+<td>shibata@strl.nhk.or.jp
+<tr><th>Type
+<td>Application 
+<tr><th>External Libraries
+<td>    NONE
+<tr><th>Related Ds/DSs
+<td>DependencyStructure datatype, TextAnnotation datatype
+<tr><th>Used Ds/DSs
+<td>DependencyStructure datatype, TextAnnotation datatype
+<tr><th>Input
+<td>V10-EN.xml (An XML file that includes descriptions of video segments in V10 from the MPEG-7 test set. These descriptions consist of TextAnnotations that include instances of FreeTextAnnotation and DependencyStructure datatypes.)
+<tr><th>Extraction
+<td>NA
+<tr><th>Client Appl
+<td>Retrieval Application
+<tr><th>Summary
+<td>The program calculates matching penalties between a query file (whose name is specified by "-q" parameter of the command line) and all the Dependency Structure descriptors in the Text Annotation DSs in the description files. The description files are listed up in the list file (whose name is specified by "-l" parameter of the command line.) The Text Annotation DSs are sorted based on the penalty values and the best-matched items (the number of which are limited by "-n" parameter of the command line) are displayed with the "id"s and free texts of the Text Annotation DSs.
+<tr><th>Strong Points
+<td>Traditionally, keywords are used when retrieving based on language. However, the Dependency Structure supports retrieval that specify inter-element relationships such as "A gives B to C" which cannot be expressed solely by Boolean operators (AND/OR) as employed in ordinary keyword retrieval.
+<tr><th>Limitations
+<td>Essentially, the Dependency Structure requires no special query language (retrieval can be performed with natural language sentences). However, this version needs a query file that includes a query written in the XML format.
+<tr><th>Known Problems
+<td>NONE
+<tr><th>Parameters
+<td>- Usage example<br>
+XMWinExe_dbg -a DependStructureClient -l list.txt -q query.xml -n 10<br>
+Where<br>
+  -a DependStructureClient Indication of the retrieval application<br>
+  -l list.txt Indication of a file that lists up description files as a DB for searching<br>
+  -q query.xml Indication of an XML file that includes a query in the format of the DependencyStructure datatype that can be matched with the descriptions in the DB.<br>
+  -n 10 Indication of a number of the best-matched items
+</table>
+</body>
+</html>

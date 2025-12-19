@@ -1,0 +1,12 @@
+# Begin Group "StateMember"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\StateMemberCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\StateMemberCAppl.h
+# End Source File
+# End Group

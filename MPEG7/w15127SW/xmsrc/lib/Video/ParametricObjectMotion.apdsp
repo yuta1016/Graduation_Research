@@ -1,0 +1,20 @@
+# Begin Group "ParametricObjectMotion"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\ParametricObjectMotionCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\ParametricObjectMotionCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\ParametricObjectMotionSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\ParametricObjectMotionSAppl.h
+# End Source File
+# End Group

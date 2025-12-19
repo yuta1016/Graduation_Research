@@ -1,0 +1,13 @@
+	<!--  Semantic places  -->
+	<SemanticBase id="soccerstadium_ins-pla">
+		<Label> <FreeTerm> Soccer stadium </FreeTerm> </Label>
+		<Place>
+			<Name xml:lang="en"> Santiago Bernabeu </Name>
+			<Country> es </Country>
+			<PostalAddress>
+				<AddressLine> Concha Espina s/n., Madrid </AddressLine>
+				<PostingIdentifier> E-28036 </PostingIdentifier>
+			</PostalAddress>
+		</Place>
+	</SemanticBase>
+

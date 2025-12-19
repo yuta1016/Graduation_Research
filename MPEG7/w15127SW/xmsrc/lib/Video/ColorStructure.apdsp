@@ -1,0 +1,20 @@
+# Begin Group "ColorStructure"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\ColorStructureCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\ColorStructureCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\ColorStructureSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\ColorStructureSAppl.h
+# End Source File
+# End Group

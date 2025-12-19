@@ -1,0 +1,12 @@
+# Begin Group "SequentialSummary"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\SequentialSummarySAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\SequentialSummarySAppl.h
+# End Source File
+# End Group

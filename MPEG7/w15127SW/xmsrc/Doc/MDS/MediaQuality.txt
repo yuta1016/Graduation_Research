@@ -1,0 +1,22 @@
+Technique			MediaQuality D
+Document			N3966 MPEG-7 MDS FCD
+Name				Jiuhuai Lu, Tektronix
+Email				jiuhuai.lu@ieee.org
+Contact				jiuhuai.lu@ieee.org
+Type				Application
+External Libraries		None
+Related Ds/DSs			None
+Used Ds/DSs			None
+Input				Two videos in ppm format (an impaired and a reference video), a parameter file.
+Extraction			YES, (PSNR) 
+Client Appl			Use MediaMetaClient for general media search based on quality rating values
+Summary				The media quality descriptor represents quality information of visual and audio content. The quality information can be subjective or objective. The information can serve as quality of service representation. This implementation provides quality information of a visual content using PSNR. Computation of PSNR is based on two video inputs. One of them contains artifacts and noise and the other serves as a reference. 
+Strong Points			Representation of media quality in production and delivery of media content.
+Limitations			None
+Known Problems			None
+Parameters			1. selected channels (Y,U,V) to measure PSNR
+				2. types of perceived errors
+				3. information on rating methods 
+				4. source 
+				5. other information (see the mediaquality_generic.par)
+END

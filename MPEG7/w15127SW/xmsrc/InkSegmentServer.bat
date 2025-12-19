@@ -1,0 +1,1 @@
+./XMMain.exe -a InkSegmentServer -l Databases/InkSegment.lst -b IncSegment.xml

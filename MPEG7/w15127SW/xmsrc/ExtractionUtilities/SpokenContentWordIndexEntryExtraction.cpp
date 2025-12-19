@@ -1,0 +1,350 @@
+//////////////////////////////////////////////////////////////////////////////
+//
+// This software module was originally developed by
+//
+// Jason Charlesworth
+// Canon Research Centre (Europe) Ltd.
+//
+// in the course of development of the MPEG-7 Experimentation Model.
+//
+// This software module is an implementation of a part of one or more MPEG-7
+// Experimentation Model tools as specified by the MPEG-7 Requirements.
+//
+// ISO/IEC gives users of MPEG-7 free license to this software module or
+// modifications thereof for use in hardware or software products claiming
+// conformance to MPEG-7.
+//
+// Those intending to use this software module in hardware or software products
+// are advised that its use may infringe existing patents. The original
+// developer of this software module and his/her company, the subsequent
+// editors and their companies, and ISO/IEC have no liability for use of this
+// software module or modifications thereof in an implementation.
+//
+// Copyright is not released for non MPEG-7 conforming products. The
+// organizations named above retain full right to use the code for their own
+// purpose, assign or donate the code to a third party and inhibit third parties
+// from using the code for non MPEG-7 conforming products.
+//
+// Copyright (c) 1998-1999.
+//
+// This notice must be included in all copies or derivative works.
+//
+// Applicable File Name:  SpokenContentWordIndexEntryExtraction.cpp
+//
+
+#include <stdio.h>
+#include <momusys.h>
+#include <inter.h>
+#include <intra.h>
+#include <fifo.h>
+#include "Descriptors/Descriptors.h"                     /* Naming Convention */
+#include "ExtractionUtilities/ExtractionUtilities.h"
+
+//static int initextractionwascalled=0;
+
+
+//=============================================================================
+	
+
+using namespace XM;
+
+
+const UUID SpokenContentWordIndexEntryExtractionInterface::myID = UUID("290d7900-db6e-11d2-affe-0080c7e1e76d");
+const char *SpokenContentWordIndexEntryExtractionInterface::myName = "Streaming Component Control Interface";
+
+const UUID SpokenContentWordIndexEntryExtractionTool::myID = UUID("bff2b340-db31-11d2-affe-0080c7e1e76d");
+const char *SpokenContentWordIndexEntryExtractionTool::myName = "SpokenContentWordIndexEntry Type Descriptor Extractor";
+
+const UUID SpokenContentWordIndexEntryExtractionInterfaceABC::myID = UUID();
+
+//=============================================================================
+SpokenContentWordIndexEntryExtractionInterfaceABC::SpokenContentWordIndexEntryExtractionInterfaceABC()
+{
+	SetInterfaceID(myID);
+}
+
+//=============================================================================
+SpokenContentWordIndexEntryExtractionInterface::SpokenContentWordIndexEntryExtractionInterface(
+  SpokenContentWordIndexEntryExtractionTool* aTool):
+m_ExtractionTool(aTool)
+{
+	SetInterfaceID(myID);
+}
+
+//----------------------------------------------------------------------------
+SpokenContentWordIndexEntryExtractionInterface::~SpokenContentWordIndexEntryExtractionInterface()
+{
+}
+
+//----------------------------------------------------------------------------
+const UUID& SpokenContentWordIndexEntryExtractionInterface::GetInterfaceID(void)
+{ return myID; }
+
+//----------------------------------------------------------------------------
+const char *SpokenContentWordIndexEntryExtractionInterface::GetName(void)
+{ return myName; }
+
+
+//----------------------------------------------------------------------------
+void SpokenContentWordIndexEntryExtractionInterface::destroy(void)
+{ delete m_ExtractionTool; }
+
+//----------------------------------------------------------------------------
+// This informs the extractor where the source data is coming from. Here
+// it's just a dom node
+int SpokenContentWordIndexEntryExtractionInterface::SetSourceMedia(GenericDS* media)
+{
+  return m_ExtractionTool->SetSourceMedia(media);
+}
+
+//----------------------------------------------------------------------------
+SpokenContentWordIndexEntryDescriptorInterfaceABC* SpokenContentWordIndexEntryExtractionInterface::
+GetDescriptorInterface(void)
+
+{
+  return m_ExtractionTool->GetDescriptorInterface();
+}
+
+//----------------------------------------------------------------------------
+int SpokenContentWordIndexEntryExtractionInterface::
+SetDescriptorInterface(SpokenContentWordIndexEntryDescriptorInterfaceABC
+		       *aSpokenContentWordIndexEntryDescriptorInterface)
+
+{
+  return m_ExtractionTool->SetDescriptorInterface(
+                                           aSpokenContentWordIndexEntryDescriptorInterface);
+}
+
+//----------------------------------------------------------------------------
+unsigned long SpokenContentWordIndexEntryExtractionInterface::InitExtracting(void)
+
+{
+  return(m_ExtractionTool->InitExtracting());
+}
+
+//----------------------------------------------------------------------------
+unsigned long SpokenContentWordIndexEntryExtractionInterface::StartExtracting(void)
+
+{
+  return m_ExtractionTool->StartExtracting();
+}
+
+//=============================================================================
+SpokenContentWordIndexEntryExtractionTool::SpokenContentWordIndexEntryExtractionTool():
+m_Interface(this),
+m_DescriptorInterface(NULL),
+m_Media(NULL)
+
+{
+	SetExposedInterface(&m_Interface);
+}
+
+//=============================================================================
+SpokenContentWordIndexEntryExtractionTool::
+SpokenContentWordIndexEntryExtractionTool(SpokenContentWordIndexEntryDescriptorInterfaceABC *SpokenContentWordIndexEntry):
+m_Interface(this),
+m_DescriptorInterface(NULL),
+m_Media(NULL)
+{
+#ifdef VERBOSE
+        fprintf(stderr,"Connect descriptor\n");
+#endif
+
+	// create descriptor if it does not exist*/
+	if(!SpokenContentWordIndexEntry) {
+	  SpokenContentWordIndexEntryDescriptor *descriptor = new SpokenContentWordIndexEntryDescriptor();
+	  SpokenContentWordIndexEntry=descriptor->GetInterface();
+	}
+
+	// connect Descritors with coding schemes*/
+	SetDescriptorInterface(SpokenContentWordIndexEntry);
+	SetExposedInterface(&m_Interface);
+}
+
+//----------------------------------------------------------------------------
+SpokenContentWordIndexEntryExtractionTool::~SpokenContentWordIndexEntryExtractionTool()
+{
+	// release descriptor*/
+	if (m_DescriptorInterface)
+	  m_DescriptorInterface->release();
+}
+
+//----------------------------------------------------------------------------
+bool SpokenContentWordIndexEntryExtractionTool::SupportsPush(void)
+{ return true; }
+//----------------------------------------------------------------------------
+bool SpokenContentWordIndexEntryExtractionTool::SupportsPull(void)
+{ return false; }
+
+//----------------------------------------------------------------------------
+// This informs the extractor where the source data is coming from. Here
+// it's just a dom node
+int SpokenContentWordIndexEntryExtractionTool::SetSourceMedia(GenericDS* media)
+{
+  if(media==NULL) return -1;
+  m_Media=media;
+  return 0;
+}
+
+
+//----------------------------------------------------------------------------
+SpokenContentWordIndexEntryDescriptorInterfaceABC* SpokenContentWordIndexEntryExtractionTool::
+GetDescriptorInterface(void)
+
+{
+        return m_DescriptorInterface;
+}
+
+//----------------------------------------------------------------------------
+int SpokenContentWordIndexEntryExtractionTool::
+SetDescriptorInterface(SpokenContentWordIndexEntryDescriptorInterfaceABC
+		       *aSpokenContentWordIndexEntryDescriptorInterface)
+
+{
+        /* check if new value is different from old value*/
+        if (m_DescriptorInterface == aSpokenContentWordIndexEntryDescriptorInterface) {
+          return 0;
+	}
+
+	/* release old interface*/
+	if (m_DescriptorInterface) m_DescriptorInterface->release();
+
+	/* add new interface*/
+	m_DescriptorInterface = aSpokenContentWordIndexEntryDescriptorInterface;
+	if (m_DescriptorInterface) {
+	  m_DescriptorInterface->addref();
+
+	  /* conect sub descriptors with sub coding schemes*/
+	  /* not available*/
+	}
+	else {
+	  /* if no descriptor, release also descriptor interfaces from
+	     sub extraction tools schemes*/
+	  /* not available*/
+	  return -1;
+	}
+	
+	
+	return 0;
+}
+
+//----------------------------------------------------------------------------
+// This initialises the extraction process. Bascially it should 
+// reset all storage etc. However, as this hasn't got any storage
+// it's a bit pointless.
+unsigned long SpokenContentWordIndexEntryExtractionTool::InitExtracting(void)
+
+{
+  return(0UL);
+}
+
+//----------------------------------------------------------------------------
+// This uses the m_Media pointer to extract the relevant data and put it
+// into the dummyXML
+unsigned long SpokenContentWordIndexEntryExtractionTool::StartExtracting(void)
+{
+  // To help debugging
+  const char* routine="SpokenContentWordIndexEntryExtractionTool::StartExtracting:";
+
+  // I do not understand this return value at all!
+  const unsigned long failure=(unsigned long)-1;
+
+  // First check that it's all correctly initialised
+  if (m_DescriptorInterface==NULL) {
+    fprintf(stderr,"%s Interface null\n",routine);
+    return(failure);
+  }
+
+  if(strcmp(m_DescriptorInterface->GetName(),
+	    "SpokenContentWordIndexEntry Type Description Interface") != 0) {
+    fprintf(stderr,"%s Name is wrong\n",routine);
+    return(failure);
+  }
+
+  if(m_Media==NULL) {
+    fprintf(stderr,"%s media is null\n",routine);
+    return(failure);
+  }
+
+  // ------------------------- Finished the checks -------------------------
+
+  // Get the key attribute
+  string key;
+  if(m_Media->GetTextAttribute(string("key"),key) != 0) {
+    fprintf(stderr,"%s omitted key\n",routine);
+    return(failure);
+  }
+  unsigned char nk=0;
+  char *b=new char[strlen(key.c_str())+1];
+  strcpy(b,key.c_str());
+  char *p=strtok(b," \n\t");
+  
+  while(p != NULL) {
+    nk++;
+    p=strtok(NULL," \n\t");
+  }
+  if(nk==0) {
+    fprintf(stderr,"%s key must contain at least one token\n",routine);
+    return(failure);
+  }
+
+  m_DescriptorInterface->SetNKey(nk);
+  nk=0;
+  strcpy(b,key.c_str());
+  p=strtok(b," \n\t");
+  while(p != NULL) {
+    long wordIndex = atol(p);
+    if(wordIndex == -1)
+      {
+	fprintf(stderr, "%s invalid word index in key \"%s\"\n.", routine, key.c_str());
+	return failure;
+      }
+    m_DescriptorInterface->SetKeyIndex(nk++, wordIndex);
+    //m_DescriptorInterface->SetKey(nk++,p);
+    p=strtok(NULL," \n\t");
+  }
+  delete [] b;
+
+  // Get the entries
+  vector<GenericDS> list=m_Media->GetAllDescriptions(string("IndexEntry"));
+  if(list.size()==0) {
+    fprintf(stderr,"%s must contain at least one entry\n",routine);
+    return(failure);
+  }
+
+  m_DescriptorInterface->SetNEntries(list.size());
+  for(unsigned int i=0;i<list.size();i++) {
+    SpokenContentIndexEntryDescriptor* theDescriptor;
+    SpokenContentIndexEntryDescriptorInterfaceABC* theDescriptorInterface;
+    SpokenContentIndexEntryExtractionTool* theExtractionTool;
+    SpokenContentIndexEntryExtractionInterfaceABC* theExtractionInterface;
+    theDescriptor = new SpokenContentIndexEntryDescriptor();
+    theDescriptor->addref();
+    theDescriptorInterface = theDescriptor->GetInterface();
+    theExtractionTool = new SpokenContentIndexEntryExtractionTool(NULL);
+    theExtractionInterface = theExtractionTool->GetInterface();
+
+    theExtractionInterface->SetSourceMedia(&(list[i]));
+    theExtractionInterface->SetDescriptorInterface(theDescriptorInterface);
+    theExtractionInterface->StartExtracting();
+
+    m_DescriptorInterface->SetEntry(i,theDescriptor);
+    theDescriptor->release();
+  }
+
+  // All done
+  return 0;
+}
+
+//----------------------------------------------------------------------------
+const UUID& SpokenContentWordIndexEntryExtractionTool::GetObjectID(void)
+{ return myID; }
+
+//----------------------------------------------------------------------------
+const char *SpokenContentWordIndexEntryExtractionTool::GetName(void)
+{ return myName; }
+
+//----------------------------------------------------------------------------
+SpokenContentWordIndexEntryExtractionInterfaceABC *SpokenContentWordIndexEntryExtractionTool::GetInterface(void)
+{ return &m_Interface; }
+

@@ -1,0 +1,23 @@
+#!/bin/csh
+
+echo mex B3_mex.c B3.c
+mex -O -output B3 B3_mex.c B3.c
+echo mex entropic_map_mex.c entropic_map.c
+mex -O -output entropic_map entropic_map_mex.c entropic_map.c
+echo mex fb_analysis.c
+mex -O fb_analysis.c
+echo mex loglambertw0.c
+mex -O loglambertw0.c
+echo mex loglambertwn1.c
+mex -O loglambertwn1.c
+echo mex mahalonobis.c
+mex -O mahalonobis.c
+echo mex vadd.c
+mex -O vadd.c
+echo mex viterbi_lite.c
+mex -O viterbi_lite.c
+echo mex vprod.c
+mex -O vprod.c
+echo mex wcov.c
+mex -O wcov.c
+

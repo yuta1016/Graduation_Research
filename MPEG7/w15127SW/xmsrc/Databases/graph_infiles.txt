@@ -1,0 +1,5 @@
+./testset/SegRelGph/data2.ras
+./testset/SegRelGph/data3.ras
+./testset/SegRelGph/data4.ras
+./testset/SegRelGph/data5.ras
+./testset/SegRelGph/data1.ras

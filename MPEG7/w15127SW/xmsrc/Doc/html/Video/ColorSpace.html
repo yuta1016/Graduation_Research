@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Video/ColorSpace</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for Video/ColorSpace</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>Color Space
+<tr><th>Document
+<td>MPEG-7 Visual (ISO/IEC 15938-3)
+<tr><th>Name
+<td>Jungmin Song, Heon Jun Kim
+<tr><th>EMail
+<td>jmsong73@mail.lgcit.com, hjk@lge.co.kr
+<tr><th>Contact
+<td>Jungmin Song
+<tr><th>Type
+<td>descriptor for dominant color descriptor
+<tr><th>External Libraries
+<td>none
+<tr><th>Related Ds/DSs
+<td>Dominant Color Descriptor and DS related to Dominant Color D.
+<tr><th>Used Ds/DSs
+<td>none
+<tr><th>Input
+<td>n/a
+<tr><th>Extraction
+<td>n/a but some color transform modules between different color space are provided in ColorSpaceExtraction.cpp
+<tr><th>Client Appl
+<td>n/a
+<tr><th>Summary
+<td>This descriptor specifies the color space that is to be used in other color based descriptions. In the current description, the following color spaces are supported:<br>
+- RGB<br>
+- YCbCr<br>
+- HSV<br>
+- HMMD<br>
+- Linear transformation matrix with reference to RGB<br>
+- Monochrome<br>
+Color transform modules provided in extraction (ColorSpaceExtraction.cpp) are as follows:<br>
+-YUV(YCbCr) to HSV<br>
+-YUV(YCbCr) to RGB<br>
+-RGB to YUV(YCbCr)<br>
+-RGB to HSV	<br>
+-HSV to RGB<br>
+-RGB to HMMD<br>
+-HMMD to RGB	 
+<tr><th>Limitations
+<td>Currently, the descriptor specifies only limited number of color spaces which are RGB, YCbCr, HSV, HMMD, Linear transformation matrix with reference to RGB and Monochrome.
+<tr><th>Known Problems
+<td>None.
+<tr><th>Parameters
+<td>color space index
+</table>
+</body>
+</html>

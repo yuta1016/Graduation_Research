@@ -1,0 +1,39 @@
+#!/bin/csh -f
+
+if ($1 == "") then
+  set DSP=XMLib.dsp
+endif
+if ($1 == 0) then
+  set DSP=XMLib_none.dsp
+endif
+if ($1 == 1) then
+  set DSP=XMLib_all.dsp
+endif
+
+
+cat Start1.dsp >! $DSP
+cat Release.define >> $DSP
+#cat ../BA/Version.define >> $DSP
+
+find ../BA -name \*. -exec ../build/catdefine {} $1 \; >> $DSP
+find ../Audio -name \*. -exec ../build/catdefine {} $1 \; >> $DSP
+find ../Video -name \*. -exec ../build/catdefine {} $1 \; >> $DSP
+find ../MDS -name \*. -exec ../build/catdefine {} $1 \; >> $DSP
+
+cat Debug.define >>$DSP
+
+find ../BA -name \*. -exec ../build/catdefine {} $1 \; >> $DSP
+find ../Audio -name \*. -exec ../build/catdefine {} $1 \; >> $DSP
+find ../Video -name \*. -exec ../build/catdefine {} $1 \; >> $DSP
+find ../MDS -name \*. -exec ../build/catdefine {} $1 \; >> $DSP
+
+cat Start2.dsp >> $DSP
+cat BA1.dsp >>$DSP
+test -f ../BA/XML. && cat ../BA/XML.dsp >> $DSP
+cat BA2.dsp >>$DSP
+find ../Audio -name \*. -exec ../build/catdsp {} $1 \; >> $DSP
+find ../Video -name \*. -exec ../build/catdsp {} $1 \; >> $DSP
+find ../MDS -name \*. -exec ../build/catdsp {} $1 \; >> $DSP
+cat Tail.dsp >>$DSP
+
+

@@ -1,0 +1,12 @@
+# Begin Group "AudioSignature"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\AudioSignatureCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\AudioSignatureCAppl.h
+# End Source File
+# End Group

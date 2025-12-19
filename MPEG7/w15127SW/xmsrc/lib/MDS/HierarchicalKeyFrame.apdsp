@@ -1,0 +1,12 @@
+# Begin Group "HierarchicalKeyFrame"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\HierarchicalKeyFrameSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\HierarchicalKeyFrameSAppl.h
+# End Source File
+# End Group

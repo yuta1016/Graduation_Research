@@ -1,0 +1,1 @@
+xmwinexe -a SequentialSummaryServer -b SequentialSummary.xml -l listfile.txt

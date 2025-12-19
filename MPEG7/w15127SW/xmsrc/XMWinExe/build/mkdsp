@@ -1,0 +1,44 @@
+#!/bin/csh -f
+
+if ($1 == "") then
+  set DSP=XMWinExe.dsp
+endif
+if ($1 == 0) then
+  set DSP=XMWinExe_none.dsp
+endif
+if ($1 == 1) then
+  set DSP=XMWinExe_all.dsp
+endif
+
+set DSP=XMWinExe.dsp
+cat Start1.dsp >! $DSP
+cat Release1.define >> $DSP
+cat ../../Version >> $DSP
+cat VersionClose.define >> $DSP
+
+find ../../lib/BA -name \*. -exec ../../lib/build/catdefine {} $1 \; >> $DSP
+
+cat Release2.define >> $DSP
+
+find ../../lib/BA -name \*. -exec ../../lib/build/catlink {} $1 \; >> $DSP
+find ../../lib/Audio -name \*. -exec ../../lib/build/catlink {} $1 \; >> $DSP
+find ../../lib/Video -name \*. -exec ../../lib/build/catlink {} $1 \; >> $DSP
+find ../../lib/MDS -name \*. -exec ../../lib/build/catlink {} $1 \; >> $DSP
+
+cat Debug1.define >>$DSP
+cat ../../Version >> $DSP
+cat VersionClose.define >> $DSP
+
+find ../../lib/BA -name \*. -exec ../../lib/build/catdefine {} $1 \; >> $DSP
+
+cat Debug2.define >>$DSP
+
+find ../../lib/BA -name \*. -exec ../../lib/build/catlink {} $1 \; >> $DSP
+find ../../lib/Audio -name \*. -exec ../../lib/build/catlink {} $1 \; >> $DSP
+find ../../lib/Video -name \*. -exec ../../lib/build/catlink {} $1 \; >> $DSP
+find ../../lib/MDS -name \*. -exec ../../lib/build/catlink {} $1 \; >> $DSP
+
+cat Start2.dsp >> $DSP
+
+
+

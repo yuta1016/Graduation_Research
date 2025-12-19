@@ -1,0 +1,17 @@
+Technique	VideoEditing	
+Document	W3841, Pisa, January 2001(Guidelines Document), all Chapters
+Name		Rosa Ruiloba, Laboratoire d'Informatique de Paris 6(LIP-6), UPMC
+EMail		rosa.ruiloba@lip6.fr
+Type		Application
+External Libraries	List here the list of external libraries (that are allowed to be used)
+Related Ds/DSs	VideoEditing DS, EditedVideoSegment DS, Transition DS, GradualEv		olution DS
+Used Ds/DSs	EditedVideoSegment DS, Transition DS, GradualEvolution DS. Summarization DS,ColorSpace DS.
+Input		MPEG-Video
+Extraction	Yes 
+Client Appl	NA
+Summary		This component generates a VideoEditing description. It describe the editing work realised on video. The video document described is segmented in shots and transitions described by EditedVideoSegment and Transition DS respectively. Transitions are detected by a method implemented by Charilaos Christopoulos and Yousri Abdeljaoued (used in SummaryServer) and classified by a fade detection algorithm.
+Strong Points	The application is based in a fade detection method developped by Philippe Joly, during a project leaded by Philippe Aigrain at the Institut de Recherche en Informatique de Toulouse (IRIT, UPS), [1]Aigrain, Philippe and Joly, Philippe, "The automatic real-time analysis of film editing and transition effects and its applications ", Computers and Graphis, 93-103, 18, 1, 1994.
+Limitations	Only video segments and transitions of the first editing level (shots and global transitions, see CD, part 5, chapter 11) are described by this application. The transitions detected are cuts and graduals. Only fades are classifified among the gradual transitions.
+Known Problems 	Errors in cuts detection.
+Parameters	ParameterNameInFile : Parfiles/VideoEditing.par 
+END

@@ -1,0 +1,37 @@
+Application	MotionTrajectoryClient
+
+/* default database file name*/
+ListFile	MotionTrajectoryInfiles.txt
+
+/* default bitstream file*/
+Bitstream	Bitstreams/MotionTrajectory.mp7
+
+/* default number of matches*/
+NoOfMatches 	20
+
+/* coding mode 0:DDL, 1:BiM, 2:Binary */
+CodingMode	2
+
+
+/* MotionTrajectory settings */
+
+/* Query Type:
+    0 -> 8 = query by trajectory similarity
+	0: comparing data at same instants, query on whole trajectory elements, equally
+	1: comparing data at same instants, query by positions only
+	2: comparing data at same instants, query by speed only
+	3: comparing data at same instants, query by acceleration only
+	4: aligning start instants, query on whole trajectory elements, equally
+	5: aligning start instants, query by positions only
+	6: aligning start instants, query by speed only
+	7: aligning start instants, query by acceleration only
+	8: query normalizing times
+    11 -> 14 = high-level query 
+	11: find objects moving to the right
+	11: find objects moving to the left
+	11: find objects moving up
+	11: find objects moving down
+*/
+    
+QueryType	8
+

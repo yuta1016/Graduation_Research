@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>MDS/SeqSummaryFastMovingStoryBoardExtractionTool</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for MDS/SeqSummaryFastMovingStoryBoardExtractionTool</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>SeqSummaryFastMovingStoryBoardExtractionTool
+<tr><th>Document
+<td>M6540 Guidelines for Fast Audio Moving Storyboard (Sequential Summary)<br>
+NXXX  MPEG-7 Working Draft MDS
+<tr><th>Name
+<td>Dulce Ponceleon, Jan Pieper, (IBM Almaden Research Center),  Gilad Cohen (IBM Haifa Research Center)
+<tr><th>Email
+<td>dulce@almaden.ibm.com, pieper@almaden.ibm.com, gilad@haifa.ibm.com
+<tr><th>Contact
+<td>dulce@almaden.ibm.com
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>NONE
+<tr><th>Related Ds/DSs
+<td>SummaryDS, HierarchicalSummaryDS, VariationDS, MosaicDS
+<tr><th>Used Ds/DSs
+<td>SequentialSummary KeyFrame Extraction Tool from Ericsson, Sweden.
+<tr><th>Input
+<td>MPEG-Video (foo.mpg), Wave Audio File (foo_audio_track.wav)
+<tr><th>Output
+<td>JPEG (foo_key100.jpg, foo_key250.jpg, etc), Wave Audio File (foo_speedup_audio_track.wav) 
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Transcoding Application
+<tr><th>Summary
+<td>This component generates a Fast Moving Storyboard(FMSB), i.e., a slide show synchronized with a speed up version of the audio track. It uses an implementation the Window Synchronized Overlap Add method (WSOLA). WSOLA is a time scaling algorithm that preserves pitch and timbre.
+<tr><th>Strong Points
+<td>Regarding speed, it work best when the input sampling rate is not higher than 11kHz As a by product, this component generates a SMIL file that can be played with VideoCharger(IBM), QuickTime, RealPlayer Sample SMIL file included in M6540.
+<tr><th>Limitations
+<td>The input audio file must be a)Linear PCM, compressed WAV audio is not supported b)16 bits per sample (signed). The output wave file is MONO, even if the input wave file is stereo. Processing time can be  very  long when the input sampling rate is high (44 Khz for example).
+<tr><th>Known Problems
+<td>At the moment the generated audio has a fixed speed up factor. An input parameter can be added to indicate the factor. The algorithm used can generated slowed down audio.
+<tr><th>Parameters
+<td>/* default application name*/<br>
+SeqSummaryFastMovingStoryBoardServer<br>
+/* default database file name*/<br>
+ListFile     fmsb.lst<br>
+/* default bitstream file*/<br>
+Bitstream    bbox.mp7<br>
+/* default number of matches*/<br>
+NoOfMatches 8<br>
+/* parameter file for summary extraction*/<br>
+/* enable storing and reading of intermediary results*/<br>
+RW_intermediary_results         1<br>
+/* enable denoising prior to feature point extarction*/<br>
+denoise      1<br>
+/*minimum geometrical distance between two feature points*/<br>
+min_featurepoint_distance       19<br>
+distance_threshold     0.25<br>
+/*time base*/<br>
+nnfraction   25<br>
+nn  1<br>
+/* acceleration noise*/<br>
+accelleration_noise 1500.0<br>
+/* update ratio for new values*/<br>
+alpha        0.01<br>
+/* measurment nois*/<br>
+measurement_noise      10.0<br>
+/* initial value for standard deviation*/<br>
+standard_deviation     0.4
+</table>
+</body>
+</html>

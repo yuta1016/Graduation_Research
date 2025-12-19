@@ -1,0 +1,28 @@
+/* default application name*/
+Application	HomogeneousTextureClient
+
+/* default database file name*/
+ListFile	Databases/HT_Test.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/HT_Test.mp7
+
+/* default number of matches*/
+NoOfMatches     10
+
+/* select coding mode*/
+CodingMode  0 /* 0= DDL, 2= Binary*/
+
+
+/* additional parameters*/
+
+/* default layer  */
+/* (0:base-layer 32-components  1:full-layer 62components) */
+layer   1        
+
+/* default matching option for Client */
+/* n: normal matching*/ 
+/* r:rotation invariant matching */
+/* s:scale invariant matching */
+/* rs:rotation and scale invariant matchin */
+option  n    

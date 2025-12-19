@@ -1,0 +1,1 @@
+xmwinexe -a StateTransitionModelServer -b stmodel/stmodel -l stmodel/scores.txt

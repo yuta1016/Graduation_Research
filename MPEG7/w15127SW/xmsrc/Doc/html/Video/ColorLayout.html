@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Video/ColorLayout</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for Video/ColorLayout</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>Color Layout
+<tr><th>Document
+<td>MPEG-7 Visual (ISO/IEC 15938-3)
+<tr><th>Name
+<td>Akio YAMADA (NEC Corp.)
+<tr><th>EMail
+<td>a-yamada@da.jp.nec.com
+<tr><th>Contact
+<td>a-yamada@da.jp.nec.com
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>none
+<tr><th>Related Ds/DSs
+<td>Still Region DS, Video Segment DS, Moving Object Ds, TimeSeries DS
+<tr><th>Used Ds/DSs
+<td>none
+<tr><th>Input
+<td>Images
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Search & Retrieval
+<tr><th>Summary
+<td>Color Layout is designed to achieve very high-speed retrieval of images or video frames based on the spatial distribution of color. This library supports both extraction (rectangular and arbitrary shaped) and matching (see ClientApplication as an example). To implement the video segment retrieval functionality, this descriptor should be contained in TimeSeries DS (see TimeSeries DS).
+<tr><th>Strong Points
+<td>High-speed image and video segment retrieval.Very compact representation of annotation data.(request only 8 Bytes for each image)
+<tr><th>Limitations
+<td>None. The components had been tested using over 50,000 digital photos.
+<tr><th>Known Problems
+<td>none
+<tr><th>Parameters
+<td>Color Layout descriptor supports scalable representation of spatial distribution of color. If you wish to change the number of coefficients, you should directly modify the parameters of StartExtraction()
+</table>
+</body>
+</html>

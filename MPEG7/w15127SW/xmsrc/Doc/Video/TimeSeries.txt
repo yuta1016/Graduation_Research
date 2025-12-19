@@ -1,0 +1,18 @@
+Technique	Time Series
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name		Takehiro FUJITA (Hitachi, Ltd.)
+EMail		fujita@crl.hitachi.co.jp
+Contact		fujita@crl.hitachi.co.jp
+Type		Application
+External Libraries	none
+Related Ds/DSs	Video Segment DS, Moving Object DS
+Used Ds/DSs	Color Layout D
+Input		MPEG-Video
+Extraction	Yes
+Client Appl	Search & Retrieval
+Summary		This is designed to assign a temporal series of visual descriptors into a video segment compactly. This can achieve image to video-frame matching and video-frames to video-frames matching functionalities. Two types of TimeSeries are available: RegularTimeSeries (with constant intervals) and IrregularTimeSeries (with various intervals). This library supports the extraction of both types and their matching (see ClientApplication as an example).
+Strong Points	High-speed video segment retrieval. Compact representation of a series of descriptors.
+Limitations	Compare descriptions of same TimeSeries type for matching.
+Known Problems	none
+Parameters	AddtParamListFile: additional parameters for each video including frame ratem time interval, time offset and duration. DescriptorID: the ID of visual descriptor (only Color Layout is supported (DescriptorID=2) 
+END

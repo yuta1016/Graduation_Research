@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.mpeg7.org/2001/MPEG-7_Schema" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:mpeg7="http://www.mpeg7.org/2001/MPEG-7_Schema" xmlns="http://www.w3.org/2000/10/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<complexType name="AudioLLDScalarType">
+		<complexContent>
+			<element name="Scalar" type="xsd:float"/>
+		</complexContent>
+	</complexType>
+	<complexType name="TimbreDescriptorType" abstract="true">
+			<extension base="mpeg7:AudioLLDScalarType">
+			<!--	<attribute name="confidence" type="mpeg7:zeroToOneType"/> -->
+			</extension>
+	</complexType>
+	<!-- %Strip END-->
+	<!-- %Strip LogAttackTime.txt -->
+	<!-- %Strip BLOCK Definition of LogAttackTimeType -->
+	<complexType name="LogAttackTimeType">
+		<complexContent>
+			<extension base="mpeg7:TimbreDescriptorType"/> 
+			<!-- 
+				<element name="confidence" type="xsd:float" />
+				<element name="value" type="xsd:float" /> 
+			-->
+		</complexContent>
+	</complexType>
+	<!-- %Strip END-->
+	<!-- %Strip HarmonicSpectralCentroid.txt -->
+	<!-- %Strip BLOCK Definition of HarmonicSpectralCentroidType -->
+	<complexType name="HarmonicSpectralCentroidType">
+			<extension base="mpeg7:TimbreDescriptorType"/>
+	</complexType>
+	<!-- %Strip END-->
+	<!-- %Strip HarmonicSpectralDeviation.txt -->
+	<!-- %Strip BLOCK Definition of HarmonicSpectralDeviationType -->
+	<complexType name="HarmonicSpectralDeviationType">
+		<complexContent>
+			<extension base="mpeg7:TimbreDescriptorType"/>
+		</complexContent>
+	</complexType>
+	<!-- %Strip END-->
+	<!-- %Strip HarmonicSpectralSpread.txt -->
+	<!-- %Strip BLOCK Definition of HarmonicSpectralSpreadType -->
+	<complexType name="HarmonicSpectralSpreadType">
+		<complexContent>
+			<extension base="mpeg7:TimbreDescriptorType"/>
+		</complexContent>
+	</complexType>
+	<!-- %Strip END-->
+	<!-- %Strip HarmonicSpectralVariation.txt -->
+	<!-- %Strip BLOCK Definition of HarmonicSpectralVariationType -->
+	<complexType name="HarmonicSpectralVariationType">
+		<complexContent>
+			<extension base="mpeg7:TimbreDescriptorType"/>
+		</complexContent>
+	</complexType>
+	<!-- %Strip END-->
+	<!-- %Strip SpectralCentroid.txt -->
+	<!-- %Strip BLOCK Definition of SpectralCentroidType -->
+	<complexType name="SpectralCentroidType">
+		<complexContent>
+			<extension base="mpeg7:TimbreDescriptorType"/>
+		</complexContent>
+	</complexType>
+	<!-- %Strip END-->
+	<!-- %Strip TemporalCentroid.txt -->
+	<!-- %Strip BLOCK Definition of TemporalCentroidType -->
+	<complexType name="TemporalCentroidType">
+		<complexContent>
+			<extension base="mpeg7:TimbreDescriptorType"/>
+		</complexContent>
+	</complexType>
+	<!-- %Strip END-->
+	<!-- %Strip InstrumentTimbre.txt -->
+	<!-- %Strip BLOCK Definition of InstrumentTimbreType-->
+	<complexType name="InstrumentTimbreType">
+					<element name="LogAttackTime" type="mpeg7:LogAttackTimeType" minOccurs="0"/>
+					<element name="HarmonicSpectralCentroid" type="mpeg7:HarmonicSpectralCentroidType" minOccurs="0"/>
+					<element name="HarmonicSpectralDeviation" type="mpeg7:HarmonicSpectralDeviationType" minOccurs="0"/>
+					<element name="HarmonicSpectralSpread" type="mpeg7:HarmonicSpectralSpreadType" minOccurs="0"/>
+					<element name="HarmonicSpectralVariation" type="mpeg7:HarmonicSpectralVariationType" minOccurs="0"/>
+					<element name="SpectralCentroid" type="mpeg7:SpectralCentroidType" minOccurs="0"/>
+					<element name="TemporalCentroid" type="mpeg7:TemporalCentroidType" minOccurs="0"/>
+	</complexType>
+	<!-- %Strip END-->
+	<!-- %Strip HarmonicInstrumentTimbre.txt -->
+	<!-- %Strip BLOCK Definition of HarmonicInstrumentTimbreType -->
+	<complexType name="HarmonicInstrumentTimbreType">
+					<element name="LogAttackTime" type="mpeg7:LogAttackTimeType"/>
+					<element name="HarmonicSpectralCentroid" type="mpeg7:HarmonicSpectralCentroidType"/>
+					<element name="HarmonicSpectralDeviation" type="mpeg7:HarmonicSpectralDeviationType"/>
+					<element name="HarmonicSpectralSpread" type="mpeg7:HarmonicSpectralSpreadType"/>
+					<element name="HarmonicSpectralVariation" type="mpeg7:HarmonicSpectralVariationType"/>
+	</complexType>
+	<!-- %Strip END-->
+	<!-- %Strip PercussiveInstrumentTimbre.txt -->
+	<!-- %Strip BLOCK Definition of PercussiveInstrumentTimbreType -->
+	<complexType name="PercussiveInstrumentTimbreType">
+					<element name="LogAttackTime" type="mpeg7:LogAttackTimeType"/>
+					<element name="SpectralCentroid" type="mpeg7:SpectralCentroidType"/>
+					<element name="TemporalCentroid" type="mpeg7:TemporalCentroidType"/>
+	</complexType>
+	<!-- %Strip END-->
+</schema>

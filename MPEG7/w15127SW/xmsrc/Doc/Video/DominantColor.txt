@@ -1,0 +1,17 @@
+Technique	Dominant Color
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name		Jungmin Song, Heon Jun Kim, Leszek Cieplinski, Prof. Manjunath 
+EMail		jmsong73@mail.lgcit.com, hjk@lge.co.kr, Leszek.Cieplinski@vil.ite.mee.com, manj@ece.ucsb.edu
+Contact		Jungmin Song(general), Leszek Cieplinski(color variance), Prof. Manjunath(dominant color extraction and search algorithm) 
+Type		application
+External Libraries	none
+Related Ds/DSs	Color Space Descriptor, Color Quantization Descriptor, Related DS's are not defined fully yet.
+Used Ds/DSs	Color Space Descriptor, Color Quantization Descriptor
+Input		Images
+Extraction	Yes
+Client Appl	Search, Retrieval, Browsing
+Summary		The dominant color descriptor is useful for image and video retrieval. It targets content-based retrieval for color, either for the whole image or for any arbitrary shaped region (rectangular or irregular). It is a very compact descriptor, requiring less than 6-8 colors per region. Since colors are not pre-quantized as in the histogram type color descriptors, the representation is more accurate. To accomplish high accuracy in retrieval, Spatial Coherency and/or Color Variance can be utilized. It is intended for applications that use object based representations (objects or regions in an image).	 
+Limitations	The maximum allowed number of dominant colors is 8.
+Known Problems	None.
+Parameters	color space and color quantization parameters
+END

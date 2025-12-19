@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>MDS/Segment</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for MDS/Segment</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>Segment DSs (VideoSegment DS, MovingRegion DS, and StillRegion DS)
+<tr><th>Document
+<td>MPEG-7 Committee Draft  MDS, see Segment DSs (VideoSegment DS, MovingRegion DS,<br>
+and StillRegion DS)
+<tr><th>Name
+<td>Ana Belen Benitez, Columbia University
+<tr><th>Contact
+<td>ana@ee.columbia.edu
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>None
+<tr><th>Related Ds/DSs
+<td>Visual Descriptors and Description Schemes, SegmentRelation DSs, Segment attributes
+<tr><th>Used Ds/DSs
+<td>None
+<tr><th>Input
+<td>The input file contains a list of images with temporal and spatial information<br>
+for a set of segments. Segments can be video segments (VideoSegment), still regions<br>
+(StillRegion), or moving regions (MovingRegion) that can have associated any<br>
+number of frames, frames + masks, and frame + masks, respectively. Each image<br>
+contains that information as follows. The x-coordinate of the image represents<br>
+the frame number; the y-coordinate represents the segment id; and the gray scale<br>
+information provides the mask id for the segment in that frame.<br>
+The location of the original frames and masks are obtai	ned as follows:<br>
+"[input image].dir/f_[frame number].ras"<br>
+"[input image].dir/f_[mask id][frame number].ras"<br>
+respectively.<br>
+Together with this image, each input has a text file describing the hierarchical<br>
+relationship between these segments, whose location is "[input image].dir/text.txt"<br>
+and whose format is the following:<br>
+[Segment id] [Segment type] [Number of children] [children Id's] [Decomposition type]<br>
+[gaps?] [overlaps?] [Number of annotations] [Annotation's]<br>
+where the decomposition and annotation information are optional.<br>
+An example of a well formed input file with three still regions follows:<br>
+1 StillRegion 2 2 3 spatial no yes 1 elephant<br>
+2 StillRegion 0<br>
+3 StillRegion 0
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Search & RetrievalSummary<br>
+This code generates descriptions of segment trees. This code also allows<br>
+to retrieve the segment descriptions based on the the minimum distance between<br>
+pairs of segments in the segment trees.
+<tr><th>Strong Points
+<td>-
+<tr><th>Limitations
+<td>None
+<tr><th>Parameters
+<td>None
+</table>
+</body>
+</html>

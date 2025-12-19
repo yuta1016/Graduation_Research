@@ -1,0 +1,19 @@
+Technique	RegionLocator
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name		Joerg Heuer, Siemens AG
+EMail		Joerg.Heuer@mchp.siemens.de 
+Contact		Joerg.Heuer@mchp.siemens.de
+Type		Application
+External Libraries	NONE
+Related Ds/DSs	NONE
+Used Ds/DSs	NONE
+Input		Images, parameter file (see ParamRegLocS, ParamRegLocC)
+Extraction	Yes
+Client Appl	Localization 
+Summary		This component encodes a polygonal contour representation for localization of objects. The precision of the encoding can be adjusted to the particular needs. There is no other function related to this component. 
+Strong Points	NONE
+Limitations	NONE
+Known Problems	NONE
+Parameters	NONE
+END
+

@@ -1,0 +1,20 @@
+# Begin Group "DummyType"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\DummyTypeCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\DummyTypeCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\DummyTypeSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\DummyTypeSAppl.h
+# End Source File
+# End Group

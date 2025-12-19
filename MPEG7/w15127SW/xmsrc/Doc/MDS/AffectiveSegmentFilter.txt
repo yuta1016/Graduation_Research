@@ -1,0 +1,22 @@
+Technique	AffectiveSegmentFiltering
+Document	M5481 Appendix-A 
+Name	Yoshiaki Shibata (Sony Corporation)
+EMail	yoshiaki.shibata@jp.sony.com
+Contact	yoshiaki.shibata@jp.sony.com
+Type	Application
+External Libraries	None
+Related Ds/DSs	Affective DS, AudioVisualSegment DS, Summary DS
+Used Ds/DSs	Affective DS, AudioVisualSegment DS, Summary DS
+Input	MPEG-7 based scene description of a movie (The Mask of Zorro) with "the Story Shape" affective score (sceneDescriptionWithAffectiveDS.xml)
+Extraction	NA
+Client Appl	Scene filtering application
+Summary	Using a scene description of a movie with "the story shape" as input, this application creates a (description of) preview-type movie summary based on the MPEG-7 Summary DS (trailerTypeVideoSummary.xml).
+Strong Points	NA
+Limitations	Because the affective data need to be manually extracted, only one input description is provided for this application.
+Known Problems	None
+Parameters	introductionEndSceneNum : indicates the number of end scene for "Ki" (Introduction)
+	developmentEndSceneNum: indicates the number of end scene for "Shou" (Development)
+	turnEndSceneNum: indicates the number of end scene for "Ten" (Turn)
+	theSemanticScoreThreshold: indicates the threshold for the Semantic Score
+	thePeakThreshold: indicates the threshold to determine peaks in the Semantic Graph.
+END

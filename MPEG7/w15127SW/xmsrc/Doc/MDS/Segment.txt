@@ -1,0 +1,39 @@
+Technique	Segment DSs (VideoSegment DS, MovingRegion DS, and StillRegion DS)
+Document	MPEG-7 Committee Draft  MDS, see Segment DSs (VideoSegment DS, MovingRegion DS,
+ 		and StillRegion DS)
+Name		Ana Belen Benitez, Columbia University
+Contact		ana@ee.columbia.edu
+Type		Application
+External Libraries	None
+Related Ds/DSs	Visual Descriptors and Description Schemes, SegmentRelation DSs, Segment attributes
+Used Ds/DSs	None
+Input		The input file contains a list of images with temporal and spatial information
+ 		for a set of segments. Segments can be video segments (VideoSegment), still regions
+		(StillRegion), or moving regions (MovingRegion) that can have associated any
+ 		number of frames, frames + masks, and frame + masks, respectively. Each image
+ 		contains that information as follows. The x-coordinate of the image represents
+ 		the frame number; the y-coordinate represents the segment id; and the gray scale
+ 		information provides the mask id for the segment in that frame.
+		The location of the original frames and masks are obtai	ned as follows:
+		"[input image].dir/f_[frame number].ras"
+		"[input image].dir/f_[mask id][frame number].ras"
+		respectively.
+		Together with this image, each input has a text file describing the hierarchical
+ 		relationship between these segments, whose location is "[input image].dir/text.txt"
+ 		and whose format is the following:
+		[Segment id] [Segment type] [Number of children] [children Id's] [Decomposition type]
+ 		[gaps?] [overlaps?] [Number of annotations] [Annotation's]
+		where the decomposition and annotation information are optional.
+		An example of a well formed input file with three still regions follows:
+		1 StillRegion 2 2 3 spatial no yes 1 elephant
+		2 StillRegion 0
+		3 StillRegion 0
+Extraction	Yes
+Client Appl	Search & RetrievalSummary
+		This code generates descriptions of segment trees. This code also allows
+ 		to retrieve the segment descriptions based on the the minimum distance between
+		pairs of segments in the segment trees.
+Strong Points	-
+Limitations	None
+Parameters	None
+END

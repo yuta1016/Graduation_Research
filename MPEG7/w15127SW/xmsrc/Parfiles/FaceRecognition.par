@@ -1,0 +1,17 @@
+/* default application name*/
+Application FaceRecognitionClient
+
+/* default database file name*/
+ListFile    Databases/facelist.lst
+
+/* default bitstream file*/
+Bitstream   Bitstreams/FaceRecognition.mp7
+
+/* default face histogram file*/
+FaceHist   Parfiles/FaceHist.raw
+
+/* default number of matches*/
+NoOfMatches 8
+
+/* Coding Mode DDL: 0 Binary: 2*/
+CodingMode 2

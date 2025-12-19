@@ -1,0 +1,130 @@
+<!--***************************************************************************-->
+<!--                                                                           -->
+<!-- MDS3.0_PointOfView.dtd                                                    -->
+<!-- (derived from MEI_MDS.dtd in M5784 ,MDS.dtd in M5821, pointOfView.dtd     -->
+<!--  in M6027)                                                                -->
+<!--                                                                           -->
+<!-- This document is the XML document type definition (DTD) of                -->
+<!-- MPEG-7 Multimedia Description Schemes for the PointOfView DS and User     -->
+<!-- Preference DS validation Core Experiment(CE) and eXperimental Model(XM).  -->
+<!-- This is written based on Text of WD of 15938-5: MPEG-7 Multimedia         -->
+<!-- Description Schemes WD (Version 3.0)                                      -->
+<!-- This document supports the part of MPEG-7 Multimedia DS which are         -->
+<!-- VideoSegment, PointOfView, MediaTime, MediaTimePoint and MediaDuration.   -->
+<!--                                                                           -->
+<!-- Update: 2000/06/28                                                        -->
+<!--  *Delete element                                                          -->
+<!--   GenericAV: Structure                                                    -->
+<!--  *Delete attribute                                                        -->
+<!--   VideoSegment: TemporalConnectivity                                      -->
+<!--   PointOfView: reliability                                                -->
+<!--  *Rename element                                                          -->
+<!--   VideoSegment: Time -> MediaTime                                         -->
+<!--  *Change whole syntax                                                     -->
+<!--   MediaTime: speficic tags -> based on ISO8601                            -->
+<!--  *Change Order                                                            -->
+<!--   VideoSegment: SegmentDecomposition and PointOfView                      -->
+<!--  *Add default value                                                       -->
+<!--   SegmentDecomposition: "false" in Overlap/Gap                            -->
+<!-- Update: 2000/05/23                                                        -->
+<!-- Create: 2000/03/03                                                        -->
+<!--                                                                           -->
+<!-- Authors:                                                                  -->
+<!--    Koichi Emura <emura@mrit.mei.co.jp>                                    -->
+<!--    Toshihiko Munetsugu <mune@mrit.mei.co.jp>                              -->
+<!--    Matsushita Electric Industrial Co., Ltd.                               -->
+<!--    Matsushita Research Institute Tokyo, Inc.                              -->
+<!--                                                                           -->
+<!--***************************************************************************-->
+<!-- ################################################ -->
+<!-- Definition of the root wrapper(dummy)            -->
+<!-- ################################################ -->
+<!ELEMENT GenericAV (VideoSegment*)>
+<!ATTLIST GenericAV
+	id ID #REQUIRED
+	name CDATA #REQUIRED
+>
+<!-- ################################################ -->
+<!-- Definition of the VideoSegment DS                -->
+<!-- ################################################ -->
+<!ELEMENT VideoSegment (PointOfView*, SegmentDecomposition*, MediaTime)>
+<!ATTLIST VideoSegment
+	id ID #REQUIRED
+	href CDATA #IMPLIED
+	idref CDATA #IMPLIED
+>
+<!-- ################################################ -->
+<!-- Definition of the SegmentDecomposition DS        -->
+<!-- ################################################ -->
+<!-- Definition of datatype of the decomposition      -->
+<!ENTITY % DecompositionDataTypes "(spatial|temporal|spatio-temporal|MediaSource)">
+<!-- Definition of the decomposition                  -->
+<!ELEMENT SegmentDecomposition (VideoSegment+)>
+<!ATTLIST SegmentDecomposition
+	DecompositionType %DecompositionDataTypes; #REQUIRED
+	Overlap (true | false) "false"
+	Gap (true | false) "false"
+>
+<!-- ############################################## -->
+<!--  Definition of the PointOfView DS              -->
+<!-- ############################################## -->
+<!-- definition of Value D -->
+<!ELEMENT Value (#PCDATA)>
+<!ATTLIST Value
+	id ID #IMPLIED
+>
+<!-- main definition of the PointOfView DS -->
+<!ELEMENT PointOfView (Info?, Value+)>
+<!ATTLIST PointOfView
+	id ID #IMPLIED
+	ViewPoint CDATA #REQUIRED
+>
+<!-- ##################################### -->
+<!--  Definition of the Info DS            -->
+<!-- ##################################### -->
+<!ELEMENT Info (Who? | WhatObject? | WhatAction? | Where? | When? | Why? | TextAnnotation?)*>
+<!ELEMENT Who (#PCDATA)>
+<!ELEMENT WhatObject (#PCDATA)>
+<!ELEMENT WhatAction (#PCDATA)>
+<!ELEMENT Where (#PCDATA)>
+<!ELEMENT When (#PCDATA)>
+<!ELEMENT Why (#PCDATA)>
+<!ELEMENT TextAnnotation (#PCDATA)>
+<!ATTLIST Info
+	id ID #IMPLIED
+	lang CDATA #IMPLIED
+>
+<!-- ################################################ -->
+<!-- Definition of the MediaTime DS                   -->
+<!-- ################################################ -->
+<!ELEMENT MediaTime ((MediaTimePoint | MediaRelTimePoint | MediaRelIncrTimePoint), (MediaDuration | MediaIncrDuration))>
+<!-- ################################################ -->
+<!--   Definition of the MediaTimePoint D             -->
+<!-- ################################################ -->
+<!ELEMENT MediaTimePoint (#PCDATA)>
+<!-- ################################################ -->
+<!--   Definition of the MediaRelTimePoint D          -->
+<!-- ################################################ -->
+<!ELEMENT MediaRelTimePoint (#PCDATA)>
+<!ATTLIST MediaRelTimePoint
+	TimeBase CDATA #IMPLIED
+>
+<!-- ################################################ -->
+<!--   Definition of the MediaRelIncrTimePoint D      -->
+<!-- ################################################ -->
+<!ELEMENT MediaRelIncrTimePoint (#PCDATA)>
+<!ATTLIST MediaRelIncrTimePoint
+	timeunit CDATA #IMPLIED
+	TimeBase CDATA #IMPLIED
+>
+<!-- ################################################ -->
+<!--   Definition of the the MediaDuration D          -->
+<!-- ################################################ -->
+<!ELEMENT MediaDuration (#PCDATA)>
+<!-- ################################################ -->
+<!--   Definition of the MediaIncrDuration D          -->
+<!-- ################################################ -->
+<!ELEMENT MediaIncrDuration (#PCDATA)>
+<!ATTLIST MediaIncrDuration
+	timeunit CDATA #IMPLIED
+>

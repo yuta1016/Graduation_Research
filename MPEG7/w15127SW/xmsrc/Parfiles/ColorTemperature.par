@@ -1,0 +1,13 @@
+Application CTBrowsingClient
+
+/* default database file name*/
+ListFile	Databases/images.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/ColorTemperature.mp7
+
+/* default number of matches*/
+NoOfMatches 10
+
+/* coding mode */
+CodingMode	0

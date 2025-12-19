@@ -1,0 +1,1 @@
+XMWinExe.exe -p Parfiles/ParametricMotion.par -q Databases/ParametricMotion-query.lst

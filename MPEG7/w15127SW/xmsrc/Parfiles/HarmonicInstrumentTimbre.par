@@ -1,0 +1,7 @@
+/* HarmonicHarmonicInstrumentTimbre */
+/* Weight for distance calculation */
+LogAttackTimeWeight		2.0
+HarmonicSpectralCentroidWeight	3e-5
+HarmonicSpectralDeviationWeight	3e-4
+HarmonicSpectralSpreadWeight	10.0
+HarmonicSpectralVariationWeight	-60.0

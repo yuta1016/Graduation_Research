@@ -1,0 +1,15 @@
+/* default application name*/
+Application	SummaryPreferencesClient
+
+/* default database file name*/
+ListFile	./testset/matsushita.lst
+
+/* default bitstream file*/
+Bitstream	
+
+/* default number of matches*/
+NoOfMatches 2
+
+/* additional parameters*/
+InputXML	xmlinputfile.xml
+OutputXML	SummaryPreferencesFiltered.xml

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>MDS/StructuredCollection</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for MDS/StructuredCollection</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>StructuredCollection DS
+<tr><th>Document
+<td>MPEG-7 Final Committee Draft  MDS, see StructuredCollection DS
+<tr><th>Name
+<td>Ana Belen Benitez, Columbia University
+<tr><th>EMail
+<td>ana@ee.columbia.edu
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>None
+<tr><th>Related Ds/DSs
+<td>Collection DSs, Model DSs, and ClusterModel DS
+<tr><th>Used Ds/DSs
+<td>ColorHistogram D
+<tr><th>Input
+<td>The input is a text file that describes the classification of M images <br>
+into N classes with the following format:<br>
+[Number of classes]<br>
+[Class name 1 without spaces]<br>
+[Number of images in the class] [image 1] [image 2] ...<br>
+[Class name 2 without spaces] [Number of images in the class] [image 1] [image 2] ...<br>
+...<br>
+[Class name N without spaces] [Number of images in the class] [image 1] [image 2] ...<br>
+An example of a well formed input file with four classes follows:<br>
+4<br>
+Grass 3 cultu~44_add2.jpg cultu~45_add2.jpg cultu~46_add2.jpg<br>
+Basketball 2 game111_add2.jpg game1191_add2.jpg<br>
+Person 3 i0132_add5.jpg i0122_add5.jpg i8h_add1.jpg<br>
+Dog 1 i8m_add1.jpg
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Search & Retrieval
+<tr><th>Summary
+<td>This code generates collection descriptions with associated probability<br>
+models for each class (sub-collection) in the input and the entire<br>
+collection of M images, and relations among the collections.<br>
+The probability models associated with a collection<br>
+consist of the mean and variance color histogram of the images in the<br>
+collection. This code also allows to retrieve collection structure descriptions but<br>
+matching based the closes two collections based on their mean color histogram.
+<tr><th>Strong Points
+<td>-
+<tr><th>Limitations
+<td>None
+<tr><th>Parameters
+<td>None
+</table>
+</body>
+</html>

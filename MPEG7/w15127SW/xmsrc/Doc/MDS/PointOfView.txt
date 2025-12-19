@@ -1,0 +1,39 @@
+Technique	PointOfView (SegmentFilteringTool)
+Document	N3966 Text of ISO/IEC FCD 15938-5 Information technology - Multimedia content 
+		description interface: Multimedia description schemes, 
+		clause 11.2.8 PointOfView D
+Name		Katsunao Takahashi, Koichi Emura, Toshihiko Munetsugu 
+		(Matsushita Research Institute Tokyo,Inc. / Matsushita Electric Industrial Co.,Ltd.)
+EMail		ktaka@mrit.mei.co.jp, emura@mrit.mei.co.jp, munetugu@isl.mei.co.jp
+Contact		ktaka@mrit.mei.co.jp
+Type		Application
+External Libraries	NONE
+Related Ds/DSs	SegmentDS, MediaTimeDS, SummaryPreferencesDS
+Used Ds/DSs	Reference datatype, TextAnnotation datatype, zeroToOne datatype
+Input		MPEG-7 content description consists of Segments with PointOfView, 
+		MPEG-7 user description with SummaryPreferences as a query
+Output		MPEG-7 content description based on Summarization
+Extraction	NA
+Client Appl	Filtering Application regarding segments filtering
+Summary		This component generates summary description which consists of the segments that
+		have user's preferred viewpoints. As an output, this component generates 
+		content description based on Summarization. A summary is generated dynamically 
+		so that a user's preferred time duration and preferred viewpoints
+		(PreferredSummaryTheme in user description side) which are described in 
+		user description(SummaryPreferences) given as a query parameter may be suited.
+Strong Points	User adaptation scalability of summary description generation based on 
+		the combination of viewpoint(s) and time duration which user required. 
+		This summary generator(segment filtering) application can be used as a preprocessor
+		for the Summarization DS as well as scalable multimedia distribution which is 
+		adapted to various kind of user preferences.
+Limitations	The input XML file must have two or more Segment descriptions with MediaTime
+		and PointOfView descriptions.
+		The query XML file must be a MPEG-7 user description which has at least one or more
+		PreferredSummaryTheme description(s) with or without SummaryDuration description.
+Known Problems	NONE
+Parameters	InputXML = Input file name of MPEG-7 content description with PointOfView
+			   [default: xmlinputfile.xml]
+			   At least, Segment, MediaTime and PointOfView descriptions are needed.
+		OutputXML = Output file name of MPEG-7 content description based on Summarization.
+			    [default: PointOfViewFiltered.xml]
+END

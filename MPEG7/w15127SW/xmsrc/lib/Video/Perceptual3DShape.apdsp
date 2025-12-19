@@ -1,0 +1,20 @@
+# Begin Group "Perceptual3DShape"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\Perceptual3DShapeCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\Perceptual3DShapeCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\Perceptual3DShapeSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\Perceptual3DShapeSAppl.h
+# End Source File
+# End Group

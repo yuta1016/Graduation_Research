@@ -1,0 +1,69 @@
+/* default application name*/
+Application	MosaicClient
+
+/* default database file name*/
+ListFile	Databases/video_nocuts.lst
+
+/* default bitstream file*/
+Bitstream	Mosaic.xml
+
+/* default number of matches*/
+NoOfMatches 8
+
+/* parameter file for extraction*/
+/*Extractparfile	extract.par*/
+
+/* extract only new media files*/
+SkipExtracted 1
+
+/* Offset between Frames to be used for extraction*/
+FrameDistance 3
+
+/* Origin for motion parameters 0= (0,0) 1= center 2= use SetOrigin*/
+POMOrigin 2
+
+/* Hierarchies for Motion extraction*/
+POMResolutions	4
+
+/*Scale between Hierarchies*/
+POMResolutionScale	0.7
+
+/*Initialize Motion Parameters*/
+POMInitParameters	-1 /* 1: keep parameters,
+			      0:set zero,
+	                      -1: add last delta of translation to kept
+                              parameters (for mosaiking)*/
+
+/* type of motion model*/
+MotionModel 2  /*2=affine*/
+
+/* time base*/
+nnfraction 30
+nn 1
+
+/* skip boundary pixels*/
+SkipBoundaryWidth 2
+
+/* create mosaic image*/
+CreateMosaic 1
+
+/* Maximum size of the Mosaic*/
+MosaicX=600
+MosaicY=600
+
+/* Mosaic Type 0= past, 1= extend, 2=merge*/
+MosaicType 1
+
+/* scalevalues for parameter update*/
+AlphaStart0	0.25
+AlphaLimit0	0.002
+AlphaStart1	0.25
+AlphaLimit1	0.005
+AlphaStart2	0.5
+AlphaLimit2	0.005
+AlphaStart3	1.
+AlphaLimit3	0.02
+
+/* GUI parameters*/
+show_query	0
+GUI_show_query	0

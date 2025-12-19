@@ -1,0 +1,1 @@
+./XMMain.exe -a SpaceFrequencyViewServer -b sfview.xml -l Databases/sfview.txt

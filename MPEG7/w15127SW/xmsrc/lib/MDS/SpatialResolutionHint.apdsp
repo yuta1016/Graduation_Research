@@ -1,0 +1,12 @@
+# Begin Group "SpatialResolutionHint"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\SpatialResolutionHintCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\SpatialResolutionHintCAppl.h
+# End Source File
+# End Group

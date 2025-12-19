@@ -1,0 +1,16 @@
+/* model code: 0=translation; 1=rot/scale; 2=affine; 3=perspective; 4=quadratic */
+/* default 2=affine */
+MotionModel 2
+
+/* query norm; default 0 */
+QueryNorm 0
+
+/* query method: 0=velocity based; 1=little square; 2=parameter based */
+/* default 0=velocity based */
+QueryMethod 1
+
+/* dimension for little square method; default 20 */
+SquareDim 20
+
+/* XML or binary coding, default: 2 = binary */
+CodingMode 1

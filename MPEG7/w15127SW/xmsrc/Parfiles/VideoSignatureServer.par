@@ -1,0 +1,16 @@
+/* default application name*/
+Application	VideoSignatureServer
+
+/* select coding mode*/
+CodingMode  2 /* 0= DDL, 2= Binary*/
+
+/* select compression of frame signatures for binary mode */
+Compression  1 /* 0= uncompressed, 1= compressed (default=1) */
+
+/* default database file name*/
+ListFile	Databases/videolist.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/VideoSignature.mp7
+
+

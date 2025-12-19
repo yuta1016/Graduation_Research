@@ -1,0 +1,38 @@
+Technique	Region shape descriptor
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name		Whoi-Yul Kim (Hanyang University)
+EMail		wykim@email.hanyang.ac.kr
+Contact		wykim@email.hanyang.ac.kr
+Type		Application
+External Libraries	none
+Related Ds/DSs	Still region DS
+Used Ds/DSs	none
+Input		Binary/Gray shape masks
+Extraction	Yes
+Client Appl	Search & Retrieval
+
+Summary		Shape of an object may consist of either single region or a set of regions 
+		as well as some holes in the object in a frame.
+		The region-based shape descriptor describes shape features of the object 
+		as long as it can be defined by a shape mask. The mask may be binary to contain 
+		holes or multiple disjoint regions within. The mask may also be in gray shade
+		to distinguish different regions within the object. The descriptor consists 
+		of a set of 35 quantized coefficients of Angular-Radial Transform of an object.
+
+Strong Points	The descriptor is rotational, scale and position invariant. It can deal with 
+		objects with multiple regions including holes in the object.
+		It is robust to noise along the contour of the object that is common during
+		the segmentation process of an image, or to shape deformations 
+		due to affine transform. 
+		The descriptor is also characterized by its small size, fast extraction time 
+		and matching. The data size for this representation is fixed to 17.5byte. 
+		The feature extraction and matching processes is straightforward to have 
+		low order of computational complexities, and is suitable for tracking shapes 
+		in the video data processing. 
+Limitations	None
+Known Problems	None
+Parameters	Uses the general XM-SW parameters.
+END
+
+
+		

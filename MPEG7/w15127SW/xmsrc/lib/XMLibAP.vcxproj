@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Template|Win32">
+      <Configuration>Template</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>XMLibAPDB</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>..\AddressLib;..;..\..\afsp\include;..\..\ImageMagick;..\..\xml\src\xercesc;..\..\xml\src;C:\Program Files\OpenCV\cv\include;C:\Program Files\OpenCV\cxcore\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;USED_CT;USECTB;_WINDOWS;WIN32;_VISUALC_;c_plusplus;NODISP;AFLIB;USEXML;USEXML3;USEAST;USESFM;USEMSQ;USEP3DS;USESCC;USE3DSS;USECL;USECT;USESC;USEDC;USEEH;USEFR;USEGF;USEHT;USEMA;USEMT;USEMI;USE2D3D;USEPOM;USERL;USESR;USES2D;USESTL;USETI;USETB;USEASF;USEDPS;USEETT;USEHS;USEIMH;USEINK;USEMH;USEMM;USEMQ;USEMR;USEMO;USEMK;USEODK;USEPACK;USEPTH;USEPOV;USESRG;USESMS;USESKW;USESSZ;USESP;USESF;USESRH;USESTX;USESZ;USESPR;USETM;USETH;USEUP;USEVA;USEVE;USEVT;USEIS;USEVS;USESV;USEIIC;USECM;USEGL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release\XMLibAP.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <Culture>0x0407</Culture>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\XMLibAP.bsc</OutputFile>
+    </Bscmake>
+    <Lib>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <AdditionalIncludeDirectories>..\AddressLib;..;..\..\afsp\include;..\..\ImageMagick;..\..\xml\src\xercesc;..\..\xml\src;C:\Program Files\OpenCV\cv\include;C:\Program Files\OpenCV\cxcore\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;USED_CT;USECTB;_WINDOWS;WIN32;_VISUALC_;c_plusplus;NODISP;USEXML;USEXML3;AFLIB;USEAST;USESFM;USEMSQ;USEP3DS;USESCC;USE3DSS;USECL;USECT;USESC;USEDC;USEEH;USEFR;USEGF;USEHT;USEMA;USEMT;USEMI;USE2D3D;USEPOM;USERL;USESR;USES2D;USESTL;USETI;USETB;USEASF;USEDPS;USEETT;USEHS;USEIMH;USEINK;USEMH;USEMM;USEMQ;USEMR;USEMO;USEMK;USEODK;USEPACK;USEPTH;USEPOV;USESRG;USESMS;USESKW;USESSZ;USESP;USESF;USESRH;USESTX;USESZ;USESPR;USETM;USETH;USEUP;USEVA;USEVE;USEVT;USEIS;USEVS;USESV;USEIIC;USECM;USETS;USEGL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Debug\XMLibAP.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <Culture>0x0407</Culture>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug\XMLibAP.bsc</OutputFile>
+    </Bscmake>
+    <Lib>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\AddressLib;..;..\..\afsp\include;..\..\ImageMagick;..\..\xml\src\xercesc;..\..\xml\src;C:\Program Files\OpenCV\cv\include;C:\Program Files\OpenCV\cxcore\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Applications\CameraMotionCAppl.h" />
+    <ClInclude Include="..\Applications\CameraMotionSAppl.h" />
+    <ClInclude Include="..\Applications\ClientApplications.h" />
+    <ClInclude Include="..\Applications\GridLayoutSAppl.h" />
+    <ClInclude Include="..\Applications\IIColorSAppl.h" />
+    <ClInclude Include="..\Applications\ShapeVariationCAppl.h" />
+    <ClInclude Include="..\Applications\ShapeVariationSAppl.h" />
+    <ClInclude Include="..\Applications\TimeSeriesCAppl.h" />
+    <ClInclude Include="..\Applications\TimeSeriesSAppl.h" />
+    <ClInclude Include="..\XMManager\ComponentDB.h" />
+    <ClInclude Include="..\Applications\ServerApplications.h" />
+    <ClInclude Include="..\XMManager\Version1.h" />
+    <ClInclude Include="..\XMManager\Version2.h" />
+    <ClInclude Include="..\XMManager\Version3.h" />
+    <ClInclude Include="..\XMManager\Version4.h" />
+    <ClInclude Include="..\Applications\AudioSignatureCAppl.h" />
+    <ClInclude Include="..\Applications\AudioSpectralFlatnessCAppl.h" />
+    <ClInclude Include="..\Applications\MelodySequenceCAppl.h" />
+    <ClInclude Include="..\Applications\Perceptual3DShapeCAppl.h" />
+    <ClInclude Include="..\Applications\Perceptual3DShapeSAppl.h" />
+    <ClInclude Include="..\Applications\ScalableColorCAppl.h" />
+    <ClInclude Include="..\Applications\ScalableColorSAppl.h" />
+    <ClInclude Include="..\Applications\3DShapeSpectrumCAppl.h" />
+    <ClInclude Include="..\Applications\3DShapeSpectrumSAppl.h" />
+    <ClInclude Include="..\Applications\ColorLayoutCAppl.h" />
+    <ClInclude Include="..\Applications\ColorLayoutSAppl.h" />
+    <ClInclude Include="..\Applications\ColorStructureCAppl.h" />
+    <ClInclude Include="..\Applications\ColorStructureSAppl.h" />
+    <ClInclude Include="..\Applications\ContourShapeCAppl.h" />
+    <ClInclude Include="..\Applications\ContourShapeSAppl.h" />
+    <ClInclude Include="..\Applications\DominantColorCAppl.h" />
+    <ClInclude Include="..\Applications\DominantColorSAppl.h" />
+    <ClInclude Include="..\Applications\EdgeHistCAppl.h" />
+    <ClInclude Include="..\Applications\EdgeHistSAppl.h" />
+    <ClInclude Include="..\Applications\FaceRecognitionCAppl.h" />
+    <ClInclude Include="..\Applications\FaceRecognitionSAppl.h" />
+    <ClInclude Include="..\Applications\GoFGoPColorCAppl.h" />
+    <ClInclude Include="..\Applications\GoFGoPColorSAppl.h" />
+    <ClInclude Include="..\Applications\HomoTextureCAppl.h" />
+    <ClInclude Include="..\Applications\HomoTextureSAppl.h" />
+    <ClInclude Include="..\Applications\MotionActivityCAppl.h" />
+    <ClInclude Include="..\Applications\MotionActivitySAppl.h" />
+    <ClInclude Include="..\Applications\MotionTrajectoryCAppl.h" />
+    <ClInclude Include="..\Applications\MotionTrajectorySAppl.h" />
+    <ClInclude Include="..\Applications\MultiImageCAppl.h" />
+    <ClInclude Include="..\Applications\MultiImageSAppl.h" />
+    <ClInclude Include="..\Applications\MultiViewCAppl.h" />
+    <ClInclude Include="..\Applications\MultiViewSAppl.h" />
+    <ClInclude Include="..\Applications\ParametricObjectMotionCAppl.h" />
+    <ClInclude Include="..\Applications\ParametricObjectMotionSAppl.h" />
+    <ClInclude Include="..\Applications\RegionLocatorCAppl.h" />
+    <ClInclude Include="..\Applications\RegionLocatorSAppl.h" />
+    <ClInclude Include="..\Applications\RegionShapeCAppl.h" />
+    <ClInclude Include="..\Applications\RegionShapeSAppl.h" />
+    <ClInclude Include="..\Applications\SpatioTemporalLocatorCAppl.h" />
+    <ClInclude Include="..\Applications\SpatioTemporalLocatorSAppl.h" />
+    <ClInclude Include="..\Applications\TextureBrowsingCAppl.h" />
+    <ClInclude Include="..\Applications\TextureBrowsingSAppl.h" />
+    <ClInclude Include="..\Applications\AffectiveSegmentFilterCAppl.h" />
+    <ClInclude Include="..\Applications\DependStructureCAppl.h" />
+    <ClInclude Include="..\Applications\ExtendedTextualTypeCAppl.h" />
+    <ClInclude Include="..\Applications\HierarchicalKeyFrameSAppl.h" />
+    <ClInclude Include="..\Applications\ImportanceHintCAppl.h" />
+    <ClInclude Include="..\Applications\InkSegmentCAppl.h" />
+    <ClInclude Include="..\Applications\InkSegmentSAppl.h" />
+    <ClInclude Include="..\Applications\MatchingHintCAppl.h" />
+    <ClInclude Include="..\Applications\MatchingHintSAppl.h" />
+    <ClInclude Include="..\Applications\MediaMetaCAppl.h" />
+    <ClInclude Include="..\Applications\MediaQualitySAppl.h" />
+    <ClInclude Include="..\Applications\MediaReviewCAppl.h" />
+    <ClInclude Include="..\Applications\ModelSAppl.h" />
+    <ClInclude Include="..\Applications\MosaicCAppl.h" />
+    <ClInclude Include="..\Applications\MosaicSAppl.h" />
+    <ClInclude Include="..\Applications\OrderingKeyCAppl.h" />
+    <ClInclude Include="..\Applications\PackageCAppl.h" />
+    <ClInclude Include="..\Applications\PhoneticTranslationHintsCAppl.h" />
+    <ClInclude Include="..\Applications\PointOfViewCAppl.h" />
+    <ClInclude Include="..\Applications\SegmentRelGraphCAppl.h" />
+    <ClInclude Include="..\Applications\SegmentRelGraphSAppl.h" />
+    <ClInclude Include="..\Applications\SeqSummaryFastMovingStoryBoardSAppl.h" />
+    <ClInclude Include="..\Applications\SeqSummaryKeywordsSAppl.h" />
+    <ClInclude Include="..\Applications\SequentialSummarySAppl.h" />
+    <ClInclude Include="..\Applications\SoundPropertySAppl.h" />
+    <ClInclude Include="..\Applications\SpaceFrequencyViewSAppl.h" />
+    <ClInclude Include="..\Applications\SpatialResolutionHintCAppl.h" />
+    <ClInclude Include="..\Applications\StateTransitionModelSAppl.h" />
+    <ClInclude Include="..\Applications\SummarizationCAppl.h" />
+    <ClInclude Include="..\Applications\SummarizationSAppl.h" />
+    <ClInclude Include="..\Applications\SummaryPreferencesCAppl.h" />
+    <ClInclude Include="..\Applications\TimeCAppl.h" />
+    <ClInclude Include="..\Applications\TimeSAppl.h" />
+    <ClInclude Include="..\Applications\TranscodingSAppl.h" />
+    <ClInclude Include="..\Applications\UserPreferenceCAppl.h" />
+    <ClInclude Include="..\Applications\VariationSAppl.h" />
+    <ClInclude Include="..\Applications\VideoEditingSAppl.h" />
+    <ClInclude Include="..\Applications\VideoTextSAppl.h" />
+    <ClInclude Include="..\Applications\DominantColorTemperatureCAppl.h" />
+    <ClInclude Include="..\Applications\CTBrowsingCAppl.h" />
+    <ClInclude Include="..\Applications\CTBrowsingSAppl.h" />
+    <ClInclude Include="..\Applications\ImageSignatureCAppl.h" />
+    <ClInclude Include="..\Applications\ImageSignatureSAppl.h" />
+    <ClInclude Include="..\Applications\VideoSignatureCAppl.h" />
+    <ClInclude Include="..\Applications\VideoSignatureSAppl.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Applications\CameraMotionCAppl.cpp" />
+    <ClCompile Include="..\Applications\CameraMotionSAppl.cpp" />
+    <ClCompile Include="..\Applications\GridLayoutSAppl.cpp" />
+    <ClCompile Include="..\Applications\IIColorSAppl.cpp" />
+    <ClCompile Include="..\Applications\ShapeVariationCAppl.cpp" />
+    <ClCompile Include="..\Applications\ShapeVariationSAppl.cpp" />
+    <ClCompile Include="..\Applications\TimeSeriesCAppl.cpp" />
+    <ClCompile Include="..\Applications\TimeSeriesSAppl.cpp" />
+    <ClCompile Include="..\XMManager\ComponentDB.cpp" />
+    <ClCompile Include="..\Applications\RegisteredClientApplications.cpp" />
+    <ClCompile Include="..\Applications\RegisteredServerApplications.cpp" />
+    <ClCompile Include="..\XMManager\Version1.cpp" />
+    <ClCompile Include="..\XMManager\Version2.cpp" />
+    <ClCompile Include="..\XMManager\Version3.cpp" />
+    <ClCompile Include="..\XMManager\Version4.cpp" />
+    <ClCompile Include="..\Applications\AudioSignatureCAppl.cpp" />
+    <ClCompile Include="..\Applications\AudioSpectralFlatnessCAppl.cpp" />
+    <ClCompile Include="..\Applications\MelodySequenceCAppl.cpp" />
+    <ClCompile Include="..\Applications\Perceptual3DShapeCAppl.cpp" />
+    <ClCompile Include="..\Applications\Perceptual3DShapeSAppl.cpp" />
+    <ClCompile Include="..\Applications\ScalableColorCAppl.cpp" />
+    <ClCompile Include="..\Applications\ScalableColorSAppl.cpp" />
+    <ClCompile Include="..\Applications\3DShapeSpectrumCAppl.cpp" />
+    <ClCompile Include="..\Applications\3DShapeSpectrumSAppl.cpp" />
+    <ClCompile Include="..\Applications\ColorLayoutCAppl.cpp" />
+    <ClCompile Include="..\Applications\ColorLayoutSAppl.cpp" />
+    <ClCompile Include="..\Applications\ColorStructureCAppl.cpp" />
+    <ClCompile Include="..\Applications\ColorStructureSAppl.cpp" />
+    <ClCompile Include="..\Applications\ContourShapeCAppl.cpp" />
+    <ClCompile Include="..\Applications\ContourShapeSAppl.cpp" />
+    <ClCompile Include="..\Applications\DominantColorCAppl.cpp" />
+    <ClCompile Include="..\Applications\DominantColorSAppl.cpp" />
+    <ClCompile Include="..\Applications\EdgeHistCAppl.cpp" />
+    <ClCompile Include="..\Applications\EdgeHistSAppl.cpp" />
+    <ClCompile Include="..\Applications\FaceRecognitionCAppl.cpp" />
+    <ClCompile Include="..\Applications\FaceRecognitionSAppl.cpp" />
+    <ClCompile Include="..\Applications\GoFGoPColorCAppl.cpp" />
+    <ClCompile Include="..\Applications\GoFGoPColorSAppl.cpp" />
+    <ClCompile Include="..\Applications\HomoTextureCAppl.cpp" />
+    <ClCompile Include="..\Applications\HomoTextureSAppl.cpp" />
+    <ClCompile Include="..\Applications\MotionActivityCAppl.cpp" />
+    <ClCompile Include="..\Applications\MotionActivitySAppl.cpp" />
+    <ClCompile Include="..\Applications\MotionTrajectoryCAppl.cpp" />
+    <ClCompile Include="..\Applications\MotionTrajectorySAppl.cpp" />
+    <ClCompile Include="..\Applications\MultiImageCAppl.cpp" />
+    <ClCompile Include="..\Applications\MultiImageSAppl.cpp" />
+    <ClCompile Include="..\Applications\MultiViewCAppl.cpp" />
+    <ClCompile Include="..\Applications\MultiViewSAppl.cpp" />
+    <ClCompile Include="..\Applications\ParametricObjectMotionCAppl.cpp" />
+    <ClCompile Include="..\Applications\ParametricObjectMotionSAppl.cpp" />
+    <ClCompile Include="..\Applications\RegionLocatorCAppl.cpp" />
+    <ClCompile Include="..\Applications\RegionLocatorSAppl.cpp" />
+    <ClCompile Include="..\Applications\RegionShapeCAppl.cpp" />
+    <ClCompile Include="..\Applications\RegionShapeSAppl.cpp" />
+    <ClCompile Include="..\Applications\SpatioTemporalLocatorCAppl.cpp" />
+    <ClCompile Include="..\Applications\SpatioTemporalLocatorSAppl.cpp" />
+    <ClCompile Include="..\Applications\TextureBrowsingCAppl.cpp" />
+    <ClCompile Include="..\Applications\TextureBrowsingSAppl.cpp" />
+    <ClCompile Include="..\Applications\AffectiveSegmentFilterCAppl.cpp" />
+    <ClCompile Include="..\Applications\DependStructureCAppl.cpp" />
+    <ClCompile Include="..\Applications\ExtendedTextualTypeCAppl.cpp" />
+    <ClCompile Include="..\Applications\HierarchicalKeyFrameSAppl.cpp" />
+    <ClCompile Include="..\Applications\ImportanceHintCAppl.cpp" />
+    <ClCompile Include="..\Applications\InkSegmentCAppl.cpp" />
+    <ClCompile Include="..\Applications\InkSegmentSAppl.cpp" />
+    <ClCompile Include="..\Applications\MatchingHintCAppl.cpp" />
+    <ClCompile Include="..\Applications\MatchingHintSAppl.cpp" />
+    <ClCompile Include="..\Applications\MediaMetaCAppl.cpp" />
+    <ClCompile Include="..\Applications\MediaQualitySAppl.cpp" />
+    <ClCompile Include="..\Applications\MediaReviewCAppl.cpp" />
+    <ClCompile Include="..\Applications\ModelSAppl.cpp" />
+    <ClCompile Include="..\Applications\MosaicCAppl.cpp" />
+    <ClCompile Include="..\Applications\MosaicSAppl.cpp" />
+    <ClCompile Include="..\Applications\OrderingKeyCAppl.cpp" />
+    <ClCompile Include="..\Applications\PackageCAppl.cpp" />
+    <ClCompile Include="..\Applications\PhoneticTranslationHintsCAppl.cpp" />
+    <ClCompile Include="..\Applications\PointOfViewCAppl.cpp" />
+    <ClCompile Include="..\Applications\SegmentRelGraphCAppl.cpp" />
+    <ClCompile Include="..\Applications\SegmentRelGraphSAppl.cpp" />
+    <ClCompile Include="..\Applications\SeqSummaryFastMovingStoryBoardSAppl.cpp" />
+    <ClCompile Include="..\Applications\SeqSummaryKeywordsSAppl.cpp" />
+    <ClCompile Include="..\Applications\SequentialSummarySAppl.cpp" />
+    <ClCompile Include="..\Applications\SoundPropertySAppl.cpp" />
+    <ClCompile Include="..\Applications\SpaceFrequencyViewSAppl.cpp" />
+    <ClCompile Include="..\Applications\SpatialResolutionHintCAppl.cpp" />
+    <ClCompile Include="..\Applications\StateTransitionModelSAppl.cpp" />
+    <ClCompile Include="..\Applications\SummarizationCAppl.cpp" />
+    <ClCompile Include="..\Applications\SummarizationSAppl.cpp" />
+    <ClCompile Include="..\Applications\SummaryPreferencesCAppl.cpp" />
+    <ClCompile Include="..\Applications\TimeCAppl.cpp" />
+    <ClCompile Include="..\Applications\TimeSAppl.cpp" />
+    <ClCompile Include="..\Applications\TranscodingSAppl.cpp" />
+    <ClCompile Include="..\Applications\UserPreferenceCAppl.cpp" />
+    <ClCompile Include="..\Applications\VariationSAppl.cpp" />
+    <ClCompile Include="..\Applications\VideoEditingSAppl.cpp" />
+    <ClCompile Include="..\Applications\VideoTextSAppl.cpp" />
+    <ClCompile Include="..\Applications\DominantColorTemperatureCAppl.cpp" />
+    <ClCompile Include="..\Applications\CTBrowsingCAppl.cpp" />
+    <ClCompile Include="..\Applications\CTBrowsingSAppl.cpp" />
+    <ClCompile Include="..\Applications\ImageSignatureCAppl.cpp" />
+    <ClCompile Include="..\Applications\ImageSignatureSAppl.cpp" />
+    <ClCompile Include="..\Applications\VideoSignatureCAppl.cpp" />
+    <ClCompile Include="..\Applications\VideoSignatureSAppl.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

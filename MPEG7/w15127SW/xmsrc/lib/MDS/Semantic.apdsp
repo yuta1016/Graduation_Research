@@ -1,0 +1,12 @@
+# Begin Group "Semantic"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\SemanticCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\SemanticCAppl.h
+# End Source File
+# End Group

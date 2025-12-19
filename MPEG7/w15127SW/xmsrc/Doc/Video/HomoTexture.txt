@@ -1,0 +1,26 @@
+Technique	HomogeneousTexture
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name		yanglim Choi, M/M Lab, Samsung Advanced Institute of Technology
+EMail		yanglimc@samsung.com 
+Type		Application
+External Libraries	NONE
+Related Ds/DSs	StillRegionDS, StillImageDS, MovingRegionDS
+Used Ds/DSs	NONE
+Input		Images/Regions(JPEG,BMP,etc)
+Extraction	Yes
+Client Appl	Search & Retrieval 
+Summary		This component generates a texture descriptor for a homogeneously textured Image/Region for Search and Retrieval using texture features. The descriptor components are the average and the standard deviation of the image together with the energies and the energy deviations of Gabor filtered reponse of each (predefined) fequency channels.
+Strong Points	Statistically very precise description of homogeneously textured region.
+Limitations	Relatively large in size (32 components for the basic layer and 62 components for the enhanced layer).	
+Known Problems	NONE
+Parameters	HomogeneousTexture.par: dummy parameter file to show the usage
+		/* additional parameters*/
+		layer : The layer information of the descriptor
+		        0:base-layer, 32 components  
+		        1:full-layer, 62 components
+		option: Matching option for client
+		        n: normal matching
+		        r:rotation invariant matching
+		        s:scale invariant matching
+		        rs:rotation and scale invariant matchin
+END

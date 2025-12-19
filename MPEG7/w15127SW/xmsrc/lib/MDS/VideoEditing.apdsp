@@ -1,0 +1,12 @@
+# Begin Group "VideoEditing"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\VideoEditingSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\VideoEditingSAppl.h
+# End Source File
+# End Group

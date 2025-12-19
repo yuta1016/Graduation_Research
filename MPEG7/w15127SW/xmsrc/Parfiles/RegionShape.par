@@ -1,0 +1,15 @@
+/* default application name*/
+Application    RegionShapeClient
+ 
+/* default database file name*/
+ListFile       RegionShape.lst 
+ 
+/* default bitstream file*/
+Bitstream      RegionShape.xml
+ 
+/* output mode */
+CodingMode      0
+ 
+/* default number of matches*/
+NoOfMatches	10 
+ 

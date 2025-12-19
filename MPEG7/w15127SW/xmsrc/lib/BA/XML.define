@@ -1,0 +1,1 @@
+ /I "..\..\xml\include" /I "..\..\xml\src" /D "USEXML"

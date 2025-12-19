@@ -1,0 +1,799 @@
+ORAND	AND	NA_TO	FilteringAndSearchPreferences	0
+				
+				
+				
+AND	AND	NA_TO	FilteringAndSearchPreferences/CreationPreferences	/Mpeg7/*Description/*CreationInformation/*Creation
+				
+				
+				
+				
+NA_GO	AND	STR_EQ	CreationPreferences/Title=%type	/*Title%type
+OR	AND	STR_ISUB	CreationPreferences/Title	/*Title
+OR	AND	NA_TO	CreationPreferences/Creator	//*Creator
+				
+OR	HAND	NA_TO	Creator/Character	/*Character
+				
+OR	HAND	NA_TO	Creator/Instrument	/*Instrument
+OR	AND	NA_TO	Instrument/Tool	/*Tool
+OR	AND	STR_EQ	Instrument/Tool=%href	/*Tool%href
+HAND	AND	STR_EQ	Instrument/Setting=%name	/Setting%name
+HAND	AND	STR_EQ	Instrument/Setting=%value	/Setting%value
+OR	HAND	NA_TO	Creator/Role	/Role
+OR	HAND	STR_EQ	Creator/Role=%href	/Role%href
+OR	HAND	NA_TO	Creator/Agent	/Agent
+				
+				
+				
+				
+				
+				
+				
+NA_GO	AND	STR_ISUB	CreationPreferences/Keyword=%xml:lang	"//*Title%xml:lang"
+OR	AND	STR_CNT	CreationPreferences/Keyword	//*Title
+NA_GO	AND	STR_ISUB	CreationPreferences/Keyword=%xml:lang	"/*Abstract//*FreeTextAnnotation%xml:lang"
+OR	AND	STR_CNT	CreationPreferences/Keyword	/*Abstract//*FreeTextAnnotation
+NA_GO	AND	STR_ISUB	CreationPreferences/Keyword=%xml:lang	"/*Abstract/*KeywordAnnotation//*Keyword%xml:lang"
+OR	AND	STR_CNT	CreationPreferences/Keyword	/*Abstract/*KeywordAnnotation//*Keyword
+OR	AND	NA_TO	CreationPreferences/Location	/*CreationCoordinates/Location
+				
+				
+OR	AND	VAL_GTE_LTE	CreationPreferences/DatePeriod=TimeDS_StartEnd	/*CreationCoordinates/Date=TimeDS_Start
+OR	AND	VAL_GTE_LTE	CreationPreferences/DatePeriod=TimeDS_StartEnd	/*CreationCoordinates/Date=TimeDS_End
+				
+				
+OR	AND	NA_TO	CreationPreferences/Tool	/*CreationTool/Tool
+OR	AND	STR_EQ	CreationPreferences/Tool=%href	/*CreationTool/Tool%href
+AND	AND	NA_TO	FilteringAndSearchPreferences/ClassificationPreferences	/Mpeg7/*Description/*CreationInformation/*Classification
+				
+				
+				
+OR	AND	STR_EQ	ClassificationPreferences/Country	/Release/*Region
+OR	AND	VAL_GTE_LTE	ClassificationPreferences/DatePeriod=TimeDS_StartEnd	/*Release%date=PointInTime
+				
+				
+				
+				
+NA_GO	AND	STR_EQ	ClassificationPreferences/Language=%type	/*Language%type
+NA_GO	AND	VAL_EQ	ClassificationPreferences/Language=%supplemental	/*Language%supplemental
+OR	AND	STR_EQ	ClassificationPreferences/Language	/*Language
+				
+				
+OR	AND	STR_EQ	ClassificationPreferences/CaptionLanguage	/CaptionLanguage
+				
+OR	AND	NA_TO	ClassificationPreferences/Form	/*Form
+OR	AND	STR_EQ	ClassificationPreferences/Form=%href	/*Form%href
+				
+OR	AND	NA_TO	ClassificationPreferences/Genre	/*Genre
+OR	AND	STR_EQ	ClassificationPreferences/Genre=%href	/*Genre%href
+				
+				
+NA_GO	AND	STR_ISUB	ClassificationPreferences/Subject=%xml:lang	"/*Subject//*FreeTextAnnotation%xml:lang"
+OR	AND	STR_CNT	ClassificationPreferences/Subject	/*Subject//*FreeTextAnnotation
+NA_GO	AND	STR_ISUB	ClassificationPreferences/Subject=%xml:lang	"/*Subject/*KeywordAnnotation//*Keyword%xml:lang"
+OR	AND	STR_CNT	ClassificationPreferences/Subject	/*Subject/*KeywordAnnotation//*Keyword
+NA_GO	AND	STR_ISUB	ClassificationPreferences/Subject=%xml:lang	"/*Subject/*StructuredAnnotation//*Who/Name%xml:lang"
+OR	AND	STR_CNT	ClassificationPreferences/Subject	/*Subject/*StructuredAnnotation//*Who/Name
+NA_GO	AND	STR_ISUB	ClassificationPreferences/Subject=%xml:lang	"/*Subject/*StructuredAnnotation//*WhatObject/Name%xml:lang"
+OR	AND	STR_CNT	ClassificationPreferences/Subject	/*Subject/*StructuredAnnotation//*WhatObject/Name
+NA_GO	AND	STR_ISUB	ClassificationPreferences/Subject=%xml:lang	"/*Subject/*StructuredAnnotation//*WhatAction/Name%xml:lang"
+OR	AND	STR_CNT	ClassificationPreferences/Subject	/*Subject/*StructuredAnnotation//*WhatAction/Name
+NA_GO	AND	STR_ISUB	ClassificationPreferences/Subject=%xml:lang	"/*Subject/*StructuredAnnotation//*Where/Name%xml:lang"
+OR	AND	STR_CNT	ClassificationPreferences/Subject	/*Subject/*StructuredAnnotation//*Where/Name
+NA_GO	AND	STR_ISUB	ClassificationPreferences/Subject=%xml:lang	"/*Subject/*StructuredAnnotation//*When/Name%xml:lang"
+OR	AND	STR_CNT	ClassificationPreferences/Subject	/*Subject/*StructuredAnnotation//*When/Name
+NA_GO	AND	STR_ISUB	ClassificationPreferences/Subject=%xml:lang	"/*Subject/*StructuredAnnotation//*Why/Name%xml:lang"
+OR	AND	STR_CNT	ClassificationPreferences/Subject	/*Subject/*StructuredAnnotation//*Why/Name
+NA_GO	AND	STR_ISUB	ClassificationPreferences/Subject=%xml:lang	"/*Subject/*StructuredAnnotation//*How/Name%xml:lang"
+OR	AND	STR_CNT	ClassificationPreferences/Subject	/*Subject/*StructuredAnnotation//*How/Name
+OR	AND	NA_TO	ClassificationPreferences/Review	/*MediaReview
+				
+OR	AND	NA_TO	Review/Rating	/Rating
+NA_GO	AND	VAL_GTE	Rating/RatingValue=((#1)+(/.)-(/../RatingScheme%worst))/((#1)+(/../RatingScheme%best)-(/../RatingScheme%worst))	/RatingValue=((#1)+(/.)-(/../RatingScheme%worst))/((#1)+(/../RatingScheme%best)-(/../RatingScheme%worst))
+OR	AND	NA_TO	Rating/RatingScheme	/RatingScheme
+OR	AND	STR_EQ	Rating/RatingScheme=%href	/RatingScheme%href
+OR	AND	NA_TO	Review/Reviewer	/Reviewer
+				
+				
+				
+				
+AND	AND	NA_TO	ClassificationPreferences/ParentalGuidance	/*ParentalGuidance
+				
+OR	HAND	NA_TO	ParentalGuidance/ParentalRating	/ParentalRating
+OR	HAND	STR_EQ	ParentalGuidance/ParentalRating=%href	/ParentalRating%href
+OR	HAND	VAL_LTE	ParentalGuidance/MinimumAge	/MinimumAge
+OR	HAND	STR_EQ	ParentalGuidance/Region	/Region
+AND	AND	NA_TO	FilteringAndSearchPreferences/SourcePreferences	/Mpeg7
+				
+				
+				
+				
+				
+				
+OR	AND	NA_TO	SourcePreferences/DisseminationFormat	/*Description/*UsageInformation/*Availability/Dissemination/Format
+OR	AND	STR_EQ	SourcePreferences/DisseminationFormat=%href	/*Description/*UsageInformation/*Availability/Dissemination/Format%href
+				
+				
+OR	AND	STR_EQ	SourcePreferences/DisseminationSource	/*Description/*UsageInformation/*Availability/Dissemination/Source
+OR	AND	NA_TO	SourcePreferences/DisseminationLocation	/*Description/*UsageInformation/*Availability/Dissemination/Location
+				
+				
+				
+				
+OR	AND	VAL_GTE_LTE	SourcePreferences/DisseminationDate=TimeDS_StartEnd	/*Description/*UsageInformation/*Availability/*AvailabilityPeriod=TimeDS_Start
+OR	AND	VAL_GTE_LTE	SourcePreferences/DisseminationDate=TimeDS_StartEnd	/*Description/*UsageInformation/*Availability/*AvailabilityPeriod=TimeDS_End
+OR	AND	NA_TO	SourcePreferences/Disseminator	/*Description/*UsageInformation/*Availability/Dissemination/Disseminator
+				
+OR	HAND	NA_TO	Disseminator/Role	/Role
+OR	HAND	STR_EQ	Disseminator/Role=%href	/Role%href
+OR	HAND	NA_TO	Disseminator/Agent	/Agent
+				
+				
+				
+				
+				
+OR	AND	NA_TO	SourcePreferences/MediaFormat	/*Description/*MediaInformation/*MediaProfile/MediaFormat
+				
+				
+				
+				
+OR	AND	NA_TO	BrowsingPreferences	0
+				
+				
+				
+AND	AND	NA_TO	BrowsingPreferences/SummaryPreferences	/Mpeg7/*Description/*Summarization
+				
+				
+HAND	AND	STR_ISUB	SummaryPreferences/SummaryType	/*Summary%components
+				
+				
+OR	AND	STR_ISUB	SummaryPreferences/SummaryTheme	/*Summary/SummaryThemeList/*SummaryTheme
+OR	HAND	VAL_EQ	SummaryPreferences/SummaryDuration=MediaDurationD	/*Summary/*SummarySegmentGroup%duration=MediaDurationD
+OR	HAND	VAL_GTE	SummaryPreferences/MinSummaryDuration=MediaDurationD	/*Summary/*SummarySegmentGroup%duration=MediaDurationD
+OR	HAND	VAL_LTE	SummaryPreferences/MaxSummaryDuration=MediaDurationD	/*Summary/*SummarySegmentGroup%duration=MediaDurationD
+OR	HAND	VAL_EQ	SummaryPreferences/NumOfKeyFrames	/*Summary/*SummarySegmentGroup%numOfKeyFrames
+OR	HAND	VAL_GTE	SummaryPreferences/MinNumOfKeyFrames	/*Summary/*SummarySegmentGroup%numOfKeyFrames
+OR	HAND	VAL_LTE	SummaryPreferences/MaxNumOfKeyFrames	/*Summary/*SummarySegmentGroup%numOfKeyFrames
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	Character/GivenName=%xml:lang	"/GivenName%xml:lang"
+NA_GO	HAND	STR_EQ	Character/GivenName=%initial	/GivenName%initial
+NA_GO	HAND	STR_EQ	Character/GivenName=%abbrev	/GivenName%abbrev
+OR	HAND	STR_ISUB	Character/GivenName	/GivenName
+				
+NA_GO	HAND	STR_EQ	Character/FamilyName=%xml:lang	"/FamilyName%xml:lang"
+NA_GO	HAND	STR_EQ	Character/FamilyName=%initial	/FamilyName%initial
+NA_GO	HAND	STR_EQ	Character/FamilyName=%abbrev	/FamilyName%abbrev
+OR	HAND	STR_ISUB	Character/FamilyName	/FamilyName
+				
+NA_GO	HAND	STR_EQ	Character/Title=%xml:lang	"/Title%xml:lang"
+NA_GO	HAND	STR_EQ	Character/Title=%initial	/Title%initial
+NA_GO	HAND	STR_EQ	Character/Title=%abbrev	/Title%abbrev
+OR	HAND	STR_ISUB	Character/Title	/Title
+NA_GO	HAND	STR_EQ	Character/Numeration	/Numeration
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	Name/GivenName=%xml:lang	"/GivenName%xml:lang"
+NA_GO	HAND	STR_EQ	Name/GivenName=%initial	/GivenName%initial
+NA_GO	HAND	STR_EQ	Name/GivenName=%abbrev	/GivenName%abbrev
+OR	HAND	STR_ISUB	Name/GivenName	/GivenName
+				
+NA_GO	HAND	STR_EQ	Name/FamilyName=%xml:lang	"/FamilyName%xml:lang"
+NA_GO	HAND	STR_EQ	Name/FamilyName=%initial	/FamilyName%initial
+NA_GO	HAND	STR_EQ	Name/FamilyName=%abbrev	/FamilyName%abbrev
+OR	HAND	STR_ISUB	Name/FamilyName	/FamilyName
+				
+NA_GO	HAND	STR_EQ	Name/Title=%xml:lang	"/Title%xml:lang"
+NA_GO	HAND	STR_EQ	Name/Title=%initial	/Title%initial
+NA_GO	HAND	STR_EQ	Name/Title=%abbrev	/Title%abbrev
+OR	HAND	STR_ISUB	Name/Title	/Title
+NA_GO	HAND	STR_EQ	Name/Numeration	/Numeration
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	Tool/Name=%xml:lang	"/Name%xml:lang"
+OR	HAND	STR_ISUB	Tool/Name	/Name
+				
+NA_GO	HAND	STR_EQ	Tool/Definition=%xml:lang	"/Definition%xml:lang"
+OR	HAND	STR_ISUB	Tool/Definition	/Definition
+				
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	Kind/Name=%xml:lang	"/Name%xml:lang"
+OR	HAND	STR_ISUB	Kind/Name	/Name
+				
+NA_GO	HAND	STR_EQ	Kind/Definition=%xml:lang	"/Definition%xml:lang"
+OR	HAND	STR_ISUB	Kind/Definition	/Definition
+				
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	Genre/Name=%xml:lang	"/Name%xml:lang"
+OR	HAND	STR_ISUB	Genre/Name	/Name
+				
+NA_GO	HAND	STR_EQ	Genre/Definition=%xml:lang	"/Definition%xml:lang"
+OR	HAND	STR_ISUB	Genre/Definition	/Definition
+				
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	Form/Name=%xml:lang	"/Name%xml:lang"
+OR	HAND	STR_ISUB	Form/Name	/Name
+				
+NA_GO	HAND	STR_EQ	Form/Definition=%xml:lang	"/Definition%xml:lang"
+OR	HAND	STR_ISUB	Form/Definition	/Definition
+				
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	AstronomicalBody/Name=%xml:lang	"/Name%xml:lang"
+OR	HAND	STR_ISUB	AstronomicalBody/Name	/Name
+				
+NA_GO	HAND	STR_EQ	AstronomicalBody/Definition=%xml:lang	"/Definition%xml:lang"
+OR	HAND	STR_ISUB	AstronomicalBody/Definition	/Definition
+				
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	RatingScheme/Name=%xml:lang	"/Name%xml:lang"
+OR	HAND	STR_ISUB	RatingScheme/Name	/Name
+				
+NA_GO	HAND	STR_EQ	RatingScheme/Definition=%xml:lang	"/Definition%xml:lang"
+OR	HAND	STR_ISUB	RatingScheme/Definition	/Definition
+				
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	DisseminationFormat/Name=%xml:lang	"/Name%xml:lang"
+OR	HAND	STR_ISUB	DisseminationFormat/Name	/Name
+				
+NA_GO	HAND	STR_EQ	DisseminationFormat/Definition=%xml:lang	"/Definition%xml:lang"
+OR	HAND	STR_ISUB	DisseminationFormat/Definition	/Definition
+				
+				
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	Role/Name=%xml:lang	"/Name%xml:lang"
+OR	HAND	STR_ISUB	Role/Name	/Name
+				
+NA_GO	HAND	STR_EQ	Role/Definition=%xml:lang	"/Definition%xml:lang"
+OR	HAND	STR_ISUB	Role/Definition	/Definition
+				
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	NameTerm/Name=%xml:lang	"/Name%xml:lang"
+OR	HAND	STR_ISUB	NameTerm/Name	/Name
+				
+NA_GO	HAND	STR_EQ	NameTerm/Definition=%xml:lang	"/Definition%xml:lang"
+OR	HAND	STR_ISUB	NameTerm/Definition	/Definition
+				
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	SceneCodingFormat/Name=%xml:lang	"/Name%xml:lang"
+OR	HAND	STR_ISUB	SceneCodingFormat/Name	/Name
+				
+NA_GO	HAND	STR_EQ	SceneCodingFormat/Definition=%xml:lang	"/Definition%xml:lang"
+OR	HAND	STR_ISUB	SceneCodingFormat/Definition	/Definition
+				
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	GraphicsCodingFormat/Name=%xml:lang	"/Name%xml:lang"
+OR	HAND	STR_ISUB	GraphicsCodingFormat/Name	/Name
+				
+NA_GO	HAND	STR_EQ	GraphicsCodingFormat/Definition=%xml:lang	"/Definition%xml:lang"
+OR	HAND	STR_ISUB	GraphicsCodingFormat/Definition	/Definition
+				
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	OtherCodingFormat/Name=%xml:lang	"/Name%xml:lang"
+OR	HAND	STR_ISUB	OtherCodingFormat/Name	/Name
+				
+NA_GO	HAND	STR_EQ	OtherCodingFormat/Definition=%xml:lang	"/Definition%xml:lang"
+OR	HAND	STR_ISUB	OtherCodingFormat/Definition	/Definition
+				
+				
+				
+				
+OR	HAND	NA_TO	Agent/Name	/*Name
+				
+NA_GO	HAND	STR_EQ	Agent/NameTerm=%type	/*NameTerm%type
+OR	HAND	NA_TO	Agent/NameTerm	/*NameTerm
+OR	HAND	STR_EQ	Agent/NameTerm=%href	/*NameTerm%href
+OR	HAND	NA_TO	Agent/Affiliation	/*Affiliation
+				
+OR	HAND	STR_EQ	Agent/Citizenship	/Citizenship
+OR	HAND	NA_TO	Agent/Address	/Address
+				
+				
+OR	HAND	NA_TO	Agent/ElectronicAddress	/ElectronicAddress
+				
+				
+				
+				
+OR	HAND	NA_TO	Member/Name	/*Name
+				
+NA_GO	HAND	STR_EQ	Member/NameTerm=%type	/*NameTerm%type
+OR	HAND	NA_TO	Member/NameTerm	/*NameTerm
+OR	HAND	STR_EQ	Member/NameTerm=%href	/*NameTerm%href
+OR	HAND	NA_TO	Member/Affiliation	/*Affiliation
+				
+OR	HAND	STR_EQ	Member/Citizenship	/Citizenship
+OR	HAND	NA_TO	Member/Address	/Address
+				
+				
+OR	HAND	NA_TO	Member/ElectronicAddress	/ElectronicAddress
+				
+				
+				
+				
+OR	HAND	NA_TO	Contact/Name	/*Name
+				
+NA_GO	HAND	STR_EQ	Contact/NameTerm=%type	/*NameTerm%type
+OR	HAND	NA_TO	Contact/NameTerm	/*NameTerm
+OR	HAND	STR_EQ	Contact/NameTerm=%href	/*NameTerm%href
+OR	HAND	NA_TO	Contact/Affiliation	/*Affiliation
+				
+OR	HAND	STR_EQ	Contact/Citizenship	/Citizenship
+OR	HAND	NA_TO	Contact/Address	/Address
+				
+				
+OR	HAND	NA_TO	Contact/ElectronicAddress	/ElectronicAddress
+				
+				
+				
+				
+OR	HAND	NA_TO	Reviewer/Name	/*Name
+				
+NA_GO	HAND	STR_EQ	Reviewer/NameTerm=%type	/*NameTerm%type
+OR	HAND	NA_TO	Reviewer/NameTerm	/*NameTerm
+OR	HAND	STR_EQ	Reviewer/NameTerm=%href	/*NameTerm%href
+OR	HAND	NA_TO	Reviewer/Affiliation	/*Affiliation
+				
+OR	HAND	STR_EQ	Reviewer/Citizenship	/Citizenship
+OR	HAND	NA_TO	Reviewer/Address	/Address
+				
+				
+OR	HAND	NA_TO	Reviewer/ElectronicAddress	/ElectronicAddress
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	PersonGroup/Name=%type	/Name%type
+OR	HAND	STR_EQ	PersonGroup/Name	/Name
+NA_GO	HAND	STR_EQ	PersonGroup/NameTerm=%type	/NameTerm%type
+OR	HAND	NA_TO	PersonGroup/NameTerm	/NameTerm
+OR	HAND	STR_EQ	PersonGroup/NameTerm=%href	/NameTerm%href
+OR	HAND	NA_TO	PersonGroup/Kind	/*Kind
+OR	HAND	STR_EQ	PersonGroup/Kind=%href	/*Kind%href
+OR	HAND	NA_TO	PersonGroup/Member	/*Contact
+				
+				
+				
+OR	HAND	NA_TO	PersonGroup/Jurisdiction	/Jurisdiction
+				
+				
+				
+				
+OR	HAND	NA_TO	PersonGroup/Address	/Address
+				
+				
+				
+				
+OR	HAND	NA_TO	PersonGroup/ElectronicAddress	/ElectronicAddress
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	Contact/Name=%type	/Name%type
+OR	HAND	STR_EQ	Contact/Name	/Name
+NA_GO	HAND	STR_EQ	Contact/NameTerm=%type	/NameTerm%type
+OR	HAND	NA_TO	Contact/NameTerm	/NameTerm
+OR	HAND	STR_EQ	Contact/NameTerm=%href	/NameTerm%href
+OR	HAND	NA_TO	Contact/Kind	/*Kind
+OR	HAND	STR_EQ	Contact/Kind=%href	/*Kind%href
+OR	HAND	NA_TO	Contact/Member	/*Contact
+				
+				
+				
+OR	HAND	NA_TO	Contact/Jurisdiction	/Jurisdiction
+				
+				
+				
+				
+OR	HAND	NA_TO	Contact/Address	/Address
+				
+				
+				
+				
+OR	HAND	NA_TO	Contact/ElectronicAddress	/ElectronicAddress
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	Reviewer/Name=%type	/Name%type
+OR	HAND	STR_EQ	Reviewer/Name	/Name
+NA_GO	HAND	STR_EQ	Reviewer/NameTerm=%type	/NameTerm%type
+OR	HAND	NA_TO	Reviewer/NameTerm	/NameTerm
+OR	HAND	STR_EQ	Reviewer/NameTerm=%href	/NameTerm%href
+OR	HAND	NA_TO	Reviewer/Kind	/*Kind
+OR	HAND	STR_EQ	Reviewer/Kind=%href	/*Kind%href
+OR	HAND	NA_TO	Reviewer/Member	/*Contact
+				
+				
+				
+OR	HAND	NA_TO	Reviewer/Jurisdiction	/Jurisdiction
+				
+				
+				
+				
+OR	HAND	NA_TO	Reviewer/Address	/Address
+				
+				
+				
+				
+OR	HAND	NA_TO	Reviewer/ElectronicAddress	/ElectronicAddress
+				
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	Agent/Name=%type	/Name%type
+OR	HAND	STR_ISUB	Agent/Name	/Name
+NA_GO	HAND	STR_EQ	Agent/NameTerm=%type	/NameTerm%type
+OR	HAND	NA_TO	Agent/NameTerm	/NameTerm
+OR	HAND	STR_EQ	Agent/NameTerm=%href	/NameTerm%href
+OR	HAND	NA_TO	Agent/Kind	/*Kind
+OR	HAND	STR_EQ	Agent/Kind=%href	/*Kind%href
+OR	HAND	NA_TO	Agent/Contact	/Contact
+				
+				
+				
+				
+				
+OR	HAND	NA_TO	Agent/Jurisdiction	/Jurisdiction
+				
+				
+				
+				
+OR	HAND	NA_TO	Agent/Address	/Address
+				
+				
+				
+				
+OR	HAND	NA_TO	Agent/ElectronicAddress	/ElectronicAddress
+				
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	Contact/Name=%type	/Name%type
+OR	HAND	STR_ISUB	Contact/Name	/Name
+NA_GO	HAND	STR_EQ	Contact/NameTerm=%type	/NameTerm%type
+OR	HAND	NA_TO	Contact/NameTerm	/NameTerm
+OR	HAND	STR_EQ	Contact/NameTerm=%href	/NameTerm%href
+OR	HAND	NA_TO	Contact/Kind	/*Kind
+OR	HAND	STR_EQ	Contact/Kind=%href	/*Kind%href
+OR	HAND	NA_TO	Contact/Contact	/Contact
+				
+				
+				
+				
+				
+OR	HAND	NA_TO	Contact/Jurisdiction	/Jurisdiction
+				
+				
+				
+				
+OR	HAND	NA_TO	Contact/Address	/Address
+				
+				
+				
+				
+OR	HAND	NA_TO	Contact/ElectronicAddress	/ElectronicAddress
+				
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	Organization/Name=%type	/Name%type
+OR	HAND	STR_ISUB	Organization/Name	/Name
+NA_GO	HAND	STR_EQ	Organization/NameTerm=%type	/NameTerm%type
+OR	HAND	NA_TO	Organization/NameTerm	/NameTerm
+OR	HAND	STR_EQ	Organization/NameTerm=%href	/NameTerm%href
+OR	HAND	NA_TO	Organization/Kind	/*Kind
+OR	HAND	STR_EQ	Organization/Kind=%href	/*Kind%href
+OR	HAND	NA_TO	Organization/Contact	/Contact
+				
+				
+				
+				
+				
+OR	HAND	NA_TO	Organization/Jurisdiction	/Jurisdiction
+				
+				
+				
+				
+OR	HAND	NA_TO	Organization/Address	/Address
+				
+				
+				
+				
+OR	HAND	NA_TO	Organization/ElectronicAddress	/ElectronicAddress
+				
+				
+				
+				
+				
+				
+NA_GO	HAND	STR_EQ	Reviewer/Name=%type	/Name%type
+OR	HAND	STR_ISUB	Reviewer/Name	/Name
+NA_GO	HAND	STR_EQ	Reviewer/NameTerm=%type	/NameTerm%type
+OR	HAND	NA_TO	Reviewer/NameTerm	/NameTerm
+OR	HAND	STR_EQ	Reviewer/NameTerm=%href	/NameTerm%href
+OR	HAND	NA_TO	Reviewer/Kind	/*Kind
+OR	HAND	STR_EQ	Reviewer/Kind=%href	/*Kind%href
+OR	HAND	NA_TO	Reviewer/Contact	/Contact
+				
+				
+				
+				
+				
+OR	HAND	NA_TO	Reviewer/Jurisdiction	/Jurisdiction
+				
+				
+				
+				
+OR	HAND	NA_TO	Reviewer/Address	/Address
+				
+				
+				
+				
+OR	HAND	NA_TO	Reviewer/ElectronicAddress	/ElectronicAddress
+				
+				
+				
+OR	HAND	NA_TO	Affiliation/Organization	/Organization
+				
+				
+OR	HAND	NA_TO	Affiliation/PersonGroup	/PersonGroup
+				
+				
+				
+				
+				
+OR	HAND	STR_EQ	Location/Name	/Name
+NA_GO	HAND	STR_EQ	Location/NameTerm=%type	/NameTerm%type
+OR	HAND	NA_TO	Location/NameTerm	/NameTerm
+OR	HAND	STR_EQ	Location/NameTerm=%href	/NameTerm%href
+OR	HAND	NA_TO	Location/Role	/*Role
+OR	HAND	STR_EQ	Location/Role=%href	/*Role%href
+NA_GO	HAND	STR_EQ	Location/GeographicPosition=%datum	/GeographicPosition%datum
+OR	HAND	NA_TO	Location/GeographicPosition	/GeographicPosition
+OR	HAND	NA_TO	Location/AstronomicalBody	/AstronomicalBody
+OR	HAND	STR_EQ	Location/AstronomicalBody=%href	/AstronomicalBody%href
+OR	HAND	STR_EQ	Location/Region	/Region
+				
+NA_GO	HAND	STR_EQ	Location/AdministrativeUnit=%type	/AdministrativeUnit%type
+OR	HAND	STR_EQ	Location/AdministrativeUnit	/AdministrativeUnit
+OR	HAND	NA_TO	Location/PostalAddress	/PostalAddress
+				
+				
+OR	HAND	STR_ISUB	Location/InternalCoordinates	/InternalCoordinates
+				
+				
+				
+OR	HAND	STR_EQ	PersonGroup/Name	/Name
+NA_GO	HAND	STR_EQ	PersonGroup/NameTerm=%type	/NameTerm%type
+OR	HAND	NA_TO	PersonGroup/NameTerm	/NameTerm
+OR	HAND	STR_EQ	PersonGroup/NameTerm=%href	/NameTerm%href
+OR	HAND	NA_TO	PersonGroup/Role	/*Role
+OR	HAND	STR_EQ	PersonGroup/Role=%href	/*Role%href
+NA_GO	HAND	STR_EQ	PersonGroup/GeographicPosition=%datum	/GeographicPosition%datum
+OR	HAND	NA_TO	PersonGroup/GeographicPosition	/GeographicPosition
+OR	HAND	NA_TO	PersonGroup/AstronomicalBody	/AstronomicalBody
+OR	HAND	STR_EQ	PersonGroup/AstronomicalBody=%href	/AstronomicalBody%href
+OR	HAND	STR_EQ	PersonGroup/Region	/Region
+				
+NA_GO	HAND	STR_EQ	PersonGroup/AdministrativeUnit=%type	/AdministrativeUnit%type
+OR	HAND	STR_EQ	PersonGroup/AdministrativeUnit	/AdministrativeUnit
+OR	HAND	NA_TO	PersonGroup/PostalAddress	/PostalAddress
+				
+				
+OR	HAND	STR_ISUB	PersonGroup/InternalCoordinates	/InternalCoordinates
+				
+				
+				
+OR	HAND	STR_EQ	Address/Name	/Name
+NA_GO	HAND	STR_EQ	Address/NameTerm=%type	/NameTerm%type
+OR	HAND	NA_TO	Address/NameTerm	/NameTerm
+OR	HAND	STR_EQ	Address/NameTerm=%href	/NameTerm%href
+OR	HAND	NA_TO	Address/Role	/*Role
+OR	HAND	STR_EQ	Address/Role=%href	/*Role%href
+NA_GO	HAND	STR_EQ	Address/GeographicPosition=%datum	/GeographicPosition%datum
+OR	HAND	NA_TO	Address/GeographicPosition	/GeographicPosition
+OR	HAND	NA_TO	Address/AstronomicalBody	/AstronomicalBody
+OR	HAND	STR_EQ	Address/AstronomicalBody=%href	/AstronomicalBody%href
+OR	HAND	STR_EQ	Address/Region	/Region
+				
+NA_GO	HAND	STR_EQ	Address/AdministrativeUnit=%type	/AdministrativeUnit%type
+OR	HAND	STR_EQ	Address/AdministrativeUnit	/AdministrativeUnit
+OR	HAND	NA_TO	Address/PostalAddress	/PostalAddress
+				
+				
+OR	HAND	STR_ISUB	Address/InternalCoordinates	/InternalCoordinates
+				
+				
+				
+OR	HAND	STR_EQ	DisseminationLocation/Name	/Name
+NA_GO	HAND	STR_EQ	DisseminationLocation/NameTerm=%type	/NameTerm%type
+OR	HAND	NA_TO	DisseminationLocation/NameTerm	/NameTerm
+OR	HAND	STR_EQ	DisseminationLocation/NameTerm=%href	/NameTerm%href
+OR	HAND	NA_TO	DisseminationLocation/Role	/*Role
+OR	HAND	STR_EQ	DisseminationLocation/Role=%href	/*Role%href
+NA_GO	HAND	STR_EQ	DisseminationLocation/GeographicPosition=%datum	/GeographicPosition%datum
+OR	HAND	NA_TO	DisseminationLocation/GeographicPosition	/GeographicPosition
+OR	HAND	NA_TO	DisseminationLocation/AstronomicalBody	/AstronomicalBody
+OR	HAND	STR_EQ	DisseminationLocation/AstronomicalBody=%href	/AstronomicalBody%href
+OR	HAND	STR_EQ	DisseminationLocation/Region	/Region
+				
+NA_GO	HAND	STR_EQ	DisseminationLocation/AdministrativeUnit=%type	/AdministrativeUnit%type
+OR	HAND	STR_EQ	DisseminationLocation/AdministrativeUnit	/AdministrativeUnit
+OR	HAND	NA_TO	DisseminationLocation/PostalAddress	/PostalAddress
+				
+				
+OR	HAND	STR_ISUB	DisseminationLocation/InternalCoordinates	/InternalCoordinates
+				
+				
+OR	HAND	STR_ISUB	PostalAddress/AddressLine	/AddressLine
+OR	HAND	STR_ISUB	PostalAddress/PostingIdentifier	/PostingIdentifier
+				
+				
+OR	AND	STR_EQ	ElectronicAddress/Telephone	/Telephone
+OR	AND	STR_EQ	ElectronicAddress/Fax	/Fax
+OR	AND	STR_EQ	ElectronicAddress/Email	/Email
+OR	AND	STR_EQ	ElectronicAddress/Url	/Url
+				
+				
+HAND	HAND	VAL_EQ	GeographicPosition/Point=%longitude	/Point%longitude
+HAND	HAND	VAL_EQ	GeographicPosition/Point=%latitude	/Point%latitude
+HAND	HAND	VAL_EQ	GeographicPosition/Point=%altitude	/Point%altitude
+				
+				
+				
+OR	HAND	NA_TO	Agent/Icon	/Icon
+				
+				
+				
+OR	HAND	NA_TO	Member/Icon	/Icon
+				
+				
+				
+OR	HAND	NA_TO	Contact/Icon	/Icon
+				
+				
+				
+OR	HAND	NA_TO	Reviewer/Icon	/Icon
+				
+				
+				
+OR	HAND	STR_EQ	Icon/MediaUri	/MediaUri
+				
+				
+				
+OR	HAND	NA_TO	MediaFormat/Content	/Content
+OR	HAND	STR_EQ	MediaFormat/Content=%href	/Content%href
+OR	HAND	NA_TO	MediaFormat/Medium	/Medium
+OR	HAND	STR_EQ	MediaFormat/Medium=%href	/Medium%href
+OR	HAND	NA_TO	MediaFormat/FileFormat	/FileFormat
+OR	HAND	STR_EQ	MediaFormat/FileFormat=%href	/FileFormat%href
+OR	HAND	VAL_EQ	MediaFormat/FileSize	/FileSize
+OR	HAND	NA_TO	MediaFormat/System	/System
+OR	HAND	STR_EQ	MediaFormat/System=%href	/System%href
+OR	HAND	VAL_EQ	MediaFormat/Bandwidth	/Bandwidth
+NA_GO	HAND	VAL_EQ	MediaFormat/BitRate=%variable	/BitRate%variable
+NA_GO	HAND	VAL_EQ	MediaFormat/BitRate=%minimum	/BitRate%minimum
+NA_GO	HAND	VAL_EQ	MediaFormat/BitRate=%average	/BitRate%average
+NA_GO	HAND	VAL_EQ	MediaFormat/BitRate=%maximum	/BitRate%maximum
+OR	HAND	VAL_EQ	MediaFormat/BitRate	/BitRate
+OR	HAND	VAL_EQ	MediaFormat/TargetChannelBitRate	/TargetChannelBitRate
+OR	HAND	STR_EQ	MediaFormat/ScalableCoding	/ScalableCoding
+OR	HAND	NA_TO	MediaFormat/VisualCoding	/VisualCoding
+NA_GO	HAND	STR_EQ	VisualCoding/Format=%colorDomain	/Format%colorDomain
+OR	HAND	NA_TO	VisualCoding/Format	/Format
+OR	HAND	STR_EQ	VisualCoding/Format=%href	/Format%href
+HAND	HAND	VAL_EQ	VisualCoding/Pixel=%resolution	/Pixel%resolution
+HAND	HAND	VAL_EQ	VisualCoding/Pixel=%aspectRatio	/Pixel%aspectRatio
+HAND	HAND	VAL_EQ	VisualCoding/Pixel=%bitsPer	/Pixel%bitsPer
+HAND	HAND	VAL_EQ	VisualCoding/Frame=%height	/Frame%height
+HAND	HAND	VAL_EQ	VisualCoding/Frame=%width	/Frame%width
+HAND	HAND	VAL_EQ	VisualCoding/Frame=%aspectRatio	/Frame%aspectRatio
+HAND	HAND	VAL_EQ	VisualCoding/Frame=%rate	/Frame%rate
+HAND	HAND	STR_EQ	VisualCoding/Frame=%structure	/Frame%structure
+				
+				
+OR	HAND	NA_TO	AudioCoding/Format	/Format
+OR	HAND	STR_EQ	AudioCoding/Format=%href	/Format%href
+NA_GO	HAND	VAL_EQ	AudioCoding/AudioChannels=%front	/AudioChannels%front
+NA_GO	HAND	VAL_EQ	AudioCoding/AudioChannels=%side	/AudioChannels%side
+NA_GO	HAND	VAL_EQ	AudioCoding/AudioChannels=%rear	/AudioChannels%rear
+NA_GO	HAND	VAL_EQ	AudioCoding/AudioChannels=%lfe	/AudioChannels%lfe
+NA_GO	HAND	VAL_EQ	AudioCoding/AudioChannels=%track	/AudioChannels%track
+OR	HAND	VAL_EQ	AudioCoding/AudioChannels	/AudioChannels
+HAND	HAND	VAL_EQ	AudioCoding/Sample=%rate	/Sample%rate
+HAND	HAND	VAL_EQ	AudioCoding/Sample=%bitsper	/Sample%bitsper
+OR	HAND	STR_EQ	AudioCoding/Emphasis	/Emphasis
+OR	HAND	NA_TO	MediaFormat/SceneCodingFormat	/SceneCodingFormat
+OR	HAND	STR_EQ	MediaFormat/SceneCodingFormat=%href	/SceneCodingFormat%href
+OR	HAND	NA_TO	MediaFormat/GraphicsCodingFormat	/GraphicsCodingFormat
+OR	HAND	STR_EQ	MediaFormat/GraphicsCodingFormat=%href	/GraphicsCodingFormat%href
+OR	HAND	NA_TO	MediaFormat/OtherCodingFormat	/OtherCodingFormat
+OR	HAND	STR_EQ	MediaFormat/OtherCodingFormat=%href	/OtherCodingFormat%href
+
+
+OR     NA_GO  NA_TO       PreferenceCondition             0
+OR     NA_GO  NA_TO       PreferenceType                  0 

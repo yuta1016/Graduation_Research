@@ -1,0 +1,11 @@
+/* default bitstream file*/
+Bitstream	Bitstreams/DC.mp7
+
+/* coding mode */
+CodingMode	0
+
+/* dominant color setting */
+ColorSpacePresent			0
+ColorQuantizationPresent	0
+VariancePresent			1
+SpatialCoherency			0

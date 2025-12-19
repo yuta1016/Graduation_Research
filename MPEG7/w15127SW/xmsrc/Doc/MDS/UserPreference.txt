@@ -1,0 +1,17 @@
+Technique	UserPreference
+Document	W3624, Sect 15.1; W3705, Sect 15.1
+Name		Jim Errico, Sharp Labs of America; Peter van Beek, Sharp Labs of America
+EMail		jerrico@sharplabs.com, pvanbeek@sharplabs.com
+Type		Application
+External Libraries	xerces-c_1
+Related Ds/DSs	NA
+Used Ds/DSs	MediaMeta DS
+Input		Mpeg7Main program descriptions, Mpeg7Main user preference descriptions
+Extraction	NA
+Client Appl	Search & Retrieval 
+Summary		This component is the implementation of the search functionality for the UserPreference Description Scheme.
+Strong Points	NA
+Limitations	NA
+Known Problems	NA
+Parameters	MapFile : MapCD.txt (mapping between user preference descriptions and program descriptions)
+END

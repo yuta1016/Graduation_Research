@@ -1,0 +1,126 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// This software module was originally developed by
+//
+// Intel Corporation
+// (contributing organizations names)
+//
+// in the course of development of the MPEG-7 Experimentation Model.
+//
+// This software module is an implementation of a part of one or more MPEG-7
+// Experimentation Model tools as specified by the MPEG-7 Requirements.
+//
+// ISO/IEC gives users of MPEG-7 free license to this software module or
+// modifications thereof for use in hardware or software products claiming
+// conformance to MPEG-7.
+//
+// Those intending to use this software module in hardware or software products
+// are advised that its use may infringe existing patents. The original
+// developer of this software module and his/her company, the subsequent
+// editors and their companies, and ISO/IEC have no liability for use of this
+// software module or modifications thereof in an implementation.
+//
+// Copyright is not released for non MPEG-7 conforming products. The
+// organizations named above retain full right to use the code for their own
+// purpose, assign or donate the code to a third party and inhibit third parties
+// from using the code for non MPEG-7 conforming products.
+//
+// Copyright (c) 1998-1999.
+//
+// This notice must be included in all copies or derivative works.
+//
+// Applicable File Name:  ServerApplications.cpp
+//
+
+#include "ServerApplications.h"
+#include "Descriptors.h"                     /* Naming Convention */
+#include "ExtractionUtilities.h"    /* Naming Convention */
+
+using namespace XM;
+
+const UUID P564Server::myID = UUID("74abc540-db70-11d2-affe-0080c7e1e76d");
+const char *P564Server::myName = "Example Eval Server";
+
+//=============================================================================
+P564Server::P564Server()
+{
+}
+
+//----------------------------------------------------------------------------
+P564Server::~P564Server()
+{
+}
+
+//----------------------------------------------------------------------------
+unsigned long P564Server::Open()
+{
+	// This server doesn't handle pull
+	return 0;
+}
+
+//----------------------------------------------------------------------------
+unsigned long P564Server::Start()
+{
+	// First, create a quantizer descriptor
+	ColorLinearQuantizerDescriptor quantizerDescriptor;
+	quantizerDescriptor.SetNumberChannels(3); // R, G, B.  or L, R, C
+	quantizerDescriptor.SetBinSizes(0, 4);
+	quantizerDescriptor.SetBinSizes(1, 5);
+	quantizerDescriptor.SetBinSizes(2, 4);
+	quantizerDescriptor.SetQuantTransition(0, 0, 15);
+	quantizerDescriptor.SetQuantTransition(0, 10, 15);
+	quantizerDescriptor.SetQuantTransition(0, 20, 15);
+	quantizerDescriptor.SetQuantTransition(0, 255, 15);
+	quantizerDescriptor.SetQuantTransition(1, 0, 15);
+	quantizerDescriptor.SetQuantTransition(1, 15, 15);
+	quantizerDescriptor.SetQuantTransition(1, 30, 15);
+	quantizerDescriptor.SetQuantTransition(1, 45, 15);
+	quantizerDescriptor.SetQuantTransition(1, 255, 15);
+	quantizerDescriptor.SetQuantTransition(2, 0, 15);
+	quantizerDescriptor.SetQuantTransition(2, 10, 15);
+	quantizerDescriptor.SetQuantTransition(2, 20, 15);
+	quantizerDescriptor.SetQuantTransition(2, 255, 15);
+
+	//Next, set up the feature extraction.
+
+	//GetExtractionInterface()->SetSourceMedia();
+
+	for (int i=0; i < 2; i++)
+	{
+		((ColorLinearQuantizerExtractionInterfaceABC*)GetExtractionInterface())->
+			SetQuantizerDesc(quantizerDescriptor);
+
+		ColorHistogramDescriptor resultDesc;
+		I_ExtractionInterfaceABC::ExtractionResult result;
+		GetExtractionInterface()->ExtractFeature(&resultDesc, result);
+
+		GetEncoderInterface()->CodeDescriptor(&resultDesc);
+	}
+
+	return 0;
+}
+
+//----------------------------------------------------------------------------
+unsigned long P564Server::Stop()
+{
+	throw("Not Implemented");
+	return 0;
+}
+//----------------------------------------------------------------------------
+unsigned long P564Server::Close()
+{
+	throw("Not Implemented");
+	return 0;
+}
+
+	
+//----------------------------------------------------------------------------
+const UUID& P564Server::GetObjectID(void)
+{ return myID; }
+
+//----------------------------------------------------------------------------
+const char *P564Server::GetName(void)
+{ return myName; }
+
+
+

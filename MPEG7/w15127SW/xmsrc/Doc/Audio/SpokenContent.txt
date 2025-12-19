@@ -1,0 +1,33 @@
+Technique	SpokenContent
+Document	W4743
+Name		Phil Garner, Jason Charlesworth
+EMail		philg@cre.canon.co.uk
+Type		Application using several basic components
+External Libraries	None
+Related Ds/DSs	ProbabilityVector, ProbabilityMatrix
+Used Ds/DSs	ProbabilityMatrix
+		ProbabilityVector
+		SpokenContentBlock
+		SpokenContentConfusionInfo
+		SpokenContentExtractionInfo
+		SpokenContentHeader
+		SpokenContentIndexEntry
+		SpokenContentLattice
+		SpokenContentLexicon
+		SpokenContentLink
+		SpokenContentNode
+		SpokenContentPhoneIndexEntry
+		SpokenContentPhoneLexicon
+		SpokenContentPhoneLink
+		SpokenContentSpeaker
+		SpokenContentWordIndexEntry
+		SpokenContentWordLexicon
+		SpokenContentWordLink
+Extraction	NA
+Client Appl	Search & Retrieval
+Summary		Demonstrates basic search and retrieval using spoken content.  Both data and queries can be word based or phoneme based.
+Strong Points	Demonstrates how to link an audio or video descriptor with C++ representation to a MDS DS with GenericDS implementation.
+Limitations	None
+Known Problems	The MDS elements MediaTime and Individual are ignored by the implementation, even though the GenericDS reads them
+Parameters	None
+END
