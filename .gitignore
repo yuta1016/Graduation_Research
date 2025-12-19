@@ -37,6 +37,6 @@ env/
 .cache
 .python-version
 *.mp3
-MPEG7/*
+
 test_*/*
 test*
