@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>MDS/Summarization</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for MDS/Summarization</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>Summarization
+<tr><th>Document
+<td>NXXX  MPEG-7 Working Draft MDS
+<tr><th>Name
+<td>Charilaos Christopoulos (MediaLab, Ericsson Radio Systems AB,Sweden)<br>
+Yousri Abdeljaoued (EPFL Switzerland)
+<tr><th>Email
+<td>Charilaos.Christopoulos@era.ericsson.se
+<tr><th>Contact
+<td>Charilaos.Christopoulos@era.ericsson.se
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>NONE
+<tr><th>Related Ds/DSs
+<td>Sequential Summary, Hierarchical Summary
+<tr><th>Input
+<td>MPEG-Video (foo.mpg)
+<tr><th>Output
+<td>Extraction:foo.mpg.dir/scene%05.jpg(key frames),<br>
+Transcoding:foo.mpg.dir/Summary*.mpg(transcoded summary of foo) 
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Transcoding Application
+<tr><th>Summary
+<td>This component computes the FrameChangeValues basing on the feature point activity. During Extraction it also writes the key frames of the sequence to the disk. The client application performs the transcoding of the input sequence, thus<br>
+a) it includes only the key frames<br>
+b) it has a constant frame activity
+<tr><th>Strong Points
+<td>The extraction process of the frame change values applies a "Karhunen Loeve Transfromation" (KLT). From the KLT a feature point list is generated. A Kalman filter is used to compute the activity of the feature points. This extraction process gives very robust results.
+<tr><th>Limitations
+<td>NONE
+<tr><th>Known Problems
+<td>Images with no feature points are not treated
+<tr><th>Parameters
+<td>/* default application name*/<br>
+Application SummarizationClient<br>
+/* default database file name*/<br>
+ListFile	Databases/video.lst<br>
+/* default bit stream file*/<br>
+Bitstream Summary.ddl<br>
+/* default number of matches*/<br>
+NoOfMatches 8<br>
+/* parameter file for summary extraction*/<br>
+/* enable storing and reading of intermediary results*/<br>
+RW_intermediary_results	1<br>
+/* write activity for all frames*/<br>
+WriteAllFramesToDDL 1<br>
+/* enable denoising prior to feature point extraction*/<br>
+denoise	1<br>
+/*minimum geometrical distance between two feature points*/<br>
+min_featurepoint_distance	19<br>
+distance_threshold	0.25<br>
+/*time base*/<br>
+nnfraction	30<br>
+nn	1<br>
+/* acceleration noise*/<br>
+acceleration_noise 1500.0<br>
+/* update ratio for new values*/<br>
+alpha	0.1<br>
+/* measurement noise*/<br>
+measurement_noise	10.0<br>
+/* initial value for standard deviation*/<br>
+standard_deviation	0.4
+</table>
+</body>
+</html>

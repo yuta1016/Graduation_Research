@@ -1,0 +1,12 @@
+# Begin Group "AffectiveSegmentFilter"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\AffectiveSegmentFilterCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\AffectiveSegmentFilterCAppl.h
+# End Source File
+# End Group

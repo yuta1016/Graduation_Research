@@ -1,0 +1,20 @@
+# Begin Group "MatchingHint"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\MatchingHintCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MatchingHintCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MatchingHintSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MatchingHintSAppl.h
+# End Source File
+# End Group

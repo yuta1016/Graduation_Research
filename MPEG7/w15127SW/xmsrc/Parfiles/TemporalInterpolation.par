@@ -1,0 +1,17 @@
+/* TemporalInterpolation */
+/* Select ErrFix or KeyPointNumFix or IntervalFix */
+ExMode          ErrFix
+
+/* Degree of interpolating functions */
+Degree 2
+
+/* Error Limit of ErrFix mode */
+ErrLimit	10.0
+ErrLimit1	5.0
+
+/* Key point number of KeyPointNumFix mode */
+KeyPointNum     20
+
+/* Interval time of IntervalFix mode */
+Interval        15
+

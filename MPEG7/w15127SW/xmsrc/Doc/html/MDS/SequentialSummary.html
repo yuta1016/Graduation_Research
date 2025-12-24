@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>MDS/SequentialSummary</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for MDS/SequentialSummary</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>SequentialSummaryExtractionTool
+<tr><th>Document
+<td>N3705  MPEG-7 CD MDS, see Sequential Summaries
+<tr><th>Name
+<td>Osamu Hori, Toshimitsu Kaneko, Koji Yamamoto (Toshiba R&D Center)
+<tr><th>Email
+<td>osamu.hori@toshiba.co.jp, toshimitsu.kaneko@toshiba.co.jp, koji7.yamamoto@toshiba.co.jp
+<tr><th>Contact
+<td>osamu.hori@toshiba.co.jp
+<tr><th>Type
+<td>Application 
+<tr><th>External Libraries
+<td>ImageMagick library and mpeg2decode with extraction of motion vectors.
+<tr><th>Related Ds/DSs
+<td>SummaryDS, SequentialSummaryDS, FramePropertyD
+<tr><th>Used Ds/DSs
+<td>NONE
+<tr><th>Input
+<td>MPEG-Video (foo.mpg), MPEG frame information file (frameinfo.txt)<br>
+MPEG frame information file is a text file consist of three sections.<br>
+[VideoSkim]  : File name of the video skim file.<br>
+[I-pictures] : Listing of the I-picture frames.<br>
+[P-pictures] : Listing of the P-picture frames.<br>
+[Regions]    : Listing of the frames with region data.<br>
+The syntax for the region data is:<br>
+frame#	imagefile	left	top	width	height
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>NA
+<tr><th>Summary
+<td>This component generates a smart quick view, i.e., fast playback with automatic speed <br>
+control using thumbnail data and frame activity value. The thumbnail data is shrinked <br>
+I-picture frame images, given by a video skim (a composite of still-images). Frame <br>
+activity value is calculated from the motion vectors in the P-picture frames. The frame <br>
+numbers of I and P-pictures have to be described in the frame information file because <br>
+they are not extracted automaticaly. Region data is used to describe the region of interest.
+<tr><th>Strong Points
+<td>Regarding speed, it work best when the input mpeg video is not longer than 30 minutes.
+<tr><th>Limitations
+<td>Processing time can be very long when the input mpeg video is long.
+<tr><th>Parameters
+<td>NA
+</table>
+</body>
+</html>

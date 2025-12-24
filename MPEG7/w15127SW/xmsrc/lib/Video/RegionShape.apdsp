@@ -1,0 +1,20 @@
+# Begin Group "RegionShape"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\RegionShapeCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\RegionShapeCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\RegionShapeSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\RegionShapeSAppl.h
+# End Source File
+# End Group

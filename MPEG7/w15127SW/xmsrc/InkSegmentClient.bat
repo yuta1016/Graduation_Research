@@ -1,0 +1,1 @@
+./XMMain.exe -a InkSegmentClient -l Databases/InkSegment.lst -b IncSegemnt.xml -q testset/unspecified/IncSegment/Codebook.txt

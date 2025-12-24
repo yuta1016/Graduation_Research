@@ -1,0 +1,20 @@
+Technique	Perceptual 3D Shape Descriptor
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name	In Kyu Park, Hui Zhang, (Multimedia Lab, Samsung Advanced Institute of Technology)
+EMail	saitpik@sait.samsung.co.kr, hui.zhang@samsung.com
+Type	Application
+External Libraries	cv.lib(intel OpenCV) qhull.lib(Geometry Center)
+Related Ds/DSs	3D Shape Spectrum Descriptor
+Used Ds/DSs	NONE
+Input	3D Meshes in VRML2.0 format 
+Extraction	Yes
+Client Appl	Search & Retrieval
+Summary		The Perceptual 3D Shape Descriptor provides a compact shape description of 3D data represented as 3D meshes. 
+		The Perceptual 3D Shape Descriptor is generated from the part-based representation. It has the form of 
+		an attributed relational graph (ARG), composed of nodes and edges. A node represents a meaningful part 
+		of the model with unary attributes, while an edge implies binary relations between nodes.
+Strong Points	Compactness
+Limitations	NONE
+Known Problems	NONE
+Parameters	bits_per_attribute: the number of bits used for quantizing the descriptor values. Default value is 8 bits.
+END

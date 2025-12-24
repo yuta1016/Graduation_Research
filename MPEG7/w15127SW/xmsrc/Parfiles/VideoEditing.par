@@ -1,0 +1,57 @@
+/* default application name*/
+Application VideoEditingClient
+
+/* default database file name*/
+ListFile	Databases/videoFiles.lst
+
+/* default bitstream file*/
+Bitstream VideoEditing.ddl
+
+/* default number of matches*/
+NoOfMatches 8
+
+/* parmeter file for summary extraction*/
+/* enable storing and reading of intermediary results*/
+RW_intermediary_results	1
+
+/* write activity for all frames*/
+WriteAllFramesToDDL 1
+
+/* enable denoising prior to feature point extarction*/
+denoise	1
+
+/*minimum geometrical distance between two feature points*/
+min_featurepoint_distance	19
+
+distance_threshold	0.25
+
+/*time base*/
+nnfraction	30
+nn	1
+
+/* acceleration noise*/
+acceleration_noise 1500.0
+
+/* update ratio for new values*/
+alpha	0.1
+
+/* measurment nois*/
+measurement_noise	10.0
+
+/* initial value for standard deviation*/
+standard_deviation	0.4
+
+/* Max thershold for fade beginning detection*/
+fade_max_threshold	29 
+
+/* Min thershold for fade ending detection*/
+fade_min_threshold	57 
+
+/*Resize image factor (width)*/
+width_zoom_factor	8
+
+/*Resize image factor (height)*/
+height_zoom_factor	8
+
+/*Number of frames after a scene detection where an end fade should be detected*/
+waitFadeDetection 	15

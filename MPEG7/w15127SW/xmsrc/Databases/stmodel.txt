@@ -1,0 +1,2 @@
+testset/video/soccer.mpg
+testset/video/basketball.mpg

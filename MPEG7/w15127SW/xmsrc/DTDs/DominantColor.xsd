@@ -1,0 +1,89 @@
+	<!-- dominant color -->
+	<complexType name="DominantColorType" final="#all">
+		<complexContent>
+			<extension base="mpeg7:VisualDType">
+				<sequence>
+					<element name="ColorSpace" type="mpeg7:ColorSpaceType" minOccurs="0"/>
+					<element name="ColorQuantization" type="mpeg7:ColorQuantizationType" minOccurs="0"/>
+					<element name="SpatialCoherency" type="mpeg7:unsigned5"/>
+					<element name="Values" maxOccurs="8">
+						<complexType>
+							<sequence>
+								<element name="Percentage" type="mpeg7:unsigned5"/>
+								<element name="ColorValueIndex">
+									<simpleType>
+										<restriction base="mpeg7:listOfUnsigned12Type">
+											<length value="3"/>
+										</restriction>
+									</simpleType>
+								</element>
+								<element name="ColorVariance" minOccurs="0">
+									<simpleType>
+										<restriction base="mpeg7:listOfUnsigned1Type">
+											<length value="3"/>
+										</restriction>
+									</simpleType>
+								</element>
+							</sequence>
+						</complexType>
+					</element>
+				</sequence>
+				<attribute name="size">
+					<simpleType>
+						<restriction base="positiveInteger">
+							<minInclusive value="1"/>
+							<maxInclusive value="8"/>
+						</restriction>
+					</simpleType>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="ColorSpaceType" final="#all">
+		<choice>
+			<element name="ColorTransMat" minOccurs="0">
+				<simpleType>
+					<restriction base="mpeg7:listOfUnsigned16Type">
+						<length value="9"/>
+					</restriction>
+				</simpleType>
+			</element>
+		</choice>
+		<attribute name="colorReferenceFlag" type="boolean" use="default" value="false"/>
+		<attribute name="type">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="RGB"/>
+					<enumeration value="YCbCr"/>
+					<enumeration value="HSV"/>
+					<enumeration value="HMMD"/>
+					<enumeration value="LinearMatrix"/>
+					<enumeration value="Monochrome"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+	<complexType name="ColorQuantizationType" final="#all">
+		<sequence maxOccurs="unbounded">
+			<element name="Component">
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="R"/>
+						<enumeration value="G"/>
+						<enumeration value="B"/>
+						<enumeration value="Y"/>
+						<enumeration value="Cb"/>
+						<enumeration value="Cr"/>
+						<enumeration value="H"/>
+						<enumeration value="S"/>
+						<enumeration value="V"/>
+						<enumeration value="Max"/>
+						<enumeration value="Min"/>
+						<enumeration value="Diff"/>
+						<enumeration value="Sum"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="BinNumber" type="mpeg7:unsigned12"/>
+		</sequence>
+	</complexType>

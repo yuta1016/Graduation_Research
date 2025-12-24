@@ -37,3 +37,6 @@ env/
 .cache
 .python-version
 *.mp3
+
+test_*/*
+test*

@@ -1,0 +1,15 @@
+/* default application name*/
+Application    ShapeVariationClient
+ 
+/* default database file name*/
+ListFile       ShapeVariation.lst 
+ 
+/* default bitstream file*/
+Bitstream      ShapeVariation.xml
+ 
+/* output mode */
+CodingMode      2
+ 
+/* default number of matches*/
+NoOfMatches	10 
+ 

@@ -1,0 +1,5 @@
+/* PercussiveInstrumentTimbre */
+/* Weight for distance calculation */
+LogAttackTimeWeight		-0.3
+SpectralCentroidWeight		-1e-4
+TemporalCentroidWeight		-0.6

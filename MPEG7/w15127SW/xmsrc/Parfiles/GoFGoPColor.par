@@ -1,0 +1,26 @@
+/* default application name*/
+Application	GoFGoPColorClient
+
+/* default database file name*/
+ListFile	Databases/video.lst
+
+/* default bitstream file*/
+Bitstream	GoFGoPColor.xml
+
+/* default number of matches*/
+NoOfMatches 8
+
+/* select coding mode*/
+CodingMode  0 /* 0= DDL, 2= Binary*/
+
+/* additional parameters*/
+/*Extractparfile	extract.par*/
+/* Three modes: Average, Median, Intersection*/ 
+AggregationMode        Average
+
+/* NumberOfBitplanesDiscarded: 0, 1, 2, 3, 4, 6 oder 8 */
+NumberOfBitplanesDiscarded 0
+
+/* NumberOfCoefficients: 16, 32, 64, 128 oder 256        */
+NumberOfCoefficients 256
+

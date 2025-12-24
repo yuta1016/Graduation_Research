@@ -1,0 +1,18 @@
+/* default application name*/
+Application	ColorLayoutClient
+
+/* default database file name*/
+ListFile	ColLayout.lst
+
+/* default bitstream file*/
+Bitstream	ColLayout.xml
+
+/* output mode */
+CodingMode	0
+
+/* default number of matches*/
+NoOfMatches 8
+
+/* parmeter file for extraction*/
+/*Extractparfile	extract.par*/
+

@@ -1,0 +1,143 @@
+<AUFile xmlns:xsi="http://www.w3.org/1999/XMLSchema-instance">
+<DecoderInitialConfig SystemsProfileLevel="01">
+<SchemaReference/>
+<InitialDescription>
+<FragmentUpdateUnit>
+<FUCommand>
+addFragment
+</FUCommand>
+<FUContext>
+/
+</FUContext>
+<FUPayload>
+<!--  Concrete instance: No AbstractionLevel  -->
+<Semantic id="soccergame_ins-sem">
+	<Label>
+		<FreeTerm> Soccer game between Spanish and Swedish soccer teams </FreeTerm>
+	</Label>
+</Semantic></FUPayload>
+</FragmentUpdateUnit>
+</InitialDescription>
+</DecoderInitialConfig>
+<AccessUnit>
+<FragmentUpdateUnit>
+<FUCommand>
+addFragment
+</FUCommand>
+<FUContext>
+/Semantic/
+</FUContext>
+<FUPayload>
+	<!--  Events  -->
+	<SemanticBase id="2ndperiod_ins-eve">
+		<AbstractionLevel dimension="1"/>
+		<Label> <FreeTerm> Second period </FreeTerm> </Label>
+		<MediaOccurrence>
+			<MediaLocator>
+				<MediaUri> http://www.mpeg7.org/game.mpg </MediaUri>
+				<MediaTime>
+					<MediaRelTimePoint timeBase="../MediaUri">
+						T0:71:56
+					</MediaRelTimePoint>
+					<MediaDuration> PT47M6S </MediaDuration>
+				</MediaTime>
+			</MediaLocator>
+		</MediaOccurrence>
+	</SemanticBase>
+</FUPayload>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<FUCommand>
+addFragment
+</FUCommand>
+<FUContext>
+/Semantic/
+</FUContext>
+<FUPayload>
+<SemanticBase xsi:type="TestType" id="soccerstadium-obj">
+	<Label> <FreeTerm> Soccer stadium </FreeTerm> </Label>
+	<MediaOccurrence>
+	</MediaOccurrence>
+</SemanticBase>
+
+</FUPayload>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<FUCommand>
+addFragment
+</FUCommand>
+<FUContext>
+/Semantic/
+</FUContext>
+<FUPayload>
+	<!--  Semantic places  -->	<SemanticBase id="soccerstadium_ins-pla">		<Label> <FreeTerm> Soccer stadium </FreeTerm> </Label>		<Place>			<Name xml:lang="en"> Santiago Bernabeu </Name>			<Country> es </Country>			<PostalAddress>				<AddressLine> Concha Espina s/n., Madrid </AddressLine>				<PostingIdentifier> E-28036 </PostingIdentifier>			</PostalAddress>		</Place>	</SemanticBase></FUPayload>
+</FragmentUpdateUnit>
+</AccessUnit>
+<AccessUnit>
+<FragmentUpdateUnit>
+<FUCommand>
+addFragment
+</FUCommand>
+<FUContext>
+/Semantic/
+</FUContext>
+<FUPayload>
+<!--  Semantic times  -->
+<SemanticBase id="2ndperiod_ins-tim">
+	<AbstractionLevel dimension="1"/>
+	<Label> <FreeTerm> Start time of 2nd period </FreeTerm> </Label>
+	<SemanticTime>
+		<Time>
+			<TimePoint> 1995-3-17T21:03:56 </TimePoint>
+			<Duration> PT47M6S </Duration>
+		</Time>
+	</SemanticTime>
+</SemanticBase>
+
+</FUPayload>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<FUCommand>
+deleteFragment
+</FUCommand>
+<FUContext>
+/Semantic/SemanticBase[4]/
+</FUContext>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<FUCommand>
+addFragment
+</FUCommand>
+<FUContext>
+/Semantic/SemanticBase[2]/MediaOccurrence/
+</FUContext>
+<FUPayload>
+<MediaLocator>
+			<MediaUri> http://www.mpeg7.org/game.mpg </MediaUri>
+</MediaLocator></FUPayload>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<FUCommand>
+replaceFragment
+</FUCommand>
+<FUContext>
+/Semantic/SemanticBase[1]/MediaOccurrence/MediaLocator/MediaTime/MediaDuration/
+</FUContext>
+<FUPayload>
+ <MediaDuration> PT47M6S_Replaced</MediaDuration>
+</FUPayload>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<FUCommand>
+replaceFragment
+</FUCommand>
+<FUContext>
+/Semantic/SemanticBase[@xsi:type="TestType"]/Label/FreeTerm/
+</FUContext>
+<FUPayload>
+<FreeTerm> Soccer stadium becomes a big Soccer stadium </FreeTerm>
+ <MediaDuration> PT47M6S_Replaced</MediaDuration>
+</FUPayload>
+</FragmentUpdateUnit>
+</AccessUnit>
+</AUFile>

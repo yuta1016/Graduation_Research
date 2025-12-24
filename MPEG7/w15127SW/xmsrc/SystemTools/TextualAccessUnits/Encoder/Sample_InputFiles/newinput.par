@@ -1,0 +1,48 @@
+DecoderInit
+SysProfLevel
+01
+SchemaRef
+attrName
+n1
+attrlocationHint
+url://
+InitialDesc
+addNode
+/
+fragment_main.xml
+AccessUnit
+addNode
+/Semantic/
+fragment_01.xml
+addNode
+/Semantic/
+fragment_02.xml
+addNode
+/Semantic/
+:beginPayload
+	<!--  Semantic places  -->
+	<SemanticBase id="soccerstadium_ins-pla">
+		<Label> <FreeTerm> Soccer stadium </FreeTerm> </Label>
+		<Place>
+			<Name xml:lang="en"> Santiago Bernabeu </Name>
+			<Country> es </Country>
+			<PostalAddress>
+				<AddressLine> Concha Espina s/n., Madrid </AddressLine>
+				<PostingIdentifier> E-28036 </PostingIdentifier>
+			</PostalAddress>
+		</Place>
+	</SemanticBase>
+:endPayload
+AccessUnit
+addNode
+/Semantic/
+fragment_04.xml
+deleteNode
+/Semantic/SemanticBase[4]/
+addNode
+/Semantic/SemanticBase[2]/MediaOccurrence/
+fragment_07.xml
+replaceNode
+/Semantic/SemanticBase[1]/MediaOccurrence/MediaLocator/MediaTime/MediaDuration/
+hasDeferredNodes
+fragment_06.xml

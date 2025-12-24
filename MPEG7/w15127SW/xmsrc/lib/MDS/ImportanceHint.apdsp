@@ -1,0 +1,12 @@
+# Begin Group "ImportanceHint"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\ImportanceHintCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\ImportanceHintCAppl.h
+# End Source File
+# End Group

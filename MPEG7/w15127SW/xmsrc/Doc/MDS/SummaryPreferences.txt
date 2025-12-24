@@ -1,0 +1,39 @@
+Technique	SummaryPreferences (SegmentFilteringTool)
+Document	N3966 Text of ISO/IEC FCD 15938-5 Information technology - 
+		Multimedia content description interface: Multimedia description schemes, 
+		clause 15.1.10(SummaryPreferences DS)
+Name		Katsunao Takahashi, Koichi Emura, Toshihiko Munetsugu 
+		(Matsushita Research Institute Tokyo,Inc. / Matsushita Electric Industrial Co.,Ltd.)
+EMail		ktaka@mrit.mei.co.jp, emura@mrit.mei.co.jp, munetugu@isl.mei.co.jp
+Contact		ktaka@mrit.mei.co.jp
+Type		Application
+External Libraries	NONE
+Related Ds/DSs	UserPreferenceDS, SegmentDS, MediaTimeDS, PointOfView D
+Used Ds/DSs	Textual datatype, MediaDuration datatype
+Input		MPEG-7 content description consists of Segments with PointOfView,
+		MPEG-7 user description with SummaryPreferences as a query
+Output		MPEG-7 content description consists of filtered Segments with PointOfView
+Extraction	NA
+Client Appl	Filtering Application regarding segments filtering
+Summary		This component generates content description which consists of the segments that
+		have user's preferred viewpoints. As an output, this component generates 
+		content description consists of filtered Segment. A summary is generated 
+		dynamically so that a user's preferred time duration and preferred viewpoints
+		(PreferredSummaryTheme) which are described in SummaryPreferences description 
+		given as a input file may be suited.
+Strong Points	User adaptation scalability of content description summarization based on 
+		the combination of viewpoint(s) and time duration which user required. 
+		This summary generator(segment filtering) application can be used as 
+		a scalable multimedia distribution which is adapted to various kind of 
+		user preferences.
+Limitations	The input XML file must have at least one or more PreferredSummaryTheme 
+		description(s) with or without SummaryDuration description.
+		The query XML file must be a MPEG-7 content description which has two or more 
+		Segment descriptions with MediaTime and PointOfView descriptions.
+Known Problems	NONE
+Parameters	InputXML = Input file name of MPEG-7 user description with SummaryPreferences
+			   [default: xmlinputfile.xml]
+			   At least, one PreferredSummaryTheme is needed.
+		OutputXML = Output file name of MPEG-7 content description based on Segments.
+			    [default: SummaryPreferencesFiltered.xml]
+END

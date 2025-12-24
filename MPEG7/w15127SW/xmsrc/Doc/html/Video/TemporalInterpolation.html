@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Video/TemporalInterpolation</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for Video/TemporalInterpolation</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>TemporalInterpolation ExtractionTool
+<tr><th>Document
+<td>MPEG-7 Visual (ISO/IEC 15938-3)
+<tr><th>Name
+<td>Osamu Hori, Toshimitsu Kaneko, Koichi Masukura (Toshiba R&D Center)
+<tr><th>EMail
+<td>osamu.hori@toshiba.co.jp, toshimitsu.kaneko@toshiba.co.jp, koichi.masukura@toshiba.co.jp
+<tr><th>Contact
+<td>koichi.masukura@toshiba.co.jp
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>NONE
+<tr><th>Related Ds/DSs
+<td>MotionTrajectoryD, SpatioTemporalLocatorD
+<tr><th>Used Ds/DSs
+<td>NONE
+<tr><th>Input
+<td>Key-point List
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>NA
+<tr><th>Summary
+<td>This component genarates temporal interpolating trajectories from a keypoint list. The linier function and quadratic function can be used as interpolating functions. 
+<tr><th>Strong Points
+<td>Users can choose extracting mode: "ErrFix" mode, "KeyPointNumFix" mode and "IntervalFix" mode. The "ErrFix" mode fixes maximum interpolation error. The "KeyPointNumFix" mode fixes total key point number. And the "IntervalFix" mode fixes interval time between keypoints.
+<tr><th>Limitations
+<td>The maximum number of KeyPointNum is 256.
+<tr><th>Known Problems
+<td>NONE
+<tr><th>Parameters
+<td>ExMode = Select "ErrFix", "KeyPointNum" or "IntervalFix" for specify using <br>
+extracting mode.<br>
+Degree = Specify the degree of interpolating functions : 1 or 2.<br>
+ErrLimit = Specify the maximum error limit of "ErrFix" mode. <br>
+KeyPointNum = Specify the total key point number of "IntervalFix" mode.<br>
+Interval = Specify the Interval time of "IntervalFix" mode.
+</table>
+</body>
+</html>

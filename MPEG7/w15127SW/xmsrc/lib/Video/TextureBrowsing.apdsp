@@ -1,0 +1,20 @@
+# Begin Group "TextureBrowsing"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\TextureBrowsingCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\TextureBrowsingCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\TextureBrowsingSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\TextureBrowsingSAppl.h
+# End Source File
+# End Group

@@ -1,0 +1,20 @@
+/* default application name*/
+SeqSummaryKeywordsServer
+
+/* default database file name*/
+ListFile Databases/Keywords.lst
+
+/* default bitstream file*/
+Bitstream Keywords.xml
+
+/* default number of matches*/
+NoOfMatches 8
+
+/* stopword file */
+stopwordFilename testset/keywords/stopmorp.voc
+
+/* number of top keywords to output */
+numTopKeywords 10
+
+/* output of timestamps: true: all timestamps, false: only first and last */
+printAllTimestamps false

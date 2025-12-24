@@ -1,0 +1,22 @@
+Technique	Semantic State and Membership functions
+Document	MPEG-7 FDIS, MDS, Clause 12
+Name	Hawley K. Rising III, Sony MPD-NSC-A, San Jose, CA, U.S.A.
+EMail	hawley.rising@am.sony.com
+Type	Application
+External Libraries	None
+Related Ds/DSs	SemanticBase, Semantic, Concept, SemanticRelation
+Used Ds/DSs	SemanticState, Semantic, Concept, SemanticRelation
+Input		Input is a list of existing Semantic DS descriptions, which
+		have SemanticStates, and Membership Functions.
+Extraction	NA
+Client Appl	Search & Retrieval
+Summary		This component takes as query a description which has a
+		SemanticState with a membership function.  It compares against
+		other descriptions of the same type, and returns the results.
+		It also updates all the reading for all elements of Semantic DS,
+		since the Semantic component only reads the labels.
+Strong Points	-
+Limitations	None
+Known Problems	None
+Parameters	None
+END

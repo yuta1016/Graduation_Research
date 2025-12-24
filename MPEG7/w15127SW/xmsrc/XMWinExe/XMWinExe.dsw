@@ -1,0 +1,239 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "AccessUnit"=..\SystemTools\TextualAccessUnits\Decoder\AccessUnit.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "TextualAccess_Encoder"=..\SystemTools\TextualAccessUnits\Encoder\TextualAccess_Encoder.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "XMLibA"=..\lib\XMLibA.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "XMLibAP"=..\lib\XMLibAP.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "XMLibB"=..\lib\XMLibB.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "XMLibC"=..\lib\XMLibC.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "XMLibM"=..\lib\XMLibM.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "XMLibV"=..\lib\XMLibV.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "XMWinExe"=.\XMWinExe.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name kltlib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name XMLibA
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name XMLibAP
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name XMLibB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name XMLibC
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name XMLibM
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name XMLibV
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name mpeg2declib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "all"=.\all.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name AccessUnit
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name mpeg2dec
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name mpeg2enc
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name navigation_path
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name TextualAccess_Encoder
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name XMWinExe
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kltlib"=..\lib\kltlib\kltlib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "mpeg2dec"=..\Decoders\MPEG2Dec\src\mpeg2dec\mpeg2dec.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "mpeg2declib"=..\DECODERS\MPEG2DEC\SRC\MPEG2DEC\mpeg2declib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "mpeg2enc"=..\Encoders\MPEG2Enc\src\mpeg2enc\mpeg2enc.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "navigation_path"=..\SystemTools\BiM\navigation_path\navigation_path.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

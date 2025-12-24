@@ -1,0 +1,28 @@
+Technique	SoundProperty
+Document	MPEG-7 MDS FCD (N3966) and XM (e.g. N3464), see SequentialSummary
+Name		Masaru Sugano, Yasuyuki Nakajima (KDDI R&D Laboratories Inc.)
+EMail		sugano@kddlabs.net, nakajima@kddlabs.net
+Contact		sugano@kddlabs.net
+Type		Application
+External Libraries	libAO and libtsp, included in AFsp v5r0
+Related Ds/DSs	SummaryDS, SequentialSummaryDS
+Used Ds/DSs	None
+Input		List of audio files (in supported formats by AFsp)
+Output		Summary audio clip files (foo_sum%n.xxx; the same extension/format as input)
+		(n is a serial number)
+Extraction	Yes
+Client Appl	NA
+Summary		This software reads a list of audio files (in supported formats by AFsp), 
+		extracts the audio summary for each audio file by applying sub-band analysis, and 
+		generates summary audio clips in the same format as input and a description file 
+		for an audio slide show. 
+		It adopts the AFsp library for audio file I/O.
+Strong Points	This tool can extract an appropriate summary audio clip especially from vocal music.
+Limitations	The duration of audio summary for each slide component is fixed (15 sec).
+		This tool extracts one summary clip from one whole (individual) audio file.
+		The SyncTime element has not been implemented.
+Known Problems	No specific problem is found.
+Parameters	Parameter file is not used.
+		Application name, database file name and bitstream file name are provided by 
+		command line option ([-a], [-l] and [-b] respectively). A batch file is provided.
+END

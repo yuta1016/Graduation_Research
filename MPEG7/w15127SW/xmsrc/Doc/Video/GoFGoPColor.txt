@@ -1,0 +1,21 @@
+Technique	GoF/GoP Color Descriptor
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name		Santhana Krishnamachari, Mufit Ferman
+Contact		santhana.krishnamachari@philips.com
+Type		Application
+External Libraries	None
+Related Ds/DSs	Scalable Color, Video Segment DS, Collection DS
+Used Ds/DSs	Scalable Color
+Input		Video, Image
+Extraction	Yes
+Client Appl	Search & Retrieval
+Summary		This library implements the GoF/GoP Color  descriptor which
+		is used to describe the color characteristics of a collection of video frames
+		(and a collection of images). consists of one primary
+		and four secondary attributes. Since the feature vector is short, a simple absolute
+		distance or squared distance criterion can be used for matching.
+Strong Points	None.
+Limitations	Use mean or median aggregation for matching
+Known Problems	None.
+Parameters	None.
+END

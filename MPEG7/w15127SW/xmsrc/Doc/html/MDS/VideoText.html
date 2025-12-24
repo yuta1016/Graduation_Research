@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>MDS/VideoText</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for MDS/VideoText</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>VideoText
+<tr><th>Document
+<td>MPEG-7 Working Draft MDS
+<tr><th>Name
+<td>Chitra Dorai, Ruud Bolle  (IBM T.J. Watson Research Center, New York, USA)<br>
+Nevenka Dimitrova, Lalitha Agnihotri (Philips Research, New York, USA)
+<tr><th>Email
+<td>dorai@watson.ibm.com
+<tr><th>Contact
+<td>Chitra Dorai  at IBM or Nevenka Dimitrova/Lalitha Agnihotri at Philips
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>NONE
+<tr><th>Related Ds/DSs
+<td>VideoText DS
+<tr><th>Input
+<td>MPEG-Video (foo.mpg)
+<tr><th>Output
+<td>foo.xml (in the directory specified with the -b option in the XMWinExe command),<br>
+additionally,  to any file specified with the -b option, (e.g., to videotext.xml, if specified	-btestdir/videotext.xml)
+<tr><th>Extraction
+<td>Yes (IBMVideoTextServer)
+<tr><th>Client Appl
+<td>IBMVideoTextEventBrowserDemoForMPEG-7  Application
+<tr><th>Summary
+<td>The IBM	 videotext extraction algorithm works by extracting and<br>
+analyzing regions in a video frame. The processing stages are<br>
+(i) isolating regions that may contain text characters,<br>
+(ii) separating each character region from its surroundings and<br>
+(iii) verifying the presence of text by consistency analysis across multiple text blocks. 
+<tr><th>Strong Points
+<td>The extraction algorithm  does very well with low miss<br>
+rates,	by not missing many of the true text lines in the frame
+<tr><th>Limitations
+<td>NONE
+<tr><th>Known Problems
+<td>Can't handle images  larger than HDTV resolution
+<tr><th>Parameters
+<td>The IBMVideoTextServer is coded to handle HDTV frame sizes, 1920x1080.<br>
+Changing MAX_SIZE in IBMVideoTextdataTypes.h can customize this<br>
+and change related constants found in the same file.
+</table>
+</body>
+</html>

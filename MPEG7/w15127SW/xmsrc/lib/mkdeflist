@@ -1,0 +1,5 @@
+#! /bin/csh -f
+find Audio -name \*.define -exec mkdefentry {} \; >! deflist.txt
+find Video -name \*.define -exec mkdefentry {} \; >> deflist.txt
+find MDS -name \*.define -exec mkdefentry {} \; >> deflist.txt
+

@@ -1,0 +1,20 @@
+# Begin Group "SpatioTemporalLocator"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\SpatioTemporalLocatorCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\SpatioTemporalLocatorCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\SpatioTemporalLocatorSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\SpatioTemporalLocatorSAppl.h
+# End Source File
+# End Group

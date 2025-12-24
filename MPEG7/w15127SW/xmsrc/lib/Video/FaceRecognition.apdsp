@@ -1,0 +1,20 @@
+# Begin Group "FaceRecognition"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\FaceRecognitionCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\FaceRecognitionCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\FaceRecognitionSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\FaceRecognitionSAppl.h
+# End Source File
+# End Group

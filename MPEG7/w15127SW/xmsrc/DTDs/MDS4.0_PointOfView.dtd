@@ -1,0 +1,138 @@
+<!--***************************************************************************-->
+<!--                                                                           -->
+<!-- MDS4.0_PointOfView.dtd                                                    -->
+<!-- (derived from MEI_MDS.dtd in M5784 ,MDS.dtd in M5821, pointOfView.dtd     -->
+<!--  in M6027, and MDS3.0_PointOfView.dtd in M6297)                           -->
+<!--                                                                           -->
+<!-- This document is the XML document type definition (DTD) of                -->
+<!-- MPEG-7 Multimedia Description Schemes for the PointOfView DS and User     -->
+<!-- Preference DS validation Core Experiment(CE) and eXperimental Model(XM).  -->
+<!-- This is written based on Text of WD of 15938-5: MPEG-7 Multimedia         -->
+<!-- Description Schemes WD (Version 4.0)                                      -->
+<!-- This document supports the part of MPEG-7 Multimedia DS which are         -->
+<!-- AudioVisualSegment, PointOfView, MediaTime, MediaTimePoint                -->
+<!-- and MediaDuration.                                                        -->
+<!--                                                                           -->
+<!-- Update: 2000/08/30 based on MDS WD & XM 4.0                               -->
+<!--  *Change element                                                          -->
+<!--   VideoSegment -> AudioVisualSegment                                      -->
+<!--  *Replace root element                                                    -->
+<!--   GenericAV -> Mpeg7Main                                                  -->
+<!--  *Add AudioVisualDescription as a top-level element                       -->
+<!--  *Add AudioVisual as a Audio-Visual Entity                                -->
+<!--  *Modify attribute name                                                   -->
+<!--   Info -> SupplementalInfo                                                -->
+<!--   ViewPoint ->viewPoint                                                   -->
+<!-- Update: 2000/06/28 based on MDS WD & XM 3.0                               -->
+<!--  *Delete element                                                          -->
+<!--   GenericAV: Structure                                                    -->
+<!--  *Delete attribute                                                        -->
+<!--   VideoSegment: TemporalConnectivity                                      -->
+<!--   PointOfView: reliability                                                -->
+<!--  *Rename element                                                          -->
+<!--   VideoSegment: Time -> MediaTime                                         -->
+<!--  *Change whole syntax                                                     -->
+<!--   MediaTime: speficic tags -> based on ISO8601                            -->
+<!--  *Change Order                                                            -->
+<!--   VideoSegment: SegmentDecomposition and PointOfView                      -->
+<!--  *Add default value                                                       -->
+<!--   SegmentDecomposition: "false" in Overlap/Gap                            -->
+<!-- Update: 2000/05/23 based on MDS WD & XM 2.0                               -->
+<!-- Create: 2000/03/03 based on MDS WD & XM 1.0                               -->
+<!--                                                                           -->
+<!-- Authors:                                                                  -->
+<!--    Koichi Emura <emura@mrit.mei.co.jp>                                    -->
+<!--    Toshihiko Munetsugu <mune@mrit.mei.co.jp>                              -->
+<!--    Matsushita Electric Industrial Co., Ltd.                               -->
+<!--    Matsushita Research Institute Tokyo, Inc.                              -->
+<!--                                                                           -->
+<!--***************************************************************************-->
+<!-- ################################################ -->
+<!-- Definition of the root wrapper                   -->
+<!-- ################################################ -->
+<!ELEMENT Mpeg7Main (AudioVisualDescription)>
+<!ATTLIST Mpeg7Main
+	id ID #IMPLIED
+	version CDATA #IMPLIED
+>
+<!-- ################################################ -->
+<!-- Definition of the top-level element              -->
+<!-- ################################################ -->
+<!ELEMENT AudioVisualDescription (AudioVisual)>
+<!-- ################################################ -->
+<!-- Definition of the Audio-Visual Content Entity    -->
+<!-- ################################################ -->
+<!ELEMENT AudioVisual (SegmentDecomposition*, MediaTime)>
+<!ATTLIST AudioVisual
+	id ID #REQUIRED
+	href CDATA #IMPLIED
+	idref CDATA #IMPLIED
+>
+<!-- ################################################ -->
+<!-- Definition of the AudioVisualSegment DS          -->
+<!-- ################################################ -->
+<!ELEMENT AudioVisualSegment (PointOfView*, MediaTime)>
+<!ATTLIST AudioVisualSegment
+	id ID #REQUIRED
+	href CDATA #IMPLIED
+	idref CDATA #IMPLIED
+>
+<!-- ################################################ -->
+<!-- Definition of the SegmentDecomposition DS        -->
+<!-- ################################################ -->
+<!-- Definition of datatype of the decomposition      -->
+<!ENTITY % DecompositionDataTypes "(spatial|temporal|spatio-temporal|MediaSource)">
+<!-- Definition of the decomposition                  -->
+<!ELEMENT SegmentDecomposition (AudioVisualSegment+)>
+<!ATTLIST SegmentDecomposition
+	DecompositionType %DecompositionDataTypes; #REQUIRED
+	Overlap (true | false) "false"
+	Gap (true | false) "false"
+>
+<!-- ############################################## -->
+<!--  Definition of the PointOfView DS              -->
+<!-- ############################################## -->
+<!-- definition of Value D -->
+<!ELEMENT Value (#PCDATA)>
+<!ATTLIST Value
+	id ID #IMPLIED
+>
+<!-- main definition of the PointOfView DS -->
+<!ELEMENT PointOfView (SupplementalInfo?, Value+)>
+<!ATTLIST PointOfView
+	id ID #IMPLIED
+	viewPoint CDATA #REQUIRED
+>
+<!-- ################################################ -->
+<!--  Definition of the SupplementalInfo DS           -->
+<!-- ################################################ -->
+<!ELEMENT SupplementalInfo ((FreeTextAnnotation | StructuredAnnotation)+)>
+<!-- Definition of the FreeTextAnnotation DS -->
+<!ELEMENT FreeTextAnnotation (#PCDATA)>
+<!ATTLIST FreeTextAnnotation
+	xml:lang CDATA #IMPLIED
+>
+<!-- Definition of the StructuredAnnotation DS -->
+<!ELEMENT StructuredAnnotation (Who? | WhatObject? | WhatAction? | Where? | When? | Why?)*>
+<!ELEMENT Who (#PCDATA)>
+<!ELEMENT WhatObject (#PCDATA)>
+<!ELEMENT WhatAction (#PCDATA)>
+<!ELEMENT Where (#PCDATA)>
+<!ELEMENT When (#PCDATA)>
+<!ELEMENT Why (#PCDATA)>
+<!ATTLIST StructuredAnnotation
+	id ID #IMPLIED
+	xml:lang CDATA #IMPLIED
+>
+<!-- ################################################ -->
+<!-- Definition of the MediaTime DS                   -->
+<!-- ################################################ -->
+<!ELEMENT MediaTime (MediaTimePoint, MediaDuration)>
+<!-- ################################################ -->
+<!--   Definition of the MediaTimePoint D             -->
+<!-- ################################################ -->
+<!ELEMENT MediaTimePoint (#PCDATA)>
+<!-- ################################################ -->
+<!--   Definition of the the MediaDuration D          -->
+<!-- ################################################ -->
+<!ELEMENT MediaDuration (#PCDATA)>

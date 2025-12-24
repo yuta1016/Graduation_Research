@@ -1,0 +1,12 @@
+# Begin Group "SeqSummaryFastMovingStoryBoard"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\SeqSummaryFastMovingStoryBoardSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\SeqSummaryFastMovingStoryBoardSAppl.h
+# End Source File
+# End Group

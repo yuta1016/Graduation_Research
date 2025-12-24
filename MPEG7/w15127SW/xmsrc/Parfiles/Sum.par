@@ -1,0 +1,51 @@
+/* default application name*/
+Application SummarizationClient
+
+/* default database file name*/
+ListFile Databases/video.lst
+
+/* query content set*/
+QueryFile Databases/framechangevalues.lst
+
+/* show query or not*/
+show_query 0
+
+/* extension to get query file name*/
+QueryImage .dir/0.jpg
+
+/* default bitstream file*/
+Bitstream Summary.ddl
+
+/* default number of matches*/
+NoOfMatches 8
+
+/* parameter file for summary extraction*/
+/* enable storing and reading of intermediary results*/
+RW_intermediary_results	1
+
+/* write activity for all frames*/
+WriteAllFramesToDDL 0
+
+/* enable denoising prior to feature point extraction*/
+denoise	1
+
+/*minimum geometrical distance between two feature points*/
+min_featurepoint_distance	19
+
+distance_threshold	0.25
+
+/*time base*/
+nnfraction	30
+nn	1
+
+/* acceleration noise*/
+acceleration_noise 1500.0
+
+/* update ratio for new values*/
+alpha	0.1
+
+/* measurement noise*/
+measurement_noise	10.0
+
+/* initial value for standard deviation*/
+standard_deviation	0.4

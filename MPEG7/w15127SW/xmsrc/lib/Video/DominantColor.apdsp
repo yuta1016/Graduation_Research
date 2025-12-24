@@ -1,0 +1,20 @@
+# Begin Group "DominantColor"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\DominantColorCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\DominantColorCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\DominantColorSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\DominantColorSAppl.h
+# End Source File
+# End Group

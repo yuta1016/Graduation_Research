@@ -1,0 +1,17 @@
+Technique		Semantic DS
+Document		MPEG-7 Final Committee Draft  MDS, see Semantic DS and the other SemanticBase DSs
+Name			Ana Belen Benitez, Columbia University
+EMail			ana@ee.columbia.edu
+Type			Application
+External Libraries	None
+Related Ds/DSs		SemanticRelation DSs, Segment DSs, AbstractionLevel datatype and other semantic attributes
+Used Ds/DSs		None
+Input			The input is a list of existing Semantic DS descriptions.
+Extraction		No
+Client Appl		Search & Retrieval
+Summary			This code retrieves Semantic DS descriptions based on the matching of the semantic
+			entities that form the sematnic descriptions.
+Strong Points		-
+Limitations		None
+Parameters		None
+END

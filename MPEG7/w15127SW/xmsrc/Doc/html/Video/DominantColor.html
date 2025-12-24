@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Video/DominantColor</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for Video/DominantColor</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>Dominant Color
+<tr><th>Document
+<td>MPEG-7 Visual (ISO/IEC 15938-3)
+<tr><th>Name
+<td>Jungmin Song, Heon Jun Kim, Leszek Cieplinski, Prof. Manjunath 
+<tr><th>EMail
+<td>jmsong73@mail.lgcit.com, hjk@lge.co.kr, Leszek.Cieplinski@vil.ite.mee.com, manj@ece.ucsb.edu
+<tr><th>Contact
+<td>Jungmin Song(general), Leszek Cieplinski(color variance), Prof. Manjunath(dominant color extraction and search algorithm) 
+<tr><th>Type
+<td>application
+<tr><th>External Libraries
+<td>none
+<tr><th>Related Ds/DSs
+<td>Color Space Descriptor, Color Quantization Descriptor, Related DS's are not defined fully yet.
+<tr><th>Used Ds/DSs
+<td>Color Space Descriptor, Color Quantization Descriptor
+<tr><th>Input
+<td>Images
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Search, Retrieval, Browsing
+<tr><th>Summary
+<td>The dominant color descriptor is useful for image and video retrieval. It targets content-based retrieval for color, either for the whole image or for any arbitrary shaped region (rectangular or irregular). It is a very compact descriptor, requiring less than 6-8 colors per region. Since colors are not pre-quantized as in the histogram type color descriptors, the representation is more accurate. To accomplish high accuracy in retrieval, Spatial Coherency and/or Color Variance can be utilized. It is intended for applications that use object based representations (objects or regions in an image).	 
+<tr><th>Limitations
+<td>The maximum allowed number of dominant colors is 8.
+<tr><th>Known Problems
+<td>None.
+<tr><th>Parameters
+<td>color space and color quantization parameters
+</table>
+</body>
+</html>

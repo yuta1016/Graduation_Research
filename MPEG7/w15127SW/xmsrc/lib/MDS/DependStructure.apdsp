@@ -1,0 +1,12 @@
+# Begin Group "DependStructure"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\DependStructureCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\DependStructureCAppl.h
+# End Source File
+# End Group

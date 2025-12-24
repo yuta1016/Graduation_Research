@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Video/ContourShape</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for Video/ContourShape</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>Contour shape descriptor
+<tr><th>Document
+<td>MPEG-7 Visual (ISO/IEC 15938-3)
+<tr><th>Name
+<td>Miroslaw Bober (Mitsubishi Electric ITE)
+<tr><th>EMail
+<td>miroslaw.bober@vil.ite.mee.com
+<tr><th>Contact
+<td>miroslaw.bober@vil.ite.mee.com
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>none
+<tr><th>Related Ds/DSs
+<td>Still region DS
+<tr><th>Used Ds/DSs
+<td>none
+<tr><th>Input
+<td>Binary shape masks
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Search & Retrieval
+<tr><th>Summary
+<td>The Contour-based shape descriptor describes shape features of <br>
+a closed contour. It uses the curvature scale space representation and<br>
+eccentricity and circularity of the original and filtered shape. 
+<tr><th>Strong Points
+<td>The descriptor is rotational, scale and position invariant. <br>
+It is robust to affine shape deformations and deformations <br>
+due to non-rigid motion (both very common in video sequences)<br>
+The descriptor has good shape generalisation properties,<br>
+similar to human perception of visual shapes. It is very compact <br>
+(110 bits on average for the MPEG-7 shape database).  
+<tr><th>Limitations
+<td>Here are some limitations of the current implementation:<br>
+Deafult white shape on black background (can be changed)<br>
+If more than one contour is in the image, the descripotr is extracted<br>
+from the first contour found in the image (upper-left, top left).
+<tr><th>Known Problems
+<td>None
+<tr><th>Parameters
+<td>Uses the general XM-SW parameters.
+</table>
+</body>
+</html>

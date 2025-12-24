@@ -1,0 +1,14 @@
+/* default application name*/
+Application	GridLayoutServer
+
+/* default database file name*/
+ListFile	Databases/images.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/GridLayout.mp7
+
+/* output mode */
+CodingMode	0
+
+/* default number of matches*/
+/* NoOfMatches 10 */

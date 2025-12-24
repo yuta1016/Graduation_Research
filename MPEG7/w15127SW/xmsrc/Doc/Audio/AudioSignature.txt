@@ -1,0 +1,19 @@
+Technique	AudioSignatureType
+Document	W7120 (Descriptors for content-based Audio Identification),
+	W7121 (Compactness/Precision Considerations for Audio LLDs),
+	W7495 (Some Update on robust Audio Matching)
+Name	Thorsten Heinz, Fraunhofer IIS
+EMail	amm_info@iis.fhg.de
+Type	Application
+External Libraries	none
+Related Ds/DSs	    none
+Used Ds/DSs	    none
+Input		Audio .wav files
+Extraction	NA
+Client Appl	Search & Retrieval
+Summary		Demonstrates basic search and retrieval
+Strong Points	Works best in specific scenario
+Limitations	none
+Known Problems	size of mean and variance fixed
+Parameters	none
+end

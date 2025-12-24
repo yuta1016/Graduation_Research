@@ -1,0 +1,23 @@
+Technique	TemporalInterpolation ExtractionTool
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name		Osamu Hori, Toshimitsu Kaneko, Koichi Masukura (Toshiba R&D Center)
+EMail		osamu.hori@toshiba.co.jp, toshimitsu.kaneko@toshiba.co.jp, koichi.masukura@toshiba.co.jp
+Contact		koichi.masukura@toshiba.co.jp
+Type		Application
+External Libraries	NONE
+Related Ds/DSs	MotionTrajectoryD, SpatioTemporalLocatorD
+Used Ds/DSs	NONE
+Input		Key-point List
+Extraction	Yes
+Client Appl	NA
+Summary		This component genarates temporal interpolating trajectories from a keypoint list. The linier function and quadratic function can be used as interpolating functions. 
+Strong Points	Users can choose extracting mode: "ErrFix" mode, "KeyPointNumFix" mode and "IntervalFix" mode. The "ErrFix" mode fixes maximum interpolation error. The "KeyPointNumFix" mode fixes total key point number. And the "IntervalFix" mode fixes interval time between keypoints.
+Limitations	The maximum number of KeyPointNum is 256.
+Known Problems	NONE
+Parameters	ExMode = Select "ErrFix", "KeyPointNum" or "IntervalFix" for specify using 
+		extracting mode.
+		Degree = Specify the degree of interpolating functions : 1 or 2.
+		ErrLimit = Specify the maximum error limit of "ErrFix" mode. 
+		KeyPointNum = Specify the total key point number of "IntervalFix" mode.
+		Interval = Specify the Interval time of "IntervalFix" mode.
+END

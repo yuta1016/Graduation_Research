@@ -1,0 +1,17 @@
+Technique	Vector datatype
+Document	MPEG-7 Committee Draft MDS, see Vector / Matrix
+Name		John R. Smith (IBM T. J. Watson Research Center)
+EMail		jrsmith@watson.ibm.com
+Contact		jrsmith@watson.ibm.com
+Type		none
+External Libraries	vectorR class
+Related Ds/DSs	none
+Used Ds/DSs	none
+Input		none
+Extraction	none
+Client Appl	none
+Summary		The vectorR class implements a class for manipulating vectors in memory.
+Limitations	none
+Known Problems	none
+Parameters	none
+END

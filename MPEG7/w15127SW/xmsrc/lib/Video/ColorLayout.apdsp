@@ -1,0 +1,20 @@
+# Begin Group "ColorLayout"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\ColorLayoutCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\ColorLayoutCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\ColorLayoutSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\ColorLayoutSAppl.h
+# End Source File
+# End Group

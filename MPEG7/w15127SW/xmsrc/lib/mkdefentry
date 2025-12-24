@@ -1,0 +1,3 @@
+#! /bin/csh -f
+echo $1":\t"`more $1`
+

@@ -1,0 +1,16 @@
+/* default application name*/
+Application	AudioSpectralFlatnessClient
+
+/* default database file name*/
+ListFile	Databases/AudioSpectralFlatness.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/AudioSpectralFlatness.mp7
+
+/* default number of matches*/
+NoOfMatches     10
+
+/* select coding mode*/
+CodingMode  0 /* 0= DDL, 1=BiM, 2= Binary*/
+
+

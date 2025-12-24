@@ -1,0 +1,14 @@
+/* default application name*/
+Application	MediaMetaClient
+
+/* default database file name*/
+ListFile	Databases/Prog.lst
+
+/* default bitstream file*/
+Bitstream unused
+
+/* default number of matches*/
+NoOfMatches 5
+
+/* default query string */
+QueryString	((("/Mpeg7/Description/MediaInformation/MediaProfile/MediaFormat/Content%href":streq:"urn:mpeg:mpeg7:cs:ContentCS:2")^HAND^pv20("/Mpeg7/Description/MediaInformation/MediaProfile/MediaFormat/Medium%href":streq:"urn:mpeg:mpeg7:cs:MediumCS:2")^HAND^("/Mpeg7/Description/MediaInformation/MediaProfile/MediaFormat/FileFormat%href":streq:"urn:mpeg:mpeg7:cs:FileFormatCS:2"))^SOR^("/Mpeg7/Description/MediaInformation/MediaProfile/MediaFormat/Content%href":streq:"urn:mpeg:mpeg7:cs:ContentCS:3"))

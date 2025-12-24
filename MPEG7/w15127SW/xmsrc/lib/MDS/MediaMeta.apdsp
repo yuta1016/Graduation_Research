@@ -1,0 +1,12 @@
+# Begin Group "MediaMeta"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\MediaMetaCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MediaMetaCAppl.h
+# End Source File
+# End Group

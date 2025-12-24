@@ -1,0 +1,17 @@
+Technique	MelodySequenceType
+Document	Wxxxx (Guidelines Document), all Chapters
+Name	Thorsten Heinz, Fraunhofer IIS
+EMail	??
+Type	Application
+External Libraries	none
+Related Ds/DSs		none
+Used Ds/DSs	
+Input		xml, as described in MPEG7-MelodySequence-Definition
+Extraction	NA
+Client Appl	Search & Retrieval
+Summary		Demonstrates basic search and retrieval
+Strong Points	Works best in specific scenario
+Limitations	Distance function is very simple, just to have one
+Known Problems	Problems, which you plan to fix
+Parameters	none
+END

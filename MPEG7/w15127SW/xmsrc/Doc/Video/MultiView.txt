@@ -1,0 +1,21 @@
+Technique	Multiple View
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name		Karsten Müller (HHI), James Cooper (Mitsubishi)
+EMail		Kmueller@hhi.de, James.Cooper@vil.ite.mee.com 
+Contact		Kmueller@hhi.de
+Type		Application
+External Libraries	none
+Related Ds/DSs	ContourShapeD, RegionShapeD, StillRegionDS (rectangular and arbitrarily shaped)
+Used Ds/DSs	MultipleView D, ContourShapeD, RegionShapeD
+Input		Number of Images (up to 16), originating from 3D object
+Extraction	Yes
+Client Appl	Search & Retrieval
+Summary	Multiple View (as a container descriptor) uses the underlying Descriptor, e.g. ContourShape for 
+		Extraction and Retrieval of similar objects. Two retrieval methods are available: 3D-3D Retrieval, 
+		where a number of views from one object is compared to a number of views from the database 
+		objects and 2D-3D Retrieval, where a 2D-image is compared to the most similar views of the 3D-object
+Strong Points	Depends on the underlying Descriptor
+Limitations	Only up to 16 views per object are supported
+Known Problems	None
+Parameters	Uses the general XM-SW parameters, IMPORTANT: The list file should only contain the name of the original 3D object without extension, e.g. "c:\temp\model-1". The extensions for the views are appended automatically by the program. The convention is to name the 2D-views from that model "model-1_1.gif", "model-1_2.gif" up to "model-1_16.gif"
+END

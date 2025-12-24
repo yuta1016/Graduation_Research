@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.schemaValid.com/s1ns" xmlns:xsd="http://www.w3.org/2000/10/XMLSchema" xmlns:s1="http://www.schemaValid.com/s1ns" elementFormDefault="qualified">
+	<xsd:element name="root">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="grade" type="s1:abc" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:simpleType name="abc">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="a"/>
+			<xsd:enumeration value="b"/>
+			<xsd:enumeration value="c"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,152 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// This software module was originally developed by
+//
+// Intel Corporation
+// (contributing organizations names)
+//
+// in the course of development of the MPEG-7 Experimentation Model.
+//
+// This software module is an implementation of a part of one or more MPEG-7
+// Experimentation Model tools as specified by the MPEG-7 Requirements.
+//
+// ISO/IEC gives users of MPEG-7 free license to this software module or
+// modifications thereof for use in hardware or software products claiming
+// conformance to MPEG-7.
+//
+// Those intending to use this software module in hardware or software products
+// are advised that its use may infringe existing patents. The original
+// developer of this software module and his/her company, the subsequent
+// editors and their companies, and ISO/IEC have no liability for use of this
+// software module or modifications thereof in an implementation.
+//
+// Copyright is not released for non MPEG-7 conforming products. The
+// organizations named above retain full right to use the code for their own
+// purpose, assign or donate the code to a third party and inhibit third parties
+// from using the code for non MPEG-7 conforming products.
+//
+// Copyright (c) 1998-1999.
+//
+// This notice must be included in all copies or derivative works.
+//
+// Applicable File Name:  ExtractionUtilties.cpp
+//
+
+#include "ExtractionUtilities.h"
+#include "ExtractionUtilities.h"
+#include "Descriptors.h"                     /* Naming Convention */
+
+using namespace XM;
+
+
+const UUID ColorExtractionInterface::myID = UUID("290d7900-db6e-11d2-affe-0080c7e1e76d");
+const char *ColorExtractionInterface::myName = "Streaming Component Control Interface";
+
+const UUID ColorExtractionTool::myID = UUID("bff2b340-db31-11d2-affe-0080c7e1e76d");
+const char *ColorExtractionTool::myName = "P564 Descriptor Extractor";
+
+const UUID ColorExtractionInterfaceABC::myID = UUID();
+
+//=============================================================================
+ColorExtractionInterfaceABC::ColorExtractionInterfaceABC()
+{
+	SetInterfaceID(myID);
+}
+
+//=============================================================================
+ColorExtractionInterface::ColorExtractionInterface(ColorExtractionTool* aTool):
+m_ExtractionTool(aTool)
+{
+	SetInterfaceID(myID);
+}
+
+//----------------------------------------------------------------------------
+ColorExtractionInterface::~ColorExtractionInterface()
+{
+}
+
+//----------------------------------------------------------------------------
+unsigned long ColorExtractionInterface::SetQuantizerDesc(ColorLinearQuantizerDescriptor& aDesc)
+{
+	return m_ExtractionTool->SetQuantizerDesc(aDesc);
+}
+
+//----------------------------------------------------------------------------
+const UUID& ColorExtractionInterface::GetInterfaceID(void)
+{ return myID; }
+
+//----------------------------------------------------------------------------
+const char *ColorExtractionInterface::GetName(void)
+{ return myName; }
+
+
+//=============================================================================
+ColorExtractionTool::ColorExtractionTool():
+m_ExtractInterface(this)
+{
+	SetExposedInterface(&m_ExtractInterface);
+}
+
+//----------------------------------------------------------------------------
+ColorExtractionTool::~ColorExtractionTool()
+{
+}
+
+//----------------------------------------------------------------------------
+bool ColorExtractionTool::SupportsPush(void)
+{ return true; }
+//----------------------------------------------------------------------------
+bool ColorExtractionTool::SupportsPull(void)
+{ return false; }
+
+//----------------------------------------------------------------------------
+unsigned long ColorExtractionTool::SetSourceMedia(MediaDescriptor&, XMStream& mediaitself)
+{
+	return -1;
+}
+
+//----------------------------------------------------------------------------
+unsigned long ColorExtractionTool::ExtractFeature(Descriptor* aDesc, I_ExtractionInterfaceABC::ExtractionResult& aResult)
+{
+	if (strcmp(aDesc->GetName(),"Histogram Descriptor") == 0)
+	{
+		ColorHistogramDescriptor * myDesc = (ColorHistogramDescriptor *)aDesc;
+
+		myDesc->SetHistogramSize(1+rand()%256);
+		int i;
+		for (i=1; i<= myDesc->GetHistogramSize(); i++) {
+			myDesc->SetElement(i, rand()%256);
+		}
+		myDesc->SetNormalizationFactor(256);
+		return 0;
+	}
+	
+	return -1;
+}
+	
+//----------------------------------------------------------------------------
+unsigned long ColorExtractionTool::StartExtracting(void)
+{
+	return -1;
+}
+//----------------------------------------------------------------------------
+unsigned long ColorExtractionTool::SetQuantizerDesc(ColorLinearQuantizerDescriptor& aDesc)
+{
+
+	//m_curDesc = aDesc;
+	
+	return -1;
+}
+	
+//----------------------------------------------------------------------------
+const UUID& ColorExtractionTool::GetObjectID(void)
+{ return myID; }
+
+//----------------------------------------------------------------------------
+const char *ColorExtractionTool::GetName(void)
+{ return myName; }
+
+//----------------------------------------------------------------------------
+ColorExtractionInterfaceABC *ColorExtractionTool::GetColorExtractionInterface(void)
+{ return &m_ExtractInterface; }
+

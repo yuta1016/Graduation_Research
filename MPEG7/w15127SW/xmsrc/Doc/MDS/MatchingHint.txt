@@ -1,0 +1,36 @@
+Technique	MatchingHint Descriptor
+Document	N3966  ISO/IEC 15938-5/CD Part 5 MPEG-7 MDS
+Name		Jin-Soo Lee (LG Electronics)
+Email		binary@lge.com
+Contact		binary@lge.com
+Type		BasicComponent
+External Libraries	NONE
+Related Ds/DSs	MatchignHint D, ColorStructure D, EdgeHistogram D, StillRegionDS
+Input		Image Descriptions	
+Output		Encoded the query description using the updated MatchingHint 
+Extraction	YES	
+Client Appl	Caculating the new distance between two images Application
+Summary		Using image descriptions (the one is query image, the others are reference images) and MatchingHint, caculate the new distance using the MatchingHint of the query image. And update the old MatchingHint(Hint values and reliablity) then encode the query description using the updated MatchingHint:
+Strong Points	.
+Limitations	Only descriptions for Image including visual Ds can be used as the input.
+Known Problems	.
+Parameters	
+	/* distances from each search tool*/
+	ColorStructure  2400
+	EdgeHistogram   3203
+	//ScalableColor ?
+	//DominantColor ?
+	//HomogeneousTexture ?
+	//RegionShape ?
+	//ContourShape ?
+	
+
+	/* maximun distances from each search tool */
+	maxColorStructure  10000
+	maxEdgeHistogram	10000
+	//maxScalableColor ?
+	//maxDominantColor ?
+	//maxHomogeneousTexture ?
+	//maxRegionShape ?
+	//maxContourShape ?
+END

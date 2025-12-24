@@ -1,0 +1,85 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// This software module was originally developed by
+//
+// Charilaos Christopoulos (MediaLab, Ericsson Radio Systems AB,Sweden)
+// Yousri Abdeljaoued (EPFL Switzerland)
+// (contributing organizations names)
+//
+// in the course of development of the MPEG-7 Experimentation Model.
+//
+// This software module is an implementation of a part of one or more MPEG-7
+// Experimentation Model tools as specified by the MPEG-7 Requirements.
+//
+// ISO/IEC gives users of MPEG-7 free license to this software module or
+// modifications thereof for use in hardware or software products claiming
+// conformance to MPEG-7.
+//
+// Those intending to use this software module in hardware or software products
+// are advised that its use may infringe existing patents. The original
+// developer of this software module and his/her company, the subsequent
+// editors and their companies, and ISO/IEC have no liability for use of this
+// software module or modifications thereof in an implementation.
+//
+// Copyright is not released for non MPEG-7 conforming products. The
+// organizations named above retain full right to use the code for their own
+// purpose, assign or donate the code to a third party and inhibit third parties
+// from using the code for non MPEG-7 conforming products.
+//
+// Copyright (c) 1998-1999.
+//
+// This notice must be included in all copies or derivative works.
+//
+// Applicable File Name:  KLTFeaturePoints.h
+//
+#ifndef __KLTFEATUREPOINTS_H__
+#define __KLTFEATUREPOINTS_H__
+
+#include "momusys.h"
+#include "intra.h"
+
+typedef struct {
+  int x;
+  int y;
+  long val;
+} TKLTFeature;
+
+#define KLTMAXINDEX 299
+
+namespace XM
+{
+//=============================================================================
+class KLTFeaturePoints
+{
+ public:
+  KLTFeaturePoints();
+  KLTFeaturePoints(int float_or_int);
+  virtual ~KLTFeaturePoints();
+
+  int SetMediaFilename(char *MediaFileName);
+  void SetFloatArith(int float_or_int);
+  TKLTFeature *GetKLTFeaturePoints(MomVop *media, int *listsize);
+
+ private:
+  int m_FloatArith;
+  int m_IntermediaryResults;
+  int m_intermediaryIO;
+  TCoor m_xsize,m_ysize;
+  int m_maxlistsize;
+
+  MomVop *m_denoised;
+  MomVop *m_sqrgraded;
+  MomImage *m_featuremap;
+  TKLTFeature m_finalfeaturelist[KLTMAXINDEX+1];
+  TKLTFeature *m_featurelist;
+
+  int m_denoise;     /* perform denoising prior to feature
+			point extraction*/
+  int m_mindist;    /* minimum distance arround feature point*/
+  int m_read;
+
+/*  float m_distthresh; */ /* distance thres hold in kalman filter*/
+};
+};
+
+#endif

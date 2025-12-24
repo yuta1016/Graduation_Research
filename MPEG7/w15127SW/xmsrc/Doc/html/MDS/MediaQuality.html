@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>MDS/MediaQuality</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for MDS/MediaQuality</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>MediaQuality D
+<tr><th>Document
+<td>N3966 MPEG-7 MDS FCD
+<tr><th>Name
+<td>Jiuhuai Lu, Tektronix
+<tr><th>Email
+<td>jiuhuai.lu@ieee.org
+<tr><th>Contact
+<td>jiuhuai.lu@ieee.org
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>None
+<tr><th>Related Ds/DSs
+<td>None
+<tr><th>Used Ds/DSs
+<td>None
+<tr><th>Input
+<td>Two videos in ppm format (an impaired and a reference video), a parameter file.
+<tr><th>Extraction
+<td>YES, (PSNR) 
+<tr><th>Client Appl
+<td>Use MediaMetaClient for general media search based on quality rating values
+<tr><th>Summary
+<td>The media quality descriptor represents quality information of visual and audio content. The quality information can be subjective or objective. The information can serve as quality of service representation. This implementation provides quality information of a visual content using PSNR. Computation of PSNR is based on two video inputs. One of them contains artifacts and noise and the other serves as a reference. 
+<tr><th>Strong Points
+<td>Representation of media quality in production and delivery of media content.
+<tr><th>Limitations
+<td>None
+<tr><th>Known Problems
+<td>None
+<tr><th>Parameters
+<td>1. selected channels (Y,U,V) to measure PSNR<br>
+2. types of perceived errors<br>
+3. information on rating methods <br>
+4. source <br>
+5. other information (see the mediaquality_generic.par)
+</table>
+</body>
+</html>

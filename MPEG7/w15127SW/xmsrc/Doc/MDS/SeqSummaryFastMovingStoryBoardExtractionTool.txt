@@ -1,0 +1,46 @@
+Technique	SeqSummaryFastMovingStoryBoardExtractionTool
+Document	M6540 Guidelines for Fast Audio Moving Storyboard (Sequential Summary)
+	NXXX  MPEG-7 Working Draft MDS
+Name	Dulce Ponceleon, Jan Pieper, (IBM Almaden Research Center),  Gilad Cohen (IBM Haifa Research Center)
+Email	dulce@almaden.ibm.com, pieper@almaden.ibm.com, gilad@haifa.ibm.com
+Contact	dulce@almaden.ibm.com
+Type	Application
+External Libraries	NONE
+Related Ds/DSs	SummaryDS, HierarchicalSummaryDS, VariationDS, MosaicDS
+Used Ds/DSs	SequentialSummary KeyFrame Extraction Tool from Ericsson, Sweden.
+Input	MPEG-Video (foo.mpg), Wave Audio File (foo_audio_track.wav)
+Output	JPEG (foo_key100.jpg, foo_key250.jpg, etc), Wave Audio File (foo_speedup_audio_track.wav) 
+Extraction	Yes
+Client Appl	Transcoding Application
+Summary	This component generates a Fast Moving Storyboard(FMSB), i.e., a slide show synchronized with a speed up version of the audio track. It uses an implementation the Window Synchronized Overlap Add method (WSOLA). WSOLA is a time scaling algorithm that preserves pitch and timbre.
+Strong Points	Regarding speed, it work best when the input sampling rate is not higher than 11kHz As a by product, this component generates a SMIL file that can be played with VideoCharger(IBM), QuickTime, RealPlayer Sample SMIL file included in M6540.
+Limitations	The input audio file must be a)Linear PCM, compressed WAV audio is not supported b)16 bits per sample (signed). The output wave file is MONO, even if the input wave file is stereo. Processing time can be  very  long when the input sampling rate is high (44 Khz for example).
+Known Problems	At the moment the generated audio has a fixed speed up factor. An input parameter can be added to indicate the factor. The algorithm used can generated slowed down audio.
+Parameters	/* default application name*/
+	SeqSummaryFastMovingStoryBoardServer
+	/* default database file name*/
+	ListFile     fmsb.lst
+	/* default bitstream file*/
+	Bitstream    bbox.mp7
+	/* default number of matches*/
+	NoOfMatches 8
+	/* parameter file for summary extraction*/
+	/* enable storing and reading of intermediary results*/
+	RW_intermediary_results         1
+	/* enable denoising prior to feature point extarction*/
+	denoise      1
+	/*minimum geometrical distance between two feature points*/
+	min_featurepoint_distance       19
+	distance_threshold     0.25
+	/*time base*/
+	nnfraction   25
+	nn  1
+	/* acceleration noise*/
+	accelleration_noise 1500.0
+	/* update ratio for new values*/
+	alpha        0.01
+	/* measurment nois*/
+	measurement_noise      10.0
+	/* initial value for standard deviation*/
+	standard_deviation     0.4
+END

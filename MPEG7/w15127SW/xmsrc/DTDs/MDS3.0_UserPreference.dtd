@@ -1,0 +1,253 @@
+<!--***************************************************************************-->
+<!--                                                                           -->
+<!-- UserPreference.dtd                                                        -->
+<!--                                                                           -->
+<!-- This document is the XML document type definition (DTD) of                -->
+<!-- MPEG-7 Multimedia Description Schemes for User Preference DS eXperimental -->
+<!-- Model.                                                                    -->
+<!-- This is written based on Text of WD of 15938-5: MPEG-7 Multimedia         -->
+<!-- Description Schemes WD (Version 3.0)                                      -->
+<!--                                                                           -->
+<!-- Update: 2000/06/26                                                        -->
+<!--  *Delete                                                                  -->
+<!--   UserPrefererence: UsageHistory, DevicePreferences                       -->
+<!--   BrowsingPreferences: ReferenceToProgram, SummaryPreferenceValue,        -->
+<!--                        DisplayOrderPreferences,ViewerControl              -->
+<!--   SummaryPreferences: VariationFidelityPreference, SummaryPreferenceValue -->
+<!--  *Add element                                                             -->
+<!--   FilteringAndSearchPreference: ClassificationPreferences,                -->
+<!--                                 CreationPrefernces, SourcePreferences     -->
+<!--  *Merge element                                                           -->
+<!--   SummaryPreferences: SummaryName + SegmentTheme -> PreferredSummaryTheme -->
+<!--  *Rename element                                                          -->
+<!--   SummaryPreferences: Duration -> SummaryDuration                         -->
+<!--                       MinDuration -> MinSummaryDuration                   -->
+<!--                       MaxDuration -> MaxSummaryDuration                   -->
+<!--  *Change attribute                                                        -->
+<!--   UsagePreferences: protection -> allowAutomativeUpdate                   -->
+<!--  *Add attribute                                                           -->
+<!--   SymmaryPreferences: preferenceValue                                     -->
+<!--  *Change order                                                            -->
+<!--   UsagePreferences: FilterAndSearchPreferences and BrowsingPreferences    -->
+<!--   SummaryPreferences: Min/MaxNumOfKeyframes and Min/MaxDuration           -->
+<!--  *Change occurence                                                        -->
+<!--   SummaryPreferences: SummaryTypePreference: ? -> *                       -->
+<!-- Create: 2000/03/03                                                        -->
+<!--                                                                           -->
+<!-- Authors:                                                                  -->
+<!--    Koichi Emura <emura@mrit.mei.co.jp>                                    -->
+<!--    Toshihiko Munetsugu <mune@mrit.mei.co.jp>                              -->
+<!--    Matsushita Electric Industrial Co., Ltd.                               -->
+<!--    Matsushita Research Institute Tokyo Inc.                               -->
+<!--                                                                           -->
+<!--***************************************************************************-->
+<!-- ##################################### -->
+<!--  Definition of  "UserPreferenceDS"    -->
+<!-- ##################################### -->
+<!ELEMENT UserPreference (UserIdentifier, UsagePreferences?)>
+<!-- ##################################### -->
+<!--  Definition of  "UserIdentifierDS"    -->
+<!-- ##################################### -->
+<!ELEMENT UserIdentifier EMPTY>
+<!ATTLIST UserIdentifier
+	protection (true | false) "true"
+	userName CDATA "anonymous"
+>
+<!-- ##################################### -->
+<!--  Definition of  "UsagePreferencesDS"  -->
+<!-- ##################################### -->
+<!ELEMENT UsagePreferences (FilteringAndSearchPreferences*, BrowsingPreferences*)>
+<!ATTLIST UsagePreferences
+	allowAutomaticUpdate (true | false) "true"
+>
+<!-- ##################################### -->
+<!--  Definition of "BrowsingPreferencesDS" -->
+<!--  Duration: based on ISO8601           -->
+<!--  MaxDuration: based on ISO8601        -->
+<!--  MinDuration: based on ISO8601        -->
+<!-- ##################################### -->
+<!-- Newly define ReferenceToProgram -->
+<!ELEMENT BrowsingPreferences (SummaryPreferences*, BrowsingPreferenceType*)>
+<!ATTLIST BrowsingPreferences
+	protection (true | false) "true"
+	preferenceValue CDATA #IMPLIED
+>
+<!ELEMENT ReferenceToProgram EMPTY>
+<!ATTLIST ReferenceToProgram
+	xml:link CDATA #FIXED "simple"
+	href CDATA #REQUIRED
+>
+<!ELEMENT SummaryPreferences (SummaryTypePreference*, PreferredSummaryTheme*, SummaryDuration?, MinSummaryDuration?, MaxSummaryDuration?, NumOfKeyframes?, MinNumOfKeyframes?, MaxNumOfKeyframes?)>
+<!ATTLIST SummaryPreferences
+	preferenceValue CDATA #IMPLIED
+>
+<!ELEMENT SummaryTypePreference (#PCDATA)>
+<!ATTLIST SummaryTypePreference
+	preferenceValue CDATA #IMPLIED
+>
+<!ELEMENT PreferredSummaryTheme (#PCDATA)>
+<!ATTLIST PreferredSummaryTheme
+	xml:lang CDATA #IMPLIED
+	preferenceValue CDATA #IMPLIED
+>
+<!ELEMENT SummaryDuration (#PCDATA)>
+<!ELEMENT MaxSummaryDuration (#PCDATA)>
+<!ELEMENT MinSummaryDuration (#PCDATA)>
+<!ELEMENT NumOfKeyframes (#PCDATA)>
+<!ELEMENT MinNumOfKeyframes (#PCDATA)>
+<!ELEMENT MaxNumOfKeyframes (#PCDATA)>
+<!ELEMENT BrowsingPreferenceType (Place?, Time?)>
+<!-- ##################################### -->
+<!--  Definition of  "FilteringAndSearchPreferencesDS" -->
+<!-- ##################################### -->
+<!ELEMENT FilteringAndSearchPreferences (ClassificationPreferences*, CreationPreferences*, SourcePreferences*, FilteringAndSearchPreferenceType*)>
+<!ATTLIST FilteringAndSearchPreferences
+	protection (true | False) "true"
+	preferenceValue CDATA #IMPLIED
+>
+<!ELEMENT ClassificationPreferences (Genre*, PackagedType*)>
+<!ATTLIST ClassificationPreferences
+	id ID #IMPLIED
+	preferenceValue CDATA #IMPLIED
+>
+<!ELEMENT Genre (#PCDATA)>
+<!ATTLIST Genre
+	CSName CDATA #IMPLIED
+	CSTermId CDATA #IMPLIED
+	CSLocation CDATA #IMPLIED
+	preferenceValue CDATA #IMPLIED
+>
+<!ELEMENT PackagedType (#PCDATA)>
+<!ATTLIST PackagedType
+	CSName CDATA #IMPLIED
+	CSTermId CDATA #IMPLIED
+	CSLocation CDATA #IMPLIED
+	preferenceValue CDATA #IMPLIED
+>
+<!ELEMENT CreationPreferences (Location*)>
+<!ATTLIST CreationPreferences
+	id ID #IMPLIED
+	preferenceValue CDATA #IMPLIED
+>
+<!ELEMENT Location (PlaceName+, PlaceRole?, Planet?, GPSCoordinates?, Country?, Region?, PostingIdentifier?, AdministrativeUnit?, PostalAddress?, InternalCoordinates?)>
+<!ATTLIST Location
+	id ID #IMPLIED
+	preferenceValue CDATA #IMPLIED
+>
+<!ELEMENT PlaceName (#PCDATA)>
+<!ATTLIST PlaceName
+	xml:lang CDATA #IMPLIED
+>
+<!ELEMENT PlaceRole (#PCDATA)>
+<!ATTLIST PlaceRole
+	CSName CDATA #IMPLIED
+	CSTermId CDATA #IMPLIED
+	CSLocation CDATA #IMPLIED
+>
+<!ELEMENT Planet (#PCDATA)>
+<!ATTLIST Planet
+	CSName CDATA #IMPLIED
+	CSTermId CDATA #IMPLIED
+	CSLocation CDATA #IMPLIED
+>
+<!ELEMENT GPSCoordinates (GPSsystem)>
+<!ELEMENT GPSsystem (#PCDATA)>
+<!ATTLIST GPSsystem
+	CSName CDATA #IMPLIED
+	CSTermId CDATA #IMPLIED
+	CSLocation CDATA #IMPLIED
+>
+<!ELEMENT Country (#PCDATA)>
+<!ATTLIST Country
+	CSName CDATA #IMPLIED
+	CSTermId CDATA #IMPLIED
+	CSLocation CDATA #IMPLIED
+>
+<!ELEMENT Region (#PCDATA)>
+<!ATTLIST Region
+	CSName CDATA #IMPLIED
+	CSTermId CDATA #IMPLIED
+	CSLocation CDATA #IMPLIED
+>
+<!ELEMENT PostingIdentifier (#PCDATA)>
+<!ATTLIST PostingIdentifier
+	xml:lang CDATA #IMPLIED
+>
+<!ELEMENT AdministrativeUnit (#PCDATA)>
+<!ELEMENT PostalAddress (AddressLine+)>
+<!ATTLIST PostalAddress
+	xml:lang CDATA #IMPLIED
+>
+<!ELEMENT AddressLine (#PCDATA)>
+<!ELEMENT InternalCoordinates (#PCDATA)>
+<!ELEMENT SourcePreferences (PublicationType*, PublicationChannel*, PublicationPlace*, PublicationDate*)>
+<!ATTLIST SourcePreferences
+	id ID #IMPLIED
+	preferenceValue CDATA #IMPLIED
+>
+<!ELEMENT PublicationType (#PCDATA)>
+<!ATTLIST PublicationType
+	CSName CDATA #IMPLIED
+	CSTermId CDATA #IMPLIED
+	CSLocation CDATA #IMPLIED
+	preferenceValue CDATA #IMPLIED
+>
+<!ELEMENT PublicationChannel (#PCDATA)>
+<!ATTLIST PublicationChannel
+	CSName CDATA #IMPLIED
+	CSTermId CDATA #IMPLIED
+	CSLocation CDATA #IMPLIED
+	preferenceValue CDATA #IMPLIED
+>
+<!ELEMENT PublicationPlace (PlaceName+, PlaceRole?, Planet?, GPSCoordinates?, Country?, Region?, PostingIdentifier?, AdministrativeUnit?, PostalAddress?, InternalCoordinates?)>
+<!ATTLIST PublicationPlace
+	id ID #IMPLIED
+	preferenceValue CDATA #IMPLIED
+>
+<!ELEMENT PublicationDate (#PCDATA)>
+<!ATTLIST PublicationDate
+	preferenceValue CDATA #IMPLIED
+>
+<!ELEMENT FilteringAndSearchPreferenceType (Place?, Time?)>
+<!-- ################################################ -->
+<!-- Definition of Time DS                            -->
+<!-- based on ISO8601                                 -->
+<!-- ################################################ -->
+<!ELEMENT Time ((TimePoint | RelTimePoint | RelIncrTimePoint), (Duration | IncrDuration)?)>
+<!-- ################################################ -->
+<!--   Definition the TimePoint D                     -->
+<!-- ################################################ -->
+<!ELEMENT TimePoint (#PCDATA)>
+<!-- ################################################ -->
+<!--   Definition the Duration D                      -->
+<!-- ################################################ -->
+<!ELEMENT Duration (#PCDATA)>
+<!-- ################################################ -->
+<!--   Definition the IncrDuration D                  -->
+<!-- ################################################ -->
+<!ELEMENT IncrDuration (#PCDATA)>
+<!ATTLIST IncrDuration
+	timeunit CDATA #IMPLIED
+>
+<!-- ################################################ -->
+<!--   Definition the RelTime D                       -->
+<!-- ################################################ -->
+<!ELEMENT RelTimePoint (#PCDATA)>
+<!ATTLIST RelTimePoint
+	TimeBase CDATA #IMPLIED
+>
+<!-- ################################################ -->
+<!--   Definition the RelIncrTime D                   -->
+<!-- ################################################ -->
+<!ELEMENT RelIncrTimePoint (#PCDATA)>
+<!ATTLIST RelIncrTimePoint
+	timeunit CDATA #IMPLIED
+	TimeBase CDATA #IMPLIED
+>
+<!-- ################################################ -->
+<!--   Definition the Place DS                        -->
+<!-- ################################################ -->
+<!ELEMENT Place (PlaceName+, PlaceRole?, Planet?, GPSCoordinates?, Country?, Region?, PostingIdentifier, AdministrativeUnit, PostalAddress, InternalCoordinates)>
+<!ATTLIST Place
+	id ID #REQUIRED
+>

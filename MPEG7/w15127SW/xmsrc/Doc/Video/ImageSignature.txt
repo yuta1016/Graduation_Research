@@ -1,0 +1,17 @@
+Technique	Image Signature
+Document	MPEG-7 Visual (ISO/IEC 15938-3:2002/Amd. 3 Image Signature Tools)
+Name		Paul Brasnett, Miroslaw Bober, Mitsubishi Electric R&D Centre Europe
+EMail		p.brasnett@uk.merce.mee.com, m.bober@uk.merce.mee.com
+Type		Application
+External Libraries	OpenCV
+Related Ds/DSs	NONE
+Used Ds/DSs	NONE
+Input		Images 
+Extraction	Yes
+Client Appl	Search & Retrieval
+Summary		The image signature (identifier) is a descriptor that identifies an image. The descriptor is robust to image 		modifications such as rotation, compression and greyscale conversion. Searching is performed using the Hamming 		distance, which makes it very fast.  
+Strong Points	Compact, robust and highly independent. Very fast searching
+Limitations	NONE
+Known Problems	NONE
+Parameters	NONE
+END

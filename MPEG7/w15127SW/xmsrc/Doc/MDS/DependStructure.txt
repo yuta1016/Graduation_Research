@@ -1,0 +1,25 @@
+Technique	A search application for the XM to utilize the Dependency Structure datatype
+Document	MDS XM document (N3964) 7.2.6 DependencyStructure
+		N3966 Text of ISO/IEC 15938-5 FCD, see 7.2.5 DependencyStructure datatype
+Name		Masahiro Shibata (NHK Science and Technical Research Laboratories)
+Email		shibata@strl.nhk.or.jp
+Contact		shibata@strl.nhk.or.jp
+Type		Application 
+External Libraries	    NONE
+Related Ds/DSs	DependencyStructure datatype, TextAnnotation datatype
+Used Ds/DSs	DependencyStructure datatype, TextAnnotation datatype
+Input		V10-EN.xml (An XML file that includes descriptions of video segments in V10 from the MPEG-7 test set. These descriptions consist of TextAnnotations that include instances of FreeTextAnnotation and DependencyStructure datatypes.)
+Extraction	NA
+Client Appl	Retrieval Application
+Summary		The program calculates matching penalties between a query file (whose name is specified by "-q" parameter of the command line) and all the Dependency Structure descriptors in the Text Annotation DSs in the description files. The description files are listed up in the list file (whose name is specified by "-l" parameter of the command line.) The Text Annotation DSs are sorted based on the penalty values and the best-matched items (the number of which are limited by "-n" parameter of the command line) are displayed with the "id"s and free texts of the Text Annotation DSs.
+Strong Points	Traditionally, keywords are used when retrieving based on language. However, the Dependency Structure supports retrieval that specify inter-element relationships such as "A gives B to C" which cannot be expressed solely by Boolean operators (AND/OR) as employed in ordinary keyword retrieval.
+Limitations	Essentially, the Dependency Structure requires no special query language (retrieval can be performed with natural language sentences). However, this version needs a query file that includes a query written in the XML format.
+Known Problems	NONE
+Parameters	- Usage example
+		XMWinExe_dbg -a DependStructureClient -l list.txt -q query.xml -n 10
+		Where
+		  -a DependStructureClient Indication of the retrieval application
+		  -l list.txt Indication of a file that lists up description files as a DB for searching
+		  -q query.xml Indication of an XML file that includes a query in the format of the DependencyStructure datatype that can be matched with the descriptions in the DB.
+		  -n 10 Indication of a number of the best-matched items
+END

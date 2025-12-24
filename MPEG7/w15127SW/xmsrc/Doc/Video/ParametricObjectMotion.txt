@@ -1,0 +1,26 @@
+Technique	Parametric Motion
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name		Aljoscha Smolic (HHI), Titus Zaharia (INT)
+EMail		smolic@hhi.de
+Contact		smolic@hhi.de
+Type		Application
+External Libraries	none
+Related Ds/DSs	Video Segment DS, Moving Region DS, Mosaic DS, TimeSeries DS, Spatial 2D Coordinates D
+Used Ds/DSs	none
+Input		Pairs of images, the motion between each image pair is represented
+Extraction	Yes
+Client Appl	Search & Retrieval
+Summary		Parametric Motion describes the global or object motion in video over a certain period of time, by a set of parameters according to a certain motion models. Different motion models, spatial and temporal references can be used, enabling high flexibility of possible descriptions. In addition to query-by-example (i.e. retrieving motions that are similar to a given example) it also enables query-by-specification of certain kinds of motion, like "find left translation" or "find up-scales (zoom)".
+Strong Points	none
+Limitations	none
+Known Problems	none
+Parameters	Uses the general XM-SW parameters. In the listfile image pairs
+		must be specified that define the motion in between:
+		motion_1_image_1
+		motion_1_image_2
+		motion_2_image_1
+		motion_2_image_2
+			:
+		motion_N_image_1
+		motion_N_image_2
+END

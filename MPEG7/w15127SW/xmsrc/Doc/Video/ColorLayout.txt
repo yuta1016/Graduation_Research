@@ -1,0 +1,18 @@
+Technique	Color Layout
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name	Akio YAMADA (NEC Corp.)
+EMail	a-yamada@da.jp.nec.com
+Contact	a-yamada@da.jp.nec.com
+Type	Application
+External Libraries	none
+Related Ds/DSs	Still Region DS, Video Segment DS, Moving Object Ds, TimeSeries DS
+Used Ds/DSs	none
+Input	Images
+Extraction	Yes
+Client Appl	Search & Retrieval
+Summary	Color Layout is designed to achieve very high-speed retrieval of images or video frames based on the spatial distribution of color. This library supports both extraction (rectangular and arbitrary shaped) and matching (see ClientApplication as an example). To implement the video segment retrieval functionality, this descriptor should be contained in TimeSeries DS (see TimeSeries DS).
+Strong Points	High-speed image and video segment retrieval.Very compact representation of annotation data.(request only 8 Bytes for each image)
+Limitations	None. The components had been tested using over 50,000 digital photos.
+Known Problems	none
+Parameters	Color Layout descriptor supports scalable representation of spatial distribution of color. If you wish to change the number of coefficients, you should directly modify the parameters of StartExtraction()
+END

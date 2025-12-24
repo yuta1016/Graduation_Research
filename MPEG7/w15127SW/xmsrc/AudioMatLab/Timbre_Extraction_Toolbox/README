@@ -1,0 +1,74 @@
+README from Timbre Extraction Toolbox.
+
+This matlab toolbox, output an XML file which contains Timbre Descriptors.
+
+#####
+MEX-FUNCTION (outputXML):
+#####
+To compile the mexfunction, you need to have Apache XERCES-C library:
+http://xml.apache.org
+
+The sources code are in directory src, you need to modify the Makefile according to your matlab and xerces installation.
+
+
+####
+USAGE OF THE TIMBRE EXTRACTION MATLAB TOOLBOX
+####
+To use this toolbox, we have changed the Timbre.xsd in newTimbre.xsd (remove inclusion of other schema).
+
+Usage example:
+>> InstrumentTimbre('AltoSax_NoVib_mf_Ab3.wav', f0 , 1, 'newTimbre.xsd', 'myOutput.xml')
+This example create the file myOutput.xml.
+With f0	: fundamental frequency breakpoint function format
+    	: [first column: times [second] | second columns f0 [Hz]]
+
+
+Contents.m:
+% Matlab functions for Timbre Description
+% =======================================
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+% 1) Functions list
+% =================
+%
+% InstrumentTimbre
+%
+% Hspectre
+% Hharmo (Fevalbp)
+% -> Fharmopic
+% HharmoiParam
+% -> Fihsc
+% -> Fihsd (Fspecenv)
+% -> Fihss
+% -> Fihsv
+%
+% Fenergy
+% -> Flat
+% -> Ftc
+%
+%
+% 2) DataTypeDefinition
+% =====================
+%
+% F*.m : denotes a function, all function start with capital F
+%    
+% *_m      : matrix data
+% *_v      : vector data
+% *_iv     : complex vector data
+% *_struct : structure
+% *_bp     : breakpoint function
+%
+% *_sec_* : units in seconds
+% *_n_*   : units in samples
+% *_hz_*  : units in Hz
+% *_lin_* : linear scale
+% *_dB_*  : logarithmic scale
+%
+
+
+####
+For any question, send an e-mail to Geoffroy.Peeters@ircam.fr and Patrice.Tisserand@ircam.fr
+####

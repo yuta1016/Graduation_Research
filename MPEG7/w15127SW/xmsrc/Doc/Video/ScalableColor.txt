@@ -1,0 +1,18 @@
+Technique	Scalable Color
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name		Aljoscha Smolic (HHI), Jens-Rainer Ohm (RWTH Aachen), Santhana Krishnamachari (Philips)
+EMail		smolic@hhi.de, ohm@ient.rwth-aachen.de, santhana.krishnamachari@philips.com
+Contact		smolic@hhi.de
+Type		Application
+External Libraries	none
+Related Ds/DSs	Color Space D, Color Quantization D, GoF/GoP Color D, Still Region DS, Moving Region DS
+Used Ds/DSs	Color Space D, Color Quantization D
+Input		Images
+Extraction	Yes
+Client Appl	Search & Retrieval
+Summary		The Scalable Color descriptor is a color histogram in the HSV color space, which is encoded by a Haar transform. Its binary representation is scalable in terms of bin numbers and bit representation accuracy over a broad range of data rates.
+Strong Points	none
+Limitations	none
+Known Problems	none
+Parameters	Uses the general XM-SW parameters.
+END

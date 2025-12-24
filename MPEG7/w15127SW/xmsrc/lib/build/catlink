@@ -1,0 +1,25 @@
+#!/bin/csh -f
+test -f $1 || exit
+test -f $1link || exit
+set OK=$2
+if ($1 == `dirname $1`/DummyType.) then
+  set OK=
+endif
+if ($1 == `dirname $1`/DSDummyType.) then
+  set OK=
+endif
+
+#echo test zero
+
+if ($OK == 0) then
+  exit
+endif
+
+#echo test unknown
+if ($2 == "") then
+  set OK=`cat $1`
+endif
+
+if ( $OK == 1 ) then
+  cat $1link
+endif

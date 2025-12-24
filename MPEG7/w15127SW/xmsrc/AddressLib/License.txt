@@ -1,0 +1,28 @@
+1. This library is owned by Technical University of Munich,
+   Institute for Integrated Circuits.
+
+2. If this library is copied, the copy must include this
+   license file.
+
+3. This license file must not be changed.
+
+4. The user is not allowed to change the library.
+
+5. The Technical University of Munich is not responsible for any damage
+   due to the usage of the library.
+
+6. The Technical University allows the usage of this library
+   free of charge for non-commercial purpose only.
+
+7. If you use this library in a product or for the development of a
+   product you have to get the permission of the Technical University
+   of Munich, Institute for Integrated Circuits:
+   TU-Muenchen
+   Lehrstuhl fuer Integr. Schaltungen
+   Stephan Herrmann
+   Dr. Walter Stechele
+   Arcisstr. 21
+   80290 Muenchen
+   Germany
+
+   

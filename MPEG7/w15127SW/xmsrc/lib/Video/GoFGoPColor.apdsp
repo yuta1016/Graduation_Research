@@ -1,0 +1,20 @@
+# Begin Group "GoFGoPColor"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\GoFGoPColorCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\GoFGoPColorCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\GoFGoPColorSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\GoFGoPColorSAppl.h
+# End Source File
+# End Group

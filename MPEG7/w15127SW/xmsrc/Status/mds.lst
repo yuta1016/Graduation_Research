@@ -1,0 +1,43 @@
+AffectiveSegmentFilter _ -		- - - - X X Sony
+- AudioProperty _ -			- - X X - - IBM?
+- CollectionStructure _ -			- - X X X X Col_Uni
+DependStructure _ -			- - - - X X NHK
+- EntityRelation _ -			- - - - - - Sony
+ExtendedTextualType _ -			- - - - X X Bosch
+GraphicalCS _ -				- - - - X X Sony
+HierarchicalKeyFrame _ -		- - X X - - Sharp
+ImportanceHint _ -			- - - - X X IBM
+InkSegment _ -				- - X X X X IBM
+MatchingHint _ -			- - X X X X LG
+MediaMeta _ -				- - - - X X Sharp
+MediaQuality _ -			- - X X - - Tektronix
+MediaReview _ -				- - - - X X Philips
+Model _ -				- - X X - - IBM
+Mosaic _ -				- - X X X X Ericsson
+OrderingKey _ -				- - - - X X Uni_Brescaia
+Package _ -				- - - - X X IBM
+PhoneticTranslationHints _ -		- - - - X X Bosch
+PointOfView _ -				- - - - X X Matsushita
+- Pyramid _ -				- - - - - - ??
+Segment _ -				- - X X X X Col_Uni
+SegmentRelGraph _ -				- - X X X X Col_Uni
+Semantic _ -				- - - - X X Col_Uni
+SeqSummaryFastMovingStoryBoard * -	- - X X - - IBM
+SeqSummaryKeywords _ -			- - X X - - IBM
+SequentialSummary _ -			- - X X - - Toshiba
+SoundProperty _ -			- - X X - - KDDI
+SpaceFrequencyView _ -			- - X X - - IBM
+SpatialResolutionHint _ -		- - - - X X Uni_Korea
+StateMember _ -				- - - - X X Sony
+StateTransitionModel _ -		- - X X - - IBM
+StructuredCollection _ -		- - X X X X Col_Uni
+Summarization _ -			- - X X X X Ericsson
+SummaryPreferences _ -			- - - - X X Matsushita
+Time _ -				- - X X X X Siemens
+Transcoding * -				- - X X - - Sony/Mitsubishi
+UserPreference _ -			- - - - X X Sharp
+Variation _ -				- - X X - - IBM
+Vector _ -				- - - - - - IBM
+VideoEditing _ -			- - X X - - UPMC
+- VideoText _ -				- - X X X X IBM
+VideoText _ -				- - X X - - IBM

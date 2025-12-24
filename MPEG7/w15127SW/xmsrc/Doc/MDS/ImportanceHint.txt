@@ -1,0 +1,17 @@
+Technique	Importance attribute of Media Transcoding Hint DS
+Document	MPEG-7 Committee Draft MDS, see Variation DS
+Name		John R. Smith (IBM T. J. Watson Research Center)
+EMail		jrsmith@watson.ibm.com
+Contact		jrsmith@watson.ibm.com
+Type		Application
+External Libraries	none
+Related Ds/DSs	Media Transcoding Hint DS
+Used Ds/DSs	none
+Input		none
+Extraction	none
+Client Appl	Image transcoding on basis of importance hints
+Summary		The importance hint allows the adaptive transcoding of audio-visual content by describing the important regions and segments
+Limitations	none
+Known Problems	none
+Parameters	none
+END

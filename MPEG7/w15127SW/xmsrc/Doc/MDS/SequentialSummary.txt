@@ -1,0 +1,31 @@
+Technique	SequentialSummaryExtractionTool
+Document	N3705  MPEG-7 CD MDS, see Sequential Summaries
+Name		Osamu Hori, Toshimitsu Kaneko, Koji Yamamoto (Toshiba R&D Center)
+Email		osamu.hori@toshiba.co.jp, toshimitsu.kaneko@toshiba.co.jp, koji7.yamamoto@toshiba.co.jp
+Contact		osamu.hori@toshiba.co.jp
+Type		Application 
+External Libraries	ImageMagick library and mpeg2decode with extraction of motion vectors.
+Related Ds/DSs	SummaryDS, SequentialSummaryDS, FramePropertyD
+Used Ds/DSs	NONE
+Input		MPEG-Video (foo.mpg), MPEG frame information file (frameinfo.txt)
+
+		MPEG frame information file is a text file consist of three sections.
+		[VideoSkim]  : File name of the video skim file.
+		[I-pictures] : Listing of the I-picture frames.
+		[P-pictures] : Listing of the P-picture frames.
+		[Regions]    : Listing of the frames with region data.
+
+		The syntax for the region data is:
+		frame#	imagefile	left	top	width	height
+Extraction	Yes
+Client Appl	NA
+Summary		This component generates a smart quick view, i.e., fast playback with automatic speed 
+		control using thumbnail data and frame activity value. The thumbnail data is shrinked 
+		I-picture frame images, given by a video skim (a composite of still-images). Frame 
+		activity value is calculated from the motion vectors in the P-picture frames. The frame 
+		numbers of I and P-pictures have to be described in the frame information file because 
+		they are not extracted automaticaly. Region data is used to describe the region of interest.
+Strong Points	Regarding speed, it work best when the input mpeg video is not longer than 30 minutes.
+Limitations	Processing time can be very long when the input mpeg video is long.
+Parameters	NA
+END

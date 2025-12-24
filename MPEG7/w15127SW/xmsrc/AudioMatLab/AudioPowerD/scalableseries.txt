@@ -1,0 +1,82 @@
+
+<schema targetNamespace="http://www.mpeg7.org/2001/MPEG-7_Schema"
+        xmlns:mpeg7="http://www.mpeg7.org/2001/MPEG-7_Schema"
+        xmlns="http://www.w3.org/2000/10/XMLSchema"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+</schema>
+
+<complexType name="MyElementType">
+    <sequence>
+      <element name="MyVector" type="mpeg7:MyVectorType"/>
+    </sequence>
+    <attribute name="myAttribute" type="mpeg7:unsigned8"/>
+</complexType>
+
+<! --- ScalableSeriesType --->
+
+<!-- ##################################################################### -->
+  <!-- Definition of abstract ScalableSeriesType                             -->
+  <!-- ##################################################################### -->
+  <complexType name="ScalableSeriesType" abstract="true">
+    <element name="Scaling" minOccurs="0" maxOccurs="unbounded">
+      <complexType>
+        <attribute name="ratio" type="positiveInteger" use="required"/>
+        <attribute name="elementNum" type="positiveInteger" use="required"/>
+      </complexType>
+    </element>
+    <attribute name="totalSampleNum" type="positiveInteger" use="required"/>
+  </complexType>
+
+<!-- ##################################################################### -->
+  <!-- Definition of abstract SeriesOfScalarType                             -->
+  <!-- ##################################################################### -->
+  <complexType name="SeriesOfScalarType" base="mpeg7:ScalableSeriesType"
+               derivedBy="extension">
+    <element name="Raw" type="mpeg7:FloatVectorType" minOccurs="0"/>
+    <element name="Min" type="mpeg7:FloatVectorType" minOccurs="0"/>
+    <element name="Max" type="mpeg7:FloatVectorType" minOccurs="0"/>
+    <element name="Mean" type="mpeg7:FloatVectorType" minOccurs="0"/>
+    <element name="Random" type="mpeg7:FloatVectorType" minOccurs="0"/>
+    <element name="First" type="mpeg7:FloatVectorType" minOccurs="0"/>
+    <element name="Last" type="mpeg7:FloatVectorType" minOccurs="0"/>
+    <element name="Variance" type="mpeg7:FloatVectorType" minOccurs="0"/>
+    <element name="Weight" type="mpeg7:FloatVectorType" minOccurs="0"/>
+  </complexType>
+
+<!-- 4.3.3.2 Informative Example -->
+<!-- ##################################################################### -->
+  <!-- Definition of AudioPowerType                                          -->
+  <!-- ##################################################################### -->
+  <complexType name="AudioPowerType">
+    <complexContent>
+      <extension base="mpeg7:AudioSampledType">
+        <sequence>
+          <element name="Value" type="mpeg7:SeriesOfScalarType"
+                   maxOccurs="unbounded"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+
+<Value totalSampleNum="100">
+    <Scaling ratio="32" elementNum="4"/>
+    <Mean> 17.96 49.50 74.25 68 </Mean>
+  </Value>
+
+ <AudioSegment idref="111">
+    <!-- MediaTime, etc.                                                     -->
+    <AudioPower>
+      <HopSize timeunit="PT1N44000F">1</HopSize>
+      <!-- 44 kHz sampling rate                                              -->
+      <Value totalSampleNum="896">
+        <Scaling ratio="128" elementNum="6"/>
+        <Mean> 0.96 1.2 0.43 0.7 0.2 0.97 0.15 </Mean>
+      </Value>
+      <Value totalSampleNum="896">
+        <Scaling ratio="896" elementNum="1"/>
+        <Min>0.1</Min>
+        <Max>1.3</Max>
+      </Value>
+    </AudioPower>
+  </AudioSegment>
+

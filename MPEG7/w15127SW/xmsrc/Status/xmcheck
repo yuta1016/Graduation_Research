@@ -1,0 +1,285 @@
+#! /bin/bash
+#table header
+
+cd ~/mpeg7/xm/newsrc
+
+echo $1 integration schedule and status
+echo -e "D=Register Descriptors\tB=Registerd Coding Schemes\tX=Register Server Applications\tE=Register Extraction Tools\tC=Registerd Client Applications\tS=Registered Search Tools"
+echo -e "d=Descriptors.h\tb=Coding Schemes.h\tx=Server Applications.h\te=Extraction Tools.h\tc=Client Applications.h\ts=Search Utilites.h"
+#echo -e "I=ExportDDL\ti=ImportDDL"
+echo -e
+echo -e "Name\tDescriptor\tCoding Scheme\tServer Application\tExtraction Tool\tClient Application\tSearch Tool\t" \
+    "Glue Components\tDocumentation \tSchema\tNo of Comments\tWho\tVerification"
+
+
+#table entries
+cat Status/$1.lst | sed -e '/^#/d' -e '/^$/d'| (
+	while read d3 EXACT d2 USED USECS USESVR USEEXT USECLT USESR WHO
+	do
+
+#	echo $d3 $EXACT $d2 $USED $USECS $USESVR $USEEXT $USECLT $USESR $WHO
+	if [ $d3 == "-" ]
+	then
+	    continue 1
+	fi
+	if [ "$EXACT" == "*" ]
+	then
+	    d1=$d3"*"
+	else
+	    d1=$d3
+	fi
+#	echo $d1
+	if [ $d2 == "-" ]
+	then
+	    d2=$d3
+	fi
+	#echo $USESR $WHO
+	glue="no_"
+	ddl=0
+	line="$d3"
+	hasapps=0
+	#descriptor
+	if [ $USED == "X" ];
+	then
+	    ls Descriptors/$d1".cpp" > /dev/null 2>&1 && tmp=1 || tmp=0
+	    if [ $tmp == 1 ];
+	    then
+		(grep ExportDDL Descriptors/$d1.cpp > /dev/null)|| ddl=1
+		(grep ImportDDL Descriptors/$d1.cpp > /dev/null)|| ddl=1
+		if [ $ddl == 0 ]
+		then
+		    line="$line\tOK"
+		else
+		    line="$line\tno DDL Exp/Imp";
+		    glue=$glue"Ii"
+		fi
+	    else
+		line="$line\tmissing"
+	    fi
+	    (grep $d2 Descriptors/RegisteredDescriptors.cpp > /dev/null)|| glue="$glue"D
+	    (grep $d3 Descriptors/Descriptors.h > /dev/null)|| glue="$glue"d
+	else
+	    ls Descriptors/$d1".cpp" > /dev/null 2>&1 && tmp=1 || tmp=0
+	    if [ $tmp == 1 ];
+	    then
+		line="$line\t?OK?";
+	    else
+		line="$line\t-";
+	    fi
+	fi
+
+
+	#coding scheme
+	if [ $USECS == "X" ]
+	then
+	    ls CodingSchemes/$d1"CS".cpp > /dev/null 2>&1 && tmp=1 || tmp=0
+	    if [ $tmp == 1 ];
+	    then
+		line="$line\tOK"
+	    else
+		line="$line\tmissing"
+	    fi
+	    (grep $d2 CodingSchemes/RegisteredCodingSchemes.cpp > /dev/null)|| glue="$glue"B
+	    (grep $d3 CodingSchemes/CodingSchemes.h > /dev/null)|| glue="$glue"b
+	else
+	    ls CodingSchemes/$d1"CS".cpp > /dev/null 2>&1 && tmp=1 || tmp=0
+	    if [ $tmp == 1 ];
+	    then
+		line="$line\t?OK?"
+	    else
+		line="$line\t-"
+	    fi
+	fi
+
+
+
+	#server application
+	if [ $USESVR == "X" ]
+	then
+	    hasapps=1
+	    ls Applications/$d1"SAppl".cpp > /dev/null 2>&1 && tmp=1 || tmp=0
+	    if [ $tmp == 1 ];
+#	    if [ -n `ls Applications/$d1SAppl.cpp 2> /dev/null` ];
+	    then
+		line="$line\tOK"
+	    else
+		line="$line\tmissing"
+	    fi
+	    (grep $d2 Applications/RegisteredServerApplications.cpp > /dev/null)|| glue="$glue"X
+	    (grep $d3 Applications/ServerApplications.h > /dev/null)|| glue="$glue"x
+	elif [ $USESVR == "M" ]
+	then
+#	    ls Applications/$d1"SAppl".m > /dev/null 2>&1 && tmp=1 || tmp=0
+	    test -d AudioMatLab/$d1 && tmp=1 || tmp=0
+	    if [ $tmp == 1 ];
+#	    if [ -n `ls Applications/$d1SAppl.cpp 2> /dev/null` ];
+	    then
+		line="$line\tML"
+	    else
+		line="$line\tmissing"
+	    fi
+	else
+	    ls Applications/$d1"SAppl".cpp > /dev/null 2>&1 && tmp=1 || tmp=0
+	    if [ $tmp == 1 ];
+#	    if [ -n `ls Applications/$d1SAppl.cpp 2> /dev/null` ];
+	    then
+		line="$line\t?OK?"
+	    else
+		line="$line\t-"
+	    fi
+	fi
+
+	#extraction
+	if [ $USEEXT == "X" ]
+	then
+	    ls ExtractionUtilities/$d1"Extraction".cpp > /dev/null 2>&1 && tmp=1 || tmp=0
+	    if [ $tmp == 1 ];
+#	    if [ -n `ls ExtractionUtilities/$d1Extraction.cpp 2> /dev/null` ];
+	    then
+		line="$line\tOK"
+	    else
+		line="$line\tmissing"
+	    fi
+	    (grep $d2 ExtractionUtilities/RegisteredExtractionUtilities.cpp > /dev/null)|| glue="$glue"E
+	    (grep $d3 ExtractionUtilities/ExtractionUtilities.h > /dev/null)|| glue="$glue"e
+	elif [ $USEEXT == "M" ]
+	then
+#	    ls ExtractionUtilities/$d1"Extraction".m > /dev/null 2>&1 && tmp=1 || tmp=0
+	    test -d AudioMatLab/$d1 && tmp=1 || tmp=0
+	    if [ $tmp == 1 ];
+#	    if [ -n `ls ExtractionUtilities/$d1Extraction.cpp 2> /dev/null` ];
+	    then
+		line="$line\tML"
+	    else
+		line="$line\tmissing"
+	    fi
+	else
+	    ls ExtractionUtilities/$d1"Extraction".cpp > /dev/null 2>&1 && tmp=1 || tmp=0
+	    if [ $tmp == 1 ];
+#	    if [ -n `ls ExtractionUtilities/$d1Extraction.cpp 2> /dev/null` ];
+	    then
+		line="$line\t?OK?"
+	    else
+		line="$line\t-"
+	    fi
+	fi
+
+	#client application
+	if [ $USECLT == "X" ];
+	then
+	    hasapps=1
+	    ls Applications/$d1"CAppl".cpp > /dev/null 2>&1 && tmp=1 || tmp=0
+	    if [ $tmp == 1 ];
+#	    if [ -n `ls Applications/$d1CAppl.cpp 2> /dev/null` ];
+	    then
+		line="$line\tOK"
+	    else
+		line="$line\tmissing"
+	    fi
+	    (grep $d2 Applications/RegisteredClientApplications.cpp > /dev/null)|| glue="$glue"C
+	    (grep $d3 Applications/ClientApplications.h > /dev/null)|| glue="$glue"c
+	elif [ $USECLT == "M" ]
+	then
+#	    ls Applications/$d1"CAppl".m > /dev/null 2>&1 && tmp=1 || tmp=0
+	    test -d AudioMatLab/$d1 && tmp=1 || tmp=0
+	    if [ $tmp == 1 ];
+#	    if [ -n `ls Applications/$d1CAppl.cpp 2> /dev/null` ];
+	    then
+		line="$line\tML"
+	    else
+		line="$line\tmissing"
+	    fi
+	else
+	    ls Applications/$d1"CAppl".cpp > /dev/null 2>&1 && tmp=1 || tmp=0
+	    if [ $tmp == 1 ];
+#	    if [ -n `ls Applications/$d1CAppl.cpp 2> /dev/null` ];
+	    then
+		line="$line\t?OK?"
+	    else
+		line="$line\t-"
+	    fi
+	fi
+
+	#search tools
+	if [ $USESR == "X" ];
+	then
+	    ls SearchUtilities/$d1"Search".cpp > /dev/null 2>&1 && tmp=1 || tmp=0
+	    if [ $tmp == 1 ];
+#	    if [ -n `ls SearchUtilities/$d1Search.cpp 2> /dev/null` ];
+	    then
+		line="$line\tOK"
+	    else
+		line="$line\tmissing"
+	    fi
+	    (grep $d2 SearchUtilities/RegisteredSearchTools.cpp > /dev/null)|| glue="$glue"S
+	    (grep $d3 SearchUtilities/SearchUtilities.h > /dev/null)|| glue="$glue"s
+	elif [ $USESR == "M" ]
+	then
+#	    ls SearchUtilities/$d1"Search".m > /dev/null 2>&1 && tmp=1 || tmp=0
+	    test -d AudioMatLab/$d1 && tmp=1 || tmp=0
+	    if [ $tmp == 1 ];
+#	    if [ -n `ls SearchUtilities/$d1Search.cpp 2> /dev/null` ];
+	    then
+		line="$line\tML"
+	    else
+		line="$line\tmissing"
+	    fi
+	else
+	    ls SearchUtilities/$d1"Search".cpp > /dev/null 2>&1 && tmp=1 || tmp=0
+	    if [ $tmp == 1 ];
+#	    if [ -n `ls SearchUtilities/$d1Search.cpp 2> /dev/null` ];
+	    then
+		line="$line\t?OK?"
+	    else
+		line="$line\t-"
+	    fi
+	fi
+
+
+	#glue
+	ls lib/*/$d1.dsp > /dev/null 2>&1 && tmp=1 || tmp=0
+	if [ $tmp == 1 ];
+#	if [ -n `ls lib/*/$d1.dsp 2> /dev/null` ];
+	then
+	    glue=$glue
+	else
+	    glue="no_dsp_file $glue"
+	fi
+	(grep $d2 Makefile > /dev/null) || glue="no_make_section $glue"
+	if [ $hasapps == 1 ]
+	then
+	    (grep $d2 XMManager/Version1.cpp > /dev/null) || (grep $d2 XMManager/Version2.cpp > /dev/null) || glue="no_main_section $glue"
+	fi
+	if [ "$glue" == "no_" ];
+	then
+	    line="$line\tOK"
+	else
+	    line="$line\t$glue"
+	fi
+
+	#doc
+	ls Doc/*/$d1.txt > /dev/null 2>&1 && tmp=1 || tmp=0
+	if [ $tmp == 1 ];
+#	if [ -n `ls Doc/*/$d1.txt 2> /dev/null` ];
+	then
+	    line="$line\tOK"
+	else
+	    line="$line\tmissing"
+	fi
+
+	#schema
+	ls DTDs/$d1 > /dev/null 2>&1 && tmp=1 || tmp=0
+	if [ $tmp == 1 ];
+#	if [ -n `ls DTDs/$d1.xsd 2> /dev/null` ];
+	then
+	    line="$line\tOK"
+	else
+	    line="$line\t-"
+	fi
+	line="$line\t"`find . -name \*$d1\* -type f -exec grep //sth {} \; | wc -l`
+
+	echo -e "$line\t$WHO"
+    done
+    )
+
+echo -e Default Date

@@ -1,0 +1,12 @@
+# Begin Group "PointOfView"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\PointOfViewCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\PointOfViewCAppl.h
+# End Source File
+# End Group

@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Template|Win32">
+      <Configuration>Template</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>XMLibCDB</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <AdditionalIncludeDirectories>..\AddressLib;..;..\..\afsp\include;..\..\ImageMagick;..\..\xml\src\xercesc;..\..\xml\src;C:\Program Files\OpenCV\cv\include;C:\Program Files\OpenCV\cxcore\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;_WINDOWS;WIN32;_VISUALC_;c_plusplus;NODISP;AFLIB;USEXML;USEXML3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Debug\XMLibC.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <Culture>0x0407</Culture>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug\XMLibC.bsc</OutputFile>
+    </Bscmake>
+    <Lib>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>..\AddressLib;..;..\..\afsp\include;..\..\ImageMagick;..\..\xml\src\xercesc;..\..\xml\src;C:\Program Files\OpenCV\cv\include;C:\Program Files\OpenCV\cxcore\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;WIN32;_VISUALC_;c_plusplus;NODISP;AFLIB;USEXML;USEXML3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release\XMLibC.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <Culture>0x0407</Culture>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\XMLibC.bsc</OutputFile>
+    </Bscmake>
+    <Lib>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\AddressLib;..;..\..\afsp\include;..\..\ImageMagick;..\..\xml\src\xercesc;..\..\xml\src;C:\Program Files\OpenCV\cv\include;C:\Program Files\OpenCV\cxcore\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\AddressLib\address.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_DEBUG;DEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\AddressLib\fifo.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_DEBUG;DEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\AddressLib\inter.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_DEBUG;DEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\AddressLib\intra.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_DEBUG;DEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\AddressLib\lifo.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_DEBUG;DEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\AddressLib\nhood.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_DEBUG;DEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\AddressLib\vopio.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_DEBUG;DEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\BasicArchitecture\XMABCInterfaces.cpp" />
+    <ClCompile Include="..\BasicArchitecture\XMABCObjects.cpp" />
+    <ClCompile Include="..\BasicArchitecture\XMInterfaces.cpp" />
+    <ClCompile Include="..\BasicArchitecture\XMObjects.cpp" />
+    <ClCompile Include="..\Media\AudioFrame.cpp" />
+    <ClCompile Include="..\Utilities\BitBuffer.cpp" />
+    <ClCompile Include="..\Utilities\DoubleArray.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_DEBUG;DEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\Utilities\DoubleArrayMatrix.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_DEBUG;DEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\Utilities\DoubleVector.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\ExtractionUtilities\imgutil.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_DEBUG;DEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\ExtractionUtilities\KLTFeaturePoints.cpp" />
+    <ClCompile Include="..\Utilities\LinkedList.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_DEBUG;DEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_WINDOWS;WIN32;_VISUALC_;NODISP;AFLIB;USEXML</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\Media\MultiMedia.cpp" />
+    <ClCompile Include="..\Utilities\readparam.cpp" />
+    <ClCompile Include="..\Descriptors\RegisteredDescriptors.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\RegisteredExtractionUtilities.cpp" />
+    <ClCompile Include="..\SearchUtilities\RegisteredSearchTools.cpp" />
+    <ClCompile Include="..\Utilities\UUIDs.cpp" />
+    <ClCompile Include="..\DescriptionSchemes\GenericDS.cpp" />
+    <ClCompile Include="..\CodingSchemes\GenericDSCS.cpp" />
+    <ClCompile Include="..\DescriptionSchemes\RegisteredDescriptionSchemes.cpp" />
+    <ClCompile Include="..\DescriptionSchemes\VectorR.cpp" />
+    <ClCompile Include="..\DDL\XML4Cutils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\AddressLib\address.h" />
+    <ClInclude Include="..\AddressLib\fifo.h" />
+    <ClInclude Include="..\AddressLib\inter.h" />
+    <ClInclude Include="..\AddressLib\intra.h" />
+    <ClInclude Include="..\AddressLib\lifo.h" />
+    <ClInclude Include="..\AddressLib\momusys.h" />
+    <ClInclude Include="..\AddressLib\nhood.h" />
+    <ClInclude Include="..\AddressLib\vopio.h" />
+    <ClInclude Include="..\BasicArchitecture\XMABCInterfaces.h" />
+    <ClInclude Include="..\BasicArchitecture\XMABCObjects.h" />
+    <ClInclude Include="..\BasicArchitecture\XMInterfaces.h" />
+    <ClInclude Include="..\BasicArchitecture\XMObjects.h" />
+    <ClInclude Include="..\BasicArchitecture\XMTypes.h" />
+    <ClInclude Include="..\Media\AudioFrame.h" />
+    <ClInclude Include="..\Utilities\BitBuffer.h" />
+    <ClInclude Include="..\CodingSchemes\CodingSchemes.h" />
+    <ClInclude Include="..\Descriptors\Descriptors.h" />
+    <ClInclude Include="..\Utilities\DoubleArray.h" />
+    <ClInclude Include="..\Utilities\DoubleArrayMatrix.h" />
+    <ClInclude Include="..\Utilities\DoubleVector.h" />
+    <ClInclude Include="..\ExtractionUtilities\ExtractionUtilities.h" />
+    <ClInclude Include="..\ExtractionUtilities\imgutil.h" />
+    <ClInclude Include="..\ExtractionUtilities\KLTFeaturePoints.h" />
+    <ClInclude Include="..\Utilities\LinkedList.h" />
+    <ClInclude Include="..\Media\MultiMedia.h" />
+    <ClInclude Include="..\Utilities\readparam.h" />
+    <ClInclude Include="..\SearchUtilities\SearchUtilities.h" />
+    <ClInclude Include="..\Utilities\Utilities.h" />
+    <ClInclude Include="..\Utilities\UUIDs.h" />
+    <ClInclude Include="..\DescriptionSchemes\DescriptionSchemes.h" />
+    <ClInclude Include="..\DescriptionSchemes\GenericDS.h" />
+    <ClInclude Include="..\CodingSchemes\GenericDSCS.h" />
+    <ClInclude Include="..\DescriptionSchemes\VectorR.h" />
+    <ClInclude Include="..\DDL\XML4Cutils.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

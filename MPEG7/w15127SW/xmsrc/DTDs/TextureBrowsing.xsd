@@ -1,0 +1,43 @@
+<complexType name=¡±TextureBrowsingType¡± final=¡±#all¡±>
+	<complexContent>
+		<extension base=¡±mpeg7:VisualDType¡±>
+			<sequence>
+				<element name=¡±Regularity¡± >
+					<simpleType>
+						<restriction base=¡±string¡±>
+							<enumeration value=¡±irregular¡±/>
+							<enumeration value=¡±slightly irregular¡±/>
+							<enumeration value=¡±regular¡±/>
+							<enumeration value=¡±highly regular¡±/>
+						</restriction>
+					</simpleType>
+				</element>
+				<sequence minOccurs=¡±1¡± maxOccurs=¡±2¡±>
+					<element name=¡±Direction¡±/>
+						<simpleType>
+							<restriction base=¡±string¡±>
+								<enumeration value=¡±no directionality¡±/>
+								<enumeration value=¡±0 degree¡±/>
+								<enumeration value=¡±30 degree¡±/>
+								<enumeration value=¡±60 degree¡±/>
+								<enumeration value=¡±90 degree¡±/>
+								<enumeration value=¡±120 degree¡±/>
+								<enumeration value=¡±150 degree¡±/>
+								</restriction>
+						</simpleType>
+					</element>
+					<element name=¡±Scale¡±>
+						<simpleType>
+							<restriction base=¡±string¡±>
+								<enumeration value=¡±fine¡±/>
+								<enumeration value=¡±medium¡±/>
+								<enumeration value=¡±coarse¡±/>
+								<enumeration value=¡±very coarse¡±/>
+							</restriction>
+						</simpleType>
+					</element>
+				</sequence>
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>

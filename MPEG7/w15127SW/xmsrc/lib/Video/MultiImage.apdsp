@@ -1,0 +1,20 @@
+# Begin Group "MultiImage"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\MultiImageCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MultiImageCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MultiImageSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MultiImageSAppl.h
+# End Source File
+# End Group

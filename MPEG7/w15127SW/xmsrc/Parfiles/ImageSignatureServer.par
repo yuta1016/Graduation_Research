@@ -1,0 +1,10 @@
+/* default application name*/
+Application	ImageSignatureServer
+
+/* default database file name*/
+ListFile	Databases/images.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/ImageSignature.mp7
+
+

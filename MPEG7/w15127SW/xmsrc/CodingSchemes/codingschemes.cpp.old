@@ -1,0 +1,133 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// This software module was originally developed by
+//
+// Intel Corporation
+// (contributing organizations names)
+//
+// in the course of development of the MPEG-7 Experimentation Model.
+//
+// This software module is an implementation of a part of one or more MPEG-7
+// Experimentation Model tools as specified by the MPEG-7 Requirements.
+//
+// ISO/IEC gives users of MPEG-7 free license to this software module or
+// modifications thereof for use in hardware or software products claiming
+// conformance to MPEG-7.
+//
+// Those intending to use this software module in hardware or software products
+// are advised that its use may infringe existing patents. The original
+// developer of this software module and his/her company, the subsequent
+// editors and their companies, and ISO/IEC have no liability for use of this
+// software module or modifications thereof in an implementation.
+//
+// Copyright is not released for non MPEG-7 conforming products. The
+// organizations named above retain full right to use the code for their own
+// purpose, assign or donate the code to a third party and inhibit third parties
+// from using the code for non MPEG-7 conforming products.
+//
+// Copyright (c) 1998-1999.
+//
+// This notice must be included in all copies or derivative works.
+//
+// Applicable File Name:  CodingSchemes.cpp
+//
+#include "CodingSchemes.h"                                  /* Naming Convention */
+#include "Descriptors.h"                     /* Naming Convention */
+
+using namespace XM;
+
+const UUID P564DSCoding::myID = UUID("682c9b80-db31-11d2-affe-0080c7e1e76d");
+const char *P564DSCoding::myName = "P564 Coding Engine";
+
+//=============================================================================
+P564DSCoding::P564DSCoding():
+m_curDesc(0)
+{
+}
+
+//----------------------------------------------------------------------------
+P564DSCoding::~P564DSCoding()
+{
+	m_curDesc = 0;
+}
+
+//----------------------------------------------------------------------------
+// input:  description must be present (using SetDescription)
+// returns -1 if the coding scheme cannot code this descriptor
+unsigned long P564DSCoding::SetDescriptor(Descriptor *aDesc)
+{
+// check if Descriptor is matching; for this a dummy object of the 
+// respective Descriptor is instantiated
+
+	if (aDesc->GetObjectID() == ColorHistogramDescriptor::myID) 
+	{	
+		m_curDesc = (ColorHistogramDescriptor*)aDesc;
+		return 0;
+	}
+
+	throw ("Descriptor not present");
+	return 1;
+}
+
+//----------------------------------------------------------------------------
+unsigned long P564DSCoding::CodeDescriptor(std::vector<unsigned char>& outBuf)
+{
+	if (m_curDesc == 0)
+		return 1;
+
+	if (m_curDesc->GetObjectID() == ColorHistogramDescriptor::myID) 
+	{
+		//unsigned char *code = outBuf
+		unsigned long size = m_curDesc->GetHistogramSize();
+		outBuf.push_back((size >> 0)& 0xFF);
+		outBuf.push_back((size >> 8) & 0xFF);
+		outBuf.push_back((size >> 16) & 0xFF);
+		outBuf.push_back((size >> 24) & 0xFF);
+
+
+		int i;
+		for (i=1; i <= m_curDesc->GetHistogramSize(); i++) 
+		{
+			unsigned long val = m_curDesc->GetElement(i);
+			outBuf.push_back((val >> 0)& 0xFF);
+			outBuf.push_back((val >> 8) & 0xFF);
+			outBuf.push_back((val >> 16) & 0xFF);
+			outBuf.push_back((val >> 24) & 0xFF);
+		}
+
+		unsigned long normalization = m_curDesc->GetNormalizationFactor();
+		outBuf.push_back((normalization >> 0)& 0xFF);
+		outBuf.push_back((normalization >> 8) & 0xFF);
+		outBuf.push_back((normalization >> 16) & 0xFF);
+		outBuf.push_back((normalization >> 24) & 0xFF);
+		
+
+		return 0;
+	}
+
+	return 1;
+}
+
+//----------------------------------------------------------------------------
+unsigned long P564DSCoding::SetDescriptionScheme(DescriptionScheme *aDS)
+{
+	return 1;
+}
+	
+//----------------------------------------------------------------------------
+// returns -1 if the coding scheme cannot code this scheme
+unsigned long P564DSCoding::CodeDescriptionScheme(std::vector<unsigned char>& outBuf)
+{
+	return 1;
+}
+	
+//----------------------------------------------------------------------------
+const UUID& P564DSCoding::GetObjectID(void)
+{ return myID; }
+
+//----------------------------------------------------------------------------
+const char *P564DSCoding::GetName(void)
+{ return myName; }
+
+
+

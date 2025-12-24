@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>MDS/PointOfView</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for MDS/PointOfView</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>PointOfView (SegmentFilteringTool)
+<tr><th>Document
+<td>N3966 Text of ISO/IEC FCD 15938-5 Information technology - Multimedia content <br>
+description interface: Multimedia description schemes, <br>
+clause 11.2.8 PointOfView D
+<tr><th>Name
+<td>Katsunao Takahashi, Koichi Emura, Toshihiko Munetsugu <br>
+(Matsushita Research Institute Tokyo,Inc. / Matsushita Electric Industrial Co.,Ltd.)
+<tr><th>EMail
+<td>ktaka@mrit.mei.co.jp, emura@mrit.mei.co.jp, munetugu@isl.mei.co.jp
+<tr><th>Contact
+<td>ktaka@mrit.mei.co.jp
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>NONE
+<tr><th>Related Ds/DSs
+<td>SegmentDS, MediaTimeDS, SummaryPreferencesDS
+<tr><th>Used Ds/DSs
+<td>Reference datatype, TextAnnotation datatype, zeroToOne datatype
+<tr><th>Input
+<td>MPEG-7 content description consists of Segments with PointOfView, <br>
+MPEG-7 user description with SummaryPreferences as a query
+<tr><th>Output
+<td>MPEG-7 content description based on Summarization
+<tr><th>Extraction
+<td>NA
+<tr><th>Client Appl
+<td>Filtering Application regarding segments filtering
+<tr><th>Summary
+<td>This component generates summary description which consists of the segments that<br>
+have user's preferred viewpoints. As an output, this component generates <br>
+content description based on Summarization. A summary is generated dynamically <br>
+so that a user's preferred time duration and preferred viewpoints<br>
+(PreferredSummaryTheme in user description side) which are described in <br>
+user description(SummaryPreferences) given as a query parameter may be suited.
+<tr><th>Strong Points
+<td>User adaptation scalability of summary description generation based on <br>
+the combination of viewpoint(s) and time duration which user required. <br>
+This summary generator(segment filtering) application can be used as a preprocessor<br>
+for the Summarization DS as well as scalable multimedia distribution which is <br>
+adapted to various kind of user preferences.
+<tr><th>Limitations
+<td>The input XML file must have two or more Segment descriptions with MediaTime<br>
+and PointOfView descriptions.<br>
+The query XML file must be a MPEG-7 user description which has at least one or more<br>
+PreferredSummaryTheme description(s) with or without SummaryDuration description.
+<tr><th>Known Problems
+<td>NONE
+<tr><th>Parameters
+<td>InputXML = Input file name of MPEG-7 content description with PointOfView<br>
+   [default: xmlinputfile.xml]<br>
+   At least, Segment, MediaTime and PointOfView descriptions are needed.<br>
+OutputXML = Output file name of MPEG-7 content description based on Summarization.<br>
+    [default: PointOfViewFiltered.xml]
+</table>
+</body>
+</html>

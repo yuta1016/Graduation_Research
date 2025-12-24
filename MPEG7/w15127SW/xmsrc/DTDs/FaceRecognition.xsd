@@ -1,0 +1,16 @@
+	<!-- face recognition -->
+	<complexType name="FaceRecognitionType" final="#all">
+		<complexContent>
+			<extension base="mpeg7:VisualDType">
+				<sequence>
+					<element name="Feature">
+						<simpleType>
+							<restriction base="mpeg7:listOfUnsigned5Type">
+								<length value="48"/>
+							</restriction>
+						</simpleType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>

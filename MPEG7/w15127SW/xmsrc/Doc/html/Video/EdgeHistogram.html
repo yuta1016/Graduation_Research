@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Video/EdgeHistogram</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for Video/EdgeHistogram</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>Edge Histogram
+<tr><th>Document
+<td>MPEG-7 Visual (ISO/IEC 15938-3)
+<tr><th>Name
+<td>Soo-Jun Park (ETRI), Chee Sun Won (Dongguk Uni.)
+<tr><th>EMail
+<td>psj@etri.re.kr, cswon@dongguk.edu
+<tr><th>Contact
+<td>psj@etri.re.kr
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>none
+<tr><th>Related Ds/DSs
+<td>Still Region DS, Video Segment DS, Moving Object Ds, TimeSeries DS
+<tr><th>Used Ds/DSs
+<td>none
+<tr><th>Input
+<td>Images
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Search & Retrieval
+<tr><th>Summary
+<td>This library implements the edge histogram descriptor, which is designed to represent the spatial distribution of 5 types of edges in local image regions. It includes both extraction (rectangular and arbitrary shaped) and matching. For the non-normative matching, it includes the semi-global and global histogram matching schemes. For the video segment retrieval, this descriptor should be contained in TimeSeries DS.
+<tr><th>Strong Points
+<td>Since the edge histogram descriptor consists of local edge histograms only, it is very flexible to represent some global and semi-global edge characteristic for the matching and is also compact.   
+<tr><th>Limitations
+<td>None<br>
+Although our recommendation for the smallest image/object size is 70*70(pixels), this library also works for the images/objects smaller than that by exapnding the image/object size with a bilinear interpoaltion scheme. 
+<tr><th>Known Problems
+<td>None.
+<tr><th>Parameters
+<td>None.
+</table>
+</body>
+</html>

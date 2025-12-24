@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>MDS/InkSegment</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for MDS/InkSegment</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>InkSegment DS
+<tr><th>Document
+<td>MDS FCD (Guidelines Document), InkSegment Section
+<tr><th>Name
+<td>Zon-Yin Shae, IBM T. J. Watson Research Center
+<tr><th>EMail
+<td>zshae@us.ibm.com
+<tr><th>Type
+<td>Application Component
+<tr><th><font color="888888">External Libraries  N/A</font>
+<td>&nbsp;
+<tr><th>Related Ds/DSs
+<td>N/A
+<tr><th>Used Ds/DSs
+<td>InkMediaInfo DS, OrderedGroupDataMask DS
+<tr><th>Input
+<td>Electronic Ink document (.stk), Electronic Ink DataBase Representation (.bin), <br>
+Database Code Book (.txt) <br>
+The .stk file format:  The file is a text file tagged with 3 commands (=R, =T, and =S).<br>
+=R N * * * * * (N: number of strokes in the files)<br>
+=T (no use)<br>
+=S M ******    (M: number of points in this stroke)  	<br>
+The ink coordinate (X, Y) pairs are list between two =S tags.<br>
+The .ink file format: This is a binary file.  The first four bytes are the length of the<br>
+data byte in the file.  The rest of the data byte followed. 
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Search & Retrieval
+<tr><th>Summary
+<td>This program take electronic ink document file as input for extracting the description file and searching the database.
+<tr><th>Strong Points
+<td>N/A
+<tr><th>Limitations
+<td>N/A
+<tr><th>Known Problems
+<td>N/A
+<tr><th>Parameters
+<td>N/A
+</table>
+</body>
+</html>

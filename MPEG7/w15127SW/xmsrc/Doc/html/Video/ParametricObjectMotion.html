@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Video/ParametricObjectMotion</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for Video/ParametricObjectMotion</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>Parametric Motion
+<tr><th>Document
+<td>MPEG-7 Visual (ISO/IEC 15938-3)
+<tr><th>Name
+<td>Aljoscha Smolic (HHI), Titus Zaharia (INT)
+<tr><th>EMail
+<td>smolic@hhi.de
+<tr><th>Contact
+<td>smolic@hhi.de
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>none
+<tr><th>Related Ds/DSs
+<td>Video Segment DS, Moving Region DS, Mosaic DS, TimeSeries DS, Spatial 2D Coordinates D
+<tr><th>Used Ds/DSs
+<td>none
+<tr><th>Input
+<td>Pairs of images, the motion between each image pair is represented
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Search & Retrieval
+<tr><th>Summary
+<td>Parametric Motion describes the global or object motion in video over a certain period of time, by a set of parameters according to a certain motion models. Different motion models, spatial and temporal references can be used, enabling high flexibility of possible descriptions. In addition to query-by-example (i.e. retrieving motions that are similar to a given example) it also enables query-by-specification of certain kinds of motion, like "find left translation" or "find up-scales (zoom)".
+<tr><th>Strong Points
+<td>none
+<tr><th>Limitations
+<td>none
+<tr><th>Known Problems
+<td>none
+<tr><th>Parameters
+<td>Uses the general XM-SW parameters. In the listfile image pairs<br>
+must be specified that define the motion in between:<br>
+motion_1_image_1<br>
+motion_1_image_2<br>
+motion_2_image_1<br>
+motion_2_image_2<br>
+:<br>
+motion_N_image_1<br>
+motion_N_image_2
+</table>
+</body>
+</html>

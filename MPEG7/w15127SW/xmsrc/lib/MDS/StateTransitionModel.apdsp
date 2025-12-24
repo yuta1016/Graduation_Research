@@ -1,0 +1,12 @@
+# Begin Group "StateTransitionModel"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\StateTransitionModelSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\StateTransitionModelSAppl.h
+# End Source File
+# End Group

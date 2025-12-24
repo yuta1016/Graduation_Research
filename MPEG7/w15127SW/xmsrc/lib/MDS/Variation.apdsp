@@ -1,0 +1,12 @@
+# Begin Group "Variation"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\VariationSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\VariationSAppl.h
+# End Source File
+# End Group

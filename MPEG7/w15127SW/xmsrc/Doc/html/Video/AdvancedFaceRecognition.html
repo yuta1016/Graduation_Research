@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Video/AdvancedFaceRecognition</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for Video/AdvancedFaceRecognition</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>AdvancedFaceRecognition
+<tr><th>Document
+<td>MPEG-7 Visual (ISO/IEC 15938-3)
+<tr><th>Name
+<td>Toshio Kamei, NEC Corporation
+<tr><th>EMail
+<td>t-kamei@cb.jp.nec.com
+<tr><th>Contact
+<td>t-kamei@cb.jp.nec.com
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>none
+<tr><th>Related Ds/DSs
+<td>none
+<tr><th>Used Ds/DSs
+<td>none
+<tr><th>Input
+<td>Images
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Search & Retrieval 
+<tr><th>Summary
+<td>AdvancedFaceRecognition is a descriptor of face identity robust to variations in pose and illumination conditions.
+<tr><th>Strong Points
+<td>compact representation of facail identity, and high-speed and accurate matching.
+<tr><th>Limitations
+<td>The face images should be normalized before feature extraction. The positions of two eyes should be at (24,16) and (24,31) in the scaled image(56 pixels in height and 46 pixels in width)
+<tr><th>Known Problems
+<td>none
+<tr><th>Parameters
+<td>This descriptor supports scalable represenation of facial feature vector. If you wish to change the dimensionality of the vector, set extraction parameters and matching parameters. The allowed range of the extraction parameters is from 24 to 63 for FourierFeature, and from 0 to 63 for CompositeFeature. The dimensions of the feature vectors in matching must not exceed those of the extracted feature vectors.
+</table>
+</body>
+</html>

@@ -1,0 +1,41 @@
+// XM Manager.odl : type library source for XM Manager.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (XM Manager.tlb).
+
+[ uuid(D5CF7FC6-D53E-11D2-8859-00A0C9CE7A91), version(1.0) ]
+library XMManager
+{
+	importlib("stdole32.tlb");
+	
+
+	//  Primary dispatch interface for CXMManagerDoc
+	
+	[ uuid(D5CF7FC7-D53E-11D2-8859-00A0C9CE7A91) ]
+	dispinterface IXMManager
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CXMManagerDlgAutoProxy)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CXMManagerDlgAutoProxy)
+			//}}AFX_ODL_METHOD
+
+	};
+
+	//  Class information for CXMManagerDoc
+	
+	[ uuid(D5CF7FC5-D53E-11D2-8859-00A0C9CE7A91) ]
+	coclass XMManager
+	{
+		[default] dispinterface IXMManager;
+	};
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};

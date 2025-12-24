@@ -1,0 +1,31 @@
+GridLayout * -			X X - - - - NEC 
+MultiView * -			X X X X X X HHI
+Spatial2DCoordinates * -	X X - - - - Toschiba
+TemporalInterpolation * -	X X - X - - Toschiba
+TimeSeries * -			X X X X X X Hitachi
+ColorSpace * -			X X - - - - LG
+ColorQuant * -			X X - - - - LG
+IIColor * -			X X X X - - Samsung
+ColorLayout * -			X X X X X X NEC
+ColorStructure * -		X X X X X X Sharp
+CTBrowsing * -			X X X X X X Samsung
+DominantColor * -		X X X X X X LG
+GoFGoPColor * -			X X X X X X Philips_US
+GofGopFeature * -		X X - - - - NEC
+ScalableColor * -		X X X X X X HHI
+EdgeHist * -			X X X X X X ETRI
+HomoTexture HomogeneousTexture	X X X X X X Samsung
+TextureBrowsing * -		X X X X X X Samsung
+ContourShape * -		X X X X X X Mitsubishi
+Perceptual3DShape * -		X X X X X X Samsung
+RegionLocator * -		X X X X X - Siemens
+RegionShape * -			X X X X X X Hanyang
+3DShapeSpectrum ShapeSpectrum	X X X X X X INT
+SpatioTemporalLocator * -	X X X X X X Toshiba
+ShapeVariation * -		X X X X X X Hanyang
+CameraMotion * -		X X X X X X Philips
+MotionActivity * -		X X X X X X Misubishi
+MotionTrajectory * -		X X X X X X Philips
+ParametricObjectMotion * -	X X X X X X HHI
+FaceRecognition * -		X X X X X X Panasonic
+AdvancedFaceRecognition * -	X X X X X X NEC 

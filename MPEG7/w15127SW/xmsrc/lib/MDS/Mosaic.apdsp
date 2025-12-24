@@ -1,0 +1,20 @@
+# Begin Group "Mosaic"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\MosaicCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MosaicCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MosaicSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MosaicSAppl.h
+# End Source File
+# End Group

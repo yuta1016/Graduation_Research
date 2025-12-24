@@ -1,0 +1,460 @@
+<!--***************************************************************************-->
+<!--                                                                           -->
+<!-- MDS4.0_UserPreference.dtd                                                 -->
+<!--                                                                           -->
+<!-- This document is the XML document type definition (DTD) of                -->
+<!-- MPEG-7 Multimedia Description Schemes for User Preference DS eXperimental -->
+<!-- Model.                                                                    -->
+<!-- This is written based on Text of WD of 15938-5: MPEG-7 Multimedia         -->
+<!-- Description Schemes WD (Version 4.0)                                      -->
+<!--                                                                           -->
+<!-- Update: 2000/08/30 based on MDS WD & XM 4.0                               -->
+<!--  *Replace root element                                                    -->
+<!--   GenericAV -> Mpeg7Main                                                  -->
+<!--  *Add UserDescription as a top-level element                              -->
+<!--  *Add User as a Audio-Visual Content Entity                               -->
+<!--  *Change element name                                                     -->
+<!--   BrowsingPreferenceType -> PreferenceCondition                           -->
+<!--  *Change attribute name                                                   -->
+<!--   protection -> protected                                                 -->
+<!--  *Add element                                                             -->
+<!--   FilteringAndSearchPreferences: KeywordPreferences                       -->
+<!--  *Add syntax                                                              -->
+<!--   ClassificationPreferences, CreationPreferences, KeywordPreferences,     -->
+<!--   SourcePreferences                                                       -->
+<!-- Update: 2000/06/26                                                        -->
+<!--  *Delete                                                                  -->
+<!--   UserPrefererence: UsageHistory, DevicePreferences                       -->
+<!--   BrowsingPreferences: ReferenceToProgram, SummaryPreferenceValue,        -->
+<!--                        DisplayOrderPreferences,ViewerControl              -->
+<!--   SummaryPreferences: VariationFidelityPreference, SummaryPreferenceValue -->
+<!--  *Add element                                                             -->
+<!--   FilteringAndSearchPreference: ClassificationPreferences,                -->
+<!--                                 CreationPrefernces, SourcePreferences     -->
+<!--  *Merge element                                                           -->
+<!--   SummaryPreferences: SummaryName + SegmentTheme -> PreferredSummaryTheme -->
+<!--  *Rename element                                                          -->
+<!--   SummaryPreferences: Duration -> SummaryDuration                         -->
+<!--                       MinDuration -> MinSummaryDuration                   -->
+<!--                       MaxDuration -> MaxSummaryDuration                   -->
+<!--  *Change attribute                                                        -->
+<!--   UsagePreferences: protection -> allowAutomativeUpdate                   -->
+<!--  *Add attribute                                                           -->
+<!--   SymmaryPreferences: preferenceValue                                     -->
+<!--  *Change order                                                            -->
+<!--   UsagePreferences: FilterAndSearchPreferences and BrowsingPreferences    -->
+<!--   SummaryPreferences: Min/MaxNumOfKeyframes and Min/MaxDuration           -->
+<!--  *Change occurence                                                        -->
+<!--   SummaryPreferences: SummaryTypePreference: ? -> *                       -->
+<!-- Create: 2000/03/03                                                        -->
+<!--                                                                           -->
+<!-- Authors:                                                                  -->
+<!--    Koichi Emura <emura@mrit.mei.co.jp>                                    -->
+<!--    Toshihiko Munetsugu <mune@mrit.mei.co.jp>                              -->
+<!--    Matsushita Electric Industrial Co., Ltd.                               -->
+<!--    Matsushita Research Institute Tokyo Inc.                               -->
+<!--                                                                           -->
+<!--***************************************************************************-->
+<!-- ################################################ -->
+<!-- Definition of the MPEG-7 root wrapper            -->
+<!-- ################################################ -->
+<!ELEMENT Mpeg7Main (UserDescription)>
+<!ATTLIST Mpeg7Main
+	id ID #IMPLIED
+	version CDATA #IMPLIED
+>
+<!-- ################################################ -->
+<!-- Definition of the top-level element              -->
+<!-- ################################################ -->
+<!ELEMENT UserDescription (User)>
+<!-- ################################################ -->
+<!-- Definition of the Audio-Visual Content Entity    -->
+<!-- ################################################ -->
+<!ELEMENT User (UserPreference)>
+<!-- ################################################ -->
+<!--   Definition of the UserPreference DS            -->
+<!-- ################################################ -->
+<!ELEMENT UserPreference (UserIdentifier, UsagePreferences?)>
+<!-- ################################################ -->
+<!--   Definition of the UserIdentifier DS            -->
+<!-- ################################################ -->
+<!ELEMENT UserIdentifier EMPTY>
+<!ATTLIST UserIdentifier
+	protected (true | false | user) "true"
+	userName CDATA "anonymous"
+>
+<!-- ################################################ -->
+<!--   Definition of the UsagePreferences DS          -->
+<!-- ################################################ -->
+<!ELEMENT UsagePreferences (FilteringAndSearchPreferences*, BrowsingPreferences*)>
+<!ATTLIST UsagePreferences
+	allowAutomaticUpdate (true | false | user) "true"
+>
+<!-- ################################################ -->
+<!--   Definition of the BrowsingPreferences DS       -->
+<!-- ################################################ -->
+<!ELEMENT BrowsingPreferences (SummaryPreferences*, PreferenceCondition*)>
+<!ATTLIST BrowsingPreferences
+	protected (true | false | user) "true"
+	preferenceValue CDATA "100"
+>
+<!-- ################################################ -->
+<!--   Definition of the SummaryPreferences DS        -->
+<!-- ################################################ -->
+<!ELEMENT SummaryPreferences (SummaryTypePreference*, PreferredSummaryTheme*, SummaryDuration?, MinSummaryDuration?, MaxSummaryDuration?, NumOfKeyframes?, MinNumOfKeyframes?, MaxNumOfKeyframes?)>
+<!ATTLIST SummaryPreferences
+	preferenceValue CDATA "100"
+>
+<!-- SummaryTypePreference should define one of SummaryComponentType -->
+<!ELEMENT SummaryTypePreference (#PCDATA)>
+<!ATTLIST SummaryTypePreference
+	preferenceValue CDATA "100"
+>
+<!ELEMENT PreferredSummaryTheme (#PCDATA)>
+<!ATTLIST PreferredSummaryTheme
+	xml:lang CDATA #IMPLIED
+	preferenceValue CDATA "100"
+>
+<!ELEMENT SummaryDuration (#PCDATA)>
+<!ELEMENT MaxSummaryDuration (#PCDATA)>
+<!ELEMENT MinSummaryDuration (#PCDATA)>
+<!ELEMENT NumOfKeyframes (#PCDATA)>
+<!ELEMENT MinNumOfKeyframes (#PCDATA)>
+<!ELEMENT MaxNumOfKeyframes (#PCDATA)>
+<!-- ################################################ -->
+<!--   Definition of the PreferenceCondition DS       -->
+<!-- ################################################ -->
+<!ELEMENT PreferenceCondition (Place?, Time?)>
+<!-- ################################################ -->
+<!--   Definition of the FilteringAndSearchPreferences DS -->
+<!-- ################################################ -->
+<!ELEMENT FilteringAndSearchPreferences (ClassificationPreferences*, CreationPreferences*, KeywordPreferences*, SourcePreferences*, PreferenceCondition*, FilteringAndSearchPreferences*)>
+<!ATTLIST FilteringAndSearchPreferences
+	protected (true | false | user) "true"
+	preferenceValue CDATA "100"
+>
+<!-- ################################################ -->
+<!--   Definition of the ClassificationPreferences DS -->
+<!-- ################################################ -->
+<!ELEMENT ClassificationPreferences (CountryPref*, LanguagePref*, GenrePref*, SubjectPref*, MediaReviewPref*)>
+<!ATTLIST ClassificationPreferences
+	preferenceValue CDATA "100"
+>
+<!-- Definition of the ContryPref (shoud use ISO3166-1 CountryCode) -->
+<!ELEMENT CountryPref (#PCDATA)>
+<!ATTLIST CountryPref
+	preferenceValue CDATA "100"
+>
+<!-- Definition of the LanguagePref -->
+<!ELEMENT LanguagePref (#PCDATA)>
+<!ATTLIST LanguagePref
+	preferenceValue CDATA "100"
+>
+<!-- Definition of the GenrePref -->
+<!ELEMENT GenrePref (Label*, Definition*, TermRelation*)>
+<!ATTLIST GenrePref
+	csTermId CDATA #IMPLIED
+	csName CDATA #IMPLIED
+	csLocation CDATA #IMPLIED
+	preferenceValue CDATA "100"
+>
+<!ELEMENT Label (#PCDATA)>
+<!ATTLIST Label
+	xml:lang CDATA #IMPLIED
+>
+<!ELEMENT Definition (#PCDATA)>
+<!ATTLIST Definition
+	xml:lang CDATA #IMPLIED
+>
+<!ENTITY % TermRelationTypes "(NT|BT|RT|US|UF)">
+<!ELEMENT TermRelation (Label*, Definition*, TermRelation*)>
+<!ATTLIST TermRelation
+	type %TermRelationTypes; #IMPLIED
+>
+<!-- Definition of the SubjectPref -->
+<!ELEMENT SubjectPref (Label*, Definition*, TermRelation*)>
+<!ATTLIST SubjectPref
+	csTermId CDATA #IMPLIED
+	csName CDATA #IMPLIED
+	csLocation CDATA #IMPLIED
+	preferenceValue CDATA "100"
+>
+<!-- Definition of the MediaReviewPref -->
+<!ELEMENT MediaReviewPref (Reviewer, RatingValue, RatingCriterion, FreeTextReview*)>
+<!ATTLIST MediaReviewPref
+	id ID #IMPLIED
+>
+<!ELEMENT Reviewer (#PCDATA)>
+<!ATTLIST Reviewer
+	id ID #IMPLIED
+>
+<!ELEMENT RatingValue (#PCDATA)>
+<!ELEMENT RatingCriterion (CriterionName, WorstRating, BestRating)>
+<!ELEMENT CriterionName (#PCDATA)>
+<!ATTLIST CriterionName
+	xml:lang CDATA #IMPLIED
+>
+<!ELEMENT WorstRating (#PCDATA)>
+<!ELEMENT BestRating (#PCDATA)>
+<!ELEMENT FreeTextReview (#PCDATA)>
+<!ATTLIST FreeTextReview
+	xml:lang CDATA #IMPLIED
+>
+<!-- ################################################ -->
+<!--   Definition of the CreationPreferences DS       -->
+<!-- ################################################ -->
+<!ELEMENT CreationPreferences (TitlePref*, CreatorPref*, LocationPref*, DatePeriodPref*)>
+<!ATTLIST CreationPreferences
+	preferenceValue CDATA "100"
+>
+<!-- ################################################ -->
+<!-- Definition of the TitlePref DS                   -->
+<!-- ################################################ -->
+<!-- Definition of datatype of the TitlePrefTypes -->
+<!ENTITY % TitlePrefTypes "(original|alternative|popular)">
+<!-- Definition of the TitlePref -->
+<!ELEMENT TitlePref (TitleText?, TitleImage?, TitleVideo?, TitleAudio?)>
+<!ATTLIST TitlePref
+	type %TitlePrefTypes; #IMPLIED
+>
+<!-- Definition of the TitleText -->
+<!ELEMENT TitleText (#PCDATA)>
+<!ATTLIST TitleText
+	xml:lang CDATA #IMPLIED
+>
+<!-- Definition of the TitleImage -->
+<!ELEMENT TitleImage (MediaURI)>
+<!-- Definition of the TitleVideo -->
+<!ELEMENT TitleVideo (MediaURI)>
+<!-- Definition of the TitleAudio -->
+<!ELEMENT TitleAudio (MediaURI)>
+<!-- Definition of the MediaURI -->
+<!ELEMENT MediaURI (#PCDATA)>
+<!-- ################################################ -->
+<!-- Definition of the CreatorPref DS                 -->
+<!-- ################################################ -->
+<!ELEMENT CreatorPref (Role, (Indivisual | Organization | PersonGroup), Instrument*)>
+<!ATTLIST CreatorPref
+	preferenceValue CDATA "100"
+>
+<!-- Definition of the Role -->
+<!ELEMENT Role (Label*, Definition*, TermRelation*)>
+<!ATTLIST Role
+	csTermId CDATA #IMPLIED
+	csName CDATA #IMPLIED
+	csLocation CDATA #IMPLIED
+>
+<!-- Definition of the Indivisual -->
+<!ELEMENT Indivisual (Name*)>
+<!ATTLIST Indivisual
+	id ID #IMPLIED
+>
+<!-- Definition of the Name -->
+<!ELEMENT Name (GivenName+, FamilyName*, PersonTitle*)>
+<!ATTLIST Name
+	xml:lang CDATA #IMPLIED
+>
+<!-- Definition of the GivenName -->
+<!ELEMENT GivenName (#PCDATA)>
+<!ATTLIST GivenName
+	xml:lang CDATA #IMPLIED
+	initial CDATA #IMPLIED
+	abbrev CDATA #IMPLIED
+>
+<!-- Definition of the FamilyName -->
+<!ELEMENT FamilyName (#PCDATA)>
+<!ATTLIST FamilyName
+	xml:lang CDATA #IMPLIED
+	initial CDATA #IMPLIED
+	abbrev CDATA #IMPLIED
+>
+<!-- Definition of the PersonTitle -->
+<!ELEMENT PersonTitle (#PCDATA)>
+<!ATTLIST PersonTitle
+	xml:lang CDATA #IMPLIED
+	initial CDATA #IMPLIED
+	abbrev CDATA #IMPLIED
+>
+<!-- Definition of the Organization -->
+<!ELEMENT Organization (_Name*, Contact*, Address*)>
+<!ATTLIST Organization
+	id ID #IMPLIED
+>
+<!-- Definition of the Name (using _ because conflict occurs with Name in others) -->
+<!ELEMENT _Name (#PCDATA)>
+<!ATTLIST _Name
+	xml:lang CDATA #IMPLIED
+>
+<!-- Definition of the Contact -->
+<!ELEMENT Contact (GivenName+, FamilyName*, PersonTitle*)>
+<!ATTLIST Contact
+	xml:lang CDATA #IMPLIED
+>
+<!-- Difinition of the Address -->
+<!ELEMENT Address (_Name+, _Role?, GPSCoordinates?, Planet?, Country?, Region?, AdministrativeUnit?, PostalAddress?, InternalCoordinates?)>
+<!ATTLIST Address
+	id ID #IMPLIED
+>
+<!-- Definition of the PersonGroup -->
+<!ELEMENT PersonGroup (_Name*, (Person | PersonRef)+)>
+<!ELEMENT Person (#PCDATA)>
+<!ATTLIST Person
+	id ID #IMPLIED
+>
+<!ELEMENT PersonRef EMPTY>
+<!ATTLIST PersonRef
+	idref IDREF #IMPLIED
+>
+<!-- Definition of the Instrument -->
+<!ELEMENT Instrument (device_instrument, device_settings)>
+<!ELEMENT device_instrument (Label*, Definition*, TermRelation*)>
+<!ATTLIST device_instrument
+	csTermId CDATA #IMPLIED
+	csName CDATA #IMPLIED
+	csLocation CDATA #IMPLIED
+>
+<!ELEMENT device_settings (Label*, Definition*, TermRelation*)>
+<!ATTLIST device_settings
+	csTermId CDATA #IMPLIED
+	csName CDATA #IMPLIED
+	csLocation CDATA #IMPLIED
+>
+<!-- ################################################ -->
+<!-- Definition of the LocationPref DS                -->
+<!-- ################################################ -->
+<!ELEMENT LocationPref (_Name+, _Role?, GPSCoordinates?, Planet?, Country?, Region?, AdministrativeUnit?, PostalAddress?, InternalCoordinates?)>
+<!ATTLIST LocationPref
+	id ID #IMPLIED
+	preferenceValue CDATA "100"
+>
+<!-- ################################################ -->
+<!-- Definition of the DatePriodPref DS               -->
+<!-- ################################################ -->
+<!ELEMENT DatePeriodPref ((TimePoint | RelTimePoint | RelIncrTimePoint), (Duration | IncrDuration)?)>
+<!ATTLIST DatePeriodPref
+	preferenceValue CDATA "100"
+>
+<!-- ################################################ -->
+<!--   Definition of the KeywordPreferences DS        -->
+<!-- ################################################ -->
+<!ELEMENT KeywordPreferences (#PCDATA)>
+<!ATTLIST KeywordPreferences
+	xml:lang CDATA #IMPLIED
+	preferenceValue CDATA "100"
+>
+<!-- ################################################ -->
+<!--   Definition of the SourcePreferences DS         -->
+<!-- ################################################ -->
+<!ELEMENT SourcePreferences (PublicationType*, PublicationChannel*, PublicationPlace*, PublicationDate*, Publisher*)>
+<!ATTLIST SourcePreferences
+	preferenceValue CDATA "100"
+>
+<!-- Definiotion of the PublicationType -->
+<!ELEMENT PublicationType (Label*, Definition*, TermRelation*)>
+<!ATTLIST PublicationType
+	csTermId CDATA #IMPLIED
+	csName CDATA #IMPLIED
+	csLocation CDATA #IMPLIED
+	preferenceValue CDATA "100"
+>
+<!-- Definiotion of the PublicationChannel -->
+<!ELEMENT PublicationChannel (Label*, Definition*, TermRelation*)>
+<!ATTLIST PublicationChannel
+	csTermId CDATA #IMPLIED
+	csName CDATA #IMPLIED
+	csLocation CDATA #IMPLIED
+	preferenceValue CDATA "100"
+>
+<!-- Definiotion of the PublicationPlace -->
+<!ELEMENT PublicationPlace (_Name+, _Role?, GPSCoordinates?, Planet?, Country?, Region?, AdministrativeUnit?, PostalAddress?, InternalCoordinates?)>
+<!ATTLIST PublicationPlace
+	id ID #IMPLIED
+	preferenceValue CDATA "100"
+>
+<!-- Definiotion of the PublicationDate -->
+<!ELEMENT PublicationDate ((TimePoint | RelTimePoint | RelIncrTimePoint), (Duration | IncrDuration)?)>
+<!ATTLIST PublicationDate
+	preferenceValue CDATA "100"
+>
+<!-- Definiotion of the Publisher -->
+<!ELEMENT Publisher (_Name*, Contact*, Address*)>
+<!ATTLIST Publisher
+	id ID #IMPLIED
+	preferenceValue CDATA "100"
+>
+<!-- ################################################ -->
+<!-- Definition of Time DS                            -->
+<!-- ################################################ -->
+<!ELEMENT Time ((TimePoint | RelTimePoint | RelIncrTimePoint), (Duration | IncrDuration)?)>
+<!-- ################################################ -->
+<!--   Definition the TimePoint D                     -->
+<!-- ################################################ -->
+<!ELEMENT TimePoint (#PCDATA)>
+<!-- ################################################ -->
+<!--   Definition the Duration D                      -->
+<!-- ################################################ -->
+<!ELEMENT Duration (#PCDATA)>
+<!-- ################################################ -->
+<!--   Definition the IncrDuration D                  -->
+<!-- ################################################ -->
+<!ELEMENT IncrDuration (#PCDATA)>
+<!ATTLIST IncrDuration
+	timeUnit CDATA #REQUIRED
+>
+<!-- ################################################ -->
+<!--   Definition the RelTime D                       -->
+<!-- ################################################ -->
+<!ELEMENT RelTimePoint (#PCDATA)>
+<!ATTLIST RelTimePoint
+	timeBase CDATA #REQUIRED
+>
+<!-- ################################################ -->
+<!--   Definition the RelIncrTime D                   -->
+<!-- ################################################ -->
+<!ELEMENT RelIncrTimePoint (#PCDATA)>
+<!ATTLIST RelIncrTimePoint
+	timeBase CDATA #REQUIRED
+>
+<!-- ################################################ -->
+<!--   Definition the Place DS                        -->
+<!-- ################################################ -->
+<!ELEMENT Place (_Name+, _Role?, GPSCoordinates?, Planet?, Country?, Region?, AdministrativeUnit?, PostalAddress?, InternalCoordinates?)>
+<!ATTLIST Place
+	id ID #IMPLIED
+>
+<!-- Difinition of the Role (using _ because confilict occurs with Role in others -->
+<!ELEMENT _Role (FreeTerm | ControlledTerm)>
+<!-- Definition of the FreeTerm -->
+<!ELEMENT FreeTerm (#PCDATA)>
+<!ATTLIST FreeTerm
+	xml:lang CDATA #IMPLIED
+>
+<!-- Definition of the ControlledTerm -->
+<!ELEMENT ControlledTerm (Label*, Definition*, TermRelation*)>
+<!ATTLIST ControlledTerm
+	csTermId CDATA #IMPLIED
+	csName CDATA #IMPLIED
+	csLocation CDATA #IMPLIED
+>
+<!-- Definition of the GPSCoordinates -->
+<!ELEMENT GPSCoordinates (#PCDATA)>
+<!ATTLIST GPSCoordinates
+	type CDATA #IMPLIED
+>
+<!-- Definition of the Planet -->
+<!ELEMENT Planet (FreeTerm | ControlledTerm)>
+<!-- Definition of the Country (should use ISO3166-1 CountryCode) -->
+<!ELEMENT Country (#PCDATA)>
+<!-- Definition of the Region (should use ISO3166-2 RegionCode) -->
+<!ELEMENT Region (#PCDATA)>
+<!-- Definition of the AdministrativeUnit -->
+<!ELEMENT AdministrativeUnit (#PCDATA)>
+<!-- Definition of the PostalAddress -->
+<!ELEMENT PostalAddress (AddressLine*, PostingIdentifier?)>
+<!ELEMENT AddressLine (#PCDATA)>
+<!ELEMENT PostingIdentifier (#PCDATA)>
+<!ATTLIST PostingIdentifier
+	xml:lang CDATA #IMPLIED
+>
+<!-- Definition of the InternalCoordinates -->
+<!ELEMENT InternalCoordinates (#PCDATA)>

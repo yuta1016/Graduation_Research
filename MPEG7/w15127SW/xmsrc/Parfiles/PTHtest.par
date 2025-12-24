@@ -1,0 +1,5 @@
+Application     PhoneticTranslationHintsCAppl
+ListFile        PTHDatabase.lst
+Bitstream       Bitstream.mp7
+NoOfMatches 8
+dictionary      PTHtest.xml

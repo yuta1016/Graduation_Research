@@ -1,0 +1,20 @@
+# Begin Group "InkSegment"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\InkSegmentCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\InkSegmentCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\InkSegmentSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\InkSegmentSAppl.h
+# End Source File
+# End Group

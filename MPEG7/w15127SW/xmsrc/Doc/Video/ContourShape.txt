@@ -1,0 +1,28 @@
+Technique	Contour shape descriptor
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name		Miroslaw Bober (Mitsubishi Electric ITE)
+EMail		miroslaw.bober@vil.ite.mee.com
+Contact		miroslaw.bober@vil.ite.mee.com
+Type		Application
+External Libraries	none
+Related Ds/DSs	Still region DS
+Used Ds/DSs	none
+Input		Binary shape masks
+Extraction	Yes
+Client Appl	Search & Retrieval
+Summary		The Contour-based shape descriptor describes shape features of 
+		a closed contour. It uses the curvature scale space representation and
+		eccentricity and circularity of the original and filtered shape. 
+Strong Points	The descriptor is rotational, scale and position invariant. 
+		It is robust to affine shape deformations and deformations 
+		due to non-rigid motion (both very common in video sequences)
+		The descriptor has good shape generalisation properties,
+		similar to human perception of visual shapes. It is very compact 
+		(110 bits on average for the MPEG-7 shape database).  
+Limitations	Here are some limitations of the current implementation:
+		Deafult white shape on black background (can be changed)
+		If more than one contour is in the image, the descripotr is extracted
+		from the first contour found in the image (upper-left, top left).
+Known Problems	None
+Parameters	Uses the general XM-SW parameters.
+END

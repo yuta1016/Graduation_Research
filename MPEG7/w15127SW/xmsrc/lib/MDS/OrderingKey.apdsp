@@ -1,0 +1,12 @@
+# Begin Group "OrderingKey"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\OrderingKeyCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\OrderingKeyCAppl.h
+# End Source File
+# End Group

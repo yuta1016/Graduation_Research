@@ -1,0 +1,17 @@
+Technique	HierarchicalKeyFrame
+Document	W3624, Sect 13.1.11; W3705, Sect 13.1.5
+Name	Jim Errico, Sharp Labs of America; Peter van Beek, Sharp Labs of America
+EMail	jerrico@sharplabs.com, pvanbeek@sharplabs.com
+Type	Application
+External Libraries  xerces-c_1
+Related Ds/DSs	NA
+Used Ds/DSs	NA
+Input	MPEG-Video
+Extraction	Yes
+Client Appl	NA
+Summary		This component is the implementation of the extraction functionality for the HierarchicalKeyFrame Description Scheme.
+Strong Points	NA
+Limitations	NA
+Known Problems	NA
+Parameters	NA
+END

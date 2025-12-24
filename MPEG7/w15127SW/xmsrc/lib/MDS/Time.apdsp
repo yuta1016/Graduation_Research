@@ -1,0 +1,20 @@
+# Begin Group "Time"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\TimeCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\TimeCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\TimeSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\TimeSAppl.h
+# End Source File
+# End Group

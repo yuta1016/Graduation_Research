@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2000/10/XMLSchema"
+        xmlns:v1="version1"
+        targetNamespace="version1">
+ 
+ <element name="e" type="v1:ExempleType"/>
+ <element name="ee" type="v1:EExempleType"/>
+  
+ <complexType name="ExempleType">
+	<simpleContent>
+		<extension base="integer">
+ 			<attribute name="a1" type="integer"/>
+		</extension> 
+	</simpleContent>
+ </complexType>
+
+<complexType name="EExempleType">
+	<complexContent>
+		<extension base="anyType">
+			<sequence>
+				<element ref="v1:e" minOccurs="1" maxOccurs="unbounded"/>
+			</sequence>
+		</extension> 
+	</complexContent>
+</complexType>  
+
+</schema>
+

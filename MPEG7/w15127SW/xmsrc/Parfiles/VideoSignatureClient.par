@@ -1,0 +1,35 @@
+/* default application name*/
+Application	VideoSignatureClient
+
+/* select coding mode*/
+CodingMode  2 /* 0= DDL, 2= Binary*/
+
+/* select keyframe index table for fast matching */
+KeyFrameInfo 0 /* 0 = no use, 1 = used (default =0)*/
+
+/* default database file name*/
+ListFile	Databases/videolist.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/VideoSignature.mp7
+
+/* default number of matches*/
+NoOfMatches 8
+
+/* Parameters specific to Video Signature */
+/* If not defined the default values will be used */
+
+/* MODE DIRECT/PARTIAL */
+/* MODE DIRECT */
+
+/* The minimum duration of matched segment */
+/* DURATION 10 */
+
+/* Jaccard score threshold */
+/* TH_JACCARD_SCORE 12000 */
+
+/* The threshold for distance matching */
+/* TH_L1_DIST 336 */
+
+/* The threshold for HOUGH matching */
+/* TH_L1_DIST_HOUGH 116 */

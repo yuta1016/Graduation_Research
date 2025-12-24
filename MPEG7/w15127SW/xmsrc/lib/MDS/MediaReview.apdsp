@@ -1,0 +1,12 @@
+# Begin Group "MediaReview"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\MediaReviewCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MediaReviewCAppl.h
+# End Source File
+# End Group

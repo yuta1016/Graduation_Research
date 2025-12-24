@@ -1,0 +1,17 @@
+Technique	Spatial 2D Coordinates descriptor
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name		Osamu Hori, Toshimitsu Kaneko, Koichi Masukura (Toshiba R&D Center)
+EMail		osamu.hori@toshiba.co.jp, toshimitsu.kaneko@toshiba.co.jp, koichi.masukura@toshiba.co.jp
+Contact		koichi.masukura@toshiba.co.jp
+Type		Basic Component
+External Libraries	 NONE
+Related Ds/DSs	MotionTrajectoryD, ParametricMotionD, RegionLocatorD, SpatioTemporalLocatorD
+Used Ds/DSs	NONE
+Extraction	NA
+Client Appl	NA
+Summary		This component handles mapping data from a default coordinate system to a specific one. This component is referred by other Ds/DSs for describing non default coordinates.
+Strong Points	All functions of Spatial2DCoordinates are supported.
+Limitations	The maximum number of mumOfMotionParameterSets is 256.
+Known Problems	NONE
+Parameters	NONE
+END

@@ -1,0 +1,20 @@
+# Begin Group "Summarization"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\SummarizationCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\SummarizationCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\SummarizationSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\SummarizationSAppl.h
+# End Source File
+# End Group

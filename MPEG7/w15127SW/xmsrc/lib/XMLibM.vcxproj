@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Template|Win32">
+      <Configuration>Template</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>XMLibMDB</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <AdditionalIncludeDirectories>..\AddressLib;..;..\..\afsp\include;..\..\ImageMagick;..\..\xml\src\xercesc;..\..\xml\src;C:\Program Files\OpenCV\cv\include;C:\Program Files\OpenCV\cxcore\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;_WINDOWS;WIN32;_VISUALC_;c_plusplus;NODISP;AFLIB;USEXML;USEXML3;USEAST;USESFM;USEMSQ;USEP3DS;USESCC;USE3DSS;USECL;USECT;USESC;USEDC;USEEH;USEFR;USEGF;USEHT;USEMA;USEMT;USEMI;USE2D3D;USEPOM;USERL;USESR;USES2D;USESTL;USETI;USETB;USEASF;USEDPS;USEETT;USEHS;USEIMH;USEINK;USEMH;USEMM;USEMQ;USEMR;USEMO;USEMK;USEODK;USEPACK;USEPTH;USEPOV;USESRG;USESMS;USESKW;USESSZ;USESP;USESF;USESRH;USESTX;USESZ;USESPR;USETM;USETH;USEUP;USEVA;USEVE;USEVT;USEIS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Debug\XMLibM.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <Culture>0x0407</Culture>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug\XMLibM.bsc</OutputFile>
+    </Bscmake>
+    <Lib>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>..\AddressLib;..;..\..\afsp\include;..\..\ImageMagick;..\..\xml\src\xercesc;..\..\xml\src;C:\Program Files\OpenCV\cv\include;C:\Program Files\OpenCV\cxcore\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;WIN32;_VISUALC_;c_plusplus;NODISP;AFLIB;USEXML;USEXML3;USEAST;USESFM;USEMSQ;USEP3DS;USESCC;USE3DSS;USECL;USECT;USESC;USEDC;USEEH;USEFR;USEGF;USEHT;USEMA;USEMT;USEMI;USE2D3D;USEPOM;USERL;USESR;USES2D;USESTL;USETI;USETB;USEASF;USEDPS;USEETT;USEHS;USEIMH;USEINK;USEMH;USEMM;USEMQ;USEMR;USEMO;USEMK;USEODK;USEPACK;USEPTH;USEPOV;USESRG;USESMS;USESKW;USESSZ;USESP;USESF;USESRH;USESTX;USESZ;USESPR;USETM;USETH;USEUP;USEVA;USEVE;USEVT;USEIS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release\XMLibM.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <Culture>0x0407</Culture>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\XMLibM.bsc</OutputFile>
+    </Bscmake>
+    <Lib>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\AddressLib;..;..\..\afsp\include;..\..\ImageMagick;..\..\xml\src\xercesc;..\..\xml\src;C:\Program Files\OpenCV\cv\include;C:\Program Files\OpenCV\cxcore\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\SearchUtilities\AffectiveSegmentFilterSearch.cpp" />
+    <ClCompile Include="..\SearchUtilities\DependStructureSearch.cpp" />
+    <ClCompile Include="..\SearchUtilities\ExtendedTextualTypeSearch.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\HierarchicalKeyFrameExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\ImportanceHintSearch.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\InkSegmentExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\InkSegmentSearch.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\MatchingHintExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\MatchingHintSearch.cpp" />
+    <ClCompile Include="..\SearchUtilities\MediaMetaSearch.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\MediaQualityExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\MediaReviewSearch.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\ModelExtraction.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\MosaicExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\MosaicSearch.cpp" />
+    <ClCompile Include="..\SearchUtilities\OrderingKeySearch.cpp" />
+    <ClCompile Include="..\SearchUtilities\PackageSearch.cpp" />
+    <ClCompile Include="..\SearchUtilities\PhoneticTranslationHintsSearch.cpp" />
+    <ClCompile Include="..\SearchUtilities\PointOfViewSearch.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\SegmentRelGraphExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\SegmentRelGraphSearch.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\SeqSummaryFastMovingStoryBoardExtraction.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\SeqSummaryKeywordsExtraction.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\SequentialSummaryExtraction.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\SoundPropertyExtraction.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\SpaceFrequencyViewExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\SpatialResolutionHintSearch.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\StateTransitionModelExtraction.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\SummarizationExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\SummarizationSearch.cpp" />
+    <ClCompile Include="..\SearchUtilities\SummaryPreferencesSearch.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\TimeExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\TimeSearch.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\TranscodingHintsExtraction.cpp" />
+    <ClCompile Include="..\SearchUtilities\UserPreferenceSearch.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\VariationExtraction.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\VideoEditingExtraction.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\VideoText_Area.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\VideoText_Coordinate.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\VideoText_Detect.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\VideoText_FrameFile.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\VideoText_Line.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\VideoText_Parameters.cpp" />
+    <ClCompile Include="..\ExtractionUtilities\VideoTextExtraction.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\SearchUtilities\AffectiveSegmentFilterSearch.h" />
+    <ClInclude Include="..\SearchUtilities\DependStructureSearch.h" />
+    <ClInclude Include="..\SearchUtilities\ExtendedTextualTypeSearch.h" />
+    <ClInclude Include="..\ExtractionUtilities\HierarchicalKeyFrameExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\ImportanceHintSearch.h" />
+    <ClInclude Include="..\ExtractionUtilities\InkSegmentExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\InkSegmentSearch.h" />
+    <ClInclude Include="..\ExtractionUtilities\MatchingHintExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\MatchingHintSearch.h" />
+    <ClInclude Include="..\SearchUtilities\MediaMetaSearch.h" />
+    <ClInclude Include="..\ExtractionUtilities\MediaQualityExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\MediaReviewSearch.h" />
+    <ClInclude Include="..\ExtractionUtilities\ModelExtraction.h" />
+    <ClInclude Include="..\ExtractionUtilities\MosaicExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\MosaicSearch.h" />
+    <ClInclude Include="..\SearchUtilities\OrderingKeySearch.h" />
+    <ClInclude Include="..\SearchUtilities\PackageSearch.h" />
+    <ClInclude Include="..\SearchUtilities\PhoneticTranslationHintsSearch.h" />
+    <ClInclude Include="..\SearchUtilities\PointOfViewSearch.h" />
+    <ClInclude Include="..\ExtractionUtilities\SegmentRelGraphExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\SegmentRelGraphSearch.h" />
+    <ClInclude Include="..\ExtractionUtilities\SeqSummaryFastMovingStoryBoardExtraction.h" />
+    <ClInclude Include="..\ExtractionUtilities\SeqSummaryKeywordsExtraction.h" />
+    <ClInclude Include="..\ExtractionUtilities\SequentialSummaryExtraction.h" />
+    <ClInclude Include="..\ExtractionUtilities\SoundPropertyExtraction.h" />
+    <ClInclude Include="..\ExtractionUtilities\SpaceFrequencyViewExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\SpatialResolutionHintSearch.h" />
+    <ClInclude Include="..\ExtractionUtilities\StateTransitionModelExtraction.h" />
+    <ClInclude Include="..\ExtractionUtilities\SummarizationExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\SummarizationSearch.h" />
+    <ClInclude Include="..\SearchUtilities\SummaryPreferencesSearch.h" />
+    <ClInclude Include="..\ExtractionUtilities\TimeExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\TimeSearch.h" />
+    <ClInclude Include="..\ExtractionUtilities\TranscodingHintsExtraction.h" />
+    <ClInclude Include="..\SearchUtilities\UserPreferenceSearch.h" />
+    <ClInclude Include="..\ExtractionUtilities\VariationExtraction.h" />
+    <ClInclude Include="..\ExtractionUtilities\VideoEditingExtraction.h" />
+    <ClInclude Include="..\ExtractionUtilities\VideoText_Area.h" />
+    <ClInclude Include="..\ExtractionUtilities\VideoText_Coordinate.h" />
+    <ClInclude Include="..\ExtractionUtilities\VideoText_Detect.h" />
+    <ClInclude Include="..\ExtractionUtilities\VideoText_FrameFile.h" />
+    <ClInclude Include="..\ExtractionUtilities\VideoText_Line.h" />
+    <ClInclude Include="..\ExtractionUtilities\VideoText_Parameters.h" />
+    <ClInclude Include="..\ExtractionUtilities\VideoTextExtraction.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

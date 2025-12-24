@@ -1,0 +1,7 @@
+Application	HierarchicalKeyFrameServer
+
+/* default database file name*/
+ListFile	Databases/HierarchicalKeyFrame.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/HierarchicalKeyFrame.xml

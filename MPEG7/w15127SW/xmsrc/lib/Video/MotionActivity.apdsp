@@ -1,0 +1,20 @@
+# Begin Group "MotionActivity"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\MotionActivityCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MotionActivityCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MotionActivitySAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MotionActivitySAppl.h
+# End Source File
+# End Group

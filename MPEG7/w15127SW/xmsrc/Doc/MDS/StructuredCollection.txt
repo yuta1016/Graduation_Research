@@ -1,0 +1,35 @@
+Technique		StructuredCollection DS
+Document		MPEG-7 Final Committee Draft  MDS, see StructuredCollection DS
+Name			Ana Belen Benitez, Columbia University
+EMail			ana@ee.columbia.edu
+Type			Application
+External Libraries	None
+Related Ds/DSs		Collection DSs, Model DSs, and ClusterModel DS
+Used Ds/DSs		ColorHistogram D
+Input			The input is a text file that describes the classification of M images 
+			into N classes with the following format:
+			[Number of classes]
+			[Class name 1 without spaces]
+			[Number of images in the class] [image 1] [image 2] ...
+			[Class name 2 without spaces] [Number of images in the class] [image 1] [image 2] ...
+			...
+			[Class name N without spaces] [Number of images in the class] [image 1] [image 2] ...
+			An example of a well formed input file with four classes follows:
+			4
+			Grass 3 cultu~44_add2.jpg cultu~45_add2.jpg cultu~46_add2.jpg
+			Basketball 2 game111_add2.jpg game1191_add2.jpg
+			Person 3 i0132_add5.jpg i0122_add5.jpg i8h_add1.jpg
+			Dog 1 i8m_add1.jpg
+Extraction		Yes
+Client Appl		Search & Retrieval
+Summary			This code generates collection descriptions with associated probability
+			models for each class (sub-collection) in the input and the entire
+			collection of M images, and relations among the collections.
+			The probability models associated with a collection
+			consist of the mean and variance color histogram of the images in the
+ 			collection. This code also allows to retrieve collection structure descriptions but
+ 			matching based the closes two collections based on their mean color histogram.
+Strong Points		-
+Limitations		None
+Parameters		None
+END

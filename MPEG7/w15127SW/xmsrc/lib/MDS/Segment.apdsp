@@ -1,0 +1,20 @@
+# Begin Group "Segment"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\SegmentCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\SegmentCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\SegmentSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\SegmentSAppl.h
+# End Source File
+# End Group

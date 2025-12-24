@@ -1,0 +1,478 @@
+Guidelines
+
+1. Introduction
+2. XM philosophy
+   2.1 Block diagram
+   2.2 Key applications
+   2.3 Reusing code
+3. How to integrate a D
+   3.1 Starting implementating
+   3.2 Updating code
+   3.3 Example code
+   3.4 What is important
+4. How to Integrate a DS
+   4.1 Starting implementating
+   4.2 Updating code
+   4.3 Example code
+   4.4 What is important
+5. Submissioin of code
+   5.1 What belongs to the package
+   5.2 Code review
+   5.3 Fixing bugs
+6. Changes of guide lines
+
+
+1. Introduction
+
+
+After your technique has passed a long period of hard discussions in the MPEG sub-groups, you are allowed to integrate your code into the XM software.Only after sucessful integration of your code, your technique can be promoted to WD.
+
+This document describes the guidelines for integrating the XM/WD descriptor and description scheme tools into the MPEG-7 Experimental Model (XM) software. The purpose of this document is to give enough information to contributors of XM tools so that they can plan their integration work.
+
+
+2. XM philosophy
+
+In this sesction you will find some information about the XM software in general. The block diagram gives a short overview and introduces the individöual components of the XM software architecture. 
+
+   2.1 Block diagram
+
+   2.2 Key applications
+   2.3 Reusing code
+
+3. How to integrate a D
+   3.1 Starting implementating
+   3.2 Updating code
+   3.3 Example code
+   3.4 What is important
+4. How to Integrate a DS
+   4.1 Starting implementating
+   4.2 Updating code
+   4.3 Example code
+   4.4 What is important
+5. Submissioin of code
+   5.1 What belongs to the package
+   5.2 Code review
+   5.3 Fixing bugs
+6. Changes of guide lines
+
+1. Introduction
+
+1.1 Purpose
+
+This document describes the guidelines for integrating the XM/WD descriptor and description scheme tools into the MPEG-7 Experimental Model (XM) software. The purpose of this document is to give enough information to contributors of XM tools so that they can plan their integration work.
+
+1.2 References to other files
+
+
+
+
+2. XM philosophy
+
+The current XM architecture provides a very general framework in which descriptions can be integrated into the XM. The XM framework is component-based: each different type of functionality is represented by a component interface. There are interfaces for descriptors, description schemes, extraction tools, matching tools, coding schemes, and other system related tools. In order to construct an application—i.e. a test scenario—these component are linked together to form a processing chain.
+
+The XM architecture is also interface-based. This means that each component in the XM implements a set of interfaces, each of which defines an specific set of methods. All reference between components is in terms of interfaces, abstracting away from implementation details.
+
+The result of this architecture is that each component in the XM is represented not but one, but by three classes: 
+
+a C++ class defining the interface (abstract class with no data),
+an abstract component C++ class (defining the component’s interfaces, which are inherited),
+and a C++ class that actually implements the abstract component interface. 
+
+In the XM software, there are two types of application: client server applications, which (extraction) applications that generate description data, and  and server client (search) applications, which, such a query processor, that consume description data—such as a query processor. A server takes as input a set of media files, generates the description in memory using the necessary extraction tools, and then outputs the result into an XML file. It can be regarded as filter that takes in media data on the one side and produces description data on the other. On the other hand, a client application takes as input an instantiated description (in an XML file) and optionally a query, processes them using the appropriate search tools, and outputs the result its processing in whatever form is appropriate—such as the set of matching items. The XM main() routine is used to invoke the relevant client or server application based on a name passed in on the command line.
+
+Frame based extraction
+
+2.1 Reusing other components in a D or DS
+
+In some cases, a description scheme will need to make use of the descriptors implemented in the XM software. However, the approach being takenn to implementing descriptors and description schemes is distinct: description data is represented as DOM objects and the XM descriptors are implemented as individual C++ classes. We are currently investigating two possible approaches to solving this problem. 
+
+
+
+2.2 Making the Code readable
+
+In order to ensure the readability and consistency of your software with the rest of the XM software, please follow the following conventions when creating your source files:
+
+1.Please use the following comment to separate methods of a class
+
+//----------------------------------------------------
+
+1.Please use the comment to separate classes in a single file:
+
+//====================================================
+
+
+2.3 How to provide Code for the XM software
+
+Process for Description Scheme Integration
+
+The following is the recommended process for contributors to follow when they contribute description scheme software tools to the XM.
+
+1.Install and build the latest version of the XM software 
+
+You should look at the FAQ for MDS XM software integration for more information on how to do this. 
+
+2.Write the extraction tool for their description scheme.
+
+The bulk of this task is to adopt the extraction method you have to the framework required by the XM software. In particular, you will need to populate the description data that represents the result of extraction. See some of the examples for how to do this. 
+
+Since most of this is very similar for all extraction tools, we suggest you start with an existing extraction tool and modify it to meet your needs. 
+
+1.Create the extraction (server) (extraction) application and add it XMMain.cpp. 
+
+The extraction application invokes the extraction tool to do the actual extraction and saves the results in an XML file. The extraction should be relatively simple. Its main job is set up everything for the extraction tool, invoke that tool, and then store away the results in a file. 
+Since most of this is very similar for all server applications, we suggest you start with an existing server application and modify it to meet your needs. 
+
+1.Test the extraction application. 
+
+Test the extraction application to ensure that is generating the correct description data. You should check that the description data (the XML file). Unfortunately, we do not yet currently have a parser to validate the well-formedness of MPEG-7 description data, so you will have to do this manually. 
+
+1.Create the search tool. 
+
+The job of the search tool will depend on the nature of the description scheme. For DSs that support similarity-based retrieval, you should write a tool that measures that similarity of the two description schemes. Within the tool, description data can be accessed (traversed) using the Generic DS API. 
+
+1.Create the client (search) application and add it to XMMain.cpp. 
+
+The client application should read description data from an XML file, match it against the query using the search tool, and output the results of the search. The results can be in whatever format is appropriate.
+
+Since much of this is very similar for all server applications, we suggest you start with an existing client application and modify it to meet your needs. 
+
+
+Test the client application. 
+
+1.Submit your completed source code. 
+
+Once you have completed the integration process, you are ready to submit the source code for integration into the main XM source tree. To submit your source code you need to send the modified or new files necessary for your implementation to Stephan Hermann via the XM mailing reflector. 
+
+Please do NOT check in your modified or new files directly into the CVS source server. Checking in your software will be handled by Stephann Herrmann, the maintainer of the MPEG-7 XM software. 
+
+Before you do contribute your software please ensure that:
+
+Your code is based on the lastest revision of the XM source, obtained from the CVS server. 
+à Code based on old revision is not acceptable. 
+Preserve the directory structure as it is in CVS and make sure your file is placed in the appropriate directory (see the FAQ for the information on the XM directory structure). 
+1.Only modified and new modules should be submitted. You do not need to submit unchanged files.
+
+3. Integration of a Descriptor (D)
+
+The job of a server application is to call the appropriate extraction tool in the XM in order to generate a description for the target media data.  In order to define a server application for a description scheme, you must define a class that implements the Server application interface (inherited from the ServerApplication class). An example is shown below:
+
+class SegmentServer: public ServerApplication
+{
+public:
+	SegmentServer();
+	virtual ~SegmentServer();
+
+	virtual unsigned long Open();
+	virtual unsigned long Start(char *ListFile, char *BitstreamDescriptionFile);
+	virtual unsigned long Stop();
+	virtual unsigned long Close();
+
+	virtual const UUID& GetObjectID(void);
+	virtual const char *GetName(void);
+};class MyServer: public ServerApplication
+{
+public:
+
+	// Constructor and other utility method omitted.
+
+	// Method for server application
+	virtual unsigned long Open();
+	virtual unsigned long Start(char *ListFile, char *DescriptionFile);
+	virtual unsigned long Stop();
+	virtual unsigned long Close();
+};
+
+
+The Open method initializes the application for processing. The Close method should deallocate all resources used in the generation process.  The Stop method may be left unimplemented, as it is not yet used in the current XM implementation. The Start method will perform the actual processing. It should call the necessary extraction tools (see below) to create the instantiated description scheme in memory. As parameters, it will take the media data file names (ListFile) for which the description data should be generated, and the name of the file in which the generated descriptions should be stored (DescriptionFile). 
+
+The job of the Start routine is to generate description data from its input. That input may take the form of media data from which the description scheme can be automatically extracted. Or, it can also include segmentation data when needed (segmentation tools are not required to be provided for integration with XM). It is also possible for an extraction tool to take in description data (in memory or from an XML file) and produce an augmented description as output. 
+The actual computation and extraction, generation of the Description Scheme Data using the Generic DS interface should be largely encoded in the extraction tool classes. The only role of the server application is to “glue” together these routines. 
+There are many examples of server applications for descriptors in the Applications directory for descriptors—there is one server for each XM Visual descriptor. We recommend you look at these to understand how an client/server applications are written for the XM, as description scheme servers will be similar.
+Writing a Client Application Class
+In order to define a client application for generating a description scheme, you must define a class that implements the Client application interface (inherited from the ClientApplication class). An example is shown below:
+
+// The ClientApplication is a component interface in the XM architecture.
+class MyClient: public ClientApplication
+{
+public:
+	// Other methods have been omitted for clarity.
+
+	// Main client interface.
+	virtual unsigned long Open(char* ListFile, char *DescriptionFile);
+	virtual unsigned long Start(char *Query, int NoOfMatches);
+	virtual unsigned long Stop();
+	virtual unsigned long Close();
+};
+
+The Open method initializes the application and reads the input description data into memory. The Close method should deallocate any resources used in the generation process.  The Stop method may be left unimplemented, as it is not yet used in the current XM implementation. The Start method will perform the actual processing. It should call the necessary search/matching tools (see below).
+ 
+There are many examples of client applications for descriptors in the Applications directory for descriptors—there is one client application for each XM Visual descriptor. We recommend you look at these to understand how a server application is written for the XM. 
+
+Extraction Tools
+
+An extraction tool is a set of C++ classes that populates the representation of the MPEG-7 description using the Generic DS API in the XM. These classes must conform to the extraction interface in the XM architecture. Currently, however, there is no interface defined in the XM architecture for DS extraction. Therefore, a new interface will be added, which will be modeled after the Descriptor Extraction interface. An outline of the expected API structure (details will be finalized by February 15, 2000) is shown below (not all methods are shown):an extraction interface for the Segment DS is shown below.
+//=============================================================================
+class SegmentExtractionInterfaceABC: public I_InterfaceABC
+{
+public:
+	SegmentExtractionInterfaceABC();
+	virtual ~SegmentExtractionInterfaceABC() {};
+
+	virtual int SetSourceMedia(MomVop *mvFS, FILE *fp, char *pcFramesName, char *pcMasksName) = 0;
+	virtual int SetDSescriptorInterface(GenericDSInterfaceABC *aGenericDSInterface) = 0;
+
+	virtual unsigned long InitExtracting(void) = 0;
+	virtual unsigned long StartExtracting(void) = 0;
+
+
+	static const UUID myID;
+};
+
+//=============================================================================
+class SegmentExtractionInterface:  public SegmentExtractionInterfaceABC
+{
+public:
+	SegmentExtractionInterface(SegmentExtractionTool* aTool);
+	virtual ~SegmentExtractionInterface();
+	
+	virtual const UUID& GetInterfaceID(void);
+	virtual const char *GetName(void);
+
+	virtual int SetSourceMedia(MomVop *mvFS, FILE *fp, char *pcFramesName, char *pcMasksName);
+	virtual int SetDSescriptorInterface(GenericDSInterfaceABC *aGenericDSInterface);
+
+	virtual unsigned long InitExtracting(void);
+	virtual unsigned long StartExtracting(void);
+
+	static const UUID myID;
+	static const char *myName;
+
+private:
+	SegmentExtractionTool *m_ExtractionTool;
+};
+
+//=============================================================================
+class SegmentExtractionTool: public DescriptorExtractor
+{
+public:
+	SegmentExtractionTool();
+	virtual ~SegmentExtractionTool();
+
+	virtual const UUID& GetObjectID(void);
+	virtual const char *GetName(void);
+
+	virtual bool SupportsPush(void);
+	virtual bool SupportsPull(void);
+
+	virtual int SetSourceMedia(MomVop *mvFS, FILE *fp, char *pcFramesName, char *pcMasksName);
+
+	virtual int SetDSescriptorInterface(GenericDSInterfaceABC *aGenericDSInterfaceABC);
+	
+	virtual unsigned long InitExtracting(void);
+	virtual unsigned long StartExtracting(void);
+
+	virtual SegmentExtractionInterfaceABC *GetInterface(void);
+class MyExtractionInterfaceABC: public I_InterfaceABC
+{
+	virtual int SetSourceMedia(MomVop *media) = 0;
+	virtual int SetDescriptorScheme(DescriptionSchemeABC
+				    *aDSInterfaceABC) = 0;
+	virtual unsigned long StartExtracting(void) = 0;
+};
+class MyExtractionTool;
+
+class MyExtractionInterface: public MyExtractionInterfaceABC
+{
+	virtual int SetSourceMedia(MomVop *media);
+	virtual int SetDescriptorScheme(DescriptionSchemeABC
+				    *aDSInterfaceABC);
+	virtual unsigned long StartExtracting(void);
+
+private:
+	MyExtractionTool *m_ExtractionTool;
+};
+
+class MyExtractionTool: public DescriptionSchemeExtractor
+{
+	virtual bool SupportsPush(void);
+	virtual bool SupportsPull(void);
+
+	virtual int SetSourceMedia(MomVop *media);
+	virtual int SetSourceMedia(MomVop *media);
+	virtual int SetDescriptorScheme(DescriptionSchemeABC
+				    *aDSInterfaceABC);
+	virtual unsigned long StartExtracting(void);
+
+};
+
+Note: Appending ABC at the end of a name in the XM indicates that a class is abstract. 
+The functionality of the extraction is controlled by three methods:
+SetSourceMedia. This method links the extraction tool to the media data for which the extraction is to take place. The parameters for this media may vary depending on the input. The example above uses the MomVop interface for accessing image and video data supported by the XM software. Other data, such as segmentation masks and XML description files, may also be used as input. These would become additional input parameters in the SetSourceMedia interface. 
+SetDescriptionSchemeSetDSInterface. This method links the extraction tool to the interface of the description scheme to be extracted.
+StartExtracting. This method performs the actual extraction from the input media data. This method will use the Generic DS API to create and populate the description data structure.
+An extraction tool may build on other extraction tools to extract the descriptors and description schemes contained within them. For example, a description for a video segment may use the tool for extracting a color histogram already implemented in the XM software.
+Search Tools: Matching Description Schemes
+
+For descriptors, a search tool implements a similarity function for determining the similarity of two descriptor values. A large number of such examples can be found in the SearchTools directory of the XM software. For description schemes for which similarity-based matching is appropriate,  a search tool should also compute a similarity measure. In such a case the interface will follow a format analogous to that for descriptors. An outline of the search interface for the Segment DS is shown below. (not all methods are shown for brevity):
+
+//=============================================================================
+class SegmentSearchInterfaceABC: public I_SearchInterfaceABC
+{
+public:
+	SegmentSearchInterfaceABC();
+	virtual ~SegmentSearchInterfaceABC() {};
+
+	virtual int SetRefDSInterface(GenericDSInterfaceABC *aGenericDSInterface) = 0;
+	virtual int SetQueryDSInterface(GenericDSInterfaceABC *aGenericDSInterface) = 0;
+	virtual double GetDistance(void) = 0;
+
+	static const UUID myID;
+};
+
+//=============================================================================
+class SegmentSearchInterface: 
+  public SegmentSearchInterfaceABC
+{
+public:
+	SegmentSearchInterface(SegmentSearchTool* aTool);
+	virtual ~SegmentSearchInterface();
+	
+	virtual const UUID& GetInterfaceID(void);
+	virtual const char *GetName(void);
+
+	virtual int SetRefDSInterface(GenericDSInterfaceABC *aGenericDSInterface);
+	virtual int SetQueryDSInterface(GenericDSInterfaceABC *aGenericDSInterface);
+	virtual double GetDistance(void);
+
+
+	static const UUID myID;
+	static const char *myName;
+
+private:
+	SegmentSearchTool *m_SearchTool;
+};
+
+//=============================================================================
+class SegmentSearchTool: public Search
+{
+public:
+	SegmentSearchTool();
+	virtual ~SegmentSearchTool();
+
+	virtual const UUID& GetObjectID(void);
+	virtual const char *GetName(void);
+	virtual SegmentSearchInterfaceABC *GetInterface(void);
+
+	virtual bool SupportsPush(void);
+	virtual bool SupportsPull(void);
+
+	virtual int SetRefDSInterface(GenericDSInterfaceABC *aGenericDSInterface); 
+	virtual int SetQueryDSInterface(GenericDSInterfaceABC *aGenericDSInterface);
+	virtual double GetDistance(void);
+
+	static const UUID myID;
+	static const char * myName;
+
+
+private:
+	SegmentSearchInterface m_Interface;
+	GenericDSInterfaceABC *m_RefDSInterface;
+	GenericDSInterfaceABC *m_QueryDSInterface;
+
+};
+
+class MySearchInterfaceABC: public I_SearchInterfaceABC
+{
+public:
+	virtual int SetRefDescriptionSchemeInterface
+	  (DescriptionSchemeInterfaceABC
+	   *aDescriptionSchemeInterface) = 0;
+	virtual int SetQueryDescriptionSchemeInterface
+	  (DescriptionSchemeInterfaceABC
+	   * aDescriptionSchemeInterface) = 0;
+	virtual double GetDistance(void) = 0;
+};
+
+//=============================================================================
+class MySearchInterface: 
+  public MySearchInterfaceABC
+{
+	virtual int SetRefDescriptionSchemeInterface
+	  (DescriptionSchemeInterfaceABC
+	   *aDescriptionSchemeInterface);
+	virtual int SetQueryDescriptionSchemeInterface
+	  (DescriptionSchemeInterfaceABC
+	   * aDescriptionSchemeInterface);
+	virtual double GetDistance(void);
+private:
+	MySearchTool *m_SearchTool;
+};
+
+//=============================================================================
+class MySearchTool: public Search
+{
+public:
+	virtual int SetRefDescriptionSchemeInterface
+	  (DescriptionSchemeInterfaceABC
+	   *aDescriptionSchemeInterface);
+	virtual int SetQueryDescriptionSchemeInterface
+	  (DescriptionSchemeInterfaceABC
+	   * aDescriptionSchemeInterface);
+	virtual double GetDistance(void);
+private:
+	MySearchInterface m_Interface;
+	DescriptionSchemeInterfaceABC *m_RefDescriptionSchemeInterface;
+	DescriptionSchemeInterfaceABC *m_QueryDescriptionSchemeInterface;
+};
+
+The three central methods implemented by similarity measure search tool for a description scheme are:
+SetRefDSescriptionSchemeInterface. Sets the reference description scheme’s interface for similarity computation.
+SetQueryDSescriptionSchemeInterface. Sets the query description scheme’s interface for similarity computation.
+GetDistance. Compute the similarity measure. All description data that is needed will be accessed using the Generic DS API. 
+In some cases, however, the search functionality may require other searching methods other than similarity-based search. In such cases, the search tool will implement whatever matching function is appropriate and the interface will be changed accordingly. In other words, the above API structure is only for the similarity-based search case.
+
+
+
+4. Integration of a DescriptionScheme (DS)
+Integrating DSs using a Generic DS API
+
+As mentioned above, in order to integrate the DS tools into the MPEG-7 XM, it has been decided to use a Generic DS API. All description data will be managed using the Generic DS API.
+
+At the Noordwijkerhout meeting it was decided not to wait for the MPEG-7 Description Parser API to be completed. Instead, description schemes will use a “wrapper” and parser independent API to create and access description data. This API will work for the currently integrated XML for C++ parser and for the DDL parser when it is integrated. The use  of this API will enable seamless migration from the XML C++ parser to description parser. 
+
+As mentioned above, in order to integrate the DS tools into the MPEG-7 XM, it has been decided to use a Generic DS API. All description data will be managed using the Generic DS API.
+
+The following figure shows the flow of information inside the XM software. Sections highlighted in red show the parts that must be integrated into the XM for description schemes.
+
+4.1 General XM Components for the XM-software
+
+Integrating a description scheme into the XM consists of both normative and non-normative components. The normative component is simply the DDL definition of the description scheme with its component descriptors and data types. There is no normative software for an individual DS or D, as the Description Parser API manages the description data. The non-normative components consist of the extraction and matching tools for the DS. In order to integrate the software for these the following is required
+
+As mentioned earlier, there is no need to create an individual class to represent a description scheme. The XM software architecture defines a single generic GenericDSInterfaceABC DescriptionScheme interface for representing and accessing description schemes.  It is a simple wrapper for the underlying description data implementation, whether DOM or the MPEG-7 description parser. This API is designed so that the MDS tools to be separated from the MPEG-7 description parser implementation. Currently, a generic XML parser is being used to implement this interface. However, when the MPEG-7 description parser becomes available, the implementation will be changed to use this class. 
+
+Ref to GenericDS
+
+You can read and write description data from Once the XM parser is integrated into XM software, utilities will be provided to read and write description data from XML files using the GenericDSCS class found in CodingSchemes directory. These will provide two functions:. This class is a generic scheme for encoding/decoding any description scheme as XML data. The scheme has the following interface:
+
+We the IBM XML Parser, we have not found a way to input the XML file to be parsed using an input stream. This is the reason for GetXMLFileI() and GetXMLFileO() below.
+
+Ref to GenericDSCS
+
+(1)Read Description Data—Create a Description Object with associated DOM data by reading the specified XML data file. 
+(2)Write Description Data—Create an XML file from an instantiated description scheme object.
+
+Contributors should assume the existence of such an interface and not write the
+
+
+
+ir own code for doing this. Supplying such an interface will make the XM less dependent on the non-standard details of the XM parser used.
+
+
+5. Differences between Ds and DSs
+
+6. External Libraries
+
+Image Magick
+
+The IBM XML for C++ parser software (available from http://www.alphaworks.ibm.com) version 3.0.1, has been selected for XML parser integration. This software is a robust, powerful tool for XML parsing and access. It includes an XML parser, an XML validator, and a DOM-based API for accessing XML data. It is cross-platform, with version available for Windows, Sun, and most other major UNIX platforms. 
+The IBM XML for C++ software has not yet been integrated with the XM software. Until the integration takes place, it is still possible to use the parser independent of the XM. We strongly recommend that XM software contributors experiment with the parser software and the DOM API.

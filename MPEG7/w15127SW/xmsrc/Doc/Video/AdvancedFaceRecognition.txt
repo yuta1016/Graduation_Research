@@ -1,0 +1,18 @@
+Technique	AdvancedFaceRecognition
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name	Toshio Kamei, NEC Corporation
+EMail	t-kamei@cb.jp.nec.com
+Contact	t-kamei@cb.jp.nec.com
+Type	Application
+External Libraries	none
+Related Ds/DSs	none
+Used Ds/DSs	none
+Input	Images
+Extraction	Yes
+Client Appl	Search & Retrieval 
+Summary	AdvancedFaceRecognition is a descriptor of face identity robust to variations in pose and illumination conditions.
+Strong Points	compact representation of facail identity, and high-speed and accurate matching.
+Limitations	The face images should be normalized before feature extraction. The positions of two eyes should be at (24,16) and (24,31) in the scaled image(56 pixels in height and 46 pixels in width)
+Known Problems	none
+Parameters	This descriptor supports scalable represenation of facial feature vector. If you wish to change the dimensionality of the vector, set extraction parameters and matching parameters. The allowed range of the extraction parameters is from 24 to 63 for FourierFeature, and from 0 to 63 for CompositeFeature. The dimensions of the feature vectors in matching must not exceed those of the extracted feature vectors.
+END

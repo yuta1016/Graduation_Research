@@ -1,0 +1,12 @@
+# Begin Group "SoundProperty"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\SoundPropertySAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\SoundPropertySAppl.h
+# End Source File
+# End Group

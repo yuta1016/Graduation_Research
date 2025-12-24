@@ -1,0 +1,20 @@
+# Begin Group "ContourShape"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\ContourShapeCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\ContourShapeCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\ContourShapeSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\ContourShapeSAppl.h
+# End Source File
+# End Group

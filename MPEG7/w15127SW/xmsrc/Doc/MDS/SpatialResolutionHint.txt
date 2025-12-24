@@ -1,0 +1,21 @@
+Technique	spatialResolutionHint Descriptor
+Document	N3705  ISO/IEC 15938-5/CD Part 5 MPEG-7 MDS
+Name		Sanghoon Sull(Univ. of Korea), Keansub Lee(Univ. of Korea)
+Email		sull@mail.korea.ac.kr, leeks@mpeg.korea.ac.kr
+Contact		sull@mail.korea.ac.kr, leeks@mpeg.korea.ac.kr
+Type		Application
+External Libraries	NA
+Related Ds/DSs	StillRegion, BoundingBox, CompositionInfo, MediaInformation, MediaProfile, MediaTranscodingHint
+Used Ds/DSs	StillRegion, BoundingBox, CompositionInfo, MediaInformation, MediaProfile, MediaTranscodingHint
+Input		Images
+Output		Print the information of the transcoded image, i.e, maximum allowable spatial region and scaling factor 
+Extraction	NA
+Client Appl	Transcoding 
+Summary		Describes the maximum allowable spatial resolution reduction factor for perceptibility. 
+		The SpatialResolutionHint takes values from 0.0 to 1.0, where 0.5 indicates that the resolution 
+		can be reduced by half and 1.0 indicates the resolution cannot be reduced.
+Strong Points	Caculating the maximum allowable spatial resolution of image for perceptibility 
+Limitations	NA
+Known Problems	NA
+Parameters	NA
+END

@@ -1,0 +1,22 @@
+Technique	Spatio Temporal Locator Extraction Tool
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name		Osamu Hori, Toshimitsu Kaneko, Koichi Masukura (Toshiba R&D Center)
+EMail		osamu.hori@toshiba.co.jp, toshimitsu.kaneko@toshiba.co.jp, koichi.masukura@toshiba.co.jp
+Contact		koichi.masukura@toshiba.co.jp
+Type		Application
+External Libraries	None
+Related Ds/DSs	Spatial2DCoordinatesD, MovingRegionDS, SpatioTemporalMaskDS
+Used Ds/DSs	RegionLocatorD, TemporalInterporationD
+Input		List of Alpha map images (one imege per one frame).
+Extraction	Yes
+Client Appl	Search Application
+Summary		This component generates compressed spatio-temporal region data from alpha-map images. This component supports two trajectory types: the FigureTrajectory and the ParameterTrajectory. The FigureTrajectory describes spatio-temporal regions by trajectories of representative points of refernce region. The ParameterTrajectory describe spatio-temporal regions by trajectories of motion parameters. The TemporalInterpolationD is used for describing trajectories.
+Strong Points	Full automatic extracting region data from a sequence of alpth map image.
+Limitations	The maximum number of NumberOfReferenceRegions parameter is 10. The maximum number of Vertices in FigureTrajectory is 30.
+Known Problems	NONE
+Parameters	Trajectory = Select 'FigureTrajectory', 'ParameterTrajectory' or 'MediaTime' to specify trajectory type.
+		StartFrame = Spacify a frame number of a first image of an input image list.
+		EndFrame = Specify the maximum frame number.
+		VerN = Specify a vertices number of a polygon gerenated by the ExtractionTool.
+		Depth = Specify a value of 'Depth' parameter.
+END

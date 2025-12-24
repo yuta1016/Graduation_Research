@@ -1,0 +1,204 @@
+<DecoderConfig>
+<InitialAccessUnit>
+<AccessUnit Order = "seq">
+<FragmentUpdateUnit>
+<Navigation>
+/
+</Navigation>
+<UpdateCommand>
+AddFragment
+</UpdateCommand>
+<FragmentPayload>
+<Payload PartialInstantiation = "false">
+<!--  Concrete instance: No AbstractionLevel  -->
+<Semantic id="soccergame_ins-sem">
+	<Label>
+		<FreeTerm> Soccer game between Spanish and Swedish soccer teams </FreeTerm>
+	</Label>
+</Semantic></Payload>
+</FragmentPayload>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<Navigation>
+/Semantic/
+</Navigation>
+<UpdateCommand>
+AddFragment
+</UpdateCommand>
+<FragmentPayload>
+<Payload PartialInstantiation = "false">
+	<!--  Events  -->
+	<SemanticBase id="2ndperiod_ins-eve">
+		<AbstractionLevel dimension="1"/>
+		<Label> <FreeTerm> Second period </FreeTerm> </Label>
+		<MediaOccurrence>
+			<MediaLocator>
+				<MediaUri> http://www.mpeg7.org/game.mpg </MediaUri>
+				<MediaTime>
+					<MediaRelTimePoint timeBase="../MediaUri">
+						T0:71:56
+					</MediaRelTimePoint>
+					<MediaDuration> PT47M6S </MediaDuration>
+				</MediaTime>
+			</MediaLocator>
+		</MediaOccurrence>
+	</SemanticBase>
+</Payload>
+</FragmentPayload>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<Navigation>
+/Semantic/
+</Navigation>
+<UpdateCommand>
+AddFragment
+</UpdateCommand>
+<FragmentPayload>
+<Payload PartialInstantiation = "true">
+<SemanticBase id="soccerstadium-obj">
+	<Label> <FreeTerm> Soccer stadium </FreeTerm> </Label>
+	<MediaOccurrence>
+	</MediaOccurrence>
+</SemanticBase>
+
+</Payload>
+</FragmentPayload>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<Navigation>
+/Semantic/
+</Navigation>
+<UpdateCommand>
+AddFragment
+</UpdateCommand>
+<FragmentPayload>
+<Payload PartialInstantiation = "false">
+	<!--  Semantic places  -->	<SemanticBase id="soccerstadium_ins-pla">		<Label> <FreeTerm> Soccer stadium </FreeTerm> </Label>		<Place>			<Name xml:lang="en"> Santiago Bernabeu </Name>			<Country> es </Country>			<PostalAddress>				<AddressLine> Concha Espina s/n., Madrid </AddressLine>				<PostingIdentifier> E-28036 </PostingIdentifier>			</PostalAddress>		</Place>	</SemanticBase></Payload>
+</FragmentPayload>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<Navigation>
+/Semantic/
+</Navigation>
+<UpdateCommand>
+AddFragment
+</UpdateCommand>
+<FragmentPayload>
+<Payload PartialInstantiation = "false">
+<!--  Semantic times  -->
+<SemanticBase id="2ndperiod_ins-tim">
+	<AbstractionLevel dimension="1"/>
+	<Label> <FreeTerm> Start time of 2nd period </FreeTerm> </Label>
+	<SemanticTime>
+		<Time>
+			<TimePoint> 1995-3-17T21:03:56 </TimePoint>
+			<Duration> PT47M6S </Duration>
+		</Time>
+	</SemanticTime>
+</SemanticBase>
+
+</Payload>
+</FragmentPayload>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<Navigation>
+/Semantic/SemanticBase[4]/
+</Navigation>
+<UpdateCommand>
+DeleteFragment
+</UpdateCommand>
+<FragmentPayload>
+<Payload PartialInstantiation = "false">
+</Payload>
+</FragmentPayload>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<Navigation>
+/Semantic/SemanticBase[2]/MediaOccurrence/
+</Navigation>
+<UpdateCommand>
+AddFragment
+</UpdateCommand>
+<FragmentPayload>
+<Payload PartialInstantiation = "false">
+<MediaLocator>
+			<MediaUri> http://www.mpeg7.org/game.mpg </MediaUri>
+</MediaLocator></Payload>
+</FragmentPayload>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<Navigation>
+/Semantic/SemanticBase[1]/MediaOccurrence/MediaLocator/MediaTime/MediaDuration/
+</Navigation>
+<UpdateCommand>
+ReplaceFragment
+</UpdateCommand>
+<FragmentPayload>
+<Payload PartialInstantiation = "false">
+ <MediaDuration> PT47M6S_Replaced</MediaDuration>
+</Payload>
+</FragmentPayload>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<Navigation>
+../MediaUri/
+</Navigation>
+<UpdateCommand>
+ReplaceFragment
+</UpdateCommand>
+<FragmentPayload>
+<Payload PartialInstantiation = "false">
+<MediaUri> http://www.mpeg7.org/notagame.mpg </MediaUri></Payload>
+</FragmentPayload>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<Navigation>
+./MediaLocator/MediaTime/MediaRelTimePoint/
+</Navigation>
+<UpdateCommand>
+ReplaceFragment
+</UpdateCommand>
+<FragmentPayload>
+<Payload PartialInstantiation = "false">
+<MediaRelTimePoint timeBase="../MediaUri">T0:17:65</MediaRelTimePoint></Payload>
+</FragmentPayload>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<Navigation>
+/Semantic/@id1
+</Navigation>
+<UpdateCommand>
+AddFragment
+</UpdateCommand>
+<FragmentPayload>
+<Payload PartialInstantiation = "false">
+This is a Test to be added</Payload>
+</FragmentPayload>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<Navigation>
+/Semantic/@id2
+</Navigation>
+<UpdateCommand>
+AddFragment
+</UpdateCommand>
+<FragmentPayload>
+<Payload PartialInstantiation = "false">
+This is a Test to be deleted</Payload>
+</FragmentPayload>
+</FragmentUpdateUnit>
+<FragmentUpdateUnit>
+<Navigation>
+/Semantic/@id2
+</Navigation>
+<UpdateCommand>
+DeleteFragment
+</UpdateCommand>
+<FragmentPayload>
+<Payload PartialInstantiation = "false">
+</Payload>
+</FragmentPayload>
+</FragmentUpdateUnit>
+</AccessUnit>
+</InitialAccessUnit>
+</DecoderConfig>

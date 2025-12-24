@@ -1,0 +1,20 @@
+/* default application name*/
+Application	TextureBrowsingClient
+
+/* default database file name*/
+ListFile	Databases/TB_Test.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/TB_Test.mp7
+
+/* default number of matches*/
+NoOfMatches 8
+
+/* select coding mode*/
+CodingMode  0 /* 0= DDL, 2= Binary*/
+
+/* additional parameters*/
+
+/*layer 0:basic layer(3 components) 1:full layer(5 components) */
+layer 1
+

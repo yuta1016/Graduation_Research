@@ -1,0 +1,12 @@
+# Begin Group "MediaQuality"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\MediaQualitySAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MediaQualitySAppl.h
+# End Source File
+# End Group

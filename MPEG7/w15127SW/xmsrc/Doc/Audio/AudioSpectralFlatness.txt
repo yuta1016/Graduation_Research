@@ -1,0 +1,17 @@
+Technique	AudioSpectralFlatnessType
+Document	Wxxxx (Guidelines Document), all Chapters
+Name	Thorsten Heinz, Fraunhofer IIS
+EMail	??
+Type	Application
+External Libraries	none
+Related Ds/DSs		none
+Used Ds/DSs
+Input		xml, as described in MPEG7-MelodySequence-Definition
+Extraction	NA
+Client Appl	Search & Retrieval
+Summary		Demonstrates basic search and retrieval
+Strong Points	Works best in specific scenario
+Limitations	none
+Known Problems	size of mean and variance fixed
+Parameters	none
+END

@@ -1,0 +1,1 @@
+./XMMain_linux_dbg.exe -p Parfiles/AudioSignature.par -q ./testset/audio/signature_mm_0_d0002840_10.xml

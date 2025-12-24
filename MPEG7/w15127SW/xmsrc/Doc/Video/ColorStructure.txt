@@ -1,0 +1,17 @@
+Technique	ColorStructure
+Document	MPEG-7 Visual (ISO/IEC 15938-3)
+Name		Jim Errico, Sharp Labs of America; Dean Messing, Sharp Labs of America
+EMail		jerrico@sharplabs.com; deanm@sharplabs.com
+Type		Application
+External Libraries	NA
+Related Ds/DSs	NA
+Used Ds/DSs	NA
+Input		Images
+Extraction	Yes
+Client Appl	Search & Retrieval
+Summary		This component is the implementation of the extraction and search functionality for the ColorStructure Descriptor.
+Strong Points	NA
+Limitations	NA
+Known Problems	NA
+Parameters	ColorQuantSize : one of {256, 128, 64, 32}
+END

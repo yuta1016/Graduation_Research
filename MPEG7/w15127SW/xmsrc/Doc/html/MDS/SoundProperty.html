@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>MDS/SoundProperty</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for MDS/SoundProperty</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>SoundProperty
+<tr><th>Document
+<td>MPEG-7 MDS FCD (N3966) and XM (e.g. N3464), see SequentialSummary
+<tr><th>Name
+<td>Masaru Sugano, Yasuyuki Nakajima (KDDI R&D Laboratories Inc.)
+<tr><th>EMail
+<td>sugano@kddlabs.net, nakajima@kddlabs.net
+<tr><th>Contact
+<td>sugano@kddlabs.net
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>libAO and libtsp, included in AFsp v5r0
+<tr><th>Related Ds/DSs
+<td>SummaryDS, SequentialSummaryDS
+<tr><th>Used Ds/DSs
+<td>None
+<tr><th>Input
+<td>List of audio files (in supported formats by AFsp)
+<tr><th>Output
+<td>Summary audio clip files (foo_sum%n.xxx; the same extension/format as input)<br>
+(n is a serial number)
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>NA
+<tr><th>Summary
+<td>This software reads a list of audio files (in supported formats by AFsp), <br>
+extracts the audio summary for each audio file by applying sub-band analysis, and <br>
+generates summary audio clips in the same format as input and a description file <br>
+for an audio slide show. <br>
+It adopts the AFsp library for audio file I/O.
+<tr><th>Strong Points
+<td>This tool can extract an appropriate summary audio clip especially from vocal music.
+<tr><th>Limitations
+<td>The duration of audio summary for each slide component is fixed (15 sec).<br>
+This tool extracts one summary clip from one whole (individual) audio file.<br>
+The SyncTime element has not been implemented.
+<tr><th>Known Problems
+<td>No specific problem is found.
+<tr><th>Parameters
+<td>Parameter file is not used.<br>
+Application name, database file name and bitstream file name are provided by <br>
+command line option ([-a], [-l] and [-b] respectively). A batch file is provided.
+</table>
+</body>
+</html>

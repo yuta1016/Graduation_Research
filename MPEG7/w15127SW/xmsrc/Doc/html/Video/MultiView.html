@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Video/MultiView</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for Video/MultiView</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>Multiple View
+<tr><th>Document
+<td>MPEG-7 Visual (ISO/IEC 15938-3)
+<tr><th>Name
+<td>Karsten Müller (HHI), James Cooper (Mitsubishi)
+<tr><th>EMail
+<td>Kmueller@hhi.de, James.Cooper@vil.ite.mee.com 
+<tr><th>Contact
+<td>Kmueller@hhi.de
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>none
+<tr><th>Related Ds/DSs
+<td>ContourShapeD, RegionShapeD, StillRegionDS (rectangular and arbitrarily shaped)
+<tr><th>Used Ds/DSs
+<td>MultipleView D, ContourShapeD, RegionShapeD
+<tr><th>Input
+<td>Number of Images (up to 16), originating from 3D object
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Search & Retrieval
+<tr><th>Summary
+<td>Multiple View (as a container descriptor) uses the underlying Descriptor, e.g. ContourShape for <br>
+Extraction and Retrieval of similar objects. Two retrieval methods are available: 3D-3D Retrieval, <br>
+where a number of views from one object is compared to a number of views from the database <br>
+objects and 2D-3D Retrieval, where a 2D-image is compared to the most similar views of the 3D-object
+<tr><th>Strong Points
+<td>Depends on the underlying Descriptor
+<tr><th>Limitations
+<td>Only up to 16 views per object are supported
+<tr><th>Known Problems
+<td>None
+<tr><th>Parameters
+<td>Uses the general XM-SW parameters, IMPORTANT: The list file should only contain the name of the original 3D object without extension, e.g. "c:\temp\model-1". The extensions for the views are appended automatically by the program. The convention is to name the 2D-views from that model "model-1_1.gif", "model-1_2.gif" up to "model-1_16.gif"
+</table>
+</body>
+</html>

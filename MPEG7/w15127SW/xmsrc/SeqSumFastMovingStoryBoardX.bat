@@ -1,0 +1,1 @@
+-/ XMMain.exe -p Parfiles/FMSB.par -a SeqSummaryFastMovingStoryBoardServer -lDatabases/AV.lst

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Video/HomoTexture</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for Video/HomoTexture</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>HomogeneousTexture
+<tr><th>Document
+<td>MPEG-7 Visual (ISO/IEC 15938-3)
+<tr><th>Name
+<td>yanglim Choi, M/M Lab, Samsung Advanced Institute of Technology
+<tr><th>EMail
+<td>yanglimc@samsung.com 
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>NONE
+<tr><th>Related Ds/DSs
+<td>StillRegionDS, StillImageDS, MovingRegionDS
+<tr><th>Used Ds/DSs
+<td>NONE
+<tr><th>Input
+<td>Images/Regions(JPEG,BMP,etc)
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Search & Retrieval 
+<tr><th>Summary
+<td>This component generates a texture descriptor for a homogeneously textured Image/Region for Search and Retrieval using texture features. The descriptor components are the average and the standard deviation of the image together with the energies and the energy deviations of Gabor filtered reponse of each (predefined) fequency channels.
+<tr><th>Strong Points
+<td>Statistically very precise description of homogeneously textured region.
+<tr><th>Limitations
+<td>Relatively large in size (32 components for the basic layer and 62 components for the enhanced layer).	
+<tr><th>Known Problems
+<td>NONE
+<tr><th>Parameters
+<td>HomogeneousTexture.par: dummy parameter file to show the usage<br>
+/* additional parameters*/<br>
+layer : The layer information of the descriptor<br>
+        0:base-layer, 32 components  <br>
+        1:full-layer, 62 components<br>
+option: Matching option for client<br>
+        n: normal matching<br>
+        r:rotation invariant matching<br>
+        s:scale invariant matching<br>
+        rs:rotation and scale invariant matchin
+</table>
+</body>
+</html>

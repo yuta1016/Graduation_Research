@@ -1,0 +1,12 @@
+# Begin Group "MelodySequence"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\MelodySequenceCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\MelodySequenceCAppl.h
+# End Source File
+# End Group

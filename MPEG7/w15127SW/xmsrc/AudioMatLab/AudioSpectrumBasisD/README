@@ -1,0 +1,13 @@
+MPEG-7 SOUND CLASSIFICATION AND SIMILARITY TOOLS
+Author: Michael A. Casey - Mitsubishi Electric Research Labs, Cambridge, USA
+Date: 02/15/02
+Version: 0.2 ALPHA (Works but is still being integrated)
+Contact: Michael Casey: casey@merl.com
+
+AudioSpectrumBasis.m -- computes AudioSpectrumBasisD and AudioSpectrumProjectionD from a spectrum.
+
+Also see: SoundRecognitionModelDS:
+SoundRecognitionTools.zip -- complete software package for using AudioSpectrumBasisD, AudioSpectrumProjectionD and ContinuousHiddenMarkovModelDS with SoundRecognitionModelDS and SoundClassificationModelDS. Currently being integrated for XM.
+
+Expected Completion: 02/25/02
+

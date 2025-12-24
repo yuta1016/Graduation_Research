@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>MDS/Time</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for MDS/Time</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>VideoSegment DSs (including MediaTime information)
+<tr><th>Document
+<td>MPEG-7 MDS, see Segment DSs
+<tr><th>Name
+<td>Patricia Chiang, Joerg Heuer, Siemens AG
+<tr><th>Contact
+<td>Joerg.Heuer@mchp.siemens.de
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>None
+<tr><th>Related Ds/DSs
+<td>Segment DSs
+<tr><th>Used Ds/DSs
+<td>None
+<tr><th>Input
+<td>The input file is identically to the one used in the Segment Application except that<br>
+an additional file Time.txt.<br>
+<br>
+The input file contains an image with temporal and spatial information<br>
+for a set of segments. Segments are video segments (VideoSegment) that can have <br>
+associated any number of frames. The image contains the following information:<br>
+The x-coordinate of the image represents the frame number; <br>
+the y-coordinate represents the segment id;<br>
+The image is formated as sun rasterfile. Non-black pixel(row, col) represent presence<br>
+of frame col in segment row. Frame no refers to the true frame no (see below).<br>
+<br>
+Together with this image, each input has a text file (tree.txt) describing the hierarchical<br>
+relationship between these segments, whose format is the following:<br>
+first line: TimePoint Mode (0=RelTimePoint, 1=RelIncrTimePoint, 2=TimePoint), <br>
+Duration Mode (0=Duration, 1=IncrDuration)<br>
+following lines:<br>
+<segmentID> <segmentType> <#children> <childIDs> <decompositionType> <overlap> <gap> <br>
+<segment annotation> <br>
+segmentType ={VideoSegment, MovingRegion, StillRegion}<br>
+decompositionType = {temporal, spatial, spatio-temporal}<br>
+where the decomposition and annotation information are optional.<br>
+An example of a well formed input file with three still regions follows:<br>
+1 StillRegion 2 2 3 spatial no yes elephant<br>
+2 StillRegion 0<br>
+3 StillRegion 0<br>
+<br>
+The time input file Time.txt has the following format:<br>
+frame_rate <framerate_n> <framerate_d> nGOPHeaders <#GOPHeaders> <total #frames><br>
+GOP timecode <timecode> nFrames <#frames in GOP><br>
+<true frame no> <no. of occurrences><br>
+<true frame no> <no. of occurrences><br>
+..................................<br>
+GOP timecode <timecode> nFrames <#frames in GOP><br>
+<true frame no> <no. of occurrences><br>
+..............................<br>
+<br>
+Note: true frame no refers to the frame no wrt frame rate of the video sequence <br>
+ 	before encoding hence, skipped frames has occurences of 0; normal frames 1; <br>
+ 	repeated frames 2/3.<br>
+ 	<br>
+ 	For the query application a query input file according to the following foramt has to be used:<br>
+ 	starttime in sec> <starttime in nn> <duration in sec> <duration in nn> <nnFraction><br>
+Note: starttime in nn and duration in nn both have a range of [0, nnFraction-1]<br>
+ 			<br>
+
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Search & Retrieval<br>
+This code generates descriptions of segment trees. This code also allows<br>
+to retrieve the segment descriptions based on the the minimum distance between<br>
+pairs of segments in the segment trees.
+<tr><th>Strong Points
+<td>-
+<tr><th>Limitations
+<td>-
+<tr><th>Parameters
+<td>-
+</table>
+</body>
+</html>

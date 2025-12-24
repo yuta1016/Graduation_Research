@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>MDS/MatchingHint</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for MDS/MatchingHint</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>MatchingHint Descriptor
+<tr><th>Document
+<td>N3966  ISO/IEC 15938-5/CD Part 5 MPEG-7 MDS
+<tr><th>Name
+<td>Jin-Soo Lee (LG Electronics)
+<tr><th>Email
+<td>binary@lge.com
+<tr><th>Contact
+<td>binary@lge.com
+<tr><th>Type
+<td>BasicComponent
+<tr><th>External Libraries
+<td>NONE
+<tr><th>Related Ds/DSs
+<td>MatchignHint D, ColorStructure D, EdgeHistogram D, StillRegionDS
+<tr><th>Input
+<td>Image Descriptions	
+<tr><th>Output
+<td>Encoded the query description using the updated MatchingHint 
+<tr><th>Extraction
+<td>YES	
+<tr><th>Client Appl
+<td>Caculating the new distance between two images Application
+<tr><th>Summary
+<td>Using image descriptions (the one is query image, the others are reference images) and MatchingHint, caculate the new distance using the MatchingHint of the query image. And update the old MatchingHint(Hint values and reliablity) then encode the query description using the updated MatchingHint:
+<tr><th>Strong Points
+<td>.
+<tr><th>Limitations
+<td>Only descriptions for Image including visual Ds can be used as the input.
+<tr><th>Known Problems
+<td>.
+<tr><th>Parameters
+<td><br>
+/* distances from each search tool*/<br>
+ColorStructure  2400<br>
+EdgeHistogram   3203<br>
+//ScalableColor ?<br>
+//DominantColor ?<br>
+//HomogeneousTexture ?<br>
+//RegionShape ?<br>
+//ContourShape ?<br>
+<br>
+/* maximun distances from each search tool */<br>
+maxColorStructure  10000<br>
+maxEdgeHistogram	10000<br>
+//maxScalableColor ?<br>
+//maxDominantColor ?<br>
+//maxHomogeneousTexture ?<br>
+//maxRegionShape ?<br>
+//maxContourShape ?
+</table>
+</body>
+</html>

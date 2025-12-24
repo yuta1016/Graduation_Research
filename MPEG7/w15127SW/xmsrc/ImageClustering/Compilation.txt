@@ -1,0 +1,75 @@
+**************************************************
+Required libraries for the MPEG-7 eXperimentation Model (XM) clustering software
+
+- ImageMagick (for loading and storing visual data)
+  You need the C-API (magick) of ImageMagick. A frozen version which is know
+  to work OK is available on the web Server. Currently, this version is
+  4.2.*. However, It is also known that the the XM compiles with
+  version 5.2.*. Some other versions are not easily usable.
+   
+- Xerces (the XML parser)
+  some distributions supporting the DOM-API are available. On the web
+  server you can find the Apache xerces parser (version 1_6) which is
+  proofed to work fine with the XM and its other executables.
+
+- On Unix you must check the paths in the Makefile.
+
+- The dsp file for Win32 is configured to have the library directories next
+  to the newsrc directory, i.e., a dir command will return
+
+  > dir
+  ImageMagick
+  newsrc
+  xml
+
+  The directories for the headers files are set to:
+    ImageMagick/magick (the setting is ImageMagick without /magick)
+    xml/include or xml/src
+
+  The directories for the libraries are set to:
+    ImageMagick/lib (here are the static libraries)
+    ImageMagick/bin (here you can find the dll's, don't forget to set the
+      search path in the autoexec.bat file)
+    xml/lib (static and dynamic lib's, copy the files from
+      xml/Build/Win32/VC6/Release to this location and
+      don't forget to set the search path in the autoexec.bat file)
+
+
+**************************************************
+Compiling the XM for Unix
+
+- Open the Makefile and adjust the settings to your environment.
+  - select the the OS
+  - enable or disable the external libraries (this is section one
+    of the Makefile)
+  - adjust the setting for the external libraries (this is section two
+    of the Makefile)
+  - select the compiler and other compilation tools (this is
+    section three of the Makefile)
+    Note: for compilation a C++ compiler supporting name spaces is
+          required (e.g., gcc incl. egcs; usually version 2.9* is fine)
+  - enable ("y") or disable the MPEG-7 modules to be compiled into
+    XM software (in section 4)
+- run "make"
+- create a soft-link from XMMain_yoursettings.exe to XMMain.exe
+  (e.g., yoursettings can be linux_dbg)
+
+
+***************************************************
+Compiling the XM on Win32
+
+- compilation is know to work using Visual C++ 6.0 (support for name
+  spaces is required)
+- open the work space file XMWinExe.dsw
+- select the XMWinExe module to be compiled
+- press F7 for compilation
+- rename the resulting XMWinExe.exe file to XMMain.exe (sorry this OS
+  does not support file system links)
+
+
+**************************************************
+
+Note: the clustering program exists in parallel with the "main" XM and
+reuses most of the same code; however, to avoid any potential conflicts,
+separate versions of the libraries are be built by the Unix Makefile
+and Win32 MSVC++ project files (*.dsp).

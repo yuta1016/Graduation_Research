@@ -1,0 +1,20 @@
+# Begin Group "CameraMotion"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\CameraMotionCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\CameraMotionCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\CameraMotionSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\CameraMotionSAppl.h
+# End Source File
+# End Group

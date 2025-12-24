@@ -1,0 +1,22 @@
+Technique	Graphical Classification Schemes
+Document	MPEG-7 FDIS, MDS, Clause 7.3
+Name	Hawley K. Rising III, Sony MPD-NSC-A, San Jose, CA, U.S.A.
+EMail	hawley.rising@am.sony.com
+Type	Application
+External Libraries	None
+Related Ds/DSs	SemanticBase, Semantic, Concept, SemanticRelation
+Used Ds/DSs	GraphicalClassificationScheme,GraphicalTerm, SemanticState, Semantic, Concept, SemanticRelation
+Input		Input is a list of existing Semantic DS descriptions, which
+		have Graphs, and a Graphical Classification Scheme.
+Extraction	NA
+Client Appl	Search & Retrieval
+Summary		This component takes as query descriptions which have graphs
+		validates the graphs against a graphical classification
+		scheme.	 It then operates only on input having a specific
+		graph configuration as a subgraph, using a graph matching
+		routine.
+Strong Points	-
+Limitations	None
+Known Problems	None
+Parameters	None
+end

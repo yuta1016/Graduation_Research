@@ -1,0 +1,17 @@
+/* default application name*/
+Application	ColorStructureClient
+
+/* default database file name*/
+ListFile	Databases/ccd.lst
+
+/* default number of matches*/
+NoOfMatches	20
+
+/* default bitstream file*/
+Bitstream	Bitstreams/ColorStructure032.xml
+
+/* color quantization resolution*/
+ColorQuantSize	32
+
+/* Textual (DDL) coding */
+CodingMode	0

@@ -1,0 +1,19 @@
+Application	DominantColorClient
+
+/* default database file name*/
+ListFile	Databases/images.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/DominantColor.mp7
+
+/* default number of matches*/
+NoOfMatches 10
+
+/* coding mode */
+CodingMode	0
+
+/* dominant color setting */
+ColorSpacePresent			0
+ColorQuantizationPresent	0
+VariancePresent			1
+SpatialCoherency			1

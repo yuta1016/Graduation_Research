@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Video/SpatioTemporalLocator</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for Video/SpatioTemporalLocator</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>Spatio Temporal Locator Extraction Tool
+<tr><th>Document
+<td>MPEG-7 Visual (ISO/IEC 15938-3)
+<tr><th>Name
+<td>Osamu Hori, Toshimitsu Kaneko, Koichi Masukura (Toshiba R&D Center)
+<tr><th>EMail
+<td>osamu.hori@toshiba.co.jp, toshimitsu.kaneko@toshiba.co.jp, koichi.masukura@toshiba.co.jp
+<tr><th>Contact
+<td>koichi.masukura@toshiba.co.jp
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>None
+<tr><th>Related Ds/DSs
+<td>Spatial2DCoordinatesD, MovingRegionDS, SpatioTemporalMaskDS
+<tr><th>Used Ds/DSs
+<td>RegionLocatorD, TemporalInterporationD
+<tr><th>Input
+<td>List of Alpha map images (one imege per one frame).
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Search Application
+<tr><th>Summary
+<td>This component generates compressed spatio-temporal region data from alpha-map images. This component supports two trajectory types: the FigureTrajectory and the ParameterTrajectory. The FigureTrajectory describes spatio-temporal regions by trajectories of representative points of refernce region. The ParameterTrajectory describe spatio-temporal regions by trajectories of motion parameters. The TemporalInterpolationD is used for describing trajectories.
+<tr><th>Strong Points
+<td>Full automatic extracting region data from a sequence of alpth map image.
+<tr><th>Limitations
+<td>The maximum number of NumberOfReferenceRegions parameter is 10. The maximum number of Vertices in FigureTrajectory is 30.
+<tr><th>Known Problems
+<td>NONE
+<tr><th>Parameters
+<td>Trajectory = Select 'FigureTrajectory', 'ParameterTrajectory' or 'MediaTime' to specify trajectory type.<br>
+StartFrame = Spacify a frame number of a first image of an input image list.<br>
+EndFrame = Specify the maximum frame number.<br>
+VerN = Specify a vertices number of a polygon gerenated by the ExtractionTool.<br>
+Depth = Specify a value of 'Depth' parameter.
+</table>
+</body>
+</html>

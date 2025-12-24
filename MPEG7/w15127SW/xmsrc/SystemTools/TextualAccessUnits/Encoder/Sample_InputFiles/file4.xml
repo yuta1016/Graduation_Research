@@ -1,0 +1,67 @@
+<UsageInformation id="news1b">
+		<Rights>
+			<RightsId organization="TVE" type="TVECopyrightsId">
+ 			tve:19980618:td2
+		</RightsId>
+		</Rights>
+		<FinancialResults>
+			<AccountItem currency="EUR" value="423.46">
+				<CostType>
+					<Name>Total for production</Name>
+				</CostType>
+			</AccountItem>
+			<AccountItem currency="EUR" value="200">
+				<CostType>
+					<Name>Broadcast</Name>
+				</CostType>
+			</AccountItem>
+			<AccountItem currency="EUR" value="600">
+				<IncomeType>
+					<Name>Advertisment</Name>
+				</IncomeType>
+			</AccountItem>
+		</FinancialResults>
+		<Availability id="live_news1">
+			<InstanceRef href="http://www.rtve.es/19980616/td2.mpeg"/>
+			<PublicationType href="urn:mpeg:MPEG7PublicationTypeCS:4">
+				<Name xml:lang="en">Internet</Name>
+			</PublicationType>
+			<OriginPlace>
+				<Country>es</Country>
+			</OriginPlace>
+			<Financial>
+				<AccountItem currency="EUR" value="1">
+					<CostType>
+						<Name>Pay-per-view price</Name>
+					</CostType>
+				</AccountItem>
+			</Financial>
+			<AvailabilityPeriod type="live payPerUse">
+				<TimePoint>1998-06-16T21:00+01:00</TimePoint>
+				<Duration>PT30M</Duration>
+			</AvailabilityPeriod>
+		</Availability>
+		<Availability id="repeated_news1">
+			<InstanceRef href="http://www.rtve.es/19980616/td2.mpeg"/>
+			<PublicationType href="urn:mpeg:MPEG7PublicationTypeCS:4"/>
+			<OriginPlace>
+				<Country>es</Country>
+			</OriginPlace>
+			<AvailabilityPeriod type="repeat">
+				<TimePoint>1998-06-16T21:30+01:00</TimePoint>
+			</AvailabilityPeriod>
+		</Availability>
+		<UsageRecord>
+			<AvailabilityRef idref="live_news1"/>
+			<Audience>245747</Audience>
+			<Financial>
+				<AccountItem currency="EUR" value="1">
+					<EffectiveDate>1998-06-16</EffectiveDate>
+					<IncomeType>
+						<Name>Income for pay-per-view live access</Name>
+					</IncomeType>
+				</AccountItem>
+			</Financial>
+		</UsageRecord>
+	</UsageInformation>
+

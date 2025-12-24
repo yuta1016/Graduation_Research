@@ -1,0 +1,12 @@
+# Begin Group "PhoneticTranslationHints"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\PhoneticTranslationHintsCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\PhoneticTranslationHintsCAppl.h
+# End Source File
+# End Group

@@ -1,0 +1,12 @@
+# Begin Group "UserPreference"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\UserPreferenceCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\UserPreferenceCAppl.h
+# End Source File
+# End Group

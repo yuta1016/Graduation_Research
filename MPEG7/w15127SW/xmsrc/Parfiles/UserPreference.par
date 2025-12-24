@@ -1,0 +1,14 @@
+/* default application name*/
+Application	UserPreferenceClient
+
+/* default database file name*/
+ListFile	Databases/Prog.lst
+
+/* default bitstream file*/
+Bitstream unused
+
+/* default number of matches*/
+NoOfMatches 20
+
+/* default mapping file */
+MapFile	Parfiles/UserPreferenceMap.txt

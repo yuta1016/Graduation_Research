@@ -1,0 +1,12 @@
+<!--  Semantic times  -->
+<SemanticBase id="2ndperiod_ins-tim">
+	<AbstractionLevel dimension="1"/>
+	<Label> <FreeTerm> Start time of 2nd period </FreeTerm> </Label>
+	<SemanticTime>
+		<Time>
+			<TimePoint> 1995-3-17T21:03:56 </TimePoint>
+			<Duration> PT47M6S </Duration>
+		</Time>
+	</SemanticTime>
+</SemanticBase>
+

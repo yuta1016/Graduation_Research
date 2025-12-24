@@ -1,0 +1,1 @@
+./XMMain.exe -p Parfiles/MatchingHint.par -a MatchingHintClient -l ./Databases/MatchingHint_infile.txt -q testset/images/A08_add4.jpg -n 25

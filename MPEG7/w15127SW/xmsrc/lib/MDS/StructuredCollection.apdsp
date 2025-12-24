@@ -1,0 +1,20 @@
+# Begin Group "StructuredCollection"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\StructuredCollectionCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\StructuredCollectionCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\StructuredCollectionSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\StructuredCollectionSAppl.h
+# End Source File
+# End Group

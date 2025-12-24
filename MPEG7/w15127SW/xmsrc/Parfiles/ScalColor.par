@@ -1,0 +1,21 @@
+/* default application name*/
+Application	ScalableColorClient
+
+/* default database file name*/
+ListFile	Databases/images.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/ScalebleColor.mp7
+
+/* default number of matches*/
+NoOfMatches 8
+
+/* parmeter file for extraction*/
+/*Extractparfile	extract.par*/
+
+/* NumberOfBitplanesDiscarded: 0, 1, 2, 3, 4, 6 oder 8 */
+NumberOfBitplanesDiscarded 0
+
+/* NumberOfCoefficients: 16, 32, 64, 128 oder 256        */
+NumberOfCoefficients 256
+

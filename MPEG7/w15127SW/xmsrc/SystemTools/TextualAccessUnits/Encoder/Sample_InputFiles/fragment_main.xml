@@ -1,0 +1,6 @@
+<!--  Concrete instance: No AbstractionLevel  -->
+<Semantic id="soccergame_ins-sem">
+	<Label>
+		<FreeTerm> Soccer game between Spanish and Swedish soccer teams </FreeTerm>
+	</Label>
+</Semantic>

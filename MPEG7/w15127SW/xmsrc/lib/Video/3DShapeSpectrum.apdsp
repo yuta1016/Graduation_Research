@@ -1,0 +1,20 @@
+# Begin Group "3DShapeSpectrum"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Applications\3DShapeSpectrumCAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\3DShapeSpectrumCAppl.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\3DShapeSpectrumSAppl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\Applications\3DShapeSpectrumSAppl.h
+# End Source File
+# End Group

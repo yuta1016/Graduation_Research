@@ -1,0 +1,81 @@
+Technique	Mosaic
+Document	NXXX  MPEG-7 Working Draft MDS
+Name		Charilaos Christopoulos, Håkan Wallin(MediaLab, Ericsson Radio Systems AB,Sweden)
+Email		Charilaos.Christopoulos@era.ericsson.se
+Contact		Charilaos.Christopoulos@era.ericsson.se
+Type		Application
+External Libraries	NONE
+Related Ds/DSs	SummaryDS, Parametric Motion 
+Used Ds/DSs	Parametric Motion
+Input		MPEG-Video (foo.mpg), Wave Audio File (foo_audio_track.wav)
+Output		Extraction: foo.mpg.dir/mosaic.jpg (the mosiac itself)
+		Transcoding: foo.mpg.dir/mosaic.mpg (inverse movie from mosaic)
+Extraction	Yes
+Client Appl	Transcoding Application
+Summary		This component computes the affine motion model from frame to frame and creates a background mosaic basing on this information.
+Strong Points	The mosaic allows a very good Summary of a sequence.
+Limitations	The input sequence must not include scene cuts
+Known Problems	NONE
+Parameters	/* default application name*/
+		Application	MosaicClient
+
+		/* default database file name*/
+		ListFile	Databases/video_nocuts.lst
+
+		/* default bit stream file*/
+		Bitstream	Mosaic.ddl
+
+		/* default number of matches*/
+		NoOfMatches 8
+
+		/* parameter file for extraction*/
+		/*Extractparfile	extract.par*/
+
+		/* extract only new media files*/
+		SkipExtracted 1
+
+		/* Offset between Frames to be used for extraction*/
+		FrameDistance 3
+
+		/* Origin for motion parameters 0= (0,0) 1= center*/
+		POMOrigin 1
+
+		/* Hierarchies for Motion extraction*/
+		POMResolutions	4
+
+		/*Scale between Hierarchies*/
+		POMResolutionScale	0.7
+
+		/*Start From Zero for every image*/
+		POMStartFromZero	1
+
+		/* type of motion model*/
+		MotionModel 2  /*2=affine*/
+
+		/* time base*/
+		nnfraction 30
+		nn 1
+
+		/* skip boundary pixels*/
+		SkipBoundaryWidth 2
+
+		/* create mosaic image*/
+		CreateMosaic 1
+
+		/* Maximum size of the Mosaic*/
+		MosaicX=600
+		MosaicY=600
+
+		/* Mosaic Type 0= past, 1= extend 2=merge*/
+		MosaicType 1
+
+		/* scale values for parameter update*/
+		AlphaStart0	0.25
+		AlphaLimit0	0.005
+		AlphaStart1	0.25
+		AlphaLimit1	0.005
+		AlphaStart2	0.25
+		AlphaLimit2	0.005
+		AlphaStart3	1.
+		AlphaLimit3	0.02
+END

@@ -1,0 +1,51 @@
+	<!-- ############################################### -->
+	<!-- Definition of MatchingHint D                    -->
+	<!-- ############################################### -->
+	<complexType name="MatchingHintType">
+		<complexContent>
+			<extension base="mpeg7:DType">
+				<sequence>
+					<element name="Hint" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="mpeg7:ReferenceType">
+									<attribute name="value" type="mpeg7:zeroToOneType" use="required"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</sequence>
+				<attribute name="reliability" type="mpeg7:zeroToOneType" use="default" value="1.0"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<!-- ############################################### -->
+	<!-- Definition of zeroToOne Datatype                           -->
+	<!-- ########################################################## -->
+	<simpleType name="zeroToOneType">
+		<restriction base="float">
+			<minInclusive value="0.0"/>
+			<maxInclusive value="1.0"/>
+		</restriction>
+	</simpleType>
+
+	<!-- ################################################ -->
+	<!--   Definition of the Reference Datatype           -->
+	<!-- ################################################ -->
+	<attributeGroup name="referenceGrp">
+		<attribute name="idref" type="IDREF" use="optional"/>
+		<attribute name="xpath" type="mpeg7:xPathType" use="optional"/>
+		<attribute name="href" type="uriReference" use="optional"/>
+	</attributeGroup>
+	<complexType name="ReferenceType">
+		<attributeGroup ref="mpeg7:referenceGrp"/>
+	</complexType>
+	<!-- ################################################ -->
+	<!--   Definition of the xPath Datatype               -->
+	<!-- ################################################ -->
+	<simpleType name="xPathType">
+		<restriction base="string">
+			<pattern value="(/|//|\.|\.\.|([\i-[:]][\c-[:]]*))(\[\d\])?)+(@[\i-[:]][\c-[:]]*)?"/>
+		</restriction>
+	</simpleType>

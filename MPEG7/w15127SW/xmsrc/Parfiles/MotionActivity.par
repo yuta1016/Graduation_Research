@@ -1,0 +1,17 @@
+/* default application name*/ /* ??? */
+Application	MotionActivityClient
+
+/* default database file name*/
+ListFile	Databases/videos_ma.lst
+
+/* default bitstream file*/
+Bitstream	Bitstreams/MotionActivity.mp7
+
+/* default number of matches*/
+NoOfMatches 2
+
+/* select coding mode*/
+CodingMode  0
+
+/* additional parameters*/
+

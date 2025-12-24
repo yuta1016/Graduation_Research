@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>MDS/Mosaic</title>
+  </head>
+
+<body text="#000000" bgcolor="#ffffff">
+<h1><font color="#8800ff"><center>Documentation for MDS/Mosaic</center></font></h1>
+<table border="1">
+<colgroup><col width="20%"><col width="80%"></colgroup>
+<tr><th>Technique
+<td>Mosaic
+<tr><th>Document
+<td>NXXX  MPEG-7 Working Draft MDS
+<tr><th>Name
+<td>Charilaos Christopoulos, Håkan Wallin(MediaLab, Ericsson Radio Systems AB,Sweden)
+<tr><th>Email
+<td>Charilaos.Christopoulos@era.ericsson.se
+<tr><th>Contact
+<td>Charilaos.Christopoulos@era.ericsson.se
+<tr><th>Type
+<td>Application
+<tr><th>External Libraries
+<td>NONE
+<tr><th>Related Ds/DSs
+<td>SummaryDS, Parametric Motion 
+<tr><th>Used Ds/DSs
+<td>Parametric Motion
+<tr><th>Input
+<td>MPEG-Video (foo.mpg), Wave Audio File (foo_audio_track.wav)
+<tr><th>Output
+<td>Extraction: foo.mpg.dir/mosaic.jpg (the mosiac itself)<br>
+Transcoding: foo.mpg.dir/mosaic.mpg (inverse movie from mosaic)
+<tr><th>Extraction
+<td>Yes
+<tr><th>Client Appl
+<td>Transcoding Application
+<tr><th>Summary
+<td>This component computes the affine motion model from frame to frame and creates a background mosaic basing on this information.
+<tr><th>Strong Points
+<td>The mosaic allows a very good Summary of a sequence.
+<tr><th>Limitations
+<td>The input sequence must not include scene cuts
+<tr><th>Known Problems
+<td>NONE
+<tr><th>Parameters
+<td>/* default application name*/<br>
+Application	MosaicClient<br>
+/* default database file name*/<br>
+ListFile	Databases/video_nocuts.lst<br>
+/* default bit stream file*/<br>
+Bitstream	Mosaic.ddl<br>
+/* default number of matches*/<br>
+NoOfMatches 8<br>
+/* parameter file for extraction*/<br>
+/*Extractparfile	extract.par*/<br>
+/* extract only new media files*/<br>
+SkipExtracted 1<br>
+/* Offset between Frames to be used for extraction*/<br>
+FrameDistance 3<br>
+/* Origin for motion parameters 0= (0,0) 1= center*/<br>
+POMOrigin 1<br>
+/* Hierarchies for Motion extraction*/<br>
+POMResolutions	4<br>
+/*Scale between Hierarchies*/<br>
+POMResolutionScale	0.7<br>
+/*Start From Zero for every image*/<br>
+POMStartFromZero	1<br>
+/* type of motion model*/<br>
+MotionModel 2  /*2=affine*/<br>
+/* time base*/<br>
+nnfraction 30<br>
+nn 1<br>
+/* skip boundary pixels*/<br>
+SkipBoundaryWidth 2<br>
+/* create mosaic image*/<br>
+CreateMosaic 1<br>
+/* Maximum size of the Mosaic*/<br>
+MosaicX=600<br>
+MosaicY=600<br>
+/* Mosaic Type 0= past, 1= extend 2=merge*/<br>
+MosaicType 1<br>
+/* scale values for parameter update*/<br>
+AlphaStart0	0.25<br>
+AlphaLimit0	0.005<br>
+AlphaStart1	0.25<br>
+AlphaLimit1	0.005<br>
+AlphaStart2	0.25<br>
+AlphaLimit2	0.005<br>
+AlphaStart3	1.<br>
+AlphaLimit3	0.02
+</table>
+</body>
+</html>
