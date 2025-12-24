@@ -38,5 +38,4 @@ env/
 .python-version
 *.mp3
 
-test_*/*
-test*
+test*/*
