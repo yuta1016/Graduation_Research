@@ -26,7 +26,10 @@ mp3_download.py
 ↓
 ↓
 ★★★csv_with_mp3_path★★★downloaded_mp3★★★
-
+↓
+↓
+calculate_billboard_futures_info_by_age.py
+★★★★★★
 
 
 
