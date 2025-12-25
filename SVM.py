@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import balanced_accuracy_score
+import send_mail
 
 # ==========================================
 # 1. 設定 (CONFIGURATION)
@@ -17,7 +18,7 @@ PATH_COMPLEXITY = './features_complexity/2008_2025_complexity.csv'
 PATH_MFCC = './features_mfcc/2008_2025_mfcc.csv'
 
 # --- ターゲット設定 (8つの人気度指標) ---
-TARGET_COLS = ['Max', 'Mean', 'Std', 'Length', 'Sum', 'Skewness', 'Kurtosis', 'Track_Popularity']
+TARGET_COLS = ["Debut_Score", "Max", "Mean", "Std", "Length", "Sum", "Skewness", "Kurtosis"]
 
 # --- 特徴量の利用設定 (ロジック追加部分) ---
 # 他の人気度指標を特徴量として含めるかどうかのフラグ
@@ -33,6 +34,7 @@ FEAT_COMPLEXITY = [
     'ArousalMean', 'ArousalStd'
 ]
 FEAT_MFCC = [str(i) for i in range(32)]
+SPOTIFY_POPULARITY = ['Artist_Popularity', "Track_Popularity"]
 
 # ==========================================
 # 2. データロード・処理関数
@@ -68,8 +70,8 @@ def run_svm_logic(X_train, y_train, X_val, y_val, X_test, y_test):
     X_val_s = scaler.transform(X_val)
     X_test_s = scaler.transform(X_test)
 
-    C_range = [0.1, 1, 10, 100]
-    gamma_range = [0.001, 0.01, 0.1, 1, 'scale']
+    C_range = [0.1, 1, 10, 100, 1000]
+    gamma_range = [0.0001, 0.001, 0.01, 0.1, 1, 'scale']
     
     best_ba_val = -1
     best_model = None
@@ -115,15 +117,20 @@ def main():
         y_val = (val_df[target] > median_val).astype(int)
         y_test = (test_df[target] > median_val).astype(int)
 
+        # print(y_train.head(10))
+        # exit()
+
         # 特徴量リストの作成
         # 現在のターゲット以外の人気度指標を特定
         other_pop_metrics = [t for t in TARGET_COLS if t != target]
         
         # 実験設定の定義
         experiments = {
+            #"Foe example" : SPOTIFY_POPULARITY,
             "Exp2: Group_Complexity": FEAT_COMPLEXITY,
             "Exp2: Group_MFCC": FEAT_MFCC,
-            "Exp3: Combined_All": FEAT_COMPLEXITY + FEAT_MFCC
+            "Exp3: Combined_All": FEAT_COMPLEXITY + FEAT_MFCC,
+            "Exp4: Spotify_Popularity": FEAT_COMPLEXITY + FEAT_MFCC + SPOTIFY_POPULARITY
         }
 
         for exp_name, base_features in experiments.items():
@@ -138,6 +145,9 @@ def main():
             # データフレームから抽出
             X_tr, X_va, X_te = train_df[final_features], val_df[final_features], test_df[final_features]
             
+            # print(X_tr.head(10))
+            # exit()
+
             # SVM実行
             test_ba = run_svm_logic(X_tr, y_train, X_va, y_val, X_te, y_test)
             
@@ -149,14 +159,15 @@ def main():
             })
             print(f"  - {exp_name:25} | BA: {test_ba:.4f}")
 
-    # 結果保存
     results_df = pd.DataFrame(all_results)
-    results_df.to_csv(f'results_{mode_str}.csv', index=False)
     
-    # 簡易まとめ表示
     pivot_df = results_df.pivot(index='Target_Metric', columns='Experiment', values='Balanced_Accuracy')
     print(f"\n--- Summary ({mode_str}) ---")
     print(pivot_df)
+
+    # 結果保存    
+    pivot_df.to_csv(f'./result_SVM/results_{mode_str}.csv', index=False)
+    send_mail.prosess_mail("SVM処理完了\n", f"SVM.pyの処理が完了しました。結果ファイル: results_{mode_str}.csv")
 
 if __name__ == "__main__":
     main()
