@@ -4,15 +4,20 @@ from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import balanced_accuracy_score
 import send_mail
+import csv
 
 # ==========================================
 # 1. 設定 (CONFIGURATION)
 # ==========================================
 
 # --- ファイルパス設定 ---
-PATH_TRAIN = './billboard_futures_info_by_age/train_2008_2017.csv'
-PATH_VAL = './billboard_futures_info_by_age/val_2018_2021.csv'
-PATH_TEST = './billboard_futures_info_by_age/test_2022_2025.csv'
+# PATH_TRAIN = './billboard_futures_info_by_age/train_2008_2017.csv'
+# PATH_VAL = './billboard_futures_info_by_age/val_2018_2021.csv'
+# PATH_TEST = './billboard_futures_info_by_age/test_2022_2025.csv'
+YEARS_TRAIN = ["2019", "2020", "2021", "2022"]
+YEARS_VAL   = ["2023"]
+YEARS_TEST  = ["2024"]
+
 
 PATH_COMPLEXITY = './features_complexity/2008_2025_complexity.csv'
 PATH_MFCC = './features_mfcc/2008_2025_mfcc.csv'
@@ -41,22 +46,47 @@ SPOTIFY_POPULARITY = ['Artist_Popularity', "Track_Popularity"]
 # ==========================================
 
 class DataLoader:
-    def __init__(self, train_path, val_path, test_path, comp_path, mfcc_path):
-        self.paths = [train_path, val_path, test_path]
+    def __init__(self, comp_path, mfcc_path):
         self.comp_path = comp_path
         self.mfcc_path = mfcc_path
+        self.dfs = None
+        self.shapes = []
+        self.traing_per = None
+
+
+    def load_csv(self, years_train, years_val, years_test):
+        def load_logic(years):
+            dfs = []
+            for year in years:
+                path = f'./billboard_futures/billboard_features_{year}.csv'
+                df = pd.read_csv(path)
+                dfs.append(df)
+            return pd.concat(dfs, ignore_index=True)
+        
+        train_df = load_logic(years_train)
+        val_df = load_logic(years_val)
+        test_df = load_logic(years_test)
+
+        print("Loaded Data Shapes:")
+        self.shapes = [train_df.shape, val_df.shape, test_df.shape]
+        print(f"Train: {train_df.shape}\nVal: {val_df.shape}\nTest: {test_df.shape}")
+
+        self.traing_per = len(train_df) / (len(train_df) + len(val_df) + len(test_df)) * 100
+        print(f"traing_data(%) = {self.traing_per:.2f}%")
+
+        self.dfs = [train_df, val_df, test_df]
+
 
     def load_and_merge(self):
         df_comp = pd.read_csv(self.comp_path)
         df_mfcc = pd.read_csv(self.mfcc_path)
 
-        def merge_logic(base_path):
-            base_df = pd.read_csv(base_path)
+        def merge_logic(base_df):
             tmp = pd.merge(base_df, df_comp, on='URL', how='inner', suffixes=('', '_comp'))
             tmp = pd.merge(tmp, df_mfcc, on='URL', how='inner', suffixes=('', '_mfcc'))
             return tmp
 
-        return [merge_logic(p) for p in self.paths]
+        return [merge_logic(p) for p in self.dfs]
 
 
 def run_svm_logic(X_train, y_train, X_val, y_val, X_test, y_test):
@@ -70,8 +100,8 @@ def run_svm_logic(X_train, y_train, X_val, y_val, X_test, y_test):
     X_val_s = scaler.transform(X_val)
     X_test_s = scaler.transform(X_test)
 
-    C_range = [0.1, 1, 10, 100, 1000]
-    gamma_range = [0.0001, 0.001, 0.01, 0.1, 1, 'scale']
+    C_range = [0.1, 1, 10, 100]
+    gamma_range = [0.001, 0.01, 0.1, 1, 'scale']
     
     best_ba_val = -1
     best_model = None
@@ -95,7 +125,9 @@ def run_svm_logic(X_train, y_train, X_val, y_val, X_test, y_test):
 # ==========================================
 
 def main():
-    loader = DataLoader(PATH_TRAIN, PATH_VAL, PATH_TEST, PATH_COMPLEXITY, PATH_MFCC)
+    loader = DataLoader(PATH_COMPLEXITY, PATH_MFCC)
+
+    loader.load_csv(YEARS_TRAIN, YEARS_VAL, YEARS_TEST)
     train_df, val_df, test_df = loader.load_and_merge()
     
     all_results = []
@@ -127,7 +159,7 @@ def main():
         # 実験設定の定義
         experiments = {
             #"Foe example" : SPOTIFY_POPULARITY,
-            "Exp2: Group_Complexity": FEAT_COMPLEXITY,
+            "Exp1: Group_Complexity": FEAT_COMPLEXITY,
             "Exp2: Group_MFCC": FEAT_MFCC,
             "Exp3: Combined_All": FEAT_COMPLEXITY + FEAT_MFCC,
             "Exp4: Spotify_Popularity": FEAT_COMPLEXITY + FEAT_MFCC + SPOTIFY_POPULARITY
@@ -165,8 +197,31 @@ def main():
     print(f"\n--- Summary ({mode_str}) ---")
     print(pivot_df)
 
+    #各実験の結果平均を追加
+    pivot_df.loc['Average'] = pivot_df.mean()
+
     # 結果保存    
-    pivot_df.to_csv(f'./result_SVM/results_{mode_str}.csv', index=False)
+    pivot_df.to_csv(f'./result_SVM/results_{YEARS_TRAIN[0]}_{YEARS_TEST[-1]}.csv', index=True)
+
+    with open(f'./result_SVM/results_{YEARS_TRAIN[0]}_{YEARS_TEST[-1]}.csv', mode='a', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        
+        # 2行空ける
+        f.write('\n\n\n')
+        
+        # 年情報を書き込む
+        # リスト同士を足し算 [+] することで横に並べます
+        writer.writerow(['training'] + YEARS_TRAIN)
+        writer.writerow(['val'] + YEARS_VAL)
+        writer.writerow(['test'] + YEARS_TEST)
+
+        f.write('\n\n\n')
+
+        writer.writerow(['Data Shapes'])
+        writer.writerow(['Train', self.shapes[0]])
+        writer.writerow(['Val', self.shapes[1]])
+        writer.writerow(['Test', self.shapes[2]])
+
     send_mail.prosess_mail("SVM処理完了\n", f"SVM.pyの処理が完了しました。結果ファイル: results_{mode_str}.csv")
 
 if __name__ == "__main__":
