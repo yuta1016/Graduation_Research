@@ -232,7 +232,7 @@ void LoadGrayImg();
 void piksrtintS2B(int n, int *num, int *index);
 // VS2013-MODS
 #if (_MSC_VER < 1800)
-int round(float x);
+int xm_round(float x);
 #endif
 float tb_distance(float *a,float *b,int dim);
 int **imatrix(int nr, int nc);

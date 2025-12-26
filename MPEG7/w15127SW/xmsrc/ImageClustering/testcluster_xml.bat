@@ -1,0 +1,1 @@
+ClusterWinExe.exe -pEH newpar/EdgeHistogram.xml.par -pHT newpar/HomogeneousTexture.xml.par -pDC newpar/DominantColor.xml.par -pCS newpar/ColorStructure256.xml.par -pSC newpar/ScalColor.xml.par -pCL newpar/ColLayout.xml.par -l ..\dbtest.lst -o testclustout_xml.txt

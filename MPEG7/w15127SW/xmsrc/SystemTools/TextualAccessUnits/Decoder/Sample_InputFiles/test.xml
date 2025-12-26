@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns:xsi="http://www.w3.org/1999/XMLSchema-instance">
+        <Policy ref="1" type="Policy" name="MyHousePolicy">
+                <QuotationNumber/>
+                <PolicyNumber/>
+                <Status/>
+                <InceptionDate/>
+                <PolicyHolder xsi:type="Person">
+                        <Name>
+                                <Title/>
+                                <Forename/>
+                                <Middlename/>
+                                <Surname/>
+                                <Suffix/>
+                        </Name>
+                        <DateOfBirth/>
+                        <Address xsi:type="UKAddress">
+                                <AddressHeader/>
+                                <AddressLine/>
+                                <AddressLine/>
+                                <Town/>
+                                <County/>
+                                <Country/>
+                                <Postcode/>
+                        </Address>
+                        <CommunicationsChannel xsi:type="Telephone"
+type="Telephone">
+                                <PhoneType/>
+                                <CountryCode/>
+                                <AreaCode/>
+                                <TelephoneNumber/>
+                        </CommunicationsChannel>
+                </PolicyHolder>
+                <Product ref="HHP9" name="Household" type="HH">
+                        <ProductNumber>1</ProductNumber>
+                        <QuotationNumber/>
+                        <Status>OnRisk</Status>
+                        <InceptionDate/>
+                        <Section xsi:type="InsuranceSection" ref="HHS1"
+name="Buildings Section" type="BuildingSection">
+                                <Selected>true</Selected>
+                                <AssetRef name="Asset1" ref="BSA1"/>
+                                <SumInsured>
+                                        <Denomination>
+                                                <Name/>
+                                        </Denomination>
+                                        <Amount/>
+                                </SumInsured>
+                        </Section>
+                        <Section xsi:type="InsuranceSection" ref="HHS2"
+name="Contents Section" type="ContentsSection">
+                                <AssetRef name="ContentsAsset" ref="BSA2"/>
+                                <Selected>true</Selected>
+                                <SumInsured>
+                                        <Denomination>
+                                                <Name/>
+                                        </Denomination>
+                                        <Amount/>
+                                </SumInsured>
+                        </Section>
+                        <Section xsi:type="InsuranceSection" ref="HHS3"
+name="UnspecifiedAllRisks Section" type="UnspecifiedAllRisksSection">
+                                <AssetRef name="Asset3" ref="BSA3"/>
+                                <Selected>true</Selected>
+                                <SumInsured>
+                                        <Denomination>
+                                                <Name/>
+                                        </Denomination>
+                                        <Amount/>
+                                </SumInsured>
+                        </Section>
+                        <Section xsi:type="InsuranceSection" ref="HHS4"
+name="SpecifiedItems Section" type="SpecifiedItemsSection">
+                                <AssetRef name="Asset4" ref="BSA4"/>
+                                <Selected>true</Selected>
+                                <SumInsured>
+                                        <Denomination>
+                                                <Name/>
+                                        </Denomination>
+                                        <Amount/>
+                                </SumInsured>
+                        </Section>
+                        <Section xsi:type="InsuranceSection" ref="HHS5"
+name="Legal Expenses Section" type="LegalExpensesSection">
+                                <AssetRef name="Asset5" ref="BSA5"/>
+                                <Selected/>
+                                <SumInsured>
+                                        <Denomination>
+                                                <Name/>
+                                        </Denomination>
+                                        <Amount/>
+                                </SumInsured>
+                        </Section>
+                        <Section xsi:type="InsuranceSection" ref="HHS5"
+name="PolicyHolderSection" type="PolicyHolderSection">
+                                <AssetRef name="Asset10" ref="BSA10"/>
+                                <Selected/>
+                                <SumInsured>
+                                        <Denomination>
+                                                <Name/>
+                                        </Denomination>
+                                        <Amount>0</Amount>
+                                </SumInsured>
+                        </Section>
+                </Product>
+                <Asset xsi:type="BuildingAsset" name="Building"
+type="BuildingAsset" ref="BSA1">
+                        <AssetDefinitionRef name="BuildingAssetDefinition"
+ref="BuildingAssetDef"/>
+                        <Value>
+                                <Denomination>
+                                        <Name/>
+                                </Denomination>
+                                <Amount/>
+                        </Value>
+                        <ReplacementValue>
+                                <Denomination>
+                                        <Name/>
+                                </Denomination>
+                                <Amount/>
+                        </ReplacementValue>
+                        <SectionRef name="Section Reference"
+ref="BuildingSection"/>
+                        <Age/>
+                        <AreaCode/>
+                        <Listed/>
+                        <WallConstruction/>
+                        <AnyStructuresAdded/>
+                        <FreeFromLandslip/>
+                        <RoofConstruction/>
+                        <NearCliff/>
+                        <HistoryOfSubsidence/>
+                        <Postcode/>
+                        <SignsOfSubsidence/>
+                        <BuildingType/>
+                        <BuildingModifier/>
+                        <GoodStateOfRepair/>
+                        <NoOfBedrooms/>
+                        <FreeFromFlooding/>
+                        <SumInsured/>
+                </Asset>
+                <Asset xsi:type="ContentsAsset" name="Content"
+type="ContentAsset" ref="BSA3">
+                        <AssetDefinitionRef name="ContentAssetDefinition"
+ref="ContentAssetDef"/>
+                        <Value>
+                                <Denomination>
+                                        <Name/>
+                                </Denomination>
+                                <Amount/>
+                        </Value>
+                        <ReplacementValue>
+                                <Denomination>
+                                        <Name/>
+                                </Denomination>
+                                <Amount/>
+                        </ReplacementValue>
+                        <SectionRef name="Section Reference"
+ref="ContentsSection"/>
+                        <Postcode/>
+                        <BuildingModifier/>
+                        <SumInsured/>
+                        <AreaCode/>
+                        <Unoccupied/>
+                        <HolidayHome/>
+                        <BurglarAlarm/>
+                        <LeftUnattended/>
+                        <WindowLocks/>
+                        <FiveLeverLocks/>
+                        <BusinessUse/>
+                        <NeighbourhoodWatch/>
+                        <PropertyTenanted/>
+                        <LocksUsed/>
+                        <FireSmokeAlarm/>
+                        <PrivateHomeDwelling/>
+                        <PatioDoorLocks/>
+                </Asset>
+                <Asset xsi:type="PolicyHolderAsset" name="PolicyHolderAsset"
+type="PolicyHolderAsset" ref="BSA10">
+                        <AssetDefinitionRef
+name="PolicyHolderAssetDefinition" ref="PolicyHolderAssetDef"/>
+                        <Value>
+                                <Denomination>
+                                        <Name>GBP</Name>
+                                </Denomination>
+                                <Amount>0</Amount>
+                        </Value>
+                        <ReplacementValue>
+                                <Denomination>
+                                        <Name>GBP</Name>
+                                </Denomination>
+                                <Amount>0</Amount>
+                        </ReplacementValue>
+                        <SectionRef name="Section Reference"
+ref="PolicyHolderSection"/>
+                        <DateOfBirth>1967-01-04T00:00:00.000</DateOfBirth>
+                        <Occupation>Clerical</Occupation>
+                        <ClaimsHistory>3</ClaimsHistory>
+                        <ConvictionHistory>5</ConvictionHistory>
+                </Asset>
+                <Asset xsi:type="UnspecifiedAllRisks"
+name="UnspecifiedAllRisksAsset" type="UnspecifiedAllRisksAsset" ref="BSA3">
+                        <AssetDefinitionRef
+name="UnspecifiedAllRisksAssetDefinition"
+ref="UnspecifiedAllRisksAssetDef"/>
+                        <Value>
+                                <Denomination>
+                                        <Name>GBP</Name>
+                                </Denomination>
+                                <Amount>5000</Amount>
+                        </Value>
+                        <ReplacementValue>
+                                <Denomination>
+                                        <Name>GBP</Name>
+                                </Denomination>
+                                <Amount>5000</Amount>
+                        </ReplacementValue>
+                        <Postcode>TN39HU</Postcode>
+                        <ItemType/>
+                        <SumInsured>5000</SumInsured>
+                </Asset>
+                <Asset xsi:type="SpecifiedItem" name="SpecifiedItemAsset"
+type="SpecifiedItemAsset" ref="BSA4">
+                        <AssetDefinitionRef
+name="SpecifiedItemAssetDefinition" ref="SpecifiedItemAssetDef"/>
+                        <Value>
+                                <Denomination>
+                                        <Name>GBP</Name>
+                                </Denomination>
+                                <Amount>1500</Amount>
+                        </Value>
+                        <ReplacementValue>
+                                <Denomination>
+                                        <Name>GBP</Name>
+                                </Denomination>
+                                <Amount>1000</Amount>
+                        </ReplacementValue>
+                        <Postcode>TN39HU</Postcode>
+                        <ItemType>Jewellery</ItemType>
+                        <SumInsured>1500</SumInsured>
+                </Asset>
+                <Asset xsi:type="LegalExpenses" name="LegalExpensesAsset"
+type="LegalExpensesAsset" ref="BSA5">
+                        <AssetDefinitionRef
+name="LegalExpensesAssetDefinition" ref="LegalExpensesAssetDef"/>
+                        <Value>
+                                <Denomination>
+                                        <Name>GBP</Name>
+                                </Denomination>
+                                <Amount>10000</Amount>
+                        </Value>
+                        <ReplacementValue>
+                                <Denomination>
+                                        <Name>GBP</Name>
+                                </Denomination>
+                                <Amount>10000</Amount>
+                        </ReplacementValue>
+                        <SumInsured>10000</SumInsured>
+                </Asset>
+        </Policy>
+</document>

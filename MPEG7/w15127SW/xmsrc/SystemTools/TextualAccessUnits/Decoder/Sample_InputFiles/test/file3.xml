@@ -1,0 +1,94 @@
+<CreationInformation id="news1a">
+		<Creation>
+			<Title xml:lang="es">Telediario (segunda edición)</Title>
+			<Title xml:lang="en" type="popular">Afternoon news</Title>
+			<Title xml:lang="es" type="popular">Noticias de la tarde</Title>
+			<Abstract>
+				<FreeTextAnnotation>
+ 					The trial about the kidnapping of Segundo Marey started this 
+ 					morning. Short interview with Segundo Marey after the end of the 
+ 					first session.
+			    	</FreeTextAnnotation>
+				<StructuredAnnotation>
+					<Who>
+						<Name>Segundo Marey</Name>
+					</Who>
+				</StructuredAnnotation>
+			</Abstract>
+			<Creator>
+				<Role href="urn:mpeg:MPEG7RoleCS:ANCHOR">
+					<Name xml:lang="en">Anchorman</Name>
+				</Role>
+				<Agent xsi:type="PersonType">
+					<Name>
+						<GivenName>Ana</GivenName>
+						<FamilyName>Blanco</FamilyName>
+					</Name>
+				</Agent>
+			</Creator>
+			<CreationCoordinates>
+				<CreationLocation>
+					<Name xml:lang="es">Piruli</Name>
+					<Country>es</Country>
+					<AdministrativeUnit>Madrid</AdministrativeUnit>
+				</CreationLocation>
+				<CreationDate>
+					<TimePoint>1998-10-03T14:13+01:00</TimePoint>
+				</CreationDate>
+			</CreationCoordinates>
+			<CreationTool>
+				<Tool>
+					<Name>Video Camera</Name>
+				</Tool>
+				<Setting name="zoom" value="1.5"/>
+				<Setting name="aperture" value="35"/>
+			</CreationTool>
+		</Creation>
+		<Classification>
+			<Form href="urn:mpeg:TVAnytime_v0.1FormatCS:1.1">
+				<Name xml:lang="en">Bulletin</Name>
+			</Form>
+			<Genre href="urn:mpeg:TVAnytime_v0.1ContentCS:1.3.1">
+				<Name xml:lang="en">Daily news</Name>
+			</Genre>
+			<Purpose href="urn:mpeg:TVAnytime_v0.1IntentionCS.:2.1">
+				<Name xml:lang="en">Pure information</Name>
+			</Purpose>
+			<Language type="main">es</Language>
+			<Release date="1998-06-16T21:30+01:00">
+				<Country>es</Country>
+			</Release>
+			<Target/>
+			<ParentalGuidance>
+				<ParentalRating href="urn:mpeg:MPAAParentalRatingCS:G"/>
+				<Country>es</Country>
+			</ParentalGuidance>
+			<MediaReview>
+				<Rating>
+					<RatingValue>10</RatingValue>
+					<RatingScheme best="10" worst="1" style="higherBetter">
+						<Name>Overall</Name>
+					</RatingScheme>
+				</Rating>
+			</MediaReview>
+			<MediaReview>
+				<FreeTextReview xml:lang="en">Interesting News today.</FreeTextReview>
+				<FreeTextReview xml:lang="es">Interesantes noticias hoy.</FreeTextReview>
+				<ReviewReference>
+					<PublicationType href="urn:mpeg:MPEG7PublicationTypeCS:4">
+						<Name xml:lang="en">Internet</Name>
+					</PublicationType>
+					<MediaLocator>
+						<MediaUri>http://tvmagazine.com</MediaUri>
+					</MediaLocator>
+				</ReviewReference>
+			</MediaReview>
+		</Classification>
+		<RelatedMaterial>
+			<PublicationType href="urn:mpeg:MPEG7PublicationTypeCS:4"/>
+			<MediaLocator>
+				<MediaUri>http://www.rtve.es</MediaUri>
+			</MediaLocator>
+		</RelatedMaterial>
+	</CreationInformation>
+
