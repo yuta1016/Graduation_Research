@@ -29,7 +29,31 @@ mp3_download.py
 ↓
 ↓
 calculate_billboard_futures_info_by_age.py
-★★★★★★
+↓
+↓
+★★★
+billboard_futures_info_by_age
+train
+val
+test
+★★★
+
+
+★★★csv_with_mp3_path★★★downloaded_mp3★★★
+↓
+↓
+extract_complexity_features_from_mp3.py
+extract_mfcc_features_from_mp3.py
+↓
+↓
+★★★
+features_complexity
+features_mfcc
+★★★
+
+
+
+
 
 
 
