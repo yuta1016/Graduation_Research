@@ -1,3 +1,4 @@
+#デビュー年ごとにビルボード特徴量を計算し、分割保存するスクリプト
 import os
 import csv
 from dataclasses import dataclass, field
@@ -6,14 +7,31 @@ import statistics
 import pandas as pd
 
 INPUT_DATA_FOLDER = "csv_with_mp3_path"
-OUTPUT_FOLDER = "billboard_futures_info"
-#OUTPUT_FOLDER = "testtttttt"
-OUTPUT_FILENAME = "2008_2025_billboard_futures_info"
+OUTPUT_FOLDER = "billboard_futures"
+OUTPUT_FILENAME = "billboard_features"
 
-YEARS = ["2008", "2009", "2010", "2011", "2012", 
-         "2013", "2014", "2015", "2016", "2017", 
-         "2018", "2019", "2020", "2021", "2022", 
-         "2023", "2024", "2025"]
+# TRAIN_CSV = "train_2008_2017.csv"
+# VAL_CSV = "val_2018_2021.csv"
+# TEST_CSV = "test_2022_2025.csv"
+
+# 年代設定
+YEARS_TRAIN = ["2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017"]
+YEARS_VAL   = ["2018", "2019", "2020", "2021"]
+YEARS_TEST  = ["2022", "2023", "2024", "2025"]
+
+# YEARS_TRAIN = ["2020", "2021", "2022"]
+# YEARS_VAL   = ["2023"]
+# YEARS_TEST  = ["2024", "2025"]
+
+# TRAIN_CSV = "train_2020_2022.csv"
+# VAL_CSV = "val_2023.csv"
+# TEST_CSV = "test_2024_2025.csv"
+
+THRESHOLD_YEAR_TRAIN_END = 2022
+THRESHOLD_YEAR_VAL_END   = 2023
+
+# 全ての対象年
+ALL_YEARS = YEARS_TRAIN + YEARS_VAL + YEARS_TEST
 
 # --- 1. データ構造の定義 (コンテナ) ---
 @dataclass
@@ -22,6 +40,10 @@ class SongData:
     track: str
     url: str
     mp3_path: str
+    artist_popularity: int
+    track_popularity: int
+    # ★追加: 初登場年を記録（最初はありえない大きな数字にしておく）
+    debut_year: int = 9999
     # スコアのリストを空リストで自動初期化
     scores: List[int] = field(default_factory=list)
 
@@ -31,22 +53,29 @@ class CalculateFeatures:
         self.songs_db = {}
         self.features_list = []
 
-
     def get_csvfile_path(self):
         all_csvfile_path = []
         for dir_path, dirnames, filenames in os.walk(INPUT_DATA_FOLDER):
-            #指定した年のフォルダーだけのcsvファイルを集める
-            if any(year in dir_path for year in YEARS):
-                for filename in filenames:
-                    if filename.endswith(".csv"):
-                        file_path = os.path.join(dir_path, filename)
-                        all_csvfile_path.append(file_path)
+            for filename in filenames:
+                if filename.endswith(".csv"):
+                    file_path = os.path.join(dir_path, filename)
+                    all_csvfile_path.append(file_path)
         return all_csvfile_path
     
+    # パスから年を抽出するヘルパー関数
+    def _extract_year_from_path(self, path):
+        # パスの中に '2008' ～ '2025' の文字列が含まれていればそれを返す
+        for year in ALL_YEARS:
+            if year in path:
+                #print(f"Extracted year {year} from path {path}")
+                return int(year)
+        return 9999
 
-    #楽曲のもっているscoreを一旦集める
+    # 楽曲のもっているscoreを一旦集める
     def retrive_score(self, all_csv_path):
         for csv_path in all_csv_path:
+            # ★現在のCSVが何年のものか取得
+            current_year = self._extract_year_from_path(csv_path)
 
             try:
                 with open(csv_path, mode="r", encoding="utf-8") as file:
@@ -55,134 +84,136 @@ class CalculateFeatures:
                     songs_info = list(reader)
 
                     for index, row in enumerate(songs_info):
-                        #アーティスト名,曲名,順位,Spotify URL,アーティスト人気度,track人気度,MP3_Local_Path
                         artist = row[0].strip()
                         track = row[1].strip()
                         score = int(row[2].strip())
-                        url = row[3].strip() #曲を識別するために使う
+                        url = row[3].strip() 
+                        artist_popularity = int(row[4].strip())
+                        track_popularity = int(row[5].strip())
                         mp3_path = row[6].strip()
 
                         if url not in self.songs_db:
-                            self.songs_db[url] = SongData(artist, track, url, mp3_path)
-                        
-                        # 既存でも新規でも、スコアを追加するだけ
+                            self.songs_db[url] = SongData(artist, track, url, mp3_path, artist_popularity, track_popularity)
+                        # ★ デビュー年の更新: 
+                        # 登録されている年より、今のファイルの年が古ければ更新（初登場年を特定するため）
+                        if current_year < self.songs_db[url].debut_year:
+                            self.songs_db[url].debut_year = current_year
+
+                        # スコアを追加
                         self.songs_db[url].scores.append(score)
+
             except Exception as e:
-                print(e)
+                print(f"Error reading {csv_path}: {e}")
         return self.songs_db
     
-
 
     def calculate_features(self, song: SongData):
         scores = song.scores
         n = len(scores)
-
         if n == 0: return
 
-        # 1. Debut: 初登場時のスコア (リストの最初)
+        # 特徴量計算（変更なし）
         debut = scores[0]
-
-        # 2. Max: 最高スコア
         max_score = max(scores)
-
-        # 3. Mean: 平均スコア
         mean_score = statistics.mean(scores)
-
-        # 4. Length: チャートイン期間 (週数)
         length = n
-
-        # 5. Sum: スコアの合計
         total_sum = sum(scores)
-
-        # 6. Std: 標準偏差
-        # データが1つしかない場合は偏差が計算できないため0とする
+        
         if n > 1:
             std_dev = statistics.stdev(scores)
         else:
             std_dev = 0.0
 
-        # 7. Skewness (歪度) & 8. Kurtosis (尖度)
-        # 標準偏差が0（すべてのスコアが同じ）の場合は計算不能なので0とする
         skewness = 0.0
         kurtosis = 0.0
 
         if n > 2 and std_dev > 0:
-            # 偏差の計算
             diffs = [x - mean_score for x in scores]
-            
-            # Skewness (歪度) の計算: Fisher-Pearson coefficient
-            # m3 = sum((x-mean)^3) / n
             m3 = sum(d**3 for d in diffs) / n
             skewness = m3 / (std_dev**3)
-
-            # Kurtosis (尖度) の計算: Excess Kurtosis (正規分布を0とするため -3 するのが一般的)
-            # m4 = sum((x-mean)^4) / n
             m4 = sum(d**4 for d in diffs) / n
             kurtosis = (m4 / (std_dev**4)) - 3
 
-        # 結果を辞書にまとめる
         feature_data = {
             "Artist": song.artist,
             "Track": song.track,
             "URL": song.url,
             "MP3_Path": song.mp3_path,
-            "Debut": debut,
+            "Debut_Year": song.debut_year, # ★保存用に年も追加しておくと便利
+            "Debut_Score": debut,
             "Max": max_score,
             "Mean": round(mean_score, 2),
             "Std": round(std_dev, 2),
             "Length": length,
             "Sum": total_sum,
             "Skewness": round(skewness, 2),
-            "Kurtosis": round(kurtosis, 2)
+            "Kurtosis": round(kurtosis, 2),
+            "Artist_Popularity": song.artist_popularity,
+            "Track_Popularity": song.track_popularity
         }
 
-        # 保存
         self.features_list.append(feature_data)
-        
-        # 確認用出力
-        # print(f"計算完了: {song.track} -> {feature_data}")
 
 
-    def save_csv(self):
+    # ★ここを書き換え：年ごとにファイルを分割して保存
+    def save_split_csv(self):
         os.makedirs(OUTPUT_FOLDER, exist_ok=True)
-        save_path = os.path.join(OUTPUT_FOLDER, OUTPUT_FILENAME+".csv")
 
-        try:
-            df = pd.DataFrame(self.features_list)
+        # 全データをDataFrame化
+        df = pd.DataFrame(self.features_list)
+        
+        # データが存在しない場合のガード処理
+        if df.empty:
+            print("⚠️ 保存するデータがありません。")
+            return
 
-            df.to_csv(save_path, index=False, encoding="utf-8-sig")
+        # カラムの並び順定義
+        cols = ["Artist", "Track", "URL", "MP3_Path", "Debut_Year", "Debut_Score", "Max", "Mean", "Std", "Length", "Sum", "Skewness", "Kurtosis", "Artist_Popularity", "Track_Popularity"]
+        # カラムの存在確認をしてから並び替え
+        existing_cols = [c for c in cols if c in df.columns]
+        df = df[existing_cols]
 
-            print("●成功")
-        except Exception as e:
-            print(f"❌保存エラー : {e}")
+        # --- 年別保存ロジック ---
+        # 存在する「デビュー年」のリストを取得してソート
+        unique_years = sorted(df["Debut_Year"].unique())
+        
+        print(f"\n以下の年ごとにファイルを分割保存します: {unique_years}")
 
+        for year in unique_years:
+            # その年のデータだけを抽出
+            df_year = df[df["Debut_Year"] == year]
+            
+            # 保存ファイル名の作成 (例: billboard_features_2008.csv)
+            # フォルダ構成を維持したい場合は、os.path.join(OUTPUT_FOLDER, str(year), filename) 等にすることも可能ですが、
+            # ここではシンプルに出力フォルダ直下に年別のファイルを作成します。
+            filename = f"billboard_features_{year}.csv"
+            save_path = os.path.join(OUTPUT_FOLDER, filename)
+
+            try:
+                df_year.to_csv(save_path, index=False, encoding="utf-8-sig")
+                print(f"✅ 年別保存完了: {save_path} ({len(df_year)}曲)")
+            except Exception as e:
+                print(f"❌ 保存エラー [Year: {year}]: {e}")
 
 
 def main():
     calculater = CalculateFeatures()
-    print("ビルボードの特徴量を計算するよ")
+    print("ビルボードの特徴量を計算し、時系列で分割保存します")
 
     all_csv_path = calculater.get_csvfile_path()
-    print(f"ファイル数: {len(all_csv_path)}")
-    #print(all_csv_path)
+    print(f"読込対象ファイル数: {len(all_csv_path)}")
 
-    #以下のものが複数入った配列が帰ってくる
-    #'https://': SongData(artist='幾田りら', track='Answer', url='https://', scores=[1, 1, 5]), 
     songs_info = calculater.retrive_score(all_csv_path)
-    print(f"集計曲数: {len(songs_info)}")
-    # print(songs_info)
-
+    print(f"集計ユニーク曲数: {len(songs_info)}")
     
     print("\n--- 特徴量計算開始 ---")
-    #self.features_listに特徴量が以下の形式で保存されている
-    #{'Artist': 'EXILE', 'Track': 'Ti Amo', 'URL': 'https://open.spotify.com/track/6YFewEWHZB04bJfGYgbYCC', 'Debut': 99, 'Max': 100, 'Mean': 76.75, 'Std': 26.99, 'Length': 8, 'Sum': 614, 'Skewness': -0.82, 'Kurtosis': -0.98}
     for song in songs_info.values():
         calculater.calculate_features(song)
 
-    print(f"\n計算完了: {len(calculater.features_list)} 曲の特徴量を保存しました。")
+    print(f"計算完了。保存処理に移ります...")
     
-
-    calculater.save_csv()
+    # 分割保存を実行
+    calculater.save_split_csv()
 
 
 if __name__ == "__main__":
