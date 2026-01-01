@@ -23,12 +23,12 @@ import random
 START_YEAR = 2008
 END_YEAR = 2024
 
-TRAING_REN = 3
+TRAING_REN = 4
 VAL_LEN = 1
 TEST_LEN = 1
 
 OUTPUT_PATH = 'result_SVM'
-OUTPUT_PATH_PER = 'random/traing_60_per'
+OUTPUT_PATH_PER = 'random/traing_70_per'
 
 
 PATH_COMPLEXITY = './features_complexity/2008_2025_complexity.csv'
@@ -275,11 +275,15 @@ def main():
 
     # スライディングウィンドウ実行
     for i in range(len(all_years) - total_len + 1):
-        years_train = all_years[i : i + train_len]
-        years_val = all_years[i + train_len : i + train_len + val_len]
+        # years_train = all_years[i : i + train_len]
+        # years_val = all_years[i + train_len : i + train_len + val_len]
+        # years_test = all_years[i + train_len + val_len : i + total_len]
+
         years_test = all_years[i + train_len + val_len : i + total_len]
+        years_train = random.sample([y for y in all_years if y not in years_test], train_len)
+        years_val = random.sample([y for y in all_years if y not in years_train and y not in years_test], val_len)
+        print(f"Selected Years - Train: {years_train}, Val: {years_val}, Test: {years_test}")
         
-        print(f"\n=== Processing Window: Train={years_train}, Val={years_val}, Test={years_test} ===")
         run_experiment(years_train, years_val, years_test)
 
     send_mail.prosess_mail(f"SVM処理完了\nSVM.pyの処理が完了しました。期間: {years_train[0]}-{years_test[-1]}")
