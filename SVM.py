@@ -6,6 +6,7 @@ from sklearn.metrics import balanced_accuracy_score
 import send_mail
 import csv
 import os
+import random
 
 # ==========================================
 # 1. 設定 (CONFIGURATION)
@@ -27,7 +28,7 @@ VAL_LEN = 1
 TEST_LEN = 1
 
 OUTPUT_PATH = 'result_SVM'
-OUTPUT_PATH_PER = 'traing_60_per'
+OUTPUT_PATH_PER = 'random/traing_60_per'
 
 
 PATH_COMPLEXITY = './features_complexity/2008_2025_complexity.csv'
@@ -254,6 +255,14 @@ def main():
     start_year = START_YEAR
     end_year = END_YEAR
     all_years = [str(y) for y in range(start_year, end_year + 1)]
+
+    # print(f"All Years: {all_years}")
+    # print(f"Total Years: {len(all_years)}")
+    # print("---------------------------------------")
+    # random_years = random.sample(all_years, TRAING_REN)
+    # print(f"Random Years: {random_years}")
+    # print(f"Total Random Years: {len(random_years)}")
+    # exit()
 
     # ウィンドウサイズ設定
     train_len = TRAING_REN
