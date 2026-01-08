@@ -28,7 +28,7 @@ VAL_LEN = 1
 TEST_LEN = 1
 
 OUTPUT_PATH = 'result_SVM'
-OUTPUT_PATH_PER = 'random/traing_70_per'
+OUTPUT_PATH_PER = 'median_val/median_val_traing_70_per'
 
 
 PATH_COMPLEXITY = './features_complexity/2008_2025_complexity.csv'
@@ -149,6 +149,12 @@ def run_experiment(years_train, years_val, years_test):
 
     loader.load_csv(years_train, years_val, years_test)
     train_df, val_df, test_df = loader.load_and_merge()
+
+    print(f"\nData after merging features:")
+    print(f"train:{train_df.columns}::: shape={train_df.shape}")
+    #print(f"val:{val_df.head(3)}::: shape={val_df.shape}")
+    #print(f"test:{test_df.head(3)}::: shape={test_df.shape}")
+    exit()
     
     all_results = []
     mode_str = "with_PopFeatures" if INCLUDE_OTHER_TARGETS_AS_FEATURES else "audio_only"
@@ -163,11 +169,18 @@ def run_experiment(years_train, years_val, years_test):
             Max
             0    1653
             1    1594
-            Name: count, dtype: int64"""
-        median_val = train_df[target].median()
+            Name: count, dtype: int64
+        """
+        #median_val = train_df[target].median()
+        median_val = val_df[target].median()
         y_train = (train_df[target] > median_val).astype(int)
         y_val = (val_df[target] > median_val).astype(int)
         y_test = (test_df[target] > median_val).astype(int)
+
+        print(f"y_train:{y_train.value_counts()}")
+        print(f"y_val:{y_val.value_counts()}")
+        print(f"y_test:{y_test.value_counts()}")
+        
 
         # print(y_train.head(10))
         # exit()
