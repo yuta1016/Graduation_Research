@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import tkinter as tk
 from tkinter import filedialog, messagebox
+import math
 
 # 比較したい統計指標をここで定義
 TARGET_METRICS = ["Debut_Score", "Max", "Mean", "Std", "Length", "Sum", "Skewness", "Kurtosis"]
@@ -126,7 +127,17 @@ def visualize_comparison(folder_data, metrics):
     if not folder_data:
         return
 
-    for metric in metrics:
+    # サブプロットの行数・列数を計算
+    num_metrics = len(metrics)
+    cols = 2
+    rows = math.ceil(num_metrics / cols)
+
+    # squeeze=Falseにすることで、1つの場合でも必ず配列として返されるようにする
+    fig, axes = plt.subplots(rows, cols, figsize=(15, 5 * rows), squeeze=False)
+    axes = axes.flatten()
+
+    for i, metric in enumerate(metrics):
+        ax = axes[i]
         print(f"Processing metric: {metric}")
         plot_data = []
 
@@ -143,31 +154,36 @@ def visualize_comparison(folder_data, metrics):
         
         if not plot_data:
             print(f"指標 '{metric}' のデータが見つかりませんでした。")
+            ax.set_visible(False)
             continue
 
         # 比較用DataFrame作成
         comp_df = pd.DataFrame(plot_data)
 
         # グラフ描画
-        plt.figure(figsize=(12, 6))
         # x軸を実験(Experiment)、色(hue)をフォルダにして比較
-        ax = sns.barplot(data=comp_df, x='Experiment', y='Score', hue='Folder', palette='viridis')
+        sns.barplot(data=comp_df, x='Experiment', y='Score', hue='Folder', palette='viridis', ax=ax)
         
         # 数値を棒グラフの上に表示
         for container in ax.containers:
-            ax.bar_label(container, fmt='%.3f', padding=3, fontsize=9)
+            ax.bar_label(container, fmt='%.3f', padding=3, fontsize=8)
         
-        plt.title(f"Comparison of {metric} Scores (Average per Folder)")
+        ax.set_title(f"Comparison of {metric} Scores")
         
         # スケール調整
         max_score = comp_df['Score'].max()
         if max_score <= 1.0:
-            plt.ylim(0, 1.1)
+            ax.set_ylim(0, 1.1)
             
-        plt.grid(axis='y', linestyle='--', alpha=0.7)
-        plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0)
-        plt.tight_layout()
-        plt.show()
+        ax.grid(axis='y', linestyle='--', alpha=0.7)
+        ax.legend(loc='upper right', fontsize='small')
+
+    # 余ったサブプロットを非表示にする
+    for j in range(i + 1, len(axes)):
+        axes[j].set_visible(False)
+
+    plt.tight_layout()
+    plt.show()
 
 def main():
     # 1. フォルダ選択
