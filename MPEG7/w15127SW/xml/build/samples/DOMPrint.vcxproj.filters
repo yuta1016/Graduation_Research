@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\samples\src\DOMPrint\DOMPrint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\samples\src\DOMPrint\DOMPrintErrorHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\samples\src\DOMPrint\DOMPrintFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\samples\src\DOMPrint\DOMTreeErrorReporter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\samples\src\DOMPrint\DOMPrintErrorHandler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\samples\src\DOMPrint\DOMPrintFilter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\samples\src\DOMPrint\DOMTreeErrorReporter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\samples\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{C6D0E387-E68C-3B24-8AA9-F1A9F56D83F1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{FBBF5D23-7E70-3E4B-BCEE-29D2973F0C60}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

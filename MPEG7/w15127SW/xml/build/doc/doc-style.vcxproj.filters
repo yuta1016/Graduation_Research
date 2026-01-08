@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\dtd\blocks.ent">
+      <Filter>style\dtd</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\dtd\characters.ent">
+      <Filter>style\dtd</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\dtd\links.ent">
+      <Filter>style\dtd</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\dtd\markup.ent">
+      <Filter>style\dtd</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\graphics\button-a.gif">
+      <Filter>style\graphics</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\graphics\button-b.gif">
+      <Filter>style\graphics</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\graphics\section.gif">
+      <Filter>style\graphics</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\bottom.gif">
+      <Filter>style\resources</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\button-asf-hi.gif">
+      <Filter>style\resources</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\button-asf-lo.gif">
+      <Filter>style\resources</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\button-w3c-hi.gif">
+      <Filter>style\resources</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\button-w3c-lo.gif">
+      <Filter>style\resources</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\button-xml-hi.gif">
+      <Filter>style\resources</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\button-xml-lo.gif">
+      <Filter>style\resources</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\close.gif">
+      <Filter>style\resources</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\dot.gif">
+      <Filter>style\resources</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\join.gif">
+      <Filter>style\resources</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\line.gif">
+      <Filter>style\resources</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\logo.gif">
+      <Filter>style\resources</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\note.gif">
+      <Filter>style\resources</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\right.gif">
+      <Filter>style\resources</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\separator-space.gif">
+      <Filter>style\resources</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\separator.gif">
+      <Filter>style\resources</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\void.gif">
+      <Filter>style\resources</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\any2header.xsl">
+      <Filter>style\stylesheets</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\any2project.xsl">
+      <Filter>style\stylesheets</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\book2group.xsl">
+      <Filter>style\stylesheets</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\book2project.xsl">
+      <Filter>style\stylesheets</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\changes2document.xsl">
+      <Filter>style\stylesheets</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\context2footer.xsl">
+      <Filter>style\stylesheets</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\context2label.xsl">
+      <Filter>style\stylesheets</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\context2section.xsl">
+      <Filter>style\stylesheets</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\directory2project.xsl">
+      <Filter>style\stylesheets</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\document2html.xsl">
+      <Filter>style\stylesheets</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\faqs2document.xsl">
+      <Filter>style\stylesheets</Filter>
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\group2document.xsl">
+      <Filter>style\stylesheets</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\loader.xml">
+      <Filter>style</Filter>
+    </XML>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="style">
+      <UniqueIdentifier>{607856B3-5B0C-30FD-8D22-0FE5D9ED1F65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="style\dtd">
+      <UniqueIdentifier>{B09D6EEA-772E-3CCB-BCDC-4317A02ACDC1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="style\graphics">
+      <UniqueIdentifier>{036ACCD8-ED6B-3187-91AD-28346868668C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="style\resources">
+      <UniqueIdentifier>{24EB89F5-6EA8-33AD-BCD7-BA083B8266F6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="style\stylesheets">
+      <UniqueIdentifier>{6E8DD0EB-E8E4-3A90-AA57-748D0F179CC7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

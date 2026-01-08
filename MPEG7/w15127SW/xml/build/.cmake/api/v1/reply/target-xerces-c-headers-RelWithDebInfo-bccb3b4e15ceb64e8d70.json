@@ -1,0 +1,2984 @@
+{
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target"
+		],
+		"files" : 
+		[
+			"src/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1268,
+				"parent" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		}
+	],
+	"folder" : 
+	{
+		"name" : "Library"
+	},
+	"id" : "xerces-c-headers::@145eef247bfb46b6828c",
+	"name" : "xerces-c-headers",
+	"paths" : 
+	{
+		"build" : "src",
+		"source" : "src"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "xercesc\\util",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				84,
+				85,
+				86,
+				87,
+				88,
+				89,
+				90,
+				91,
+				92,
+				93,
+				94,
+				95,
+				96,
+				97,
+				98,
+				99,
+				100,
+				101,
+				102,
+				103,
+				104,
+				105,
+				106,
+				107,
+				108,
+				109,
+				110,
+				111,
+				112,
+				113,
+				114,
+				115,
+				116,
+				117,
+				118,
+				119,
+				120,
+				121,
+				122,
+				123,
+				124,
+				125,
+				126,
+				127,
+				128,
+				129,
+				130,
+				131,
+				132,
+				133,
+				134,
+				135,
+				136,
+				137,
+				138,
+				139,
+				140,
+				141,
+				142
+			]
+		},
+		{
+			"name" : "xercesc\\util\\regx",
+			"sourceIndexes" : 
+			[
+				57,
+				58,
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				66,
+				67,
+				68,
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76,
+				77,
+				78,
+				79,
+				80,
+				81,
+				82,
+				83
+			]
+		},
+		{
+			"name" : "xercesc\\dom",
+			"sourceIndexes" : 
+			[
+				143,
+				144,
+				145,
+				146,
+				147,
+				148,
+				149,
+				150,
+				151,
+				152,
+				153,
+				154,
+				155,
+				156,
+				157,
+				158,
+				159,
+				160,
+				161,
+				162,
+				163,
+				164,
+				165,
+				166,
+				167,
+				168,
+				169,
+				170,
+				171,
+				172,
+				173,
+				174,
+				175,
+				176,
+				177,
+				178,
+				179,
+				180,
+				181,
+				182,
+				183,
+				184,
+				185,
+				186,
+				187,
+				188,
+				189,
+				190,
+				191,
+				192,
+				193,
+				194,
+				195,
+				196
+			]
+		},
+		{
+			"name" : "xercesc\\dom\\impl",
+			"sourceIndexes" : 
+			[
+				197,
+				198,
+				199,
+				200,
+				201,
+				202,
+				203,
+				204,
+				205,
+				206,
+				207,
+				208,
+				209,
+				210,
+				211,
+				212,
+				213,
+				214,
+				215,
+				216,
+				217,
+				218,
+				219,
+				220,
+				221,
+				222,
+				223,
+				224,
+				225,
+				226,
+				227,
+				228,
+				229,
+				230,
+				231,
+				232,
+				233,
+				234,
+				235,
+				236,
+				237,
+				238,
+				239,
+				240,
+				241,
+				242,
+				243
+			]
+		},
+		{
+			"name" : "xercesc\\framework",
+			"sourceIndexes" : 
+			[
+				244,
+				245,
+				246,
+				247,
+				248,
+				249,
+				278,
+				279,
+				280,
+				281,
+				282,
+				283,
+				284,
+				285,
+				286,
+				287,
+				288,
+				289,
+				290,
+				291,
+				292,
+				293,
+				294,
+				295,
+				296,
+				297,
+				298,
+				299,
+				300,
+				301,
+				302,
+				303,
+				304,
+				305,
+				306,
+				307
+			]
+		},
+		{
+			"name" : "xercesc\\framework\\psvi",
+			"sourceIndexes" : 
+			[
+				250,
+				251,
+				252,
+				253,
+				254,
+				255,
+				256,
+				257,
+				258,
+				259,
+				260,
+				261,
+				262,
+				263,
+				264,
+				265,
+				266,
+				267,
+				268,
+				269,
+				270,
+				271,
+				272,
+				273,
+				274,
+				275,
+				276,
+				277
+			]
+		},
+		{
+			"name" : "xercesc\\internal",
+			"sourceIndexes" : 
+			[
+				308,
+				309,
+				310,
+				311,
+				312,
+				313,
+				314,
+				315,
+				316,
+				317,
+				318,
+				319,
+				320,
+				321,
+				322,
+				323,
+				324,
+				325,
+				326,
+				327,
+				328,
+				329,
+				330,
+				331,
+				332,
+				333
+			]
+		},
+		{
+			"name" : "xercesc\\parsers",
+			"sourceIndexes" : 
+			[
+				334,
+				335,
+				336,
+				337,
+				338,
+				339
+			]
+		},
+		{
+			"name" : "xercesc\\sax",
+			"sourceIndexes" : 
+			[
+				340,
+				341,
+				342,
+				343,
+				344,
+				345,
+				346,
+				347,
+				348,
+				349,
+				350
+			]
+		},
+		{
+			"name" : "xercesc\\sax2",
+			"sourceIndexes" : 
+			[
+				351,
+				352,
+				353,
+				354,
+				355,
+				356,
+				357,
+				358
+			]
+		},
+		{
+			"name" : "xercesc\\validators\\common",
+			"sourceIndexes" : 
+			[
+				359,
+				360,
+				361,
+				362,
+				363,
+				364,
+				365,
+				366,
+				367,
+				368,
+				369,
+				370,
+				371,
+				372,
+				373
+			]
+		},
+		{
+			"name" : "xercesc\\validators\\datatype",
+			"sourceIndexes" : 
+			[
+				374,
+				375,
+				376,
+				377,
+				378,
+				379,
+				380,
+				381,
+				382,
+				383,
+				384,
+				385,
+				386,
+				387,
+				388,
+				389,
+				390,
+				391,
+				392,
+				393,
+				394,
+				395,
+				396,
+				397,
+				398,
+				399,
+				400,
+				401,
+				402,
+				403,
+				404,
+				405,
+				406,
+				407,
+				408,
+				409
+			]
+		},
+		{
+			"name" : "xercesc\\validators\\DTD",
+			"sourceIndexes" : 
+			[
+				410,
+				411,
+				412,
+				413,
+				414,
+				415,
+				416,
+				417,
+				418
+			]
+		},
+		{
+			"name" : "xercesc\\validators\\schema",
+			"sourceIndexes" : 
+			[
+				419,
+				420,
+				437,
+				438,
+				439,
+				440,
+				441,
+				442,
+				443,
+				444,
+				445,
+				446,
+				447,
+				448,
+				449,
+				450,
+				451,
+				452,
+				453,
+				454,
+				455
+			]
+		},
+		{
+			"name" : "xercesc\\validators\\schema\\identity",
+			"sourceIndexes" : 
+			[
+				421,
+				422,
+				423,
+				424,
+				425,
+				426,
+				427,
+				428,
+				429,
+				430,
+				431,
+				432,
+				433,
+				434,
+				435,
+				436
+			]
+		},
+		{
+			"name" : "xercesc\\xinclude",
+			"sourceIndexes" : 
+			[
+				456,
+				457,
+				458
+			]
+		},
+		{
+			"name" : "xercesc\\util\\NetAccessors\\WinSock",
+			"sourceIndexes" : 
+			[
+				459,
+				460
+			]
+		},
+		{
+			"name" : "xercesc\\util\\NetAccessors",
+			"sourceIndexes" : 
+			[
+				461
+			]
+		},
+		{
+			"name" : "xercesc\\util\\Transcoders\\Win32",
+			"sourceIndexes" : 
+			[
+				462
+			]
+		},
+		{
+			"name" : "xercesc\\util\\MsgLoaders\\InMemory",
+			"sourceIndexes" : 
+			[
+				463,
+				464
+			]
+		},
+		{
+			"name" : "xercesc\\util\\MutexManagers",
+			"sourceIndexes" : 
+			[
+				465
+			]
+		},
+		{
+			"name" : "xercesc\\util\\FileManagers",
+			"sourceIndexes" : 
+			[
+				466
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/ArrayIndexOutOfBoundsException.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/Base64.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/BaseRefVectorOf.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/BaseRefVectorOf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/BinFileInputStream.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/BinInputStream.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/BinMemInputStream.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/BitOps.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/BitSet.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/CountedPointer.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/CountedPointer.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/DefaultPanicHandler.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/EmptyStackException.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/EncodingValidator.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/FlagJanitor.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/FlagJanitor.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/Hashers.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/Hash2KeysSetOf.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/Hash2KeysSetOf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/HexBin.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/IllegalArgumentException.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/InvalidCastException.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/IOException.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/Janitor.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/Janitor.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/KeyRefPair.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/KeyRefPair.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/KeyValuePair.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/KeyValuePair.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/KVStringPair.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/Mutexes.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/LogicalPath.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/NameIdPool.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/NameIdPool.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/NoSuchElementException.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/NullPointerException.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/NumberFormatException.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/OutOfMemoryException.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/PanicHandler.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/ParseException.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/PlatformUtils.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/PSVIUni.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/QName.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/RefArrayOf.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/RefArrayOf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/RefArrayVectorOf.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/RefArrayVectorOf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/RefHash2KeysTableOf.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/RefHash2KeysTableOf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/RefHash3KeysIdPool.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/RefHash3KeysIdPool.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/RefHashTableOf.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/RefHashTableOf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/RefStackOf.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/RefStackOf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/RefVectorOf.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/RefVectorOf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/ASCIIRangeFactory.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/BlockRangeFactory.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/BMPattern.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/CharToken.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/ClosureToken.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/ConcatToken.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/Match.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/Op.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/OpFactory.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/ParenToken.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/ParserForXMLSchema.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/RangeFactory.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/RangeToken.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/RangeTokenMap.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/RegularExpression.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/RegxDefs.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/RegxParser.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/RegxUtil.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/StringToken.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/Token.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/TokenFactory.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/TokenInc.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/UniCharTable.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/UnicodeRangeFactory.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/UnionToken.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/XMLRangeFactory.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/regx/XMLUniCharacter.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/RuntimeException.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/SchemaDateTimeException.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/SecurityManager.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/StringPool.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/SynchronizedStringPool.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/TranscodingException.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/TransENameMap.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/TransENameMap.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/TransService.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/UnexpectedEOFException.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/UnsupportedEncodingException.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/UTFDataFormatException.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/ValueArrayOf.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/ValueArrayOf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/ValueHashTableOf.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/ValueHashTableOf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/ValueStackOf.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/ValueStackOf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/ValueVectorOf.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/ValueVectorOf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XercesDefs.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMemory.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XML256TableTranscoder.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XML88591Transcoder.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLAbstractDoubleFloat.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLASCIITranscoder.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLBigDecimal.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLBigInteger.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLChar.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLChTranscoder.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLDateTime.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLDOMMsg.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLDouble.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLEBCDICTranscoder.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLEntityResolver.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLEnumerator.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLException.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLExceptMsgs.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLFileMgr.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLFloat.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLIBM1047Transcoder.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLIBM1140Transcoder.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLInitializer.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLInteger.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLMutexMgr.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLMsgLoader.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLNetAccessor.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLNumber.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLResourceIdentifier.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLString.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLStringTokenizer.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLUCS4Transcoder.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLUni.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLUniDefs.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLUri.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLURL.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLUTF16Transcoder.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLUTF8Transcoder.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/XMLWin1252Transcoder.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOM.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMAttr.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMCDATASection.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMCharacterData.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMComment.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMConfiguration.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMDocument.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMDocumentFragment.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMDocumentRange.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMDocumentTraversal.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMDocumentType.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMElement.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMEntity.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMEntityReference.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMError.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMErrorHandler.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMException.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMImplementation.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMImplementationList.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMImplementationLS.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMImplementationRegistry.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMImplementationSource.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMLocator.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMLSException.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMLSInput.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMLSOutput.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMLSParser.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMLSParserFilter.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMLSResourceResolver.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMLSSerializer.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMLSSerializerFilter.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMMemoryManager.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMNamedNodeMap.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMNode.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMNodeFilter.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMNodeIterator.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMNodeList.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMNotation.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMProcessingInstruction.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMPSVITypeInfo.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMRange.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMRangeException.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMStringList.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMText.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMTreeWalker.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMTypeInfo.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMUserDataHandler.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMXPathEvaluator.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMXPathException.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMXPathExpression.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMXPathNamespace.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMXPathNSResolver.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/DOMXPathResult.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/StDOMNode.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMAttrImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMAttrMapImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMAttrNSImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMCasts.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMCDATASectionImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMCharacterDataImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMChildNode.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMCommentImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMConfigurationImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMDeepNodeListImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMDeepNodeListPool.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMDeepNodeListPool.c",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMDocumentFragmentImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMDocumentImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMDocumentTypeImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMElementImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMElementNSImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMEntityImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMEntityReferenceImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMErrorImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMImplementationImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMImplementationListImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMLocatorImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMNamedNodeMapImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMNodeBase.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMNodeIDMap.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMNodeImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMNodeIteratorImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMNodeListImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMNodeVector.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMNormalizer.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMNotationImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMParentNode.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMProcessingInstructionImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMRangeImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMStringListImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMStringPool.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMTextImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMTreeWalkerImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMTypeInfoImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMLSSerializerImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMLSInputImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMLSOutputImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMXPathExpressionImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMXPathNSResolverImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/DOMXPathResultImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/dom/impl/XSDElementNSImpl.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/BinOutputStream.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/LocalFileFormatTarget.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/LocalFileInputSource.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/MemBufFormatTarget.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/MemBufInputSource.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/MemoryManager.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/PSVIAttribute.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/PSVIAttributeList.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/PSVIElement.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/PSVIHandler.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/PSVIItem.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSAnnotation.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSAttributeDeclaration.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSAttributeGroupDefinition.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSAttributeUse.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSComplexTypeDefinition.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSConstants.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSElementDeclaration.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSFacet.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSIDCDefinition.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSModel.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSModelGroup.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSModelGroupDefinition.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSMultiValueFacet.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSNamedMap.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSNamedMap.c",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSNamespaceItem.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSNotationDeclaration.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSObject.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSParticle.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSSimpleTypeDefinition.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSTypeDefinition.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSValue.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/psvi/XSWildcard.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/StdInInputSource.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/StdOutFormatTarget.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/URLInputSource.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/ValidationContext.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/Wrapper4DOMLSInput.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/Wrapper4InputSource.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLAttDef.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLAttDefList.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLAttr.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLBuffer.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLBufferMgr.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLContentModel.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLDocumentHandler.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLDTDDescription.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLElementDecl.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLEntityDecl.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLEntityHandler.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLErrorCodes.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLErrorReporter.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLFormatter.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLGrammarDescription.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLGrammarPool.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLGrammarPoolImpl.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLNotationDecl.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLPScanToken.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLRecognizer.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLRefInfo.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLSchemaDescription.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLValidator.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/framework/XMLValidityCodes.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/BinFileOutputStream.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/BinMemOutputStream.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/CharTypeTables.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/DGXMLScanner.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/ElemStack.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/EndOfEntityException.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/IANAEncodings.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/IGXMLScanner.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/MemoryManagerImpl.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/ReaderMgr.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/SGXMLScanner.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/ValidationContextImpl.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/VecAttributesImpl.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/VecAttrListImpl.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/WFXMLScanner.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/XMLInternalErrorHandler.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/XMLReader.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/XMLScanner.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/XMLScannerResolver.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/XProtoType.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/XSAXMLScanner.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/XSerializable.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/XSerializationException.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/XSerializeEngine.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/XSObjectFactory.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/internal/XTemplateSerializer.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/parsers/AbstractDOMParser.hpp",
+			"sourceGroupIndex" : 7
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/parsers/DOMLSParserImpl.hpp",
+			"sourceGroupIndex" : 7
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/parsers/SAX2XMLFilterImpl.hpp",
+			"sourceGroupIndex" : 7
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/parsers/SAX2XMLReaderImpl.hpp",
+			"sourceGroupIndex" : 7
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/parsers/SAXParser.hpp",
+			"sourceGroupIndex" : 7
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/parsers/XercesDOMParser.hpp",
+			"sourceGroupIndex" : 7
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax/AttributeList.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax/DocumentHandler.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax/DTDHandler.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax/EntityResolver.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax/ErrorHandler.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax/HandlerBase.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax/InputSource.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax/Locator.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax/Parser.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax/SAXException.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax/SAXParseException.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax2/Attributes.hpp",
+			"sourceGroupIndex" : 9
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax2/ContentHandler.hpp",
+			"sourceGroupIndex" : 9
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax2/DeclHandler.hpp",
+			"sourceGroupIndex" : 9
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax2/DefaultHandler.hpp",
+			"sourceGroupIndex" : 9
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax2/LexicalHandler.hpp",
+			"sourceGroupIndex" : 9
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax2/SAX2XMLFilter.hpp",
+			"sourceGroupIndex" : 9
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax2/SAX2XMLReader.hpp",
+			"sourceGroupIndex" : 9
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/sax2/XMLReaderFactory.hpp",
+			"sourceGroupIndex" : 9
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/common/AllContentModel.hpp",
+			"sourceGroupIndex" : 10
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/common/CMAny.hpp",
+			"sourceGroupIndex" : 10
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/common/CMBinaryOp.hpp",
+			"sourceGroupIndex" : 10
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/common/CMLeaf.hpp",
+			"sourceGroupIndex" : 10
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/common/CMRepeatingLeaf.hpp",
+			"sourceGroupIndex" : 10
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/common/CMNode.hpp",
+			"sourceGroupIndex" : 10
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/common/CMStateSet.hpp",
+			"sourceGroupIndex" : 10
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/common/CMUnaryOp.hpp",
+			"sourceGroupIndex" : 10
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/common/ContentLeafNameTypeVector.hpp",
+			"sourceGroupIndex" : 10
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/common/ContentSpecNode.hpp",
+			"sourceGroupIndex" : 10
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/common/DFAContentModel.hpp",
+			"sourceGroupIndex" : 10
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/common/Grammar.hpp",
+			"sourceGroupIndex" : 10
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/common/GrammarResolver.hpp",
+			"sourceGroupIndex" : 10
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/common/MixedContentModel.hpp",
+			"sourceGroupIndex" : 10
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/common/SimpleContentModel.hpp",
+			"sourceGroupIndex" : 10
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/AbstractNumericFacetValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/AbstractNumericValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/AbstractStringValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/AnySimpleTypeDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/AnyURIDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/Base64BinaryDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/BooleanDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/DatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/DatatypeValidatorFactory.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/DateDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/DateTimeDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/DateTimeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/DayDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/DecimalDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/DoubleDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/DurationDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/ENTITYDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/FloatDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/HexBinaryDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/IDDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/IDREFDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/InvalidDatatypeFacetException.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/InvalidDatatypeValueException.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/ListDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/MonthDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/MonthDayDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/NameDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/NCNameDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/NOTATIONDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/QNameDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/StringDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/TimeDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/UnionDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/XMLCanRepGroup.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/YearDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/datatype/YearMonthDatatypeValidator.hpp",
+			"sourceGroupIndex" : 11
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/DTD/DocTypeHandler.hpp",
+			"sourceGroupIndex" : 12
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/DTD/DTDAttDef.hpp",
+			"sourceGroupIndex" : 12
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/DTD/DTDAttDefList.hpp",
+			"sourceGroupIndex" : 12
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/DTD/DTDElementDecl.hpp",
+			"sourceGroupIndex" : 12
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/DTD/DTDEntityDecl.hpp",
+			"sourceGroupIndex" : 12
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/DTD/DTDGrammar.hpp",
+			"sourceGroupIndex" : 12
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/DTD/DTDScanner.hpp",
+			"sourceGroupIndex" : 12
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/DTD/DTDValidator.hpp",
+			"sourceGroupIndex" : 12
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/DTD/XMLDTDDescriptionImpl.hpp",
+			"sourceGroupIndex" : 12
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/ComplexTypeInfo.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/GeneralAttributeCheck.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/identity/FieldActivator.hpp",
+			"sourceGroupIndex" : 14
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/identity/FieldValueMap.hpp",
+			"sourceGroupIndex" : 14
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/identity/IC_Field.hpp",
+			"sourceGroupIndex" : 14
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/identity/IC_Key.hpp",
+			"sourceGroupIndex" : 14
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/identity/IC_KeyRef.hpp",
+			"sourceGroupIndex" : 14
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/identity/IC_Selector.hpp",
+			"sourceGroupIndex" : 14
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/identity/IC_Unique.hpp",
+			"sourceGroupIndex" : 14
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/identity/IdentityConstraint.hpp",
+			"sourceGroupIndex" : 14
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/identity/IdentityConstraintHandler.hpp",
+			"sourceGroupIndex" : 14
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/identity/ValueStore.hpp",
+			"sourceGroupIndex" : 14
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/identity/ValueStoreCache.hpp",
+			"sourceGroupIndex" : 14
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/identity/XercesXPath.hpp",
+			"sourceGroupIndex" : 14
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/identity/XPathException.hpp",
+			"sourceGroupIndex" : 14
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/identity/XPathMatcher.hpp",
+			"sourceGroupIndex" : 14
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/identity/XPathMatcherStack.hpp",
+			"sourceGroupIndex" : 14
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/identity/XPathSymbols.hpp",
+			"sourceGroupIndex" : 14
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/NamespaceScope.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/PSVIDefs.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/SchemaAttDef.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/SchemaAttDefList.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/SchemaElementDecl.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/SchemaGrammar.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/SchemaInfo.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/SchemaSymbols.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/SchemaValidator.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/SubstitutionGroupComparator.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/TraverseSchema.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/XercesAttGroupInfo.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/XercesElementWildcard.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/XercesGroupInfo.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/XMLSchemaDescriptionImpl.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/XSDDOMParser.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/XSDErrorReporter.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/XSDLocator.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/validators/schema/XUtil.hpp",
+			"sourceGroupIndex" : 13
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/xinclude/XIncludeDOMDocumentProcessor.hpp",
+			"sourceGroupIndex" : 15
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/xinclude/XIncludeLocation.hpp",
+			"sourceGroupIndex" : 15
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/xinclude/XIncludeUtils.hpp",
+			"sourceGroupIndex" : 15
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/NetAccessors/WinSock/WinSockNetAccessor.hpp",
+			"sourceGroupIndex" : 16
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/NetAccessors/WinSock/BinHTTPURLInputStream.hpp",
+			"sourceGroupIndex" : 16
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/NetAccessors/BinHTTPInputStreamCommon.hpp",
+			"sourceGroupIndex" : 17
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/Transcoders/Win32/Win32TransService.hpp",
+			"sourceGroupIndex" : 18
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/MsgLoaders/InMemory/InMemMsgLoader.hpp",
+			"sourceGroupIndex" : 19
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/MsgLoaders/InMemory/XercesMessages_en_US.hpp",
+			"sourceGroupIndex" : 19
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/MutexManagers/StdMutexMgr.hpp",
+			"sourceGroupIndex" : 20
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/xercesc/util/FileManagers/WindowsFileMgr.hpp",
+			"sourceGroupIndex" : 21
+		}
+	],
+	"type" : "UTILITY"
+}

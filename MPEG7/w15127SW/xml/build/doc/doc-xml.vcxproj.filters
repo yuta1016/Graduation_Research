@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\apidocs.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\applications.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\bug-report.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\build.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\charter.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\createdoc.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\domcount.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\domprint.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\download.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\enumval.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\faq-build.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\faq-contributing.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\faq-distrib.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\faq-other.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\faq-parse.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\feedback.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\install.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\mailing-lists.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\memparse.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\migration.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\migration_archive.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\pparse.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\program-dom.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\program-others.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\program-sax.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\program-sax2.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\program.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\psviwriter.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\readme.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\redirect.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\releases.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\releases_archive.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\releases_plan.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\samples.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\sax2count.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\sax2print.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\saxcount.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\saxprint.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\schema.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\scmprint.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\secadv.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\senumval.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\source-repository.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\stdinparse.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\xerces-c_book.xml" />
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\xinclude.xml" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|win32">
+      <Configuration>Debug</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|win32">
+      <Configuration>Release</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C62512C5-E4DA-3A8C-A37C-3148E608D812}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>win32</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">Building Custom Rule C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml -BC:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build --check-stamp-file C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCSourceCompiles.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckFunctionExists.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckIncludeFile.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckLibraryExists.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckTypeSize.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindThreads.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\SelectLibraryConfigurations.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\3.28.0-msvc1\CMakeCCompiler.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\3.28.0-msvc1\CMakeCXXCompiler.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\3.28.0-msvc1\CMakeRCCompiler.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\3.28.0-msvc1\CMakeSystem.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\FindICU.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesBool.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesConst.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesDLL.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesFileMgrSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesFunctions.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesICU.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesIconvConst.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesIncludes.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesInline.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesIntTypes.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesLFS.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesLString.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesMFC.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesMsgLoaderSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesMutexMgrSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesNamespaces.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesNetAccessorSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesOperatorDelete.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesPathDelimiters.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesPathMax.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesSSE2.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesStdLibs.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesStdNamespace.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesTranscoderSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesVolatile.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesWChar.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesWarnings.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesXMLCh.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\config.h.cmake.in;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\dtd\entities.ent.in;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\src\xercesc\util\XercesVersion.hpp.cmake.in;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\src\xercesc\util\Xerces_autoconf_config.hpp.cmake.in;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\xerces-c.pc.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|win32'">Building Custom Rule C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml -BC:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build --check-stamp-file C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|win32'">C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCSourceCompiles.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckFunctionExists.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckIncludeFile.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckLibraryExists.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckTypeSize.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindThreads.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\SelectLibraryConfigurations.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\3.28.0-msvc1\CMakeCCompiler.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\3.28.0-msvc1\CMakeCXXCompiler.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\3.28.0-msvc1\CMakeRCCompiler.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\3.28.0-msvc1\CMakeSystem.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\FindICU.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesBool.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesConst.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesDLL.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesFileMgrSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesFunctions.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesICU.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesIconvConst.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesIncludes.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesInline.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesIntTypes.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesLFS.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesLString.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesMFC.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesMsgLoaderSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesMutexMgrSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesNamespaces.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesNetAccessorSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesOperatorDelete.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesPathDelimiters.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesPathMax.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesSSE2.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesStdLibs.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesStdNamespace.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesTranscoderSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesVolatile.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesWChar.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesWarnings.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesXMLCh.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\config.h.cmake.in;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\dtd\entities.ent.in;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\src\xercesc\util\XercesVersion.hpp.cmake.in;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\src\xercesc\util\Xerces_autoconf_config.hpp.cmake.in;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\xerces-c.pc.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|win32'">C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">Building Custom Rule C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml -BC:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build --check-stamp-file C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCSourceCompiles.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckFunctionExists.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckIncludeFile.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckLibraryExists.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckTypeSize.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindThreads.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\SelectLibraryConfigurations.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\3.28.0-msvc1\CMakeCCompiler.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\3.28.0-msvc1\CMakeCXXCompiler.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\3.28.0-msvc1\CMakeRCCompiler.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\3.28.0-msvc1\CMakeSystem.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\FindICU.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesBool.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesConst.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesDLL.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesFileMgrSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesFunctions.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesICU.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesIconvConst.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesIncludes.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesInline.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesIntTypes.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesLFS.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesLString.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesMFC.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesMsgLoaderSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesMutexMgrSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesNamespaces.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesNetAccessorSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesOperatorDelete.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesPathDelimiters.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesPathMax.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesSSE2.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesStdLibs.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesStdNamespace.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesTranscoderSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesVolatile.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesWChar.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesWarnings.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesXMLCh.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\config.h.cmake.in;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\dtd\entities.ent.in;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\src\xercesc\util\XercesVersion.hpp.cmake.in;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\src\xercesc\util\Xerces_autoconf_config.hpp.cmake.in;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\xerces-c.pc.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">Building Custom Rule C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml -BC:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build --check-stamp-file C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCSourceCompiles.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckFunctionExists.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckIncludeFile.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckLibraryExists.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckTypeSize.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindThreads.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\SelectLibraryConfigurations.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\3.28.0-msvc1\CMakeCCompiler.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\3.28.0-msvc1\CMakeCXXCompiler.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\3.28.0-msvc1\CMakeRCCompiler.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\3.28.0-msvc1\CMakeSystem.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\FindICU.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesBool.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesConst.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesDLL.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesFileMgrSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesFunctions.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesICU.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesIconvConst.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesIncludes.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesInline.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesIntTypes.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesLFS.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesLString.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesMFC.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesMsgLoaderSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesMutexMgrSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesNamespaces.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesNetAccessorSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesOperatorDelete.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesPathDelimiters.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesPathMax.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesSSE2.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesStdLibs.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesStdNamespace.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesTranscoderSelection.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesVolatile.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesWChar.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesWarnings.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\cmake\XercesXMLCh.cmake;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\config.h.cmake.in;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\dtd\entities.ent.in;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\src\xercesc\util\XercesVersion.hpp.cmake.in;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\src\xercesc\util\Xerces_autoconf_config.hpp.cmake.in;C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\xerces-c.pc.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\ZERO_CHECK.vcxproj">
+      <Project>{CA3C50F1-5E8A-3D11-8410-9B721CFF6EBF}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\tests\Char16Test.vcxproj">
+      <Project>{55606DB7-8DCF-3F52-AC71-7C49F92539EE}</Project>
+      <Name>Char16Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\samples\CreateDOMDocument.vcxproj">
+      <Project>{EA34DD34-9383-3E11-A621-5076521A4D1F}</Project>
+      <Name>CreateDOMDocument</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\samples\DOMCount.vcxproj">
+      <Project>{1F2B6870-8BB0-35D2-A23C-67EBAB34D420}</Project>
+      <Name>DOMCount</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\tests\DOMMemTest.vcxproj">
+      <Project>{EE9E6294-59DD-366B-B6EF-612E738424A0}</Project>
+      <Name>DOMMemTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\samples\DOMPrint.vcxproj">
+      <Project>{5B8C35F3-95D0-3768-8A4F-FE02DC15EBBB}</Project>
+      <Name>DOMPrint</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\tests\DOMTest.vcxproj">
+      <Project>{F3C3D7F4-7BC3-34BC-97C1-F0B9D3BC0506}</Project>
+      <Name>DOMTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\tests\DOMTraversalTest.vcxproj">
+      <Project>{86E9C545-7CD5-360A-9838-E79C41DA425D}</Project>
+      <Name>DOMTraversalTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\tests\DOMTypeInfoTest.vcxproj">
+      <Project>{DA1A94F8-10C7-3CCA-8D89-79D2E4485CA9}</Project>
+      <Name>DOMTypeInfoTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\tests\EncodingTest.vcxproj">
+      <Project>{4A7AA2D8-ADC2-30A5-B5A4-49BAE2672654}</Project>
+      <Name>EncodingTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\samples\EnumVal.vcxproj">
+      <Project>{142B89B1-3FAE-3CDC-B1A6-1B617C62B53D}</Project>
+      <Name>EnumVal</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\tests\InitTermTest.vcxproj">
+      <Project>{99F88FD4-DF45-3422-A584-782EE7A31C06}</Project>
+      <Name>InitTermTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\tests\MemHandlerTest.vcxproj">
+      <Project>{1AA458F8-FE55-3FBB-B9F8-173EE3C1FC3C}</Project>
+      <Name>MemHandlerTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\samples\MemParse.vcxproj">
+      <Project>{C6739111-0D80-3EE5-A790-328E02633128}</Project>
+      <Name>MemParse</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\tests\NetAccessorTest.vcxproj">
+      <Project>{3CED1D97-BACB-359A-9A3D-68025E73B09E}</Project>
+      <Name>NetAccessorTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\tests\Normalizer.vcxproj">
+      <Project>{224388A6-D064-371D-9411-361DA18D3BB4}</Project>
+      <Name>Normalizer</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\samples\PParse.vcxproj">
+      <Project>{1F310BD0-F4A3-3ACC-9219-046E426B2F34}</Project>
+      <Name>PParse</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\samples\PSVIWriter.vcxproj">
+      <Project>{E9E48D45-2D8A-34FB-A7DE-124E5282F519}</Project>
+      <Name>PSVIWriter</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\tests\RangeTest.vcxproj">
+      <Project>{488D82DD-BBC2-3B44-B0FF-B2303BD601AA}</Project>
+      <Name>RangeTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\samples\Redirect.vcxproj">
+      <Project>{2F49EF43-5FB2-31E6-B81E-8C48BB8879CF}</Project>
+      <Name>Redirect</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\samples\SAX2Count.vcxproj">
+      <Project>{4892E34C-7B42-3F90-85D4-1589637C6704}</Project>
+      <Name>SAX2Count</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\samples\SAX2Print.vcxproj">
+      <Project>{A284831F-5A8E-34C7-A0DE-047077B3851B}</Project>
+      <Name>SAX2Print</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\samples\SAXCount.vcxproj">
+      <Project>{62D69389-143B-3233-9D54-B29F5AFA68E6}</Project>
+      <Name>SAXCount</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\samples\SAXPrint.vcxproj">
+      <Project>{7AC73F57-938C-3885-ACA4-30F4A4A39436}</Project>
+      <Name>SAXPrint</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\samples\SCMPrint.vcxproj">
+      <Project>{BD3D86F7-3040-36C1-AB21-51BBB002638A}</Project>
+      <Name>SCMPrint</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\samples\SEnumVal.vcxproj">
+      <Project>{50519750-3126-3B99-B08F-7FEFA2509A42}</Project>
+      <Name>SEnumVal</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\samples\StdInParse.vcxproj">
+      <Project>{D88721C2-D684-3558-8F34-F4B14A87EC01}</Project>
+      <Name>StdInParse</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\tests\ThreadTest.vcxproj">
+      <Project>{D257F78A-9B75-32ED-9C04-33D9E8354916}</Project>
+      <Name>ThreadTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\samples\XInclude.vcxproj">
+      <Project>{043186A2-3076-3BE4-8E4A-39EE113C450D}</Project>
+      <Name>XInclude</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\tests\XSTSHarness.vcxproj">
+      <Project>{B135171C-F492-329C-8451-B3C924F07FB5}</Project>
+      <Name>XSTSHarness</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\tests\XSValueTest.vcxproj">
+      <Project>{2E80785C-7FBA-3A2F-9833-06C664DF354D}</Project>
+      <Name>XSValueTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\tests\XSerializerTest.vcxproj">
+      <Project>{EA0E8EDF-D8FD-3618-81A1-CDCB2E30AB8C}</Project>
+      <Name>XSerializerTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\src\xerces-c.vcxproj">
+      <Project>{0F3DF2AD-8EB9-3E48-A9B5-BF9407F98E9F}</Project>
+      <Name>xerces-c</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,5 @@
+{
+  "cmake.configureSettings": {
+    "CMAKE_INSTALL_PREFIX": "D:/libs"
+  }
+}

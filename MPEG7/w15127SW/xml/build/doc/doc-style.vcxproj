@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|win32">
+      <Configuration>Debug</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|win32">
+      <Configuration>Release</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{11922013-0B91-325B-94BE-91F5D0825A9E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>win32</Platform>
+    <ProjectName>doc-style</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">Building Custom Rule C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/doc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml -BC:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build --check-stamp-file C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build/doc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeFindJavaCommon.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindJava.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\doc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|win32'">Building Custom Rule C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/doc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml -BC:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build --check-stamp-file C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build/doc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|win32'">C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeFindJavaCommon.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindJava.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|win32'">C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\doc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">Building Custom Rule C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/doc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml -BC:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build --check-stamp-file C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build/doc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeFindJavaCommon.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindJava.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\doc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">Building Custom Rule C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/doc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml -BC:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build --check-stamp-file C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build/doc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeFindJavaCommon.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindJava.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\doc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\dtd\blocks.ent">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\dtd\characters.ent">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\dtd\links.ent">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\dtd\markup.ent">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\graphics\button-a.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\graphics\button-b.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\graphics\section.gif">
+    </None>
+    <XML Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\loader.xml">
+    </XML>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\bottom.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\button-asf-hi.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\button-asf-lo.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\button-w3c-hi.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\button-w3c-lo.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\button-xml-hi.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\button-xml-lo.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\close.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\dot.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\join.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\line.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\logo.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\note.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\right.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\separator-space.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\separator.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\resources\void.gif">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\any2header.xsl">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\any2project.xsl">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\book2group.xsl">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\book2project.xsl">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\changes2document.xsl">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\context2footer.xsl">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\context2label.xsl">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\context2section.xsl">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\directory2project.xsl">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\document2html.xsl">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\faqs2document.xsl">
+    </None>
+    <None Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\doc\style\stylesheets\group2document.xsl">
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\USER\Desktop\SchoolRelation\GraduationReaserch\Scraping\MPEG7\w15127SW\xml\build\ZERO_CHECK.vcxproj">
+      <Project>{CA3C50F1-5E8A-3D11-8410-9B721CFF6EBF}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
