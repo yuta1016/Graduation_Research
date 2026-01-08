@@ -66,6 +66,9 @@ def load_csv_data(file_path):
             # それでも念のため、インデックス名でフィルタリング（数値変換できない行を除外）
             # 今回のデータ形式なら 'Average' 以降の行を削除するロジックで十分
         
+        #print(df)
+        #exit()
+
         # 数値以外のデータが含まれている可能性を考慮して変換
         df = df.apply(pd.to_numeric, errors='coerce')
         
@@ -106,83 +109,79 @@ def load_csv_data(file_path):
         print(f"Error loading {file_path}: {e}")
         return None, {}
 
-def visualize_single_folder(df, title):
+def visualize_time_series(df, metrics):
     """
-    単一フォルダ（単一ファイル）の場合の可視化。
-    すべての統計指標（Kurtosis, Max, Mean...）をヒートマップで表示。
+    8つの指標を1つの図（サブプロット）にまとめ、年代（Period）ごとの推移を可視化します。
     """
-    plt.figure(figsize=(10, 8))
-    sns.heatmap(df, annot=True, fmt=".3f", cmap="YlGnBu", linewidths=.5)
-    plt.title(f"Statistical Metrics Heatmap: {title}")
-    plt.ylabel("Metrics")
-    plt.xlabel("Experiments")
-    plt.tight_layout()
-    plt.show()
+    # 年代順にソートするための補助列作成
+    # Period形式: "2008-2012" などを想定
+    def get_start_year(p):
+        try:
+            return int(str(p).split('-')[0])
+        except:
+            return 9999
 
-def visualize_comparison(folder_data, metrics):
-    """
-    複数フォルダの場合の可視化。
-    指定された指標ごとに、フォルダごとの平均値を算出して比較グラフを作成します。
-    """
-    if not folder_data:
-        return
+    df['StartYear'] = df['Period'].apply(get_start_year)
+    df = df.sort_values('StartYear')
 
-    # サブプロットの行数・列数を計算
+    # サブプロット設定
     num_metrics = len(metrics)
     cols = 2
     rows = math.ceil(num_metrics / cols)
-
-    # squeeze=Falseにすることで、1つの場合でも必ず配列として返されるようにする
-    fig, axes = plt.subplots(rows, cols, figsize=(15, 5 * rows), squeeze=False)
+    
+    fig, axes = plt.subplots(rows, cols, figsize=(16, 6 * rows), constrained_layout=True)
     axes = axes.flatten()
+    
+    # ユニークな実験リスト（Hueの順序固定用）
+    experiments = sorted(df['Experiment'].unique())
 
     for i, metric in enumerate(metrics):
         ax = axes[i]
-        print(f"Processing metric: {metric}")
-        plot_data = []
-
-        for folder, df in folder_data.items():
-            if metric in df.index:
-                # その指標の行を取得 (Series: index=Experiment, values=Score)
-                row = df.loc[metric]
-                for exp, score in row.items():
-                    plot_data.append({
-                        'Folder': folder,
-                        'Experiment': exp,
-                        'Score': score
-                    })
         
-        if not plot_data:
-            print(f"指標 '{metric}' のデータが見つかりませんでした。")
-            ax.set_visible(False)
+        # 対象指標のデータ抽出
+        metric_df = df[df['Metric'] == metric]
+        
+        if metric_df.empty:
+            ax.text(0.5, 0.5, "No Data", ha='center', va='center')
             continue
-
-        # 比較用DataFrame作成
-        comp_df = pd.DataFrame(plot_data)
-
-        # グラフ描画
-        # x軸を実験(Experiment)、色(hue)をフォルダにして比較
-        sns.barplot(data=comp_df, x='Experiment', y='Score', hue='Folder', palette='viridis', ax=ax)
-        
-        # 数値を棒グラフの上に表示
-        for container in ax.containers:
-            ax.bar_label(container, fmt='%.3f', padding=3, fontsize=8)
-        
-        ax.set_title(f"Comparison of {metric} Scores")
-        
-        # スケール調整
-        max_score = comp_df['Score'].max()
-        if max_score <= 1.0:
-            ax.set_ylim(0, 1.1)
             
-        ax.grid(axis='y', linestyle='--', alpha=0.7)
-        ax.legend(loc='upper right', fontsize='small')
+        # プロット作成
+        # X軸: Period, Y軸: Score, 色: Experiment
+        sns.pointplot(
+            data=metric_df, 
+            x='Period', 
+            y='Score', 
+            hue='Experiment', 
+            hue_order=experiments,
+            ax=ax,
+            markers='o',
+            scale=0.8,
+            errwidth=1.5,
+            capsize=0.1,
+            dodge=0.1
+        )
+        
+        ax.set_title(f"Metric: {metric}", fontsize=14, fontweight='bold')
+        ax.set_ylabel("Balanced Accuracy")
+        ax.set_xlabel("Period")
+        ax.grid(True, linestyle='--', alpha=0.6)
+        
+        # Y軸の範囲設定
+        y_min = metric_df['Score'].min()
+        y_min = max(0, y_min - 0.05)
+        ax.set_ylim(y_min, 1.05)
+        
+        # X軸ラベルの回転
+        ax.tick_params(axis='x', rotation=45)
+        
+        # 凡例の設定
+        ax.legend(fontsize='small', title='Experiment')
 
-    # 余ったサブプロットを非表示にする
+    # 余ったサブプロットを非表示
     for j in range(i + 1, len(axes)):
-        axes[j].set_visible(False)
+        axes[j].axis('off')
 
-    plt.tight_layout()
+    plt.suptitle("Performance Trends by Period (8 Metrics)", fontsize=18)
     plt.show()
 
 def main():
@@ -194,7 +193,6 @@ def main():
         return
 
     all_data = {}
-    
     # 2. 各フォルダ内のCSVを探して読み込む
     for folder in folders:
         # results_*.csv のパターンに一致するファイルを探す
@@ -207,30 +205,32 @@ def main():
             
         folder_dfs = []
         for file_path in csv_files:
+            print(f"Loading file: {file_path}")
+            #dfとmetadataを取得
             df, _ = load_csv_data(file_path)
             if df is not None and not df.empty:
                 folder_dfs.append(df)
         
-        if folder_dfs:
-            # フォルダ内の全データを結合し、平均を算出する
-            # 同じ構造のDataFrameリストを結合
-            combined_df = pd.concat(folder_dfs)
-            # インデックス（指標名）でグループ化して平均をとる
-            averaged_df = combined_df.groupby(combined_df.index).mean()
-            # カラム順序を維持（groupbyでソートされる可能性があるため）
-            if not folder_dfs[0].columns.empty:
-                averaged_df = averaged_df.reindex(columns=folder_dfs[0].columns)
+    #     if folder_dfs:
+    #         # フォルダ内の全データを結合し、平均を算出する
+    #         # 同じ構造のDataFrameリストを結合
+    #         combined_df = pd.concat(folder_dfs)
+    #         # インデックス（指標名）でグループ化して平均をとる
+    #         averaged_df = combined_df.groupby(combined_df.index).mean()
+    #         # カラム順序を維持（groupbyでソートされる可能性があるため）
+    #         if not folder_dfs[0].columns.empty:
+    #             averaged_df = averaged_df.reindex(columns=folder_dfs[0].columns)
             
-            folder_name = os.path.basename(folder)
-            all_data[folder_name] = averaged_df
+    #         folder_name = os.path.basename(folder)
+    #         all_data[folder_name] = averaged_df
 
-    if not all_data:
-        print("有効なデータが見つかりませんでした。")
-        return
+    # if not all_data:
+    #     print("有効なデータが見つかりませんでした。")
+    #     return
 
     # 3. 可視化実行
     # 単一フォルダでも複数フォルダでも、指定された指標ごとにグラフを表示する
-    visualize_comparison(all_data, TARGET_METRICS)
+    visualize_time_series(folder_dfs[0], TARGET_METRICS)
 
 if __name__ == "__main__":
     main()
