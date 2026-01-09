@@ -8,7 +8,8 @@ from tkinter import filedialog, messagebox
 import math
 
 # 比較したい統計指標をここで定義
-TARGET_METRICS = ["Debut_Score", "Max", "Mean", "Std", "Length", "Sum", "Skewness", "Kurtosis"]
+#TARGET_METRICS = ["Debut_Score", "Max", "Mean", "Std", "Length", "Sum", "Skewness", "Kurtosis"]
+TARGET_METRICS = ["Debut_Score"]
 
 def select_folders():
     """
@@ -95,6 +96,12 @@ def load_csv_data(file_path):
                     # 先頭と末尾の年を取得して期間とする
                     metadata["train_period"] = f"{years[0]}-{years[-1]}"
             
+            # テスト年代情報の抽出 (test行: test,2020...)
+            if key == 'test':
+                years = [p for p in parts[1:] if p]
+                if years:
+                    metadata["test_period"] = years[0]
+
             # パーセンテージ情報の抽出 (traing_data(%),70.5)
             if key == 'traing_data(%)':
                 if len(parts) > 1:
@@ -192,7 +199,7 @@ def main():
         print("フォルダが選択されませんでした。")
         return
 
-    all_data = {}
+    all_data_list = []
     # 2. 各フォルダ内のCSVを探して読み込む
     for folder in folders:
         # results_*.csv のパターンに一致するファイルを探す
@@ -202,35 +209,49 @@ def main():
         if not csv_files:
             print(f"警告: フォルダ '{folder}' 内に 'results_*.csv' が見つかりませんでした。")
             continue
-            
-        folder_dfs = []
+
         for file_path in csv_files:
             print(f"Loading file: {file_path}")
             #dfとmetadataを取得
-            df, _ = load_csv_data(file_path)
+            df, metadata = load_csv_data(file_path)
             if df is not None and not df.empty:
-                folder_dfs.append(df)
-        
-    #     if folder_dfs:
-    #         # フォルダ内の全データを結合し、平均を算出する
-    #         # 同じ構造のDataFrameリストを結合
-    #         combined_df = pd.concat(folder_dfs)
-    #         # インデックス（指標名）でグループ化して平均をとる
-    #         averaged_df = combined_df.groupby(combined_df.index).mean()
-    #         # カラム順序を維持（groupbyでソートされる可能性があるため）
-    #         if not folder_dfs[0].columns.empty:
-    #             averaged_df = averaged_df.reindex(columns=folder_dfs[0].columns)
-            
-    #         folder_name = os.path.basename(folder)
-    #         all_data[folder_name] = averaged_df
+                # プロット用にデータを整形
+                df.index.name = 'Metric'
+                df_reset = df.reset_index()
+                
+                # ターゲット指標のみ抽出
+                df_reset = df_reset[df_reset['Metric'].isin(TARGET_METRICS)]
+                
+                if df_reset.empty:
+                    continue
 
-    # if not all_data:
-    #     print("有効なデータが見つかりませんでした。")
-    #     return
+                # Long形式に変換 (Metric, Experiment, Score)
+                melted = df_reset.melt(id_vars=['Metric'], var_name='Experiment', value_name='Score')
+                
+                # Period列を追加 (test_period または ファイル名から推測)
+                period = metadata.get("test_period", "Unknown")
+                if period == "Unknown":
+                    try:
+                        # ファイル名 results_2008_2012.csv から末尾の年を取得
+                        basename = os.path.basename(file_path)
+                        parts = basename.replace("results_", "").replace(".csv", "").split("_")
+                        if len(parts) >= 2:
+                            period = parts[-1]
+                    except:
+                        pass
+                
+                melted['Period'] = period
+                all_data_list.append(melted)
+
+    if not all_data_list:
+        print("有効なデータが見つかりませんでした。")
+        return
+
+    # 全データを結合
+    final_df = pd.concat(all_data_list, ignore_index=True)
 
     # 3. 可視化実行
-    # 単一フォルダでも複数フォルダでも、指定された指標ごとにグラフを表示する
-    visualize_time_series(folder_dfs[0], TARGET_METRICS)
+    visualize_time_series(final_df, TARGET_METRICS)
 
 if __name__ == "__main__":
     main()
