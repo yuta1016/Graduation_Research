@@ -20,16 +20,16 @@ import random
 # YEARS_TRAIN = ["2015", "2016", "2017", "2018"]
 # YEARS_VAL   = ["2019"]
 # YEARS_TEST  = ["2020"]
-START_YEAR = 2008
-END_YEAR = 2024
+START_YEAR = 2009
+END_YEAR = 2014
 
 TRAING_REN = 4
 VAL_LEN = 1
 TEST_LEN = 1
 
 OUTPUT_PATH = 'result_SVM'
-OUTPUT_PATH_PER = 'median_val/median_val_traing_70_per'
-
+#OUTPUT_PATH_PER = 'median_val/median_val_traing_70_per'
+OUTPUT_PATH_PER = "comparison_previous_research"
 
 PATH_COMPLEXITY = './features_complexity/2008_2025_complexity.csv'
 PATH_MFCC = './features_mfcc/2008_2025_mfcc.csv'
@@ -150,11 +150,20 @@ def run_experiment(years_train, years_val, years_test):
     loader.load_csv(years_train, years_val, years_test)
     train_df, val_df, test_df = loader.load_and_merge()
 
+    #先行研究と比べるために
+    if len(train_df) >= 864:
+        train_df = train_df.sample(n=864, random_state=42)
+    if len(val_df) >= 200:
+        val_df = val_df.sample(n=200, random_state=42)
+    if len(test_df) >= 200:
+        test_df = test_df.sample(n=200, random_state=42)
+
+
     print(f"\nData after merging features:")
     print(f"train:{train_df.columns}::: shape={train_df.shape}")
-    #print(f"val:{val_df.head(3)}::: shape={val_df.shape}")
-    #print(f"test:{test_df.head(3)}::: shape={test_df.shape}")
-    exit()
+    print(f"val:{val_df.head(3)}::: shape={val_df.shape}")
+    print(f"test:{test_df.head(3)}::: shape={test_df.shape[0]}")
+    #exit()
     
     all_results = []
     mode_str = "with_PopFeatures" if INCLUDE_OTHER_TARGETS_AS_FEATURES else "audio_only"
@@ -171,8 +180,7 @@ def run_experiment(years_train, years_val, years_test):
             1    1594
             Name: count, dtype: int64
         """
-        #median_val = train_df[target].median()
-        median_val = val_df[target].median()
+        median_val = train_df[target].median()
         y_train = (train_df[target] > median_val).astype(int)
         y_val = (val_df[target] > median_val).astype(int)
         y_test = (test_df[target] > median_val).astype(int)
@@ -288,13 +296,14 @@ def main():
 
     # スライディングウィンドウ実行
     for i in range(len(all_years) - total_len + 1):
-        # years_train = all_years[i : i + train_len]
-        # years_val = all_years[i + train_len : i + train_len + val_len]
-        # years_test = all_years[i + train_len + val_len : i + total_len]
-
+        years_train = all_years[i : i + train_len]
+        years_val = all_years[i + train_len : i + train_len + val_len]
         years_test = all_years[i + train_len + val_len : i + total_len]
-        years_train = random.sample([y for y in all_years if y not in years_test], train_len)
-        years_val = random.sample([y for y in all_years if y not in years_train and y not in years_test], val_len)
+
+        # years_test = all_years[i + train_len + val_len : i + total_len]
+        # years_train = random.sample([y for y in all_years if y not in years_test], train_len)
+        # years_val = random.sample([y for y in all_years if y not in years_train and y not in years_test], val_len)
+
         print(f"Selected Years - Train: {years_train}, Val: {years_val}, Test: {years_test}")
         
         run_experiment(years_train, years_val, years_test)
