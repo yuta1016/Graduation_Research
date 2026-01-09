@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+import math
 
 FOR_COMPARISON_CSV = "./result_SVM/comparison_previous_research/results_2009_2014.csv"
 
@@ -10,8 +11,8 @@ INCLUDE_SPOTIFY_POPULARITY = False
 METRICS = ["Debut_Score", "Max", "Mean", "Std", "Length", "Sum", "Skewness", "Kurtosis"]
 
 
-def process_csv(file_path):
-    df = pd.read_csv(FOR_COMPARISON_CSV, index_col=0)
+def process_csv(file_path, ax):
+    df = pd.read_csv(file_path, index_col=0)
 
     #指標以外を削除 (Average行より前を取得して8つの指標にする)
     if 'Average' in df.index:
@@ -44,23 +45,49 @@ def process_csv(file_path):
     colors = [color_dict.get(col, 'gray') for col in sliced_df.columns]
 
     # 棒グラフの描画
-    ax = sliced_df.plot(kind='bar', figsize=(12, 6), color=colors, width=0.8)
+    sliced_df.plot(kind='bar', ax=ax, color=colors, width=0.8, rot=0)
     
     ax.grid(axis='y', linestyle='--', alpha=0.7)
     ax.set_axisbelow(True)
-    plt.ylabel("Balanced accuracy")
-    plt.ylim(0, 0.70)
-    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0)
-    plt.tight_layout()
-    plt.show()
+    ax.set_ylabel("Balanced accuracy")
+    ax.set_ylim(0, 0.70)
+    ax.tick_params(axis='x', labelsize=8)
+    
+    # タイトル設定: ファイル名の_の後ろの方を取得 (例: results_2009_2014.csv -> 2014)
+    filename = os.path.basename(file_path)
+    title_text = os.path.splitext(filename)[0].split('_')[-1]
+    ax.set_title(title_text)
+
+    ax.legend(loc='upper right', fontsize='x-small')
 
 def main():
-    #process_csv(FOR_COMPARISON_CSV)
-    for csv_file, _, folder in os.walk(FOR_COMPARISON_FOLDER):
-        for file in os.listdir(folder):
+    files_to_process = []
+    for root, _, files in os.walk(FOR_COMPARISON_FOLDER):
+        for file in files:
             if file.endswith(".csv"):
-                file_path = os.path.join(folder, file)
-                process_csv(file_path)
+                files_to_process.append(os.path.join(root, file))
+    
+    # 年代順にソート (ファイル名の末尾の年を利用)
+    files_to_process.sort(key=lambda f: int(os.path.splitext(os.path.basename(f))[0].split('_')[-1]))
+
+    if not files_to_process:
+        return
+
+    num_files = len(files_to_process)
+    cols = 2
+    rows = math.ceil(num_files / cols)
+
+    fig, axes = plt.subplots(rows, cols, figsize=(15, 5 * rows), constrained_layout=True)
+    axes_flat = axes.flatten()
+
+    for i, file_path in enumerate(files_to_process):
+        process_csv(file_path, axes_flat[i])
+
+    # 余ったサブプロットを非表示
+    for j in range(i + 1, len(axes_flat)):
+        axes_flat[j].axis('off')
+
+    plt.show()
     
 
 
