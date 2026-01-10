@@ -7,6 +7,7 @@ import send_mail
 import csv
 import os
 import random
+from bayes_opt import BayesianOptimization
 
 # ==========================================
 # 1. 設定 (CONFIGURATION)
@@ -20,8 +21,8 @@ import random
 # YEARS_TRAIN = ["2015", "2016", "2017", "2018"]
 # YEARS_VAL   = ["2019"]
 # YEARS_TEST  = ["2020"]
-START_YEAR = 2009
-END_YEAR = 2014
+START_YEAR = 2008
+END_YEAR = 2025
 
 TRAING_REN = 4
 VAL_LEN = 1
@@ -29,7 +30,7 @@ TEST_LEN = 1
 
 OUTPUT_PATH = 'result_SVM'
 #OUTPUT_PATH_PER = 'median_val/median_val_traing_70_per'
-OUTPUT_PATH_PER = "comparison_previous_research"
+OUTPUT_PATH_PER = "bayesian_optimization/traing_70_per"
 
 PATH_COMPLEXITY = './features_complexity/2008_2025_complexity.csv'
 PATH_MFCC = './features_mfcc/2008_2025_mfcc.csv'
@@ -107,7 +108,6 @@ class DataLoader:
 
         return [merge_logic(p) for p in self.dfs]
 
-
 def run_svm_logic(X_train, y_train, X_val, y_val, X_test, y_test):
     # 数値データのみを抽出 (念のため)
     X_train = X_train.select_dtypes(include=[np.number])
@@ -119,24 +119,99 @@ def run_svm_logic(X_train, y_train, X_val, y_val, X_test, y_test):
     X_val_s = scaler.transform(X_val)
     X_test_s = scaler.transform(X_test)
 
-    C_range = [0.1, 1, 10, 100]
-    gamma_range = [0.001, 0.01, 0.1, 1, 'scale']
-    
+    # C_range = [0.1, 1, 10, 100]
+    # gamma_range = [0.001, 0.01, 0.1, 1, 'scale']
+
     best_ba_val = -1
     best_model = None
 
-    for C in C_range:
-        for gamma in gamma_range:
-            clf = SVC(kernel='rbf', C=C, gamma=gamma, class_weight='balanced')
-            clf.fit(X_train_s, y_train)
-            val_preds = clf.predict(X_val_s)
-            ba_val = balanced_accuracy_score(y_val, val_preds)
+    # --- Grid Search (Commented Out) ---
+    # for C in C_range:
+    #     for gamma in gamma_range:
+    #         clf = SVC(kernel='rbf', C=C, gamma=gamma, class_weight='balanced')
+    #         clf.fit(X_train_s, y_train)
+    #         val_preds = clf.predict(X_val_s)
+    #         ba_val = balanced_accuracy_score(y_val, val_preds)
             
-            if ba_val > best_ba_val:
-                best_ba_val = ba_val
-                best_model = clf
+    #         if ba_val > best_ba_val:
+    #             best_ba_val = ba_val
+    #             best_model = clf
 
+    # --- Bayesian Optimization ---
+    def svm_eval(log_C, log_gamma):
+        # 対数スケールで探索するため、10の乗数に戻す
+        C = 10 ** log_C
+        gamma = 10 ** log_gamma
+        clf = SVC(kernel='rbf', C=C, gamma=gamma, class_weight='balanced', random_state=42)
+        clf.fit(X_train_s, y_train)
+        val_preds = clf.predict(X_val_s)
+        return balanced_accuracy_score(y_val, val_preds)
+
+    # 探索範囲 (対数スケール: 10^-3 ~ 10^3 程度)
+    pbounds = {'log_C': (-10, 1), 'log_gamma': (-5, -1)}
+
+    optimizer = BayesianOptimization(f=svm_eval, pbounds=pbounds, random_state=42, verbose=0)
+    optimizer.maximize(init_points=5, n_iter=100)
+
+    best_params = optimizer.max['params']
+    best_C = 10 ** best_params['log_C']
+    best_gamma = 10 ** best_params['log_gamma']
+    print(f"\n✅ Optimization Finished")
+    print(f"  - Best Params: C={best_C:.4f}, gamma={best_gamma:.4f}")
+
+    # 6. 最適パラメータで再学習 (Trainデータのみ使用)
+    best_model = SVC(kernel='rbf', C=best_C, gamma=best_gamma, class_weight='balanced', random_state=42)
+
+    #-------------------------------------------------------
+    print("こっから描写ーーーーーーーーーーーーーーーーーーー")
+    
+    # ★ここから学習曲線の描画ロジックを追加・修正★
+    from sklearn.model_selection import learning_curve
+    import matplotlib.pyplot as plt
+
+    # 学習曲線の計算
+    # cv=5 は学習データ(Train)をさらに5分割して検証することを意味します
+    train_sizes, train_scores, valid_scores = learning_curve(
+        estimator=best_model,
+        X=X_train_s, y=y_train,
+        train_sizes=np.linspace(0.1, 1.0, 10),
+        cv=5,
+        scoring='balanced_accuracy',
+        n_jobs=-1
+    )
+
+    # 平均と標準偏差の計算
+    train_mean = np.mean(train_scores, axis=1)
+    train_std  = np.std(train_scores, axis=1)
+    valid_mean = np.mean(valid_scores, axis=1)
+    valid_std  = np.std(valid_scores, axis=1)
+
+    # プロットの作成
+    plt.figure(figsize=(8, 6))
+    
+    # Training Score (青)
+    plt.plot(train_sizes, train_mean, color='blue', marker='o', markersize=5, label='Training score')
+    plt.fill_between(train_sizes, train_mean + train_std, train_mean - train_std, alpha=0.15, color='blue')
+    
+    # Validation Score (緑)
+    plt.plot(train_sizes, valid_mean, color='green', linestyle='--', marker='o', markersize=5, label='Cross-validation score')
+    plt.fill_between(train_sizes, valid_mean + valid_std, valid_mean - valid_std, alpha=0.15, color='green')
+
+    # グラフの装飾
+    plt.title('Learning Curve (SVM)')
+    plt.xlabel('Training examples')
+    plt.ylabel('Balanced Accuracy')
+    plt.legend(loc='lower right')
+    plt.grid()
+    
+    # グラフの表示 (実行環境によっては plt.savefig("learning_curve.png") 推奨)
+    plt.show()
+
+    print("ここまで描写ーーーーーーーーーーーーーーーーーーー")
+
+    best_model.fit(X_train_s, y_train)
     test_preds = best_model.predict(X_test_s)
+
     return balanced_accuracy_score(y_test, test_preds)
 
 
@@ -151,18 +226,18 @@ def run_experiment(years_train, years_val, years_test):
     train_df, val_df, test_df = loader.load_and_merge()
 
     #先行研究と比べるために
-    if len(train_df) >= 864:
-        train_df = train_df.sample(n=864, random_state=42)
-    if len(val_df) >= 200:
-        val_df = val_df.sample(n=200, random_state=42)
-    if len(test_df) >= 200:
-        test_df = test_df.sample(n=200, random_state=42)
+    # if len(train_df) >= 864:
+    #     train_df = train_df.sample(n=864, random_state=42)
+    # if len(val_df) >= 200:
+    #     val_df = val_df.sample(n=200, random_state=42)
+    # if len(test_df) >= 200:
+    #     test_df = test_df.sample(n=200, random_state=42)
 
 
-    print(f"\nData after merging features:")
-    print(f"train:{train_df.columns}::: shape={train_df.shape}")
-    print(f"val:{val_df.head(3)}::: shape={val_df.shape}")
-    print(f"test:{test_df.head(3)}::: shape={test_df.shape[0]}")
+    # print(f"\nData after merging features:")
+    # print(f"train:{train_df.columns}::: shape={train_df.shape}")
+    # print(f"val:{val_df.head(3)}::: shape={val_df.shape}")
+    # print(f"test:{test_df.head(3)}::: shape={test_df.shape[0]}")
     #exit()
     
     all_results = []
@@ -185,9 +260,9 @@ def run_experiment(years_train, years_val, years_test):
         y_val = (val_df[target] > median_val).astype(int)
         y_test = (test_df[target] > median_val).astype(int)
 
-        print(f"y_train:{y_train.value_counts()}")
-        print(f"y_val:{y_val.value_counts()}")
-        print(f"y_test:{y_test.value_counts()}")
+        # print(f"y_train:{y_train.value_counts()}")
+        # print(f"y_val:{y_val.value_counts()}")
+        # print(f"y_test:{y_test.value_counts()}")
         
 
         # print(y_train.head(10))
