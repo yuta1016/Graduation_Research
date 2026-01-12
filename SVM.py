@@ -30,7 +30,7 @@ TEST_LEN = 1
 
 OUTPUT_PATH = 'result_SVM'
 #OUTPUT_PATH_PER = 'median_val/median_val_traing_70_per'
-OUTPUT_PATH_PER = "bayesian_optimization/traing_70_per"
+OUTPUT_PATH_PER = "bayesian_optimization/bays_linear"
 
 PATH_COMPLEXITY = './features_complexity/2008_2025_complexity.csv'
 PATH_MFCC = './features_mfcc/2008_2025_mfcc.csv'
@@ -138,29 +138,29 @@ def run_svm_logic(X_train, y_train, X_val, y_val, X_test, y_test):
     #             best_model = clf
 
     # --- Bayesian Optimization ---
-    def svm_eval(log_C, log_gamma):
+    def svm_eval(log_C):
         # 対数スケールで探索するため、10の乗数に戻す
         C = 10 ** log_C
-        gamma = 10 ** log_gamma
-        clf = SVC(kernel='rbf', C=C, gamma=gamma, class_weight='balanced', random_state=42)
+
+        clf = SVC(kernel='linear', C=C, class_weight='balanced', random_state=42)
         clf.fit(X_train_s, y_train)
         val_preds = clf.predict(X_val_s)
         return balanced_accuracy_score(y_val, val_preds)
 
     # 探索範囲 (対数スケール: 10^-3 ~ 10^3 程度)
-    pbounds = {'log_C': (-10, 1), 'log_gamma': (-5, -1)}
+    pbounds = {'log_C': (-10, 4)}
 
     optimizer = BayesianOptimization(f=svm_eval, pbounds=pbounds, random_state=42, verbose=0)
     optimizer.maximize(init_points=5, n_iter=100)
 
     best_params = optimizer.max['params']
     best_C = 10 ** best_params['log_C']
-    best_gamma = 10 ** best_params['log_gamma']
+
     print(f"\n✅ Optimization Finished")
-    print(f"  - Best Params: C={best_C:.4f}, gamma={best_gamma:.4f}")
+    print(f"  - Best Params: C={best_C:.4f}")
 
     # 6. 最適パラメータで再学習 (Trainデータのみ使用)
-    best_model = SVC(kernel='rbf', C=best_C, gamma=best_gamma, class_weight='balanced', random_state=42)
+    best_model = SVC(kernel='linear', C=best_C, class_weight='balanced', random_state=42)
 
     #-------------------------------------------------------
     print("こっから描写ーーーーーーーーーーーーーーーーーーー")
@@ -207,7 +207,7 @@ def run_svm_logic(X_train, y_train, X_val, y_val, X_test, y_test):
     # グラフの表示 (実行環境によっては plt.savefig("learning_curve.png") 推奨)
     plt.show()
 
-    print("ここまで描写ーーーーーーーーーーーーーーーーーーー")
+    # print("ここまで描写ーーーーーーーーーーーーーーーーーーー")
 
     best_model.fit(X_train_s, y_train)
     test_preds = best_model.predict(X_test_s)
