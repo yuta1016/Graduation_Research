@@ -148,10 +148,10 @@ def run_svm_logic(X_train, y_train, X_val, y_val, X_test, y_test):
         return balanced_accuracy_score(y_val, val_preds)
 
     # 探索範囲 (対数スケール: 10^-3 ~ 10^3 程度)
-    pbounds = {'log_C': (-10, 4)}
+    pbounds = {'log_C': (-5, 3)}
 
     optimizer = BayesianOptimization(f=svm_eval, pbounds=pbounds, random_state=42, verbose=0)
-    optimizer.maximize(init_points=5, n_iter=100)
+    optimizer.maximize(init_points=5, n_iter=10)
 
     best_params = optimizer.max['params']
     best_C = 10 ** best_params['log_C']
@@ -163,54 +163,55 @@ def run_svm_logic(X_train, y_train, X_val, y_val, X_test, y_test):
     best_model = SVC(kernel='linear', C=best_C, class_weight='balanced', random_state=42)
 
     #-------------------------------------------------------
-    print("こっから描写ーーーーーーーーーーーーーーーーーーー")
+    # print("こっから描写ーーーーーーーーーーーーーーーーーーー")
     
-    # ★ここから学習曲線の描画ロジックを追加・修正★
-    from sklearn.model_selection import learning_curve
-    import matplotlib.pyplot as plt
+    # # ★ここから学習曲線の描画ロジックを追加・修正★
+    # from sklearn.model_selection import learning_curve
+    # import matplotlib.pyplot as plt
 
-    # 学習曲線の計算
-    # cv=5 は学習データ(Train)をさらに5分割して検証することを意味します
-    train_sizes, train_scores, valid_scores = learning_curve(
-        estimator=best_model,
-        X=X_train_s, y=y_train,
-        train_sizes=np.linspace(0.1, 1.0, 10),
-        cv=5,
-        scoring='balanced_accuracy',
-        n_jobs=-1
-    )
+    # # 学習曲線の計算
+    # # cv=5 は学習データ(Train)をさらに5分割して検証することを意味します
+    # train_sizes, train_scores, valid_scores = learning_curve(
+    #     estimator=best_model,
+    #     X=X_train_s, y=y_train,
+    #     train_sizes=np.linspace(0.1, 1.0, 10),
+    #     cv=5,
+    #     scoring='balanced_accuracy',
+    #     n_jobs=-1
+    # )
 
-    # 平均と標準偏差の計算
-    train_mean = np.mean(train_scores, axis=1)
-    train_std  = np.std(train_scores, axis=1)
-    valid_mean = np.mean(valid_scores, axis=1)
-    valid_std  = np.std(valid_scores, axis=1)
+    # # 平均と標準偏差の計算
+    # train_mean = np.mean(train_scores, axis=1)
+    # train_std  = np.std(train_scores, axis=1)
+    # valid_mean = np.mean(valid_scores, axis=1)
+    # valid_std  = np.std(valid_scores, axis=1)
 
-    # プロットの作成
-    plt.figure(figsize=(8, 6))
+    # # プロットの作成
+    # plt.figure(figsize=(8, 6))
     
-    # Training Score (青)
-    plt.plot(train_sizes, train_mean, color='blue', marker='o', markersize=5, label='Training score')
-    plt.fill_between(train_sizes, train_mean + train_std, train_mean - train_std, alpha=0.15, color='blue')
+    # # Training Score (青)
+    # plt.plot(train_sizes, train_mean, color='blue', marker='o', markersize=5, label='Training score')
+    # plt.fill_between(train_sizes, train_mean + train_std, train_mean - train_std, alpha=0.15, color='blue')
     
-    # Validation Score (緑)
-    plt.plot(train_sizes, valid_mean, color='green', linestyle='--', marker='o', markersize=5, label='Cross-validation score')
-    plt.fill_between(train_sizes, valid_mean + valid_std, valid_mean - valid_std, alpha=0.15, color='green')
+    # # Validation Score (緑)
+    # plt.plot(train_sizes, valid_mean, color='green', linestyle='--', marker='o', markersize=5, label='Cross-validation score')
+    # plt.fill_between(train_sizes, valid_mean + valid_std, valid_mean - valid_std, alpha=0.15, color='green')
 
-    # グラフの装飾
-    plt.title('Learning Curve (SVM)')
-    plt.xlabel('Training examples')
-    plt.ylabel('Balanced Accuracy')
-    plt.legend(loc='lower right')
-    plt.grid()
+    # # グラフの装飾
+    # plt.title('Learning Curve (SVM)')
+    # plt.xlabel('Training examples')
+    # plt.ylabel('Balanced Accuracy')
+    # plt.legend(loc='lower right')
+    # plt.grid()
     
-    # グラフの表示 (実行環境によっては plt.savefig("learning_curve.png") 推奨)
-    plt.show()
+    # # グラフの表示 (実行環境によっては plt.savefig("learning_curve.png") 推奨)
+    # plt.show()
 
     # print("ここまで描写ーーーーーーーーーーーーーーーーーーー")
 
     best_model.fit(X_train_s, y_train)
     test_preds = best_model.predict(X_test_s)
+    print("予測したよ")
 
     return balanced_accuracy_score(y_test, test_preds)
 
