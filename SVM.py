@@ -30,13 +30,13 @@ TEST_LEN = 1
 
 OUTPUT_PATH = 'result_SVM'
 #OUTPUT_PATH_PER = 'median_val/median_val_traing_70_per'
-OUTPUT_PATH_PER = "bayesian_optimization/bays_linear"
+OUTPUT_PATH_PER = "bayesian_optimization/bays_rbf"
 
 PATH_COMPLEXITY = './features_complexity/2008_2025_complexity.csv'
 PATH_MFCC = './features_mfcc/2008_2025_mfcc.csv'
 
 # --- ターゲット設定 (8つの人気度指標) ---
-TARGET_COLS = ["Debut_Score", "Max", "Mean", "Std", "Length", "Sum", "Skewness", "Kurtosis"]
+TARGET_COLS = ["Max", "Mean", "Std", "Length", "Sum", "Skewness", "Kurtosis", "Debut_Score",]
 
 # --- 特徴量の利用設定 (ロジック追加部分) ---
 # 他の人気度指標を特徴量として含めるかどうかのフラグ
@@ -138,39 +138,58 @@ def run_svm_logic(X_train, y_train, X_val, y_val, X_test, y_test):
     #             best_model = clf
 
     # --- Bayesian Optimization ---
-    def svm_eval(log_C):
-        # 対数スケールで探索するため、10の乗数に戻す
+   # --- Bayesian Optimization (過学習抑制版) ---
+    def svm_eval(log_C, log_gamma):
         C = 10 ** log_C
-
-        clf = SVC(kernel='linear', C=C, class_weight='balanced', random_state=42)
+        gamma = 10 ** log_gamma
+        
+        clf = SVC(kernel='rbf', C=C, gamma=gamma, class_weight='balanced', random_state=42)
         clf.fit(X_train_s, y_train)
+        
+        # TrainとVal両方の予測を行う
+        train_preds = clf.predict(X_train_s)
         val_preds = clf.predict(X_val_s)
-        return balanced_accuracy_score(y_val, val_preds)
+        
+        score_tr = balanced_accuracy_score(y_train, train_preds)
+        score_val = balanced_accuracy_score(y_val, val_preds)
+        
+        # 【重要】過学習ペナルティ項
+        # 学習スコアと検証スコアの差（gap）を計算
+        gap = score_tr - score_val
+        
+        # 差が大きすぎる場合（過学習）、スコアを減点する
+        # 係数 0.1 ～ 0.5 程度で調整（ここでは0.2としてみます）
+        # もし gap が負（Valの方が良い）ならペナルティは0にする
+        penalty = 0.2 * max(0, gap)
+        
+        return score_val - penalty
+
+
 
     # 探索範囲 (対数スケール: 10^-3 ~ 10^3 程度)
-    pbounds = {'log_C': (-5, 3)}
+    pbounds = {'log_C': (-4, 1), 'log_gamma': (-4, -1)}
 
     optimizer = BayesianOptimization(f=svm_eval, pbounds=pbounds, random_state=42, verbose=0)
-    optimizer.maximize(init_points=5, n_iter=10)
+    optimizer.maximize(init_points=5, n_iter=50)
 
     best_params = optimizer.max['params']
     best_C = 10 ** best_params['log_C']
-
+    best_gamma = 10 ** best_params['log_gamma']
     print(f"\n✅ Optimization Finished")
-    print(f"  - Best Params: C={best_C:.4f}")
+    print(f"  - Best Params: C={best_C:.4f}, gamma={best_gamma:.4f}")
 
     # 6. 最適パラメータで再学習 (Trainデータのみ使用)
-    best_model = SVC(kernel='linear', C=best_C, class_weight='balanced', random_state=42)
+    best_model = SVC(kernel='rbf', C=best_C, gamma=best_gamma, class_weight='balanced', random_state=42)
 
     #-------------------------------------------------------
-    # print("こっから描写ーーーーーーーーーーーーーーーーーーー")
+    #print("こっから描写ーーーーーーーーーーーーーーーーーーー")
     
-    # # ★ここから学習曲線の描画ロジックを追加・修正★
-    # from sklearn.model_selection import learning_curve
-    # import matplotlib.pyplot as plt
+    # ★ここから学習曲線の描画ロジックを追加・修正★
+    from sklearn.model_selection import learning_curve
+    import matplotlib.pyplot as plt
 
-    # # 学習曲線の計算
-    # # cv=5 は学習データ(Train)をさらに5分割して検証することを意味します
+    # 学習曲線の計算
+    # cv=5 は学習データ(Train)をさらに5分割して検証することを意味します
     # train_sizes, train_scores, valid_scores = learning_curve(
     #     estimator=best_model,
     #     X=X_train_s, y=y_train,
@@ -207,11 +226,62 @@ def run_svm_logic(X_train, y_train, X_val, y_val, X_test, y_test):
     # # グラフの表示 (実行環境によっては plt.savefig("learning_curve.png") 推奨)
     # plt.show()
 
+
+    # print("以下からバリデーション曲線ーーーーーーーーーーーーーーーーーーー")
+    # from sklearn.model_selection import validation_curve
+
+    # # 変数の定義
+    # model = best_model
+    # X = X_train_s
+    # y = y_train
+    # cv = 5
+    # scoring = 'balanced_accuracy'
+
+    # cv_params = {'gamma': [0.0001, 0.001, 0.01, 0.03, 0.1, 0.3, 1, 3, 10, 100, 1000],
+    #         'C': [0.001, 0.01, 0.1, 0.3, 1, 3, 10, 100, 1000]}
+    
+    # for i, (k, v) in enumerate(cv_params.items()):
+    #     plt.figure(figsize=(8, 6))
+    #     train_scores, valid_scores = validation_curve(estimator=model,
+    #                                                 X=X, y=y,
+    #                                                 param_name=k,
+    #                                                 param_range=v,
+    #                                                 cv=cv, scoring=scoring,
+    #                                                 n_jobs=-1)
+
+    #     # 学習データに対するスコアの平均±標準偏差を算出
+    #     train_mean = np.mean(train_scores, axis=1)
+    #     train_std  = np.std(train_scores, axis=1)
+    #     train_center = train_mean
+    #     train_high = train_mean + train_std
+    #     train_low = train_mean - train_std
+    #     # テストデータに対するスコアの平均±標準偏差を算出
+    #     valid_mean = np.mean(valid_scores, axis=1)
+    #     valid_std  = np.std(valid_scores, axis=1)
+    #     valid_center = valid_mean
+    #     valid_high = valid_mean + valid_std
+    #     valid_low = valid_mean - valid_std
+    #     # training_scoresをプロット
+    #     plt.plot(v, train_center, color='blue', marker='o', markersize=5, label='training score')
+    #     plt.fill_between(v, train_high, train_low, alpha=0.15, color='blue')
+    #     # validation_scoresをプロット
+    #     plt.plot(v, valid_center, color='green', linestyle='--', marker='o', markersize=5, label='validation score')
+    #     plt.fill_between(v, valid_high, valid_low, alpha=0.15, color='green')
+    #     # スケールを'log'に（線形なパラメータは'linear'にするので注意）
+    #     plt.xscale('log')
+    #     # 軸ラベルおよび凡例の指定
+    #     plt.xlabel(k)  # パラメータ名を横軸ラベルに
+    #     plt.ylabel(scoring)  # スコア名を縦軸ラベルに
+    #     plt.legend(loc='lower right')  # 凡例
+    #     plt.title(f'Validation Curve ({k})')
+    #     # グラフを描画
+    #     plt.show()
+
     # print("ここまで描写ーーーーーーーーーーーーーーーーーーー")
 
     best_model.fit(X_train_s, y_train)
     test_preds = best_model.predict(X_test_s)
-    print("予測したよ")
+    #print("予測したよ")
 
     return balanced_accuracy_score(y_test, test_preds)
 
