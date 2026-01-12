@@ -8,7 +8,7 @@ from tkinter import filedialog, messagebox
 import math
 
 # 比較したい統計指標を定義
-TARGET_METRICS = ["Debut_Score", "Max", "Mean", "Std", "Length", "Sum", "Skewness", "Kurtosis"]
+TARGET_METRICS = ["Average", "Debut_Score", "Max", "Mean", "Std", "Length", "Sum", "Skewness", "Kurtosis"]
 #TARGET_METRICS = ["Debut_Score", "Max"] # テスト用に少し増やしていますが適宜変更してください
 
 SPOTIFY_POPULARITY = True
@@ -66,12 +66,19 @@ def visualize_time_series(df, metrics):
     # 年代順ソート用
     def get_start_year(p):
         try:
-            return int(str(p).split('-')[1])
+            # ハイフンで区切られた数字の部分を探す
+            parts = str(p).split('-')
+            for part in reversed(parts):
+                if part.isdigit() and len(part) == 4:
+                    return int(part)
         except:
             return 9999
 
     df['StartYear'] = df['Period'].apply(get_start_year)
     df = df.sort_values('StartYear')
+
+    ordered_periods = df['Period'].unique()
+    df['Period'] = pd.Categorical(df['Period'], categories=ordered_periods, ordered=True)
 
     num_metrics = len(metrics)
     cols = 2
@@ -111,7 +118,8 @@ def visualize_time_series(df, metrics):
             dashes=True,         # 点線を使用
             ax=ax,
             linewidth=2,
-            markersize=8
+            markersize=8,
+            sort=False
         )
         
         ax.set_title(f"Metric: {metric}", fontsize=14, fontweight='bold')
