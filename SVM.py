@@ -29,14 +29,16 @@ VAL_LEN = 1
 TEST_LEN = 1
 
 OUTPUT_PATH = 'result_SVM'
-#OUTPUT_PATH_PER = 'median_val/median_val_traing_70_per'
-OUTPUT_PATH_PER = "bayesian_optimization/bays_rbf"
+OUTPUT_PATH_PER = 'grid_search/grid_search_rbf'
+#OUTPUT_PATH_PER = "bayesian_optimization/bays_rbf"
+
+PICTURE_PATH = './plot_SVM/grid_search_rbf/'
 
 PATH_COMPLEXITY = './features_complexity/2008_2025_complexity.csv'
 PATH_MFCC = './features_mfcc/2008_2025_mfcc.csv'
 
 # --- ターゲット設定 (8つの人気度指標) ---
-TARGET_COLS = ["Max", "Mean", "Std", "Length", "Sum", "Skewness", "Kurtosis", "Debut_Score",]
+TARGET_COLS = ["Debut_Score", "Max", "Mean", "Std", "Length", "Sum", "Skewness", "Kurtosis"]
 
 # --- 特徴量の利用設定 (ロジック追加部分) ---
 # 他の人気度指標を特徴量として含めるかどうかのフラグ
@@ -107,6 +109,74 @@ class DataLoader:
             return tmp
 
         return [merge_logic(p) for p in self.dfs]
+    
+
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.model_selection import GridSearchCV
+
+def run_grid_search_viz(X_train, y_train, X_val, y_val, X_test, y_test, years_test, target, exp_name):
+    # データ準備（標準化など）は省略（元のコードと同じ）
+    scaler = StandardScaler()
+    X_train_s = scaler.fit_transform(X_train)
+    X_val_s = scaler.transform(X_val)
+    X_test_s = scaler.transform(X_test)
+
+    # 1. パラメータの範囲を決める（広めに！）
+    # C: 0.01 から 100 まで
+    # gamma: 0.0001 から 1 まで
+    param_grid = {
+        'C': [0.001, 0.01, 0.1, 1, 10, 100, 1000],
+        'gamma': [0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.1, 1]
+    }
+
+    # 2. GridSearch実行（cv=5 でTrainデータ内で検証する）
+    # これなら「過学習」のリスクは激減します
+    grid = GridSearchCV(
+        SVC(kernel='rbf', class_weight='balanced', random_state=42),
+        param_grid,
+        cv=5,                    # Trainデータを5分割して検証
+        scoring='balanced_accuracy',
+        n_jobs=-1,
+        verbose=1
+    )
+    
+    grid.fit(X_train_s, y_train)
+
+    # 3. ヒートマップを描画（これが一番重要！）
+    results_df = pd.DataFrame(grid.cv_results_)
+    scores = results_df.pivot(index='param_gamma', columns='param_C', values='mean_test_score')
+    
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(scores, annot=True, fmt=".3f", cmap="viridis")
+    plt.title("Grid Search Accuracy (CV Score)")
+    plt.xlabel("Parameter C")
+    plt.ylabel("Parameter gamma")
+    #plt.show()
+    
+    # ファイル名: テスト年代_指標名_exp名
+    years_str = "-".join(years_test)
+    safe_exp_name = exp_name.replace(":", "").replace(" ", "_")
+    os.makedirs(PICTURE_PATH, exist_ok=True)
+    plt.savefig(f"{PICTURE_PATH}{years_str}_{target}_{safe_exp_name}.png")
+    plt.close()
+
+    # 4. 最適なモデルでValとTestを評価
+    best_model = grid.best_estimator_
+    print(f"Best Params: {grid.best_params_}")
+    
+    # Valでの評価（これが本当の実力）
+    val_pred = best_model.predict(X_val_s)
+    val_score = balanced_accuracy_score(y_val, val_pred)
+    print(f"Validation Score: {val_score:.4f}")
+
+    # Testでの評価
+    test_pred = best_model.predict(X_test_s)
+    test_score = balanced_accuracy_score(y_test, test_pred)
+
+    return test_score
+
 
 def run_svm_logic(X_train, y_train, X_val, y_val, X_test, y_test):
     # 数値データのみを抽出 (念のため)
@@ -368,7 +438,8 @@ def run_experiment(years_train, years_val, years_test):
             # exit()
 
             # SVM実行
-            test_ba = run_svm_logic(X_tr, y_train, X_va, y_val, X_te, y_test)
+            #test_ba = run_svm_logic(X_tr, y_train, X_va, y_val, X_te, y_test)
+            test_ba = run_grid_search_viz(X_tr, y_train, X_va, y_val, X_te, y_test, years_test, target, exp_name)
             
             all_results.append({
                 'Target_Metric': target,
