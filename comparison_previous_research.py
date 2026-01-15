@@ -1,13 +1,41 @@
+#一つのcsvを読み込み、実験ごとに指標を棒グラフで比較する
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-FOR_COMPARISON_CSV = "./result_SVM/bayesian_optimization/bays_traing_70_per/results_2009_2014.csv"
+FOR_COMPARISON_CSV = "./result_SVM/grid_search/grid_search_rbf/results_2009_2014.csv"
 
 #FOR_COMPARISON_FOLDER = "./result_SVM/traing_70_per/"
 INCLUDE_SPOTIFY_POPULARITY = False
 
 METRICS = ["Debut_Score", "Max", "Mean", "Std", "Length", "Sum", "Skewness", "Kurtosis"]
+
+
+def calculate_average(file):
+    print("Calculating average for each metric...")
+    # CSVを読み込む
+    df = pd.read_csv(file)
+    
+    # 1列目のカラム名を統一（Target_Metricと仮定）
+    if df.columns[0] != 'Target_Metric':
+        df.rename(columns={df.columns[0]: 'Target_Metric'}, inplace=True)
+
+    # METRICSに含まれる行のみを抽出
+    df_clean = df[df['Target_Metric'].isin(METRICS)].copy()
+
+    # 実験データのカラム（2列目以降）を取得
+    exp_cols = df_clean.columns[1:]
+    
+    # 数値に変換（変換できない文字はNaNにする）
+    for col in exp_cols:
+        df_clean[col] = pd.to_numeric(df_clean[col], errors='coerce')
+    
+    # 各実験（カラム）ごとの平均を計算
+    averages = df_clean[exp_cols].mean()
+    print("--- Experiment Averages ---")
+    print(averages)
+    return averages
 
 
 def process_csv(file_path):
@@ -55,7 +83,11 @@ def process_csv(file_path):
     plt.show()
 
 def main():
-    process_csv(FOR_COMPARISON_CSV)
+    #指定したcsvファイルの各指標ごとの平均を計算
+    calculate_average(FOR_COMPARISON_CSV)
+
+    #指定したcsvファイルを読み込み、各指標ごとの棒グラフを作成
+    #process_csv(FOR_COMPARISON_CSV)
     
 
 

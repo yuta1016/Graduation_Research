@@ -29,10 +29,10 @@ VAL_LEN = 1
 TEST_LEN = 1
 
 OUTPUT_PATH = 'result_SVM'
-OUTPUT_PATH_PER = 'grid_search/grid_search_rbf'
+OUTPUT_PATH_PER = 'grid_search/expand_grid_search_rbf'
 #OUTPUT_PATH_PER = "bayesian_optimization/bays_rbf"
 
-PICTURE_PATH = './plot_SVM/grid_search_rbf/'
+PICTURE_PATH = './plot_SVM/expand_grid_search_rbf/'
 
 PATH_COMPLEXITY = './features_complexity/2008_2025_complexity.csv'
 PATH_MFCC = './features_mfcc/2008_2025_mfcc.csv'
@@ -127,8 +127,8 @@ def run_grid_search_viz(X_train, y_train, X_val, y_val, X_test, y_test, years_te
     # C: 0.01 から 100 まで
     # gamma: 0.0001 から 1 まで
     param_grid = {
-        'C': [0.001, 0.01, 0.1, 1, 10, 100, 1000],
-        'gamma': [0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.1, 1]
+        'C': [0.1, 1, 10, 100, 1000, 2000, 3000],
+        'gamma': [0.0000005, 0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.1]
     }
 
     # 2. GridSearch実行（cv=5 でTrainデータ内で検証する）
@@ -144,16 +144,25 @@ def run_grid_search_viz(X_train, y_train, X_val, y_val, X_test, y_test, years_te
     
     grid.fit(X_train_s, y_train)
 
-    # 3. ヒートマップを描画（これが一番重要！）
+    # 3. ヒートマップを描画
     results_df = pd.DataFrame(grid.cv_results_)
     scores = results_df.pivot(index='param_gamma', columns='param_C', values='mean_test_score')
     
+    #plot
+    best_params = grid.best_params_
+    best_C = best_params['C']
+    best_gamma = best_params['gamma']
+    
     plt.figure(figsize=(8, 6))
-    sns.heatmap(scores, annot=True, fmt=".3f", cmap="viridis")
-    plt.title("Grid Search Accuracy (CV Score)")
+    sns.heatmap(scores, annot=True, fmt=".3f", cmap="viridis", vmin=0.5, vmax=0.6)
+    plt.title("Grid Search Accuracy C:{} Gamma:{}".format(best_C, best_gamma))
     plt.xlabel("Parameter C")
     plt.ylabel("Parameter gamma")
-    #plt.show()
+    # plt.show()
+
+    print(years_test)
+    print(exp_name)
+    print(target)
     
     # ファイル名: テスト年代_指標名_exp名
     years_str = "-".join(years_test)
@@ -162,11 +171,11 @@ def run_grid_search_viz(X_train, y_train, X_val, y_val, X_test, y_test, years_te
     plt.savefig(f"{PICTURE_PATH}{years_str}_{target}_{safe_exp_name}.png")
     plt.close()
 
-    # 4. 最適なモデルでValとTestを評価
-    best_model = grid.best_estimator_
+    # 4. 最適なモデル
     print(f"Best Params: {grid.best_params_}")
     
-    # Valでの評価（これが本当の実力）
+    # Valでの評価
+    best_model = grid.best_estimator_
     val_pred = best_model.predict(X_val_s)
     val_score = balanced_accuracy_score(y_val, val_pred)
     print(f"Validation Score: {val_score:.4f}")

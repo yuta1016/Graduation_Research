@@ -1,3 +1,5 @@
+#フォルダ内にある複数のCSVファイルを読み込み、各指標ごとに平均を計算し、棒グラフで可視化するスクリプト
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -5,6 +7,7 @@ import glob
 import os
 import tkinter as tk
 from tkinter import filedialog
+
 
 def main():
     # tkinterのルートウィンドウを作成し、非表示にする（ダイアログのみ表示するため）

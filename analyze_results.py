@@ -1,3 +1,6 @@
+#縦軸を正解度、横軸を年代として、指標ごとに比べる
+#指標_実験_年代ごとに値が一番高かったものを表示する
+
 import os
 import glob
 import pandas as pd
@@ -9,7 +12,10 @@ import math
 
 # 比較したい統計指標を定義
 TARGET_METRICS = ["Average", "Debut_Score", "Max", "Mean", "Std", "Length", "Sum", "Skewness", "Kurtosis"]
-#TARGET_METRICS = ["Debut_Score", "Max"] # テスト用に少し増やしていますが適宜変更してください
+#TARGET_METRICS = ["Average", "Debut_Score", "Max", "Mean"]
+#TARGET_METRICS = ["Std", "Length", "Sum", "Skewness"]
+#TARGET_METRICS = ["Skewness", "Kurtosis"]
+#TARGET_METRICS = ["Average", "Kurtosis"]
 
 SPOTIFY_POPULARITY = True
 
@@ -144,6 +150,40 @@ def visualize_time_series(df, metrics):
     plt.show()
 
 
+def print_best_performers(df):
+    """
+    各指標(Metric)・実験(Experiment)ごとに、最もスコアが高かった年代(Period)を出力する
+    """
+    print("\n" + "="*80)
+    print(f"{'Best Performance by Metric and Experiment':^80}")
+    print("="*80)
+    
+    if df.empty:
+        print("No data available.")
+        return
+
+    try:
+        # MetricとExperimentでグループ化し、Scoreが最大の行を取得
+        # idxmaxは最大値を持つ最初のインデックスを返す
+        idx = df.groupby(['Metric', 'Experiment'])['Score'].idxmax()
+        best_performers = df.loc[idx]
+        
+        # 見やすくソート (Metric順 -> Experiment順)
+        best_performers = best_performers.sort_values(by=['Metric', 'Experiment'])
+        
+        # 表示するカラムを選択
+        cols_to_show = ['Metric', 'Experiment', 'Period', 'Score']
+        if 'Dataset' in best_performers.columns:
+            cols_to_show.append('Dataset')
+            
+        # データフレームを文字列として整形して表示
+        print(best_performers[cols_to_show].to_string(index=False, float_format=lambda x: "{:.4f}".format(x)))
+        
+    except Exception as e:
+        print(f"Error calculating best performers: {e}")
+        
+    print("="*80 + "\n")
+
 
 def main():
     folders = select_folders()
@@ -199,7 +239,13 @@ def main():
     combined_df = pd.concat(all_data_list, ignore_index=True)
     final_df = combined_df[combined_df["Experiment"] != "Exp4: Spotify_Popularity"] if SPOTIFY_POPULARITY else combined_df
 
+    # 最高値を出力
+    print_best_performers(final_df)
+
     visualize_time_series(final_df, TARGET_METRICS)
 
 if __name__ == "__main__":
     main()
+
+
+
