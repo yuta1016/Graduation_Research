@@ -1,0 +1,76 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeCInformation.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeCXXInformation.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeGenericSystem.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeRCInformation.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckCXXCompilerFlag.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckCXXSourceCompiles.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckFunctionExists.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckIncludeFile.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckIncludeFileCXX.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckLibraryExists.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckTypeSize.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Compiler/MSVC-C.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Compiler/MSVC.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/FindPackageMessage.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/FindThreads.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/GNUInstallDirs.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Internal/CheckFlagCommonConfig.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Platform/Windows-Initialize.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Platform/Windows.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Platform/WindowsPaths.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/SelectLibraryConfigurations.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/CMakeLists.txt
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build/CMakeFiles/3.28.0-msvc1/CMakeCCompiler.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build/CMakeFiles/3.28.0-msvc1/CMakeCXXCompiler.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build/CMakeFiles/3.28.0-msvc1/CMakeRCCompiler.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/build/CMakeFiles/3.28.0-msvc1/CMakeSystem.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/FindICU.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesBool.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesConst.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesDLL.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesFileMgrSelection.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesFunctions.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesICU.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesIconvConst.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesIncludes.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesInline.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesIntTypes.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesLFS.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesLString.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesMFC.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesMsgLoaderSelection.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesMutexMgrSelection.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesNamespaces.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesNetAccessorSelection.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesOperatorDelete.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesPathDelimiters.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesPathMax.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesSSE2.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesStdLibs.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesStdNamespace.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesTranscoderSelection.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesVolatile.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesWChar.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesWarnings.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/cmake/XercesXMLCh.cmake
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/config.h.cmake.in
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/doc/style/dtd/entities.ent.in
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/src/xercesc/util/XercesVersion.hpp.cmake.in
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/src/xercesc/util/Xerces_autoconf_config.hpp.cmake.in
+C:/Users/USER/Desktop/SchoolRelation/GraduationReaserch/Scraping/MPEG7/w15127SW/xml/xerces-c.pc.in

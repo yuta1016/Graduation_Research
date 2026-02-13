@@ -1982,7 +1982,7 @@ int auto1_radon(double *x_in,int x_long,double **y)
   for (i=0;i<long1-1;i++) temp_out[i] = sum[long1-i-1];
   for (i=long1-1;i<2*long1-1;i++) temp_out[i] = sum[i-long1+1];
 
-  cut = round((float)((long1-1)*0.75));
+  cut = xm_round((float)((long1-1)*0.75));
   *y = (double *) calloc(2*cut+1,sizeof(double)); 
   for (i=0;i<cut;i++) (*y)[i]= temp_out[long1-1-cut+i];
   for (i=0;i<cut;i++) (*y)[i+cut+1] = temp_out[long1+i];
@@ -1998,7 +1998,7 @@ int auto1_radon(double *x_in,int x_long,double **y)
 // VS2013-MODS
 //-----------------------------------------------------------------------------
 #if (_MSC_VER < 1800)
-int round(float x)
+int xm_round(float x)
 {
   int i;
   float y;

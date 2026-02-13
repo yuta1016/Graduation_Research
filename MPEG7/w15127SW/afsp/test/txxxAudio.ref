@@ -1,0 +1,629 @@
+CopyAudio: v10r5  2023-04-10
+CompAudio: v10r5  2023-04-10
+FiltAudio: v10r5  2023-04-10
+InfoAudio: v10r5  2023-04-10
+ResampAudio: v10r5  2023-04-10
+
+========== CopyAudio: scale by 2, scale by 0.5, expect File A = File B
+ AU audio file: --path--/audiofiles/addf8.au
+   Description: female speaker; "Add the sum ..."
+   Samples / channel : 23808 (2.976 s)  1981/02/11 23:03:34 UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+ AU audio file: --path--/audiofiles/addf8.au
+   Description: female speaker; "Add the sum ..."
+   Samples / channel : 23808 (2.976 s)  1981/02/11 23:03:34 UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+
+ AU audio file: --path--/test/xx.au
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 2 (32-bit float)
+------
+ AU audio file: --path--/test/xx.au
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 2 (32-bit float)
+
+ WAVE file: --path--/test/yy.wav
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (32-bit float)
+------
+ AU audio file: --path--/audiofiles/addf8.au
+   Description: female speaker; "Add the sum ..."
+   Samples / channel : 23808 (2.976 s)  1981/02/11 23:03:34 UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+ WAVE file: --path--/test/yy.wav
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (32-bit float)
+
+ File A:
+    Number of Samples: 23808
+    Std Dev = 1710.5 (5.22%),  Mean = -19.852 (-0.06058%)
+    Maximum = 9547 (29.14%),  Minimum = -12311 (-37.57%)
+    Active Level: 1894.5 (5.782%), Activity Factor: 81.5%
+ File B:
+    Number of Samples: 23808
+    Std Dev = 5.22%,  Mean = -0.06058%
+    Maximum = 29.14%,  Minimum = -37.57%
+    Active Level: 5.782%, Activity Factor: 81.5%
+
+ File A = File B
+
+========== CopyAudio: apply mu-law, expect max diff 251
+ INRS-Telecom audio file: --path--/audiofiles/catm8.aud
+   Samples / channel : 19712 (2.464 s)  11-FEB-81 17:56:44
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+
+ AU audio file: --path--/test/xx.au
+   Samples / channel : 19712 (2.464 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (8-bit mu-law)
+------
+ INRS-Telecom audio file: --path--/audiofiles/catm8.aud
+   Samples / channel : 19712 (2.464 s)  11-FEB-81 17:56:44
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+ AU audio file: --path--/test/xx.au
+   Samples / channel : 19712 (2.464 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (8-bit mu-law)
+
+ File A:
+    Number of Samples: 19712
+    Std Dev = 1320.9 (4.031%),  Mean = -17.821 (-0.05439%)
+    Maximum = 9796 (29.9%),  Minimum = -14355 (-43.81%)
+    Active Level: 1495.6 (4.564%), Activity Factor: 78.0%
+ File B:
+    Number of Samples: 19712
+    Std Dev = 1321.7 (4.034%),  Mean = -16.998 (-0.05187%)
+    Maximum = 9852 (30.07%),  Minimum = -14460 (-44.13%)
+    Active Level: 1496.5 (4.567%), Activity Factor: 78.0%
+
+ SNR      = 37.08   dB
+ SNR      = 37.09   dB  (File B Gain = 0.999)
+ Seg. SNR = 31.52   dB  (128 sample segments)
+ Max Diff = 251 (0.766%),  No. Diff = 17953 (1435 runs)
+
+========== CopyAudio: apply mu-law again, expect File A = File B
+ AU audio file: --path--/test/xx.au
+   Samples / channel : 19712 (2.464 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (8-bit mu-law)
+
+ AU audio file: --path--/test/yy.au
+   Samples / channel : 19712 (2.464 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (8-bit mu-law)
+------
+ AU audio file: --path--/test/xx.au
+   Samples / channel : 19712 (2.464 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (8-bit mu-law)
+ AU audio file: --path--/test/yy.au
+   Samples / channel : 19712 (2.464 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (8-bit mu-law)
+
+    Number of Samples: 19712
+    Std Dev = 1321.7 (4.034%),  Mean = -16.998 (-0.05187%)
+    Maximum = 9852 (30.07%),  Minimum = -14460 (-44.13%)
+    Active Level: 1496.5 (4.567%), Activity Factor: 78.0%
+
+ File A = File B
+
+========== CopyAudio: headerless output, expect File A = File B
+ AU audio file: --path--/audiofiles/addf8.au
+   Description: female speaker; "Add the sum ..."
+   Samples / channel : 23808 (2.976 s)  1981/02/11 23:03:34 UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+
+ Headerless audio file: --path--/test/xx.nh
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (32-bit float)
+------
+ AU audio file: --path--/audiofiles/addf8.au
+   Description: female speaker; "Add the sum ..."
+   Samples / channel : 23808 (2.976 s)  1981/02/11 23:03:34 UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+ Headerless audio file: --path--/test/xx.nh
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (32-bit float)
+
+ File A:
+    Number of Samples: 23808
+    Std Dev = 1710.5 (5.22%),  Mean = -19.852 (-0.06058%)
+    Maximum = 9547 (29.14%),  Minimum = -12311 (-37.57%)
+    Active Level: 1894.5 (5.782%), Activity Factor: 81.5%
+ File B:
+    Number of Samples: 23808
+    Std Dev = 5.22%,  Mean = -0.06058%
+    Maximum = 29.14%,  Minimum = -37.57%
+    Active Level: 5.782%, Activity Factor: 81.5%
+
+ File A = File B
+
+-------- ALL - FIR, expect File A = File B
+ AU audio file: --path--/audiofiles/addf8.au
+   Description: female speaker; "Add the sum ..."
+   Samples / channel : 23808 (2.976 s)  1981/02/11 23:03:34 UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+ Filter file: --path--/test/f.cof
+   FIR filter (direct form)  YYYY-MM-dd hh:mm:ss UTC
+   Number of coefficients: 3
+
+ AU audio file: --path--/test/tx1.au
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (32-bit float)
+
+ AU audio file: --path--/test/tx1.au
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (32-bit float)
+ Filter file: --path--/test/a.cof
+   All-pole filter (direct form)  YYYY-MM-dd hh:mm:ss UTC
+   Number of coefficients: 3
+
+ WAVE file: --path--/test/tx2.wav
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (32-bit float)
+
+ AU audio file: --path--/audiofiles/addf8.au
+   Description: female speaker; "Add the sum ..."
+   Samples / channel : 23808 (2.976 s)  1981/02/11 23:03:34 UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+ WAVE file: --path--/test/tx2.wav
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (32-bit float)
+
+ File A:
+    Number of Samples: 23808
+    Std Dev = 1710.5 (5.22%),  Mean = -19.852 (-0.06058%)
+    Maximum = 9547 (29.14%),  Minimum = -12311 (-37.57%)
+    Active Level: 1894.5 (5.782%), Activity Factor: 81.5%
+ File B:
+    Number of Samples: 23808
+    Std Dev = 5.22%,  Mean = -0.06058%
+    Maximum = 29.14%,  Minimum = -37.57%
+    Active Level: 5.782%, Activity Factor: 81.5%
+
+ File A = File B
+-------- FIR x5 x(1/5), expect File A = File B
+ AU audio file: --path--/audiofiles/addf8.au
+   Description: female speaker; "Add the sum ..."
+   Samples / channel : 23808 (2.976 s)  1981/02/11 23:03:34 UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+ Filter file: --path--/test/fx5.cof
+   FIR filter (direct form, symmetric)  YYYY-MM-dd hh:mm:ss UTC
+   Number of coefficients: 31
+
+ AU audio file: --path--/test/tx5.au
+   Samples / channel : 119040 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 40000 Hz
+   Number of channels: 1 (16-bit integer)
+
+ AU audio file: --path--/test/tx5.au
+   Samples / channel : 119040 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 40000 Hz
+   Number of channels: 1 (16-bit integer)
+ Filter file: --path--/test/fs5.cof
+   FIR filter (direct form, symmetric)  YYYY-MM-dd hh:mm:ss UTC
+   Number of coefficients: 7
+
+ AU audio file: --path--/test/tx1.au
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+
+ AU audio file: --path--/audiofiles/addf8.au
+   Description: female speaker; "Add the sum ..."
+   Samples / channel : 23808 (2.976 s)  1981/02/11 23:03:34 UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+ AU audio file: --path--/test/tx1.au
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+
+    Number of Samples: 23808
+    Std Dev = 1710.5 (5.22%),  Mean = -19.852 (-0.06058%)
+    Maximum = 9547 (29.14%),  Minimum = -12311 (-37.57%)
+    Active Level: 1894.5 (5.782%), Activity Factor: 81.5%
+
+ File A = File B
+-------- IIR, expect File A = File B
+ AU audio file: --path--/audiofiles/addf8.au
+   Description: female speaker; "Add the sum ..."
+   Samples / channel : 23808 (2.976 s)  1981/02/11 23:03:34 UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+ Filter file: --path--/test/fi1.cof
+   IIR filter (cascade biquad sections)  YYYY-MM-dd hh:mm:ss UTC
+   Number of coefficients: 5  (1 section)
+
+ AU audio file: --path--/test/tx1.au
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (32-bit float)
+
+ AU audio file: --path--/test/tx1.au
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (32-bit float)
+ Filter file: --path--/test/fi2.cof
+   IIR filter (cascade biquad sections)  YYYY-MM-dd hh:mm:ss UTC
+   Number of coefficients: 5  (1 section)
+
+ AU audio file: --path--/test/tx2.au
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (32-bit float)
+
+ AU audio file: --path--/audiofiles/addf8.au
+   Description: female speaker; "Add the sum ..."
+   Samples / channel : 23808 (2.976 s)  1981/02/11 23:03:34 UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+ AU audio file: --path--/test/tx2.au
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (32-bit float)
+
+ File A:
+    Number of Samples: 23808
+    Std Dev = 1710.5 (5.22%),  Mean = -19.852 (-0.06058%)
+    Maximum = 9547 (29.14%),  Minimum = -12311 (-37.57%)
+    Active Level: 1894.5 (5.782%), Activity Factor: 81.5%
+ File B:
+    Number of Samples: 23808
+    Std Dev = 5.22%,  Mean = -0.06058%
+    Maximum = 29.14%,  Minimum = -37.57%
+    Active Level: 5.782%, Activity Factor: 81.5%
+
+ File A = File B
+
+========== ResampAudio: 8000 -> 8001 -> 8000
+ AU audio file: --path--/audiofiles/addf8.au
+   Description: female speaker; "Add the sum ..."
+   Samples / channel : 23808 (2.976 s)  1981/02/11 23:03:34 UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+
+ Interpolation filter:
+   ratio: 24, cutoff: 0.5, alpha: 7.85726, gain = 24
+   delay: 816, no. coeffs: 1633, offset: 0, span: 1632
+
+ AU audio file: --path--/test/xxx.au
+   Samples / channel : 23811 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8001 Hz
+   Number of channels: 1 (16-bit integer)
+ Sampling ratio: 8001/8000
+ AU audio file: --path--/test/xxx.au
+   Samples / channel : 23811 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8001 Hz
+   Number of channels: 1 (16-bit integer)
+
+ Interpolation filter:
+   ratio: 24, cutoff: 0.499938, alpha: 7.85726, gain = 24
+   delay: 816, no. coeffs: 1633, offset: 0, span: 1632
+
+ WAVE file: --path--/test/yyy.wav
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+ Sampling ratio: 8000/8001
+ AU audio file: --path--/audiofiles/addf8.au
+   Description: female speaker; "Add the sum ..."
+   Samples / channel : 23808 (2.976 s)  1981/02/11 23:03:34 UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+ WAVE file: --path--/test/yyy.wav
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+
+ File A:
+    Number of Samples: 23808
+    Std Dev = 1710.5 (5.22%),  Mean = -19.852 (-0.06058%)
+    Maximum = 9547 (29.14%),  Minimum = -12311 (-37.57%)
+    Active Level: 1894.5 (5.782%), Activity Factor: 81.5%
+ File B:
+    Number of Samples: 23808
+    Std Dev = 1710.4 (5.22%),  Mean = -19.852 (-0.06058%)
+    Maximum = 9543 (29.12%),  Minimum = -12306 (-37.55%)
+    Active Level: 1894.3 (5.781%), Activity Factor: 81.5%
+
+ SNR      = 71.82   dB
+ SNR      = 72.56   dB  (File B Gain = 1)
+ Seg. SNR = 62.01   dB  (128 sample segments)
+ Max Diff = 6 (0.01831%),  No. Diff = 3393 (2372 runs)
+
+========== ResampAudio: 8000 -> 48000 -> 8000
+ AU audio file: --path--/audiofiles/addf8.au
+   Description: female speaker; "Add the sum ..."
+   Samples / channel : 23808 (2.976 s)  1981/02/11 23:03:34 UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+
+ Interpolation filter:
+   ratio: 6, cutoff: 0.5, alpha: 7.85726, gain = 6
+   delay: 204, no. coeffs: 409, offset: 0, span: 408
+ Coefficient file: --path--/test/temp.cof
+
+ AU audio file: --path--/test/xxxa.au
+   Samples / channel : 142843 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 48000 Hz
+   Number of channels: 1 (16-bit integer)
+ Sampling ratio: 6/1
+!FIR - Kaiser windowed lowpass filter
+!  ratio: 6, cutoff: 0.5, alpha: 7.85726, gain: 6
+!  delay: 203, offset: 0, span: 408
+  -1.454277e-05  -2.898679e-05  -3.819317e-05  -3.747093e-05  -2.435547e-05
+              0   3.038548e-05   5.838965e-05   7.451258e-05   7.106571e-05
+   4.504137e-05              0  -5.381798e-05  -0.0001015039  -0.0001273346
+  -0.0001195473  -7.467443e-05              0   8.692862e-05   0.0001620374
+   0.0002010463   0.0001868075   0.0001155555              0  -0.0001321274
+  -0.0002442602    -0.00030069  -0.0002773104  -0.0001703187              0
+   0.0001921633   0.0003530341   0.0004319966   0.0003961213   0.0002419476
+              0  -0.0002701399    -0.00049384  -0.0006014171  -0.0005489335
+  -0.0003337916              0    0.000369532    0.000672806   0.0008161555
+   0.0007420975   0.0004495818              0  -0.0004942022  -0.0008967379
+   -0.001084205  -0.0009826526  -0.0005934508              0   0.0006484219
+    0.001173156    0.001414391    0.001278367   0.0007699567              0
+  -0.0008368976   -0.001510343   -0.001816432   -0.001637793  -0.0009841159
+              0    0.001064808    0.001917414    0.002301022     0.00207034
+     0.00124145              0   -0.001337857    -0.00240441   -0.002879949
+   -0.002586388   -0.001548051              0    0.001662347    0.002982437
+    0.003566262     0.00319744    0.001910682              0   -0.002045291
+   -0.003663871   -0.004374524   -0.003916351    -0.00233691              0
+    0.002494568    0.004462641     0.00532116    0.004757654    0.002835312
+              0   -0.003019146   -0.005394648   -0.006424972   -0.005738029
+   -0.003415758              0    0.003629414    0.006478362    0.007707866
+    0.006876978    0.004089827              0   -0.004337641   -0.007735683
+   -0.009195917   -0.008197797   -0.004871407              0    0.005158663
+    0.009193195     0.01092091    0.009729009    0.005777573              0
+   -0.006110878    -0.01088402    -0.01292261    -0.01150646   -0.006829884
+              0    0.007217737     0.01285056     0.01525221     0.01357651
+    0.008056357              0   -0.008510015    -0.01514876    -0.01797754
+    -0.01600093   -0.009494511              0     0.01002936     0.01785473
+     0.02119141     0.01886466     0.01119624              0    -0.01183404
+    -0.02107556    -0.02502517    -0.02228867    -0.01323589              0
+     0.01400858     0.02496763     0.02967194     0.02645204      0.0157243
+              0    -0.01668085    -0.02976933     -0.0354284    -0.03163209
+    -0.01883456              0     0.02005412     0.03586311     0.04277518
+     0.03828265     0.02285289              0    -0.02447206     -0.0439034
+    -0.05254492    -0.04720024     -0.0282886              0     0.03056448
+     0.05510872     0.06631443     0.05992039      0.0361422              0
+    -0.03962112      -0.072032    -0.08746883    -0.07982716    -0.04868175
+              0     0.05475679      0.1010637      0.1248198      0.1161156
+     0.07236865              0    -0.08588991     -0.1639459     -0.2106957
+     -0.2055845     -0.1358302              0      0.1905653      0.4129137
+      0.6361148      0.8267017      0.9548455              1      0.9548455
+      0.8267017      0.6361148      0.4129137      0.1905653              0
+     -0.1358302     -0.2055845     -0.2106957     -0.1639459    -0.08588991
+              0     0.07236865      0.1161156      0.1248198      0.1010637
+     0.05475679              0    -0.04868175    -0.07982716    -0.08746883
+      -0.072032    -0.03962112              0      0.0361422     0.05992039
+     0.06631443     0.05510872     0.03056448              0     -0.0282886
+    -0.04720024    -0.05254492     -0.0439034    -0.02447206              0
+     0.02285289     0.03828265     0.04277518     0.03586311     0.02005412
+              0    -0.01883456    -0.03163209     -0.0354284    -0.02976933
+    -0.01668085              0      0.0157243     0.02645204     0.02967194
+     0.02496763     0.01400858              0    -0.01323589    -0.02228867
+    -0.02502517    -0.02107556    -0.01183404              0     0.01119624
+     0.01886466     0.02119141     0.01785473     0.01002936              0
+   -0.009494511    -0.01600093    -0.01797754    -0.01514876   -0.008510015
+              0    0.008056357     0.01357651     0.01525221     0.01285056
+    0.007217737              0   -0.006829884    -0.01150646    -0.01292261
+    -0.01088402   -0.006110878              0    0.005777573    0.009729009
+     0.01092091    0.009193195    0.005158663              0   -0.004871407
+   -0.008197797   -0.009195917   -0.007735683   -0.004337641              0
+    0.004089827    0.006876978    0.007707866    0.006478362    0.003629414
+              0   -0.003415758   -0.005738029   -0.006424972   -0.005394648
+   -0.003019146              0    0.002835312    0.004757654     0.00532116
+    0.004462641    0.002494568              0    -0.00233691   -0.003916351
+   -0.004374524   -0.003663871   -0.002045291              0    0.001910682
+     0.00319744    0.003566262    0.002982437    0.001662347              0
+   -0.001548051   -0.002586388   -0.002879949    -0.00240441   -0.001337857
+              0     0.00124145     0.00207034    0.002301022    0.001917414
+    0.001064808              0  -0.0009841159   -0.001637793   -0.001816432
+   -0.001510343  -0.0008368976              0   0.0007699567    0.001278367
+    0.001414391    0.001173156   0.0006484219              0  -0.0005934508
+  -0.0009826526   -0.001084205  -0.0008967379  -0.0004942022              0
+   0.0004495818   0.0007420975   0.0008161555    0.000672806    0.000369532
+              0  -0.0003337916  -0.0005489335  -0.0006014171    -0.00049384
+  -0.0002701399              0   0.0002419476   0.0003961213   0.0004319966
+   0.0003530341   0.0001921633              0  -0.0001703187  -0.0002773104
+    -0.00030069  -0.0002442602  -0.0001321274              0   0.0001155555
+   0.0001868075   0.0002010463   0.0001620374   8.692862e-05              0
+  -7.467443e-05  -0.0001195473  -0.0001273346  -0.0001015039  -5.381798e-05
+              0   4.504137e-05   7.106571e-05   7.451258e-05   5.838965e-05
+   3.038548e-05              0  -2.435547e-05  -3.747093e-05  -3.819317e-05
+  -2.898679e-05  -1.454277e-05
+ AU audio file: --path--/audiofiles/addf8.au
+   Description: female speaker; "Add the sum ..."
+   Samples / channel : 23808 (2.976 s)  1981/02/11 23:03:34 UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+ Filter file: --path--/test/temp.cof
+   FIR filter (direct form, symmetric)  YYYY-MM-dd hh:mm:ss UTC
+   Number of coefficients: 407
+
+ AU audio file: --path--/test/xxxb.au
+   Samples / channel : 142843 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 48000 Hz
+   Number of channels: 1 (16-bit integer)
+ Sampling ratio: 6/1
+ AU audio file: --path--/test/xxxa.au
+   Samples / channel : 142843 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 48000 Hz
+   Number of channels: 1 (16-bit integer)
+ AU audio file: --path--/test/xxxb.au
+   Samples / channel : 142843 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 48000 Hz
+   Number of channels: 1 (16-bit integer)
+
+ File A:
+    Number of Samples: 142843
+    Std Dev = 1710.5 (5.22%),  Mean = -19.853 (-0.06059%)
+    Maximum = 9547 (29.14%),  Minimum = -12556 (-38.32%)
+    Active Level: 1894.2 (5.781%), Activity Factor: 81.6%
+ File B:
+    Number of Samples: 142843
+    Std Dev = 1710.5 (5.22%),  Mean = -19.853 (-0.06059%)
+    Maximum = 9547 (29.14%),  Minimum = -12556 (-38.32%)
+    Active Level: 1894.2 (5.781%), Activity Factor: 81.6%
+
+ SNR      = 110.2   dB
+ SNR      = 110.2   dB  (File B Gain = 1)
+ Seg. SNR = 100.7   dB  (768 sample segments)
+ Max Diff = 1 (0.003052%),  No. Diff = 4
+ AU audio file: --path--/test/xxxa.au
+   Samples / channel : 142843 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 48000 Hz
+   Number of channels: 1 (16-bit integer)
+
+ Interpolation filter:
+   ratio: 1, cutoff: 0.0833333, alpha: 7.85726, gain = 1
+   delay: 201, no. coeffs: 403, offset: 0, span: 402
+
+ AU audio file: --path--/test/zzz.au
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+ Sampling ratio: 1/6
+ AU audio file: --path--/audiofiles/addf8.au
+   Description: female speaker; "Add the sum ..."
+   Samples / channel : 23808 (2.976 s)  1981/02/11 23:03:34 UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+ AU audio file: --path--/test/zzz.au
+   Samples / channel : 23808 (2.976 s)  YYYY-MM-dd hh:mm:ss UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 1 (16-bit integer)
+
+ File A:
+    Number of Samples: 23808
+    Std Dev = 1710.5 (5.22%),  Mean = -19.852 (-0.06058%)
+    Maximum = 9547 (29.14%),  Minimum = -12311 (-37.57%)
+    Active Level: 1894.5 (5.782%), Activity Factor: 81.5%
+ File B:
+    Number of Samples: 23808
+    Std Dev = 1710.5 (5.22%),  Mean = -19.852 (-0.06058%)
+    Maximum = 9547 (29.14%),  Minimum = -12311 (-37.57%)
+    Active Level: 1894.5 (5.782%), Activity Factor: 81.5%
+
+ SNR      = 86.2    dB
+ SNR      = 86.2    dB  (File B Gain = 1)
+ Seg. SNR = 92.51   dB  (128 sample segments)
+ Max Diff = 12 (0.03662%),  No. Diff = 10 (2 runs)
+
+========== InfoAudio M1F1-int16.wav
+ WAVE file: --path--/audiofiles/M1F1-int16.wav
+   Description: kabal@CAPELLA
+   Samples / channel : 23493 (2.937 s)  2003-01-30 03:28:46 UTC
+   Sampling frequency: 8000 Hz
+   Number of channels: 2 (16-bit integer)
+
+--File format--
+File name: audiofiles/M1F1-int16.wav
+Offset to data: 44
+Sampling frequency: 8000
+No. frames: 23493
+No. channels: 2
+Data type: integer16
+Data byte order: little-endian
+Host byte order: little-endian
+
+--Information records--
+date: 2003-01-30 03:28:46 UTC
+user: kabal@CAPELLA
+program: CopyAudio
+creation_date: 2003-01-30 03:28:46 UTC
+software: CopyAudio
+comment: kabal@CAPELLA
+
+--File layout--
+ <RIFF> 0 -> 94181
+     <WAVE> 8 -> 11
+     <fmt > 12 -> 35
+       ...
+     <data> 36 -> 94015
+       ...
+     <afsp> 94016 -> 94097
+       ...
+     <LIST> 94098 -> 94181
+          <INFO> 94106 -> 94109
+          <ICRD> 94110 -> 94141
+            ...
+          <ISFT> 94142 -> 94159
+            ...
+          <ICMT> 94160 -> 94181
+            ...
+ <EoF > 94182
+
+========== InfoAudio jg00b1ss.wav
+ NIST SPHERE audio file: --path--/audiofiles/jg00b1ss.wav
+   Description: jg00b1ss
+   Samples / channel : 16384 (1.024 s)  13-May-1992
+   Sampling frequency: 16000 Hz
+   Number of channels: 1 (16-bit integer)
+
+--File format--
+File name: audiofiles/jg00b1ss.wav
+Offset to data: 1024
+Sampling frequency: 16000
+No. frames: 16384
+No. channels: 1
+Data type: integer16
+Data byte order: big-endian
+Host byte order: little-endian
+
+--Information records--
+speaker_id: jg
+speaking_mode: spontaneous
+recording_date: 13-May-1992
+recording_time: 11:18:05.00
+microphone: Sennheiser HMD-414
+utterance_id: jg00b1ss
+database_id: atis2
+database_version: 1.0
+channel_count: 1
+speaker_session_number: 1
+speaker_sentence_number: 00b
+session_utterance_number: 11
+sample_count: 16384
+sample_max: 3131
+sample_min: -2817
+sample_rate: 16000
+sample_n_bytes: 2
+sample_byte_format: 10
+sample_sig_bits: 16
+
+--File layout--
+ <NIST> 0 -> 15
+   ...
+ <fmt > 16 -> 497
+   ...
+ <EoH > 498 -> 506
+   ...
+ <skip> 507 -> 1023
+   ...
+ <data> 1024 -> 33791
+   ...
+ <EoF > 33792

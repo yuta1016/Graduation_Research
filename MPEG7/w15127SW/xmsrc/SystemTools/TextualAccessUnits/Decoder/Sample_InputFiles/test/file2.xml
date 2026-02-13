@@ -1,0 +1,76 @@
+<MediaInformation id="news1">
+		<MediaIdentification>
+			<EntityIdentifier organization="MPEG" type="MPEG7ContentSetId">
+						 mpeg7_content:news1</EntityIdentifier>
+			<VideoDomain href="urn:mpeg:MPEG7VideoDomainCS:1.2">
+				<Name xml:lang="en">Natural</Name>
+			</VideoDomain>
+		</MediaIdentification>
+		<MediaProfile>
+			<MediaFormat>
+				<Content>audiovisual</Content>
+				<Medium href="urn:mpeg:MPEG7MediumCS:1.1">
+					<Name xml:lang="en">CD</Name>
+				</Medium>
+				<FileFormat href="urn:mpeg:MPEG7FileFormatCS:3">
+					<Name xml:lang="en">mpeg</Name>
+				</FileFormat>
+				<FileSize>666478608</FileSize>
+				<VisualCoding>
+					<Format href="urn:mpeg:MPEG7VisualCodingFormatCS:2" colorDomain="color">
+						<Name xml:lang="en">MPEG-1</Name>
+					</Format>
+					<Pixel aspectRatio="0.75" bitPer="8"/>
+					<Frame height="288" width="352" rate="25"/>
+				</VisualCoding>
+				<AudioCoding>
+					<Format href="urn:mpeg:MPEG7AudioCodingFormatCS:3">
+						<Name xml:lang="en">MPEG-1</Name>
+					</Format>
+					<AudioChannels front="3" rear="2" lfe="1">6</AudioChannels>
+				</AudioCoding>
+			</MediaFormat>
+			<MediaTranscodingHints difficulty="0.562789">
+				<MotionHint>
+					<MotionRange xLeft="15" xRight="15" yDown="15" yUp="15"/>
+				</MotionHint>
+			</MediaTranscodingHints>
+			<MediaQuality>
+				<QualityRating type="objective">
+					<RatingValue>40.05</RatingValue>
+					<RatingScheme style="higherBetter" href="urn:mpeg:MPEG7QualityRatingSchemeCS:2.3">
+						<Name xml:lang="en">PSNR_Y</Name>
+					</RatingScheme>
+				</QualityRating>
+				<RatingInformationLocator href="http://www.tektronix.com/Measurement/App_Notes/PicQuality/quality.html"/>
+				<PerceptibleDefects>
+					<VisualDefects href="urn:mpeg:MPEG7VisualDefectsCS:3">
+						<Name xml:lang="en">Edge noise</Name>
+					</VisualDefects>
+				</PerceptibleDefects>
+			</MediaQuality>
+			<MediaInstance>
+				<InstanceIdentifier organization="MPEG" type="MPEG7ContentSetId">mpeg7_17/news1</InstanceIdentifier>
+				<LocationDescription>File /Mpeg7_17/news1.mpg in Content Set CD 17</LocationDescription>
+			</MediaInstance>
+			<MediaInstance>
+				<InstanceIdentifier organization="MPEG" type="MPEG7ContentSetOnLineId"> mpeg7/content17/news1</InstanceIdentifier>
+				<MediaLocator>
+					<MediaUri>http://www.mpeg.org/mpeg7/contentset/17/news1.mpg</MediaUri>
+				</MediaLocator>
+			</MediaInstance>
+			<MediaInstance>
+				<InstanceIdentifier organization="MPEG" type="MPEG7ContentSetId">mpeg7_17/news3</InstanceIdentifier>
+				<LocationDescription>File /Mpeg7_17/news1.mpg in Content Set CD 17</LocationDescription>
+			</MediaInstance>
+			<MediaInstance>
+				<InstanceIdentifier organization="MPEG" type="MPEG7ContentSetId">mpeg7_17/news4</InstanceIdentifier>
+				<LocationDescription>File /Mpeg7_17/news1.mpg in Content Set CD 17</LocationDescription>
+			</MediaInstance>
+			<MediaInstance>
+				<InstanceIdentifier organization="MPEG" type="MPEG7ContentSetId">mpeg7_17/news5</InstanceIdentifier>
+				<LocationDescription>File /Mpeg7_17/news1.mpg in Content Set CD 17</LocationDescription>
+			</MediaInstance>
+		</MediaProfile>
+	</MediaInformation>
+

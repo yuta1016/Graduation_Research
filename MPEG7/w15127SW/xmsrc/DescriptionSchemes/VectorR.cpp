@@ -39,7 +39,7 @@
 typedef unsigned char uc;
 
 
-static const float MAXFLOAT = 999999;
+static const float XM_MAXFLOAT = 999999;
 static const float MINFLOAT = -999999;
 
 template<class T>
@@ -108,7 +108,7 @@ istream& VectorR::read(istream& in) {
 ostream& VectorR::write(ostream& out) const {
   const float *g = data();
   out << Id() << " " << length() << " ";
-  for (register int i = 0; i < length(); i++, g++) out << (*g) << " ";
+  for (int i = 0; i < length(); i++, g++) out << (*g) << " ";
   return out;
 } 
 
@@ -155,7 +155,7 @@ VectorR::VectorR(int len, const int *data, int id) :
     if (data) {
       float *g = d_data_p;
       const int *h = data;
-      for (register int i = 0; i < d_length; i++, g++, h++) *g = (float)*h;
+      for (int i = 0; i < d_length; i++, g++, h++) *g = (float)*h;
     }
     else clear();
 }
@@ -190,7 +190,7 @@ float VectorR::mse(const VectorR& c1, const VectorR &c2) {
 float VectorR::inner_product(const VectorR& c1, const VectorR &c2, int len) {
   const float *g = c1.data(), *h = c2.data();
   float d = 0;
-  for (register int i = 0; i < len; i++, g++, h++) d+=(*g * (*h));
+  for (int i = 0; i < len; i++, g++, h++) d+=(*g * (*h));
   return d;
 }
 
@@ -202,8 +202,8 @@ float VectorR::intersection(const VectorR& c1, const VectorR &c2, int len, int n
   }
   const float *g = A.data(), *h = B.data();
   float d = 0;
-  //for (register i = 0; i < len; i++, g++, h++) d+=MIN(*g, *h);
-  for (register int i = 0; i < len; i++, g++, h++) d+=ABS(*g-*h);
+  //for (i = 0; i < len; i++, g++, h++) d+=MIN(*g, *h);
+  for (int i = 0; i < len; i++, g++, h++) d+=ABS(*g-*h);
   return d;
 }
   
@@ -213,9 +213,9 @@ float VectorR::vector_distance(const VectorR& c1, const VectorR &c2, int len, in
     A.normalize(1, 2); 
     B.normalize(1, 2); 
   }
-  register const float *g = A.data(), *h = B.data();
-  register float d = 0;
-  for (register int i = 0; i < len; i++, g++, h++) d+=SQR(*g-*h);
+  const float *g = A.data(), *h = B.data();
+  float d = 0;
+  for (int i = 0; i < len; i++, g++, h++) d+=SQR(*g-*h);
   return d;
 }
 
@@ -223,7 +223,7 @@ float VectorR::vector_distance(const VectorR& c1, const VectorR &c2, int len, in
 float VectorR::vector_multiply(const VectorR& G, const VectorR& H, int size) {
   const float *g = G.data(), *h = H.data();
   float R = 0;
-  for (register int j = 0; j < size; j++, g++, h++)  R+=(*g) * (*h);
+  for (int j = 0; j < size; j++, g++, h++)  R+=(*g) * (*h);
   return R;
 }
 
@@ -234,7 +234,7 @@ VectorR VectorR::prepend(const VectorR& H, float term) {
   const float *h = H.data();
   float *g = temp.data_nc();
   *g++=term;
-  for (register int j = 0; j < H.length(); j++, g++, h++)  *g = *h;
+  for (int j = 0; j < H.length(); j++, g++, h++)  *g = *h;
   return temp;
 }
 
@@ -246,7 +246,7 @@ float VectorR::hamming_distance(const VectorR& c1, const VectorR &c2,
   const float *g = h1.data(), *h = h2.data();
   int length = MIN(h1.length(), h2.length());
   float D = 0;
-  for (register int i = 0; i < length; i++, g++, h++) {
+  for (int i = 0; i < length; i++, g++, h++) {
     if (*g != *h) D++;
   }
   return D;
@@ -256,7 +256,7 @@ float VectorR::hamming_distance(const VectorR& c1, const VectorR &c2,
 VectorR VectorR::threshold(const VectorR &A, float value) {
   VectorR temp(A);
   float *g = temp.data_nc();
-  for (register int i = 0; i < temp.length(); i++, g++) 
+  for (int i = 0; i < temp.length(); i++, g++) 
     *g = (*g > value) ? 1 : 0;
   return temp;
 }
@@ -266,7 +266,7 @@ VectorR VectorR::sort(const VectorR &A, int top) {
   B.clear();
   temp.normalize(1);
   float *g = B.data_nc();
-  for (register int i = 0; i < top; i++, g++) {
+  for (int i = 0; i < top; i++, g++) {
     int m = (int)temp.max_index();
     *g = *(temp.data(m));
     *(temp.data_nc(m)) = 0;
@@ -278,43 +278,43 @@ int VectorR::nonzeroterms() const {
   const float *h = data();
   //  float cols = 0;// modified by sth
   int cols = 0;
-  for (register int i = 0; i < length(); i++, h++) if (*h>0) cols++;
+  for (int i = 0; i < length(); i++, h++) if (*h>0) cols++;
   return cols;
 }
 
 float VectorR::sum() const {
   const float *h = data();
   float sum = 0;
-  for (register int i = 0; i < length(); i++, h++) sum+=ABS((*h));
+  for (int i = 0; i < length(); i++, h++) sum+=ABS((*h));
   return sum;
 }
 
 float VectorR::norm(float p) const {
   const float *h = data();
   float sum = 0;
-  for (register int i = 0; i < length(); i++, h++) sum+=pow(ABS(*h), p);
+  for (int i = 0; i < length(); i++, h++) sum+=pow(ABS(*h), p);
   return pow(sum, 1.0f/p);
 }
 
 VectorR& VectorR::normalize(float fctr, float p) {
-  register float *h = data_nc();
+  float *h = data_nc();
   float n, s = norm(p);
   if (s == 0) n=0;
   else n = fctr/s;
-  for (register int i = 0; i < length(); i++, h++) *h*=n;
+  for (int i = 0; i < length(); i++, h++) *h*=n;
   //cerr << "NORMALIZING" << endl;
   return *this;
 }
 
 VectorR& VectorR::operator*=(float d) {
-  register float *h = data_nc();
-  for (register int i = 0; i < length(); i++, h++) *h*=d;
+  float *h = data_nc();
+  for (int i = 0; i < length(); i++, h++) *h*=d;
   return *this;
 }
 
 VectorR& VectorR::operator+=(float d) {
-  register float *h = data_nc();
-  for (register int i = 0; i < length(); i++, h++) *h+=d;
+  float *h = data_nc();
+  for (int i = 0; i < length(); i++, h++) *h+=d;
   return *this;
 }
 
@@ -323,14 +323,14 @@ VectorR& VectorR::operator/=(float d) {
 }
   
 VectorR& VectorR::square_terms() {
-  register float *h = data_nc();
-  for (register int i = 0; i < length(); i++, h++) *h*=*h;
+  float *h = data_nc();
+  for (int i = 0; i < length(); i++, h++) *h*=*h;
   return *this;
 }
 
 VectorR& VectorR::power(float expon) {
-  register float *h = data_nc();
-  for (register int i = 0; i < length(); i++, h++) pow(*h, expon);
+  float *h = data_nc();
+  for (int i = 0; i < length(); i++, h++) pow(*h, expon);
   return *this;
 }
 
@@ -338,16 +338,16 @@ float VectorR::max_index() const {
   float dmax = MINFLOAT;
   int index = 0;
   const float *h = data();
-  for (register int i = 0; i < length(); i++, h++)
+  for (int i = 0; i < length(); i++, h++)
     if (*h > dmax) dmax = *h, index = i;
   return index;
 }
 
 float VectorR::min_index() const {
-  float dmin = MAXFLOAT;
+  float dmin = XM_MAXFLOAT;
   int index = 0;
   const float *h = data();
-  for (register int i = 0; i < length(); i++, h++) 
+  for (int i = 0; i < length(); i++, h++) 
     if (*h < dmin) dmin = *h, index = i;
   return index;
 }
@@ -355,7 +355,7 @@ float VectorR::min_index() const {
 float VectorR::maximum() const {
   float dmax = MINFLOAT;
   const float *h = data();
-  for (register int i = 0; i < length(); i++, h++) 
+  for (int i = 0; i < length(); i++, h++) 
     dmax = (dmax > *h) ? dmax : *h;
   return dmax;
 }
@@ -363,29 +363,29 @@ float VectorR::maximum() const {
 float VectorR::maxnorm() const {
   float dmax = MINFLOAT;
   const float *h = data();
-  for (register int i = 0; i < length(); i++, h++) 
+  for (int i = 0; i < length(); i++, h++) 
     dmax = (dmax > ABS(*h)) ? dmax : ABS(*h);
   return dmax;
 }
 
 float VectorR::minimum() const {
-  float dmin = MAXFLOAT;
+  float dmin = XM_MAXFLOAT;
   const float *h = data();
-  for (register int i = 0; i < length(); i++, h++) 
+  for (int i = 0; i < length(); i++, h++) 
     dmin = (dmin < *h) ? dmin : *h;
   return dmin;
 }
 
 VectorR& VectorR::abs() {
-  register float *h = data_nc();
-  for (register int i = 0; i < length(); i++, h++) *h = ABS(*h);
+  float *h = data_nc();
+  for (int i = 0; i < length(); i++, h++) *h = ABS(*h);
   return *this;
 }
 
 float VectorR::mean() const {
   float dmean = 0;
   const float *g = data();
-  for (register int i = 0; i < length(); i++, g++) dmean+=((*g)*i);
+  for (int i = 0; i < length(); i++, g++) dmean+=((*g)*i);
   return dmean/sum();
 }
   
@@ -393,7 +393,7 @@ float VectorR::variance() const {
   float dmean = mean();
   float dvar = 0;
   const float *g = data();
-  for (register int i = 0; i < length(); i++, g++) dvar+=(*g*SQR(i-dmean));
+  for (int i = 0; i < length(); i++, g++) dvar+=(*g*SQR(i-dmean));
   return dvar/sum();;
 }
 
@@ -402,7 +402,7 @@ float VectorR::entropy() const {
   float adj = 1/log10(2.0f), entropy = 0;
   float p;
   float norm = 1.0/sum();
-  for (register int i=0; i<length(); i++, d++) {
+  for (int i=0; i<length(); i++, d++) {
    if (*d>0){
      p = *d*norm;
      entropy+=(p*log10(p));
@@ -412,40 +412,40 @@ float VectorR::entropy() const {
 }
 
 VectorR& VectorR::operator*=(const VectorR& b) {
-  register const float *g = b.data();
-  register float *h = data_nc();
+  const float *g = b.data();
+  float *h = data_nc();
   int stop = MIN(length(), b.length());
-  for (register int i = 0; i < stop; i++, g++, h++) {
+  for (int i = 0; i < stop; i++, g++, h++) {
     *h*=*g;
     }
   return *this;
 }
 
 VectorR& VectorR::operator/=(const VectorR& b) {
-  register const float *g = b.data();
-  register float *h = data_nc();
+  const float *g = b.data();
+  float *h = data_nc();
   int stop = MIN(length(), b.length());
-  for (register int i = 0; i < stop; i++, g++, h++) {
+  for (int i = 0; i < stop; i++, g++, h++) {
     if (*g!=0) *h/=*g;
     }
   return *this;
 }
 
 VectorR& VectorR::operator+=(const VectorR& b) {
-  register const float *g = b.data();
-  register float *h = data_nc();
+  const float *g = b.data();
+  float *h = data_nc();
   int stop = MIN(length(), b.length());
-  for (register int i = 0; i < stop; i++, g++, h++) {
+  for (int i = 0; i < stop; i++, g++, h++) {
     *h+=*g;
     }
   return *this;
 }
 
 VectorR& VectorR::operator-=(const VectorR& b) {
-  register const float *g = b.data();
-  register float *h = data_nc();
+  const float *g = b.data();
+  float *h = data_nc();
   int stop = MIN(length(), b.length());
-  for (register int i = 0; i < stop; i++, g++, h++) {
+  for (int i = 0; i < stop; i++, g++, h++) {
     *h-=*g;
     }
   return *this;
@@ -478,7 +478,7 @@ VectorR VectorR::shift(const VectorR &H) {
   float *g = temp.data_nc();
   temp.clear();
   h++;
-  for (register int i = 1; i < temp.length(); i++, h++, g++) *g = *h;
+  for (int i = 1; i < temp.length(); i++, h++, g++) *g = *h;
   ++g = 0;
   return temp;
 }
@@ -488,7 +488,7 @@ VectorR VectorR::uniform_quantize(const VectorR& a, int delta) {
   float *g = temp.data_nc();
   const float *h = a.data();
   int index, halfstep = delta/2;
-  for (register int i = 0; i < a.length(); i++, h++) {
+  for (int i = 0; i < a.length(); i++, h++) {
     index = ((int)(i/delta))*delta + halfstep;
     index = (index > temp.length()-1) ? temp.length()-1 : index;
     g[index]+=*h;
@@ -501,7 +501,7 @@ VectorR VectorR::cumulative(const VectorR& a, float p) {
   //temp.normalize();
   float *g = temp.data_nc();
   float cum = 0;
-  for (register int i = 0; i < temp.length(); i++, g++) {
+  for (int i = 0; i < temp.length(); i++, g++) {
     cum+=pow(ABS(*g), p);
     *g = pow(cum, 1.0f/p);
   }

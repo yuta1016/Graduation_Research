@@ -1,0 +1,133 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "xerces-c::@145eef247bfb46b6828c"
+		},
+		{
+			"id" : "DOMTest::@a44f0ac069e85531cdee"
+		},
+		{
+			"id" : "DOMMemTest::@a44f0ac069e85531cdee"
+		},
+		{
+			"id" : "Normalizer::@a44f0ac069e85531cdee"
+		},
+		{
+			"id" : "RangeTest::@a44f0ac069e85531cdee"
+		},
+		{
+			"id" : "DOMTraversalTest::@a44f0ac069e85531cdee"
+		},
+		{
+			"id" : "DOMTypeInfoTest::@a44f0ac069e85531cdee"
+		},
+		{
+			"id" : "ThreadTest::@a44f0ac069e85531cdee"
+		},
+		{
+			"id" : "XSerializerTest::@a44f0ac069e85531cdee"
+		},
+		{
+			"id" : "XSValueTest::@a44f0ac069e85531cdee"
+		},
+		{
+			"id" : "NetAccessorTest::@a44f0ac069e85531cdee"
+		},
+		{
+			"id" : "EncodingTest::@a44f0ac069e85531cdee"
+		},
+		{
+			"id" : "Char16Test::@a44f0ac069e85531cdee"
+		},
+		{
+			"id" : "XSTSHarness::@a44f0ac069e85531cdee"
+		},
+		{
+			"id" : "MemHandlerTest::@a44f0ac069e85531cdee"
+		},
+		{
+			"id" : "InitTermTest::@a44f0ac069e85531cdee"
+		},
+		{
+			"id" : "MemParse::@fd003194bc69d7fb51e8"
+		},
+		{
+			"id" : "CreateDOMDocument::@fd003194bc69d7fb51e8"
+		},
+		{
+			"id" : "EnumVal::@fd003194bc69d7fb51e8"
+		},
+		{
+			"id" : "SAX2Count::@fd003194bc69d7fb51e8"
+		},
+		{
+			"id" : "SEnumVal::@fd003194bc69d7fb51e8"
+		},
+		{
+			"id" : "DOMCount::@fd003194bc69d7fb51e8"
+		},
+		{
+			"id" : "DOMPrint::@fd003194bc69d7fb51e8"
+		},
+		{
+			"id" : "Redirect::@fd003194bc69d7fb51e8"
+		},
+		{
+			"id" : "SAX2Print::@fd003194bc69d7fb51e8"
+		},
+		{
+			"id" : "SAXPrint::@fd003194bc69d7fb51e8"
+		},
+		{
+			"id" : "PSVIWriter::@fd003194bc69d7fb51e8"
+		},
+		{
+			"id" : "SCMPrint::@fd003194bc69d7fb51e8"
+		},
+		{
+			"id" : "PParse::@fd003194bc69d7fb51e8"
+		},
+		{
+			"id" : "SAXCount::@fd003194bc69d7fb51e8"
+		},
+		{
+			"id" : "XInclude::@fd003194bc69d7fb51e8"
+		},
+		{
+			"id" : "StdInParse::@fd003194bc69d7fb51e8"
+		},
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		}
+	],
+	"folder" : 
+	{
+		"name" : "CMakePredefinedTargets"
+	},
+	"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+	"isGeneratorProvided" : true,
+	"name" : "ALL_BUILD",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

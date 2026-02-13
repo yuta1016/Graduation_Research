@@ -1,0 +1,225 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"samples/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 150,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "runtime",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"samples/MinSizeRel/CreateDOMDocument.exe"
+			],
+			"targetId" : "CreateDOMDocument::@fd003194bc69d7fb51e8",
+			"targetIndex" : 2,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "runtime",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"samples/MinSizeRel/DOMCount.exe"
+			],
+			"targetId" : "DOMCount::@fd003194bc69d7fb51e8",
+			"targetIndex" : 3,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "runtime",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"samples/MinSizeRel/DOMPrint.exe"
+			],
+			"targetId" : "DOMPrint::@fd003194bc69d7fb51e8",
+			"targetIndex" : 5,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "runtime",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"samples/MinSizeRel/EnumVal.exe"
+			],
+			"targetId" : "EnumVal::@fd003194bc69d7fb51e8",
+			"targetIndex" : 10,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "runtime",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"samples/MinSizeRel/MemParse.exe"
+			],
+			"targetId" : "MemParse::@fd003194bc69d7fb51e8",
+			"targetIndex" : 13,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "runtime",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"samples/MinSizeRel/PParse.exe"
+			],
+			"targetId" : "PParse::@fd003194bc69d7fb51e8",
+			"targetIndex" : 16,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "runtime",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"samples/MinSizeRel/PSVIWriter.exe"
+			],
+			"targetId" : "PSVIWriter::@fd003194bc69d7fb51e8",
+			"targetIndex" : 17,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "runtime",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"samples/MinSizeRel/Redirect.exe"
+			],
+			"targetId" : "Redirect::@fd003194bc69d7fb51e8",
+			"targetIndex" : 19,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "runtime",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"samples/MinSizeRel/SAX2Count.exe"
+			],
+			"targetId" : "SAX2Count::@fd003194bc69d7fb51e8",
+			"targetIndex" : 20,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "runtime",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"samples/MinSizeRel/SAX2Print.exe"
+			],
+			"targetId" : "SAX2Print::@fd003194bc69d7fb51e8",
+			"targetIndex" : 21,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "runtime",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"samples/MinSizeRel/SAXCount.exe"
+			],
+			"targetId" : "SAXCount::@fd003194bc69d7fb51e8",
+			"targetIndex" : 22,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "runtime",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"samples/MinSizeRel/SAXPrint.exe"
+			],
+			"targetId" : "SAXPrint::@fd003194bc69d7fb51e8",
+			"targetIndex" : 23,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "runtime",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"samples/MinSizeRel/SCMPrint.exe"
+			],
+			"targetId" : "SCMPrint::@fd003194bc69d7fb51e8",
+			"targetIndex" : 24,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "runtime",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"samples/MinSizeRel/SEnumVal.exe"
+			],
+			"targetId" : "SEnumVal::@fd003194bc69d7fb51e8",
+			"targetIndex" : 25,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "runtime",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"samples/MinSizeRel/StdInParse.exe"
+			],
+			"targetId" : "StdInParse::@fd003194bc69d7fb51e8",
+			"targetIndex" : 26,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "runtime",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"samples/MinSizeRel/XInclude.exe"
+			],
+			"targetId" : "XInclude::@fd003194bc69d7fb51e8",
+			"targetIndex" : 28,
+			"type" : "target"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "samples",
+		"source" : "samples"
+	}
+}
