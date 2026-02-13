@@ -52,25 +52,18 @@ features_mfcc
 ★★★
 
 
+★★★
+billboard_futures_info_by_age
+train
+val
+test
 
-
-
-
-
-
-billboard_charts()
+features_complexity
+features_mfcc
+★★★
 ↓
 ↓
-get_spotify_info.py
+SVM
 ↓
 ↓
-★★★partial_match_csv_of_spotify_info★★★
-↓
-↓
-
-
-
-
-
-
-
+proceed？とかでグラフ化
