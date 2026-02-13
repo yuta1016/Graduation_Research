@@ -1,11 +1,13 @@
 # 🎵 Billboard Japan Music Analysis Project (2009-2025)
 
-Billboard Japan Hot 100のチャートデータから音源を取得し、楽曲の複雑性やMFCC（メル周波数ケプストラム係数）を抽出してSVMで解析するパイプラインです。
+Billboard Japan Hot 100のチャートデータから楽曲データ（曲名、アーティスト名、順位）を取得。
+SpotifyAPIと楽曲データ用いて、音源（mp3）を取得し、楽曲の複雑性特徴量とMFCC特徴量を抽出してSVMで解析するものである。
 
 ## 📊 データフロー図 (Data Pipeline)
 
 各スクリプトの実行順序と、生成されるディレクトリの関係を可視化しています。
 
+# librosa, pandas, sklearn, spotipy 等が必要です
 
 
 ```mermaid
