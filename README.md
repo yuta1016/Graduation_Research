@@ -3,11 +3,13 @@
 Billboard Japan Hot 100のチャートデータから楽曲データ（曲名、アーティスト名、順位）を取得。
 SpotifyAPIと楽曲データ用いて、音源（mp3）を取得し、楽曲の複雑性特徴量とMFCC特徴量を抽出してSVMで解析するものである。
 
+## ライブラリ
+
+librosa, pandas, sklearn, spotipy 等が必要です
+
 ## 📊 データフロー図 (Data Pipeline)
 
 各スクリプトの実行順序と、生成されるディレクトリの関係を可視化しています。
-
-# librosa, pandas, sklearn, spotipy 等が必要です
 
 
 ```mermaid
@@ -44,3 +46,5 @@ graph TD
     style Out1 fill:#bbf,stroke:#333
     style Out2 fill:#bbf,stroke:#333
     style Out3 fill:#bbf,stroke:#333
+
+
