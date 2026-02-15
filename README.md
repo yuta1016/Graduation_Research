@@ -25,16 +25,17 @@ graph TD
     
     %% 音源ダウンロード
     Dir3 --> Step4[mp3_download.py]
-    Step4 -->|4. 音源保存| Dir4[(downloaded_mp3)]
-    Step4 -->|4. パス管理| Dir5[(csv_with_mp3_path)]
+    Step4 -->|4. パス管理| Dir4[(csv_with_mp3_path)]
+    Step4 -->|4. 音源保存| Dir5[(downloaded_mp3)]
+    
 
     %% 特徴量抽出とデータ分割
-    Dir4 & Dir5 --> Step5[calculate_billboard.py]
-    Dir4 & Dir5 --> Step6[extract_complexity_features.py]
-    Dir4 & Dir5 --> Step7[extract_mfcc_features.py]
+    Dir4 --> Step5[calculate_billboard_futures_info.py]
+    Dir5 --> Step6[extract_complexity_features.py]
+    Dir5 --> Step7[extract_mfcc_features.py]
 
     %% 最終成果物
-    Step5 -->|5. 分割データ| Out1[(billboard_futures<br/>train / val / test)]
+    Step5 -->|5. 分割データ| Out1[(billboard_futures<br/>2008 ~ 2024)]
     Step6 -->|6. 複雑性特徴量| Out2[(features_complexity)]
     Step7 -->|6. MFCC特徴量| Out3[(features_mfcc)]
 
