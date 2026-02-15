@@ -4,7 +4,7 @@ Billboard Japan Hot 100のチャートデータから楽曲データ（曲名、
 SpotifyAPIと楽曲データ用いて、音源（mp3）を取得し、楽曲の複雑性特徴量とMFCC特徴量を抽出してSVMで解析するものである。
 
 ## ライブラリ
-
+pandas, matplotlib, seaborn, os, glob, 
 librosa, pandas, sklearn, spotipy 等が必要です
 
 ## 📊 データフロー図 (Data Pipeline)
@@ -61,5 +61,11 @@ graph TD
     style Out1 fill:#bbf,stroke:#333
     style Out2 fill:#bbf,stroke:#333
     style Out3 fill:#bbf,stroke:#333
+
+
+## 補足
+send_email.py：これはモジュールとして使われている。楽曲を入手するプログラムなどの中で使われている。プログラムが終わったタイミングでgmailに送れる。
+for_features_csv.py：よく使う関数をモジュールとして保存した。どこに埋め込んでいるかわからなくて下手に消せない、、、
+MPEG7：外部ソフトウェア。昔に作られていて、バージョンの互換性とか合わなくて使えない。
 
 
