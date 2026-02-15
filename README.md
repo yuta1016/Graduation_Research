@@ -29,12 +29,12 @@ graph TD
     Step4 -->|4. パス管理| Dir5[(csv_with_mp3_path)]
 
     %% 特徴量抽出とデータ分割
-    Dir4 & Dir5 --> Step5[calculate_billboard_futures_info_by_age.py]
+    Dir4 & Dir5 --> Step5[calculate_billboard.py]
     Dir4 & Dir5 --> Step6[extract_complexity_features.py]
     Dir4 & Dir5 --> Step7[extract_mfcc_features.py]
 
     %% 最終成果物
-    Step5 -->|5. 分割データ| Out1[(billboard_futures_info_by_age<br/>train / val / test)]
+    Step5 -->|5. 分割データ| Out1[(billboard_futures<br/>train / val / test)]
     Step6 -->|6. 複雑性特徴量| Out2[(features_complexity)]
     Step7 -->|6. MFCC特徴量| Out3[(features_mfcc)]
 
