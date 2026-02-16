@@ -4,6 +4,7 @@ Billboard Japan Hot 100のチャートデータから楽曲データ（曲名、
 SpotifyAPIと楽曲データ用いて、音源（mp3）を取得し、楽曲の複雑性特徴量とMFCC特徴量を抽出してSVMで解析するものである。
 
 ## ライブラリ
+
 pandas, matplotlib, seaborn, os, glob, 
 librosa, pandas, sklearn, spotipy 等が必要です
 
@@ -30,18 +31,18 @@ graph TD
     
 
     %% 特徴量抽出とデータ分割
-    Dir4 --> Step5[calculate_billboard_futures_info.py]
+    Dir4 --> Step5[calculate_billboard_features_info.py]
 
     %%csvに保存する関数の種類（名前ごみでごめんなさ）
-    Step5 -->|5.csvに保存する関数としてsave_split_csvを使う| Out1[(billboard_futures<br/>2008 ~ 2024 のフォルダ<br/>)]
-    Step5 -->|5.csvに保存する関数としてsave_csvを使う| Dir7[(billboard_futures_info<br/>2008 ~ 2024.csv<br/>コイツにはmp3のpathが書いてある。)]
+    Step5 -->|5.csvに保存する関数としてsave_split_csvを使う| Out1[(billboard_features<br/>2008 ~ 2024 のフォルダ<br/>)]
+    Step5 -->|5.csvに保存する関数としてsave_csvを使う| Dir7[(billboard_features_info<br/>2008 ~ 2024.csv<br/>コイツにはmp3のpathが書いてある。)]
 
     %%音響的特徴量の抽出
     Dir7 --> Step6[extract_complexity_features.py]
     Dir7 --> Step7[extract_mfcc_features.py]
 
     %% 最終成果物
-    %%Step5 -->|5. 分割データ| Out1[(billboard_futures<br/>2008 ~ 2024)]
+    %%Step5 -->|5. 分割データ| Out1[(billboard_features<br/>2008 ~ 2024)]
     Step6 -->|6. 複雑性特徴量| Out2[(features_complexity)]
     Step7 -->|6. MFCC特徴量| Out3[(features_mfcc)]
 
@@ -61,13 +62,15 @@ graph TD
     style Out1 fill:#bbf,stroke:#333
     style Out2 fill:#bbf,stroke:#333
     style Out3 fill:#bbf,stroke:#333
+```
 
 
 
 ## 補足
 
-send_email.py：これはモジュールとして使われている。楽曲を入手するプログラムなどの中で使われている。プログラムが終わったタイミングでgmailに送れる。
-for_features_csv.py：よく使う関数をモジュールとして保存した。どこに埋め込んでいるかわからなくて下手に消せない、、、
-MPEG7：外部ソフトウェア。昔に作られていて、バージョンの互換性とか合わなくて使えない。
++ send_email.py：これはモジュールとして使われている。楽曲を入手するプログラムなどの中で使われている。プログラムが終わったタイミングでgmailに送れる。for_features_csv.py：よく使う関数をモジュールとして保存した。どこに埋め込んでいるかわからなくて下手に消せない、、、
++ MPEG7：外部ソフトウェア。昔に作られていて、バージョンの互換性とか合わなくて使えない。
+
+
 
 
