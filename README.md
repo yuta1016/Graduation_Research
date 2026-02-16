@@ -34,8 +34,8 @@ graph TD
     Dir4 --> Step5[calculate_billboard_features_info.py]
 
     %%csvに保存する関数の種類（名前ごみでごめんなさ）
-    Step5 -->|5.csvに保存する関数としてsave_split_csvを使う| Out1[(billboard_features<br/>2008 ~ 2024 のフォルダ<br/>)]
-    Step5 -->|5.csvに保存する関数としてsave_csvを使う| Dir7[(billboard_features_info<br/>2008 ~ 2024.csv<br/>コイツにはmp3のpathが書いてある。)]
+    Step5 -->|5.csvに保存する関数としてsave_split_csvを使う| Out1[(billboard_features/2008 ~ 2024 のフォルダ<br/>)]
+    Step5 -->|5.csvに保存する関数としてsave_csvを使う| Dir7[(billboard_features_info/2008 ~ 2024.csv<br/>コイツにはmp3のpathが書いてある。)]
 
     %%音響的特徴量の抽出
     Dir7 --> Step6[extract_complexity_features.py]
@@ -68,7 +68,8 @@ graph TD
 
 ## 補足
 
-+ send_email.py：これはモジュールとして使われている。楽曲を入手するプログラムなどの中で使われている。プログラムが終わったタイミングでgmailに送れる。for_features_csv.py：よく使う関数をモジュールとして保存した。どこに埋め込んでいるかわからなくて下手に消せない、、、
++ send_email.py：これはモジュールとして使われている。実行時間が長いプログラムに入ってる。プログラムが終わったタイミングでgmailに送れる。
++ for_features_csv.py：よく使う関数をモジュールとして保存した。どこに埋め込んでいるかわからなくて下手に消せない、、、
 + MPEG7：外部ソフトウェア。昔に作られていて、バージョンの互換性とか合わなくて使えない。
 
 
