@@ -5,6 +5,7 @@ SpotifyAPIと楽曲データ用いて、音源（mp3）を取得し、楽曲の�
 
 ## ライブラリ
 
+pandas, matplotlib, seaborn, os, glob, 
 librosa, pandas, sklearn, spotipy 等が必要です
 
 ## 📊 データフロー図 (Data Pipeline)
@@ -25,26 +26,48 @@ graph TD
     
     %% 音源ダウンロード
     Dir3 --> Step4[mp3_download.py]
-    Step4 -->|4. 音源保存| Dir4[(downloaded_mp3)]
-    Step4 -->|4. パス管理| Dir5[(csv_with_mp3_path)]
+    Step4 -->|4. パス管理| Dir4[(csv_with_mp3_path)]
+    Step4 -->|4. 音源保存| Dir5[(downloaded_mp3)]
+    
 
     %% 特徴量抽出とデータ分割
-    Dir4 & Dir5 --> Step5[calculate_billboard.py]
-    Dir4 & Dir5 --> Step6[extract_complexity_features.py]
-    Dir4 & Dir5 --> Step7[extract_mfcc_features.py]
+    Dir4 --> Step5[calculate_billboard_features_info.py]
+
+    %%csvに保存する関数の種類（名前ごみでごめんなさ）
+    Step5 -->|5.csvに保存する関数としてsave_split_csvを使う| Out1[(billboard_features/2008 ~ 2024 のフォルダ<br/>)]
+    Step5 -->|5.csvに保存する関数としてsave_csvを使う| Dir7[(billboard_features_info/2008 ~ 2024.csv<br/>コイツにはmp3のpathが書いてある。)]
+
+    %%音響的特徴量の抽出
+    Dir7 --> Step6[extract_complexity_features.py]
+    Dir7 --> Step7[extract_mfcc_features.py]
 
     %% 最終成果物
-    Step5 -->|5. 分割データ| Out1[(billboard_futures<br/>train / val / test)]
+    %%Step5 -->|5. 分割データ| Out1[(billboard_features<br/>2008 ~ 2024)]
     Step6 -->|6. 複雑性特徴量| Out2[(features_complexity)]
     Step7 -->|6. MFCC特徴量| Out3[(features_mfcc)]
 
-    %% 解析
-    Out1 & Out2 & Out3 --> Final[SVM Model & Visualization]
+    %% 予測
+    Out1 & Out2 & Out3 --> Step8[SVM.py]
+
+    %% 結果
+    Step8 --> Step9[(result_SVM)]
+
+    %%可視化
+    Step9 --> |フォルダ内にある複数のCSVファイルを読み込み、各指標ごとに平均を計算し、棒グラフで可視化するためには|　Dir10[plot_floder_metrics.py]
+    Step9 --> |フォルダ内のcsvを読み込み,complexity+mfccのみを抽出して指標ごとに年代を決めて棒グラフで比較する| Dir11[analyze_combined_futuers.py]
+    Step9 --> |#縦軸を正解度、横軸を年代として、指標ごとに比べる<br/>指標_実験_年代ごとに値が一番高かったものを表示する| Dir12[analyze_combined_futuers.py]
 
     style Dir1 fill:#f9f,stroke:#333
     style Dir4 fill:#f9f,stroke:#333
     style Out1 fill:#bbf,stroke:#333
     style Out2 fill:#bbf,stroke:#333
     style Out3 fill:#bbf,stroke:#333
+```
 
 
+
+## 補足
+
++ send_email.py：これはモジュールとして使われている。実行時間が長いプログラムに入ってる。プログラムが終わったタイミングでgmailに送れる。
++ for_features_csv.py：よく使う関数をモジュールとして保存した。どこに埋め込んでいるかわからなくて下手に消せない、、、
++ MPEG7：外部ソフトウェア。昔に作られていて、バージョンの互換性とか合わなくて使えない。

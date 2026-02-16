@@ -1,3 +1,5 @@
+# SpotifyAPIを使ってURLを取得するときに曲名を使う。このとき、曲名が完全一致した時に保存するようにしている。（extra）
+
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import csv
